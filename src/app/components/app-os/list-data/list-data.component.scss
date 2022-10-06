@@ -1,0 +1,72 @@
+
+
+.section1{
+    margin: 16px 0 0 0; padding: 0;
+        .searchLeft{
+            width: 60%;  display: inline-block; 
+        .search{
+            width: -webkit-fill-available;
+            margin: 16px 24px 0 24px;
+        } 
+        }
+        .searchRight{
+            width: 40%; display: inline-block;
+        button{
+            margin: 0 8px;
+            padding: 0 12px 0 0;
+            font-size: 10px;
+        }
+    p{
+        padding: 0 0 0 0; margin: 0;
+        }
+    }
+    @media(max-width: 767px){
+        .searchLeft{width: 100%;}
+        .searchRight{width: 100%;
+            .hide{
+               display: none;
+            }
+        }
+    }
+}
+
+.section2{
+    .holdPalette{
+        width: 50%; margin: 16px 0 0 0; padding: 0; display: inline-block;
+        .palette{    
+            display: flex; align-items: center; justify-content: center;background: #ffffff;
+            vertical-align: middle; 
+            height: 120px;
+            width: -webkit-fill-available; padding: 0; margin: 0 8px; border: 0px solid; outline: 0px; border-spacing: 0;
+            .content{text-align: center;
+            h4{padding: 0 8px;margin: 0; display: inline-block; border-radius: 16px; background: #000000; color: #eeeeee;}
+            p{ 
+                width: -webkit-fill-available;
+                border-radius: 8px;
+                background: #fafafa;
+                display: block;
+                margin: -16px 8px 0 8px;
+                padding: 16px 8px 0 8px;
+                font-size: 12px;
+                line-height: 20px;
+                height: 60px;
+                overflow: hidden;
+                white-space: pre-wrap;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+            }
+            }
+            //mat-icon{background: #000000; color: #eeeeee; padding: 8px; margin: 8px 4px; border-radius: 50%; vertical-align: middle;}
+        }
+        .holdMine{
+            display: flex; align-items: center;padding: 0; margin: 0 8px;
+            p{padding: 0 0 0 8px;margin: 0;}
+            .leftOut{ margin: 0 0 0 8px;}
+            .download{padding: 0 8px 0 4px; min-width: auto;}
+        }
+    }
+    @media(max-width: 767px){
+        .holdPalette{width: 100%;}
+    }
+}

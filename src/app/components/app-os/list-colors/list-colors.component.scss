@@ -1,0 +1,49 @@
+.section1{
+    .holdColor{
+        width: 23%;
+        margin: 16px 0.5% 8px 1.5%; padding: 0;
+        display: inline-block;
+        vertical-align: top;
+        .title{    margin: 0;
+            padding: 0 16px; text-align: center;
+            background: #ffffff;
+            color: #eeeeee;
+            border-radius: 8px 8px 0 0;}
+        .color{
+            display: flex;
+            align-items: center;
+            height: 50px;
+            padding: 0 0 0 0;
+            color: #eeeeee;
+            h2, p{margin: 0; padding: 0 8px; background: #000000;}
+            h2{border-radius: 0 8px 8px 0;}
+            p{font-family: monospace; border-radius: 8px;}
+            button{background: rgba(0, 0, 0, 0.4); margin: 0 8px;}
+        }
+        .color:last-child{border-radius: 0 0 8px 8px;}
+    }
+    @media(max-width: 767px){
+        .holdColor{
+            width: 96%;
+        }    
+    }
+}
+
+.section2{
+    .brandColor{
+        width: 46%; max-width: 540px; display: flex; margin: 16px 2% 0 2%; float: left;
+        .brand{background: #ffffff; width:100px; height:120px;
+            .color{ width:80px; height:80px; margin: 8px 8px 4px 8px; border: 1px solid #eeeeee;}
+        }
+        .name{margin: 16px 8px 0 16px;
+            span{    display: inline-block;
+                background: #ffffff;
+                padding: 4px 8px; margin: 0 4px 4px 0; font-size: 8px; }
+        }
+    }
+    @media(max-width: 767px){
+        .brandColor{
+            width: 96%;
+        }    
+    }
+}

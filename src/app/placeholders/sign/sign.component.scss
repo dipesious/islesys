@@ -1,0 +1,724 @@
+
+    $XYZbg-color: #f5f5f5;
+    $XYZbg-round-a: #4481eb;
+    $XYZbg-round-b: #04befe;
+    $XYZpanel-color: #fff;
+    $XYZtitle: #444;
+    $XYZbg-input: #ffffff;
+    $XYZinput-icon: #8a8a8a;
+    $XYZinput: #333;
+    $XYZinput-hover: #222;
+    $XYZbtn-color: #6200ea;
+    $XYZbtn-text: #fff;
+    $XYZbtn-hover: #2962ff;
+    $XYZsocial-text: #444;
+    $XYZsocial-icon: #4481eb;
+    $XYZicon-color: #333;
+    $XYZcheck-text: #333;
+    $XYZcheck-hover: #333;
+    $XYZcheck-link: #2962ff;
+    $XYZpass-color: #444;
+    $XYZkey-color: #777;
+    $XYZpass-hover-color: #2962ff;
+    $XYZkeyboard-color: #e0e0e0;
+    $XYZkey-letter: #333;
+
+  
+//   [data-theme="dark"] {
+//     $XYZbg-color: #222;
+//     $XYZbg-round-a: #4a4a4a;
+//     $XYZbg-round-b: #2e2e2e;
+//     $XYZpanel-color: #fff;
+//     $XYZtitle: #f2f2f2;
+//     $XYZbg-input: #444;
+//     $XYZinput-icon: #ccc;
+//     $XYZinput: #ccc;
+//     $XYZinput-hover: #aaa;
+//     $XYZbtn-color: #333;
+//     $XYZbtn-text: #f2f2f2;
+//     $XYZbtn-hover: #444;
+//     $XYZsocial-text: #ccc;
+//     $XYZsocial-icon: #fff;
+//     $XYZicon-color: #aaa;
+//     $XYZcheck-text: #fff;
+//     $XYZcheck-hover: #fff;
+//     $XYZcheck-link: #5995fd;
+//     $XYZpass-color: #fff;
+//     $XYZpass-hover-color: #5995fd;
+//     $XYZkey-color: #f0f0f0;
+//     $XYZkeyboard-color: #444;
+//     $XYZkey-letter: #fff;
+//   }
+  
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    //font-family: "Poppins", sans-serif;
+  }
+  
+  .containerX {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: $XYZbg-color;
+    overflow: hidden;
+  }
+  
+  .containerX:before {
+    content: "";
+    position: absolute;
+    width: 2000px;
+    height: 2000px;
+    border-radius: 50%;
+    background: linear-gradient(-45deg, $XYZbg-round-a, $XYZbg-round-b);
+    top: -10%;
+    right: 48%;
+    transform: translateY(-50%);
+    z-index: 6;
+    transition: 1.8s ease-in-out;
+  }
+  
+  .forms-containerX {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  .signin-signup {
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr;
+    z-index: 5;
+    transition: 1s 0.7s ease-in-out;
+  }
+  
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 5rem;
+    overflow: hidden;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    transition: 0.2s 0.7s ease-in-out;
+  }
+  
+  form.sign-in-form {
+    z-index: 2;
+  }
+  
+  form.sign-up-form {
+    z-index: 1;
+    opacity: 0;
+  }
+  
+  /* MODAL */
+  
+  .btn-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: pink;
+    font-size: 20px;
+    color: white;
+    padding: 10px 30px;
+    cursor: pointer;
+  }
+  
+  #popUpBox {
+    width: 500px;
+    overflow: hidden;
+    background: pink;
+    box-shadow: 0 0 10px black;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    padding: 10px;
+    text-align: center;
+    display: none;
+  }
+  .headX{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin: 0 10% 10px 10%;
+    .title {
+      font-size: 2.2rem;
+      margin: 0;
+      color: $XYZtitle;
+    }
+  }
+
+  .footX{
+    .title {
+      font-size: 2.2rem;
+      margin: 0;
+      color: $XYZtitle;
+      a{vertical-align: middle;
+        margin: 0 4px;
+        padding: 0 16px 0 8px;
+        mat-icon{ margin: 0 8px 0 0;}
+        img{height: -webkit-fill-available;
+          //width: -webkit-fill-available;
+          transform: scale(1.2);
+          object-fit: contain;}
+      }
+    }
+  }
+  
+  .input-field {
+    width: 85%;
+    height: 55px;
+    background-color: $XYZbg-input;
+    margin: 10px 0;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    padding: 0 0.4rem;
+    .phoneCC{
+      font-size: 0.6rem;
+      vertical-align: middle;
+      line-height: 1;
+      font-weight: 600;
+      border-bottom: 2px solid #eeeeee;
+      padding: 0 0 2px 0;
+      margin: 0 0 12px 0;
+      display: inline-block;
+      width: 24px;
+      text-align: center;
+    }
+    // select{
+    //   background: none;
+    // outline: none;
+    // border: none;
+    // line-height: 1;
+    // font-weight: 600;
+    // font-size: 0.8rem;
+    // color: #333;
+    // padding: 0;
+    // margin: 0 8px 0 0;
+    // vertical-align: middle;
+    // min-width: 50px;
+    // }
+    mat-icon {
+      text-align: center;
+      line-height: 55px;
+      height: 55px;
+      width: 55px;
+      color: $XYZinput-icon;
+      font-size: 1.1rem;
+      transform: scale(1.8);
+    }
+  }
+  
+  
+  .key {
+    color: $XYZkey-color;
+    text-decoration: none;
+  }
+  
+  .key:hover {
+    color: $XYZpass-hover-color;
+  }
+  
+  .pass {
+    margin: 12px 0;
+    color: $XYZpass-color;
+  }
+  
+  .pass:hover {
+    color: $XYZpass-hover-color;
+  }
+  
+  #togglePassword {
+    text-align: center;
+    color: $XYZinput-icon;
+  }
+  
+  #toggleReg {
+    text-align: center;
+    color: $XYZinput-icon;
+  }
+  
+  .input-field input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: $XYZinput;
+  }
+  
+  .input-field input::placeholder {
+    color: $XYZinput-hover;
+    font-weight: 500;
+  }
+  
+  .btn {
+    width: -webkit-fill-available;
+    height: 49px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 10%;
+    transition: 0.5s;
+    font-size: 24px;
+    background: linear-gradient(45deg, rgb(98 0 234 / 20%) 5%, #6200ea 0%);
+    //background-color: #6200ea;
+  }
+  
+  .btn:hover {
+    //background-color: $XYZbtn-h
+    background: linear-gradient(45deg, rgb(41 98 255 / 20%) 5%, #2962ff 0%);
+  }
+  
+  .check {
+    display: block;
+    position: relative;
+    margin: 12px 0;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .checkmark {
+    color: $XYZcheck-text;
+    a {
+    color: $XYZcheck-link;
+    text-decoration: none;
+    }
+    a:hover {
+      color: $XYZcheck-hover;
+    }
+  }
+  
+  .social-text {
+    padding: 0.7rem 0;
+    font-size: 1rem;
+    color: $XYZsocial-text;
+  }
+  
+  .social-media {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .social-icon {
+    height: 46px;
+    width: 46px;
+    border: 1px solid $XYZicon-color;
+    margin: 0 0.45rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: $XYZicon-color;
+    font-size: 1.1rem;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  
+  .social-icon:hover {
+    color: $XYZsocial-icon;
+    border-color: $XYZsocial-icon;
+  }
+  
+  .icon-mode {
+    height: 32px;
+    width: 32px;
+    border: 1px solid $XYZicon-color;
+    margin: 40px 5px 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: $XYZicon-color;
+    font-size: 1rem;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  
+  .icon-mode:hover {
+    color: $XYZsocial-icon;
+    border-color: $XYZsocial-icon;
+  }
+  
+  .text-mode {
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: $XYZsocial-text;
+  }
+  
+  .panels-containerX {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    text-align: center;
+    z-index: 7;
+  }
+  
+  .left-panel {
+    pointer-events: all;
+    padding: 3rem 17% 2rem 12%;
+  }
+  
+  .right-panel {
+    pointer-events: none;
+    padding: 3rem 12% 2rem 17%;
+  }
+  
+  .panel .content {
+    color: $XYZpanel-color;
+    transition: 0.9s 0.6s ease-in-out;
+  }
+  
+  .panel h3 {
+    font-weight: 600;
+    line-height: 1;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .panel p {
+    font-size: 0.95rem;
+    padding: 0.7rem 0;
+  }
+  
+  .btn.transparent {
+    margin: 0;
+    background: none;
+    border: 2px solid #fff;
+    width: 130px;
+    height: 41px;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  
+  .image {
+    width: -webkit-fill-available;
+    max-width: 100%;
+    margin-top: 10px;
+    transition: 1.1s 0.4s ease-in-out;
+    display: inline-block;
+    img{max-height: 50px; display: inline-block; vertical-align: middle;}
+    .signIMG{margin: 0 auto 0 0;}
+    .logIMG{margin: 0 0 0 auto;}
+  }
+  .imageSIGN{background: linear-gradient(135deg, #6200ea 5%, transparent 0%);}
+  .imageLOG{background: linear-gradient(-135deg, #6200ea 5%, transparent 0%);}
+
+  .right-panel .content,
+  .right-panel .image {
+    transform: translateX(800px);
+  }
+  
+  /* ANIMATION */
+  
+  .containerX.sign-up-mode:before {
+    transform: translate(100%, -50%);
+    right: 52%;
+  }
+  
+  .containerX.sign-up-mode .left-panel .image,
+  .containerX.sign-up-mode .left-panel .content {
+    transform: translateX(-800px);
+  }
+  
+  .containerX.sign-up-mode .right-panel .content,
+  .containerX.sign-up-mode .right-panel .image {
+    transform: translateX(0px);
+  }
+  
+  .containerX.sign-up-mode .left-panel {
+    pointer-events: none;
+  }
+  
+  .containerX.sign-up-mode .right-panel {
+    pointer-events: all;
+  }
+  
+  .containerX.sign-up-mode .signin-signup {
+    left: 25%;
+  }
+  
+  .containerX.sign-up-mode form.sign-in-form {
+    z-index: 1;
+    opacity: 0;
+  }
+  
+  .containerX.sign-up-mode form.sign-up-form {
+    z-index: 2;
+    opacity: 1;
+  }
+  
+  /* KEYBOARD */
+  
+  .keyboard {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 5px 0;
+    background: $XYZkeyboard-color;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    user-select: none;
+    transition: bottom 0.4s;
+    z-index: 999;
+  }
+  
+  .keyboard--hidden {
+    bottom: -100%;
+  }
+  
+  .keyboard__keys {
+    text-align: center;
+  }
+  
+  .keyboard__key {
+    height: 45px;
+    width: 6%;
+    max-width: 90px;
+    margin: 3px;
+    border-radius: 4px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: $XYZkey-letter;
+    font-size: 1.05rem;
+    outline: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+  }
+  
+  .keyboard__key:active {
+    background: rgba(255, 255, 255, 0.12);
+  }
+  
+  .keyboard__key--wide {
+    width: 12%;
+  }
+  
+  .keyboard__key--extra-wide {
+    width: 36%;
+    max-width: 500px;
+  }
+  
+  .keyboard__key--activatable::after {
+    content: "";
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+  }
+  
+  .keyboard__key--active::after {
+    background: #08ff00;
+  }
+  
+  .keyboard__key--dark {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  
+  /* MEDIA SCREEN */
+  
+  @media (max-width: 870px) {
+    .containerX {
+      min-height: 800px;
+      height: 100vh;
+    }
+  
+    .containerX::before {
+      width: 1500px;
+      height: 1500px;
+      left: 30%;
+      bottom: 68%;
+      transform: translateX(-50%);
+      right: initial;
+      top: initial;
+      transition: 2s ease-in-out;
+    }
+  
+    .signin-signup {
+      width: 100%;
+      left: 50%;
+      top: 95%;
+      transform: translate(-50%, -100%);
+      transition: 1s 0.8s ease-in-out;
+    }
+  
+    .panels-containerX {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 2fr 1fr;
+    }
+  
+    .panel {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      padding: 2.5rem 8%;
+    }
+  
+    .panel .content {
+      padding-right: 15%;
+      transition: 0.9s 0.8s ease-in-out;
+    }
+  
+    .panel h3 {
+      font-size: 1.2rem;
+    }
+  
+    .panel p {
+      font-size: 0.7rem;
+      padding: 0.5rem 0;
+    }
+  
+    .btn.transparent {
+      width: 110px;
+      height: 35px;
+      font-size: 0.7rem;
+    }
+  
+    .image {
+      display: none;
+      background: #ff0000;
+    }
+  
+    /*.image {
+          width: 200px;
+          transition: 0.9s 0.6s ease-in-out;
+      }*/
+  
+    .left-panel {
+      grid-row: 1 / 2;
+    }
+  
+    .right-panel {
+      grid-row: 3 / 4;
+    }
+  
+    .right-panel .content,
+    .right-panel .image {
+      transform: translateY(300px);
+    }
+  
+    .containerX.sign-up-mode:before {
+      transform: translate(-50%, 100%);
+      bottom: 32%;
+      right: initial;
+    }
+  
+    .containerX.sign-up-mode .left-panel .image,
+    .containerX.sign-up-mode .left-panel .content {
+      transform: translateY(-300px);
+    }
+  
+    .containerX.sign-up-mode .signin-signup {
+      top: 5%;
+      transform: translate(-50%, 0);
+      left: 50%;
+    }
+  
+    .keyboard,
+    .key {
+      opacity: 0;
+      visibility: hidden;
+      font-size: 0.1px;
+    }
+  }
+  
+  @media (max-width: 570px) {
+    form {
+      padding: 0 1.5rem;
+    }
+  
+    .image {
+      display: none;
+    }
+  
+    .panel .content {
+      padding: 0.5rem 1rem;
+    }
+  
+    // .panel p {
+    //   opacity: 0;
+    // }
+  
+    .containerX:before {
+      bottom: 75%;
+      left: 50%;
+    }
+  
+    .containerX.sign-up-mode:before {
+      bottom: 24%;
+      left: 50%;
+    }
+  
+    .field-icon {
+      float: right;
+      margin-left: 300px;
+      margin-top: -55px;
+      position: relative;
+      z-index: 1;
+    }
+  }
+  
+  @media (max-width: 385px) {
+    .field-icon {
+      float: right;
+      margin-left: 260px;
+      margin-top: -55px;
+      position: relative;
+      z-index: 1;
+    }
+  }
+  
+  @media (max-width: 350px) {
+    .field-icon {
+      float: right;
+      margin-left: 200px;
+      margin-top: -55px;
+      position: relative;
+      z-index: 1;
+    }
+  }
+  

@@ -1,1 +1,305 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$client-primary: mat.define-palette(mat.$blue-palette, A700);
+$client-accent: mat.define-palette(mat.$grey-palette, 900);
+
+// The warn palette is optional (defaults to red).
+$client-warn: mat.define-palette(mat.$deep-purple-palette, A700);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$client-theme: mat.define-light-theme((
+  color: (
+    primary: $client-primary,
+    accent: $client-accent,
+    warn: $client-warn
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($client-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+$black: #000000;
+$white: #ffffff;
+$growth: #8bc34a;
+$primary: #2962ff;
+$accent: #212121;
+$warn: #6200ea;
+
+
+.b_black{ background: $black !important;}
+.c_black{ color: $black !important;}
+.f_black{ fill: $black !important;}
+
+.b_white{ background: $white !important;}
+.c_white{ color: $white !important;}
+.f_white{ fill: $white !important;}
+
+.b_growth{ background: $growth !important;}
+.c_growth{ color: $growth !important;}
+.f_growth{ fill: $growth !important;}
+
+.b_primary{ background: $primary !important;}
+.c_primary{ color: $primary !important;}
+.f_primary{ fill: $primary !important;}
+
+.b_accent{ background: $accent !important;}
+.c_accent{ color: $accent !important;}
+.f_accent{ fill: $accent !important;}
+
+.b_warn{ background: $warn !important;}
+.c_warn{ color: $warn !important;}
+.f_warn{ fill: $warn !important;}
+
+$designer: 'DynaPuff', cursive;
+$normal: 'Cairo', sans-serif;
+$stylish: 'Gochi Hand', cursive;
+
+
+html, body { width: 100%; height: 100%; }
+body { margin: 0; height: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  touch-action: manipulation;
+    
+  *{
+    font-family: $normal;
+
+::-webkit-scrollbar {width: 8px;height: 8px;}
+::-webkit-scrollbar-track {background: #fafafa;}
+::-webkit-scrollbar-thumb {background: #eeeeee;
+  width: 4px;height: 4px;border-radius: 22px; 
+  border-right: 2px solid #fafafa;
+  border-left: 1px solid #fafafa;
+  border-top: 2px solid #fafafa;
+  border-bottom: 2px solid #fafafa;
+}
+::-webkit-scrollbar-thumb:hover {background: #ffffff;}
+
+  }
+  h1,h2,h3,h4,h5,h6{font-family: $designer !important;}
+
+  .dFont{ font-family: $designer !important;
+    span{
+      font-family: $designer;
+    }
+  }
+  .nFont{ font-family: $normal !important;
+    span{
+      font-family: $normal;
+    }
+  }
+  .sFont{ font-family: $stylish !important;
+    span{
+      font-family: $stylish;
+    }
+  }
+  
+  .textC{text-align: center;}
+  .textL{text-align: left;}
+  .textR{text-align: right;}
+  .textJ{text-align: justify;}
+  .divide { flex: 1 1 auto; }
+  
+  .container{
+    padding: 0; margin: 0; border-spacing: 0; width: 100%; text-align: center;
+    .row{
+        padding: 0; margin: 0; border-spacing: 0; display: inline-block;
+        width: 100%; max-width: 1200px; text-align: left;
+        .col{padding: 0;margin: 8px 0 16px 0;position: relative;vertical-align: top;float: left;}
+        .col-none{display: none;}
+        .col-10{width: 10%;display: inline-block;}
+        .col-15{width: 15%;display: inline-block;}
+        .col-20{width: 20%;display: inline-block;}
+        .col-25{width: 25%;display: inline-block;}
+        .col-30{width: 30%;display: inline-block;}
+        .col-40{width: 40%;display: inline-block;}
+        .col-45{width: 45%;display: inline-block;}
+        .col-50{width: 50%;display: inline-block;}
+        .col-55{width: 55%;display: inline-block;}
+        .col-60{width: 60%;display: inline-block;}
+        .col-65{width: 65%;display: inline-block;}
+        .col-70{width: 70%;display: inline-block;}
+        .col-75{width: 75%;display: inline-block;}
+        .col-80{width: 80%;display: inline-block;}
+        .col-90{width: 90%;display: inline-block;}
+        .col-100{width: 100%;display: inline-block;}
+        .col-left{float: left;}
+        .col-right{float: right;}
+        .col-show{display: inline-block;}
+  @media only screen and (max-width: 991px) {//Tablet
+        .col-md-none{display: none;}
+        .col-md-10{width: 10%;display: inline-block;}
+        .col-md-15{width: 15%;display: inline-block;}
+        .col-md-20{width: 20%;display: inline-block;}
+        .col-md-25{width: 25%;display: inline-block;}
+        .col-md-30{width: 30%;display: inline-block;}
+        .col-md-40{width: 40%;display: inline-block;}
+        .col-md-45{width: 45%;display: inline-block;}
+        .col-md-50{width: 50%;display: inline-block;}
+        .col-md-55{width: 55%;display: inline-block;}
+        .col-md-60{width: 60%;display: inline-block;}
+        .col-md-65{width: 65%;display: inline-block;}
+        .col-md-70{width: 70%;display: inline-block;}
+        .col-md-75{width: 75%;display: inline-block;}
+        .col-md-80{width: 80%;display: inline-block;}
+        .col-md-90{width: 90%;display: inline-block;}
+        .col-md-100{width: 100%;display: inline-block;}
+        .col-md-left{float: left;}
+        .col-md-right{float: right;}
+        .col-md-show{display: inline-block;}
+  }
+  @media only screen and (max-width: 767px) {//MOBILE
+        .col-sm-none{display: none;}
+        .col-sm-10{width: 10%;display: inline-block;}
+        .col-sm-15{width: 15%;display: inline-block;}
+        .col-sm-20{width: 20%;display: inline-block;}
+        .col-sm-25{width: 25%;display: inline-block;}
+        .col-sm-30{width: 30%;display: inline-block;}
+        .col-sm-40{width: 40%;display: inline-block;}
+        .col-sm-45{width: 45%;display: inline-block;}
+        .col-sm-50{width: 50%;display: inline-block;}
+        .col-sm-55{width: 55%;display: inline-block;}
+        .col-sm-60{width: 60%;display: inline-block;}
+        .col-sm-65{width: 65%;display: inline-block;}
+        .col-sm-70{width: 70%;display: inline-block;}
+        .col-sm-75{width: 75%;display: inline-block;}
+        .col-sm-80{width: 80%;display: inline-block;}
+        .col-sm-90{width: 90%;display: inline-block;}
+        .col-sm-100{width: 100%;display: inline-block;}
+        .col-sm-left{float: left;}
+        .col-sm-right{float: right;}
+        .col-sm-show{display: inline-block;}
+  }
+  .col-box{
+      margin: 0 8px !important;
+      padding: 8px;
+  }
+    }
+  }
+}
+
+
+// .mat-drawer-content, .mat-tab-body-content {
+//   overflow: hidden !important
+// }
+
+// .mat-tab-body.mat-tab-body-active {
+//   overflow-y: hidden !important;
+// } 
+
+
+
+.infomative{
+  min-height: 220px;
+  background: linear-gradient(-55deg, #ffffff 80%, #fafafa 20%);
+      //background-color: #e5e5f7;
+      //background-image:  linear-gradient(135deg, #2962ff 25%, transparent 25%), linear-gradient(225deg, #2962ff 25%, transparent 25%), linear-gradient(45deg, #2962ff 25%, transparent 25%), linear-gradient(315deg, #2962ff 25%, #e5e5f7 25%);
+      //background-position:  10px 0, 10px 0, 0 0, 0 0;
+      //background-size: 20px 20px;
+      //background-repeat: repeat;
+  .posterText{
+      vertical-align: top;
+      width: 60%;
+      display: inline-block;
+      height: 220px;
+      margin: 16px 0;
+      overflow-y: auto;
+      .knowLinks{
+          height: 110px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+      .knowLink{
+          height: 80px;
+          width: 80px;
+          min-width: 80px;
+          border-radius: 8px;
+          display: inline-block;
+          margin: 0 16px;
+          border: 3px solid #eeeeee;
+          //background: #ffffff;
+          img{
+              height: 42px;
+              width: 42px;
+              margin: 8px 0 0 0;
+          }
+      }
+      }
+      .knowinfo{
+        padding: 0 16px;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          mat-icon{vertical-align: middle;}
+        }
+      .knowTitle{
+        padding: 0; margin: 8px 0 0 0;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;}
+  }
+  .posterVideo{
+      vertical-align: top;
+      height: 220px;
+      margin: 16px 2%;
+      border-radius: 16px;
+      width: 36%;
+      display: inline-block;
+      background: rgb(98 0 234 / 20%);
+  }
+  .finalPoster{background: transparent;}
+  @media(max-width: 767px){
+      .posterVideo{
+          margin: 0 2%;
+      }
+  .posterText{
+      width: 100%;
+          height: auto;
+          margin: 16px 0 0 0;
+      .knowLinks{
+      .knowLink{
+          margin: 0 8px 16px 8px;
+      }
+      }
+  .knowinfo{
+      -webkit-line-clamp: 2;}
+  }
+  .posterVideo{
+      width: 96%;
+  }
+  }
+  }
+  
+  svg{
+    tspan{font-size: 12px !important;pointer-events: none;
+      -webkit-touch-callout: none;
+      -webkit-user-select:none;
+      -khtml-user-select:none;
+      -moz-user-select:none;
+      -ms-user-select:none;
+      -o-user-select:none;
+      user-select:none;}
+  }
+
+  .mat-tab-link-container{background: #8bc34a !important;}

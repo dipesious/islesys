@@ -1,0 +1,127 @@
+
+  
+    <div class="containerX" [class.sign-up-mode]="signUp">
+      <div class="forms-containerX">
+        <div class="signin-signup">
+
+
+
+
+
+          <form (submit)="signin('password')" class="sign-in-form">
+            <div class="headX">
+                <a mat-icon-button routerLink="/explore"><mat-icon>arrow_back</mat-icon></a>
+              <span class="divide"></span>
+              <h2 class="title dFont">My Account</h2>
+            </div>
+            <div class="input-field">
+              <mat-icon><span class="phoneCC">{{cc}}</span></mat-icon>
+              <input [disabled]="sign.makingChanges" [(ngModel)]="userLog.phone" type="phone" value="+91" name="phone" autocomplete="phone" placeholder="Phone" required="yes">
+              <mat-icon [matMenuTriggerFor]="nat">unfold_more</mat-icon>
+            </div>
+            <div class="input-field">
+                <mat-icon>verified_user</mat-icon>
+              <input [disabled]="sign.makingChanges" [(ngModel)]="userLog.pass" [type]=" !pass ? 'password' : 'text' " name="password" autocomplete="current-password" placeholder="Password" id="id_password" required="yes">
+              <mat-icon (click)="pass = !pass" >key</mat-icon>
+            </div>
+  
+
+            <input [disabled]="sign.makingChanges" type="submit" [value]=" !sign.makingChanges ? 'Confirm identity' : 'Processing...' " class="btn solid">
+  
+            <div class="footX">
+              <p class="textC"><br>OR<br></p>
+              <h2 class="title dFont">
+                <a mat-button (submit)="signin('google')" class="b_white"><mat-icon><img src="assets/google.svg" /></mat-icon>Sync</a>
+                <a mat-button (submit)="signin('twitter')" class="b_white"><mat-icon><img src="assets/twitter.svg" /></mat-icon>Sync</a>
+                <a mat-button (submit)="signin('microsoft')" class="b_white"><mat-icon><img src="assets/microsoft.svg" /></mat-icon>Sync</a>
+              </h2>
+            </div>
+          </form>
+
+
+
+
+
+
+
+
+
+          <form (submit)="signup()" class="sign-up-form">
+            <div class="headX">
+              <a mat-icon-button routerLink="/explore" ><mat-icon>arrow_back</mat-icon></a>
+              <span class="divide"></span>
+              <h2 class="title dFont">Register</h2>
+            </div>
+            <div class="input-field">
+            <mat-icon>account_circle</mat-icon>
+              <input [disabled]="sign.makingChanges" [(ngModel)]="userSign.name" type="text" name="username" autocomplete="username" placeholder="Name" required="yes">
+            </div>
+              <!-- <select name="cc" [(ngModel)]="userSign.cc" >
+                <option value="+91">+91</option>
+              </select> -->
+            <div class="input-field">
+              <mat-icon><span class="phoneCC">{{cc}}</span></mat-icon>
+              <input [disabled]="sign.makingChanges" [(ngModel)]="userSign.phone" type="phone" value="+91" name="phone" autocomplete="phone" placeholder="Phone" required="yes">
+              <mat-icon [matMenuTriggerFor]="nat">unfold_more</mat-icon>
+            </div>
+            <div class="input-field">
+                <mat-icon>mail</mat-icon>
+              <input [disabled]="sign.makingChanges" [(ngModel)]="userSign.email" type="email" name="email" autocomplete="email" placeholder="Email" required="yes">
+            </div>
+            <div class="input-field">
+                <mat-icon>verified_user</mat-icon>
+              <input [disabled]="sign.makingChanges" [(ngModel)]="userSign.pass" type="password" name="password" autocomplete="current-password" placeholder="Password" id="id_reg" required="yes">
+              <mat-icon (click)="pass = !pass" >key</mat-icon>
+            </div>
+  
+            <label class="check">
+              <input [disabled]="sign.makingChanges" [(ngModel)]="userSign.accept" name="accept" type="checkbox">
+              &nbsp;
+              <span class="checkmark">I accept the <a href="#">terms of services</a></span>
+            </label>
+
+            <input [disabled]="sign.makingChanges" type="submit" [value]=" !sign.makingChanges ? 'Create account' : 'Processing...' " class="btn solid">
+          </form>
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="panels-containerX">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>You don't have an account?</h3>
+            <p>Create your account right now to keep up</p>
+            <button class="btn transparent" (click)="signUp = !signUp" id="sign-up-btn">Register</button>
+          </div>
+          <div class="image imageLOG">
+            <img src="assets/logo.svg" class="logIMG" alt="">
+          </div>
+        </div>
+  
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>Already have an account?</h3>
+            <p>Login to navigate the ecosystem</p>
+            <button class="btn transparent" (click)="signUp = !signUp" id="sign-in-btn">Sign in</button>
+          </div>
+          <div class="image imageSIGN">
+            <img src="assets/logo.svg" class="signIMG" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div id="recaptcha-container"></div>
+
+    <mat-menu #nat="matMenu" overlapTrigger="true">
+      <div style="max-height: 300px; overflow-y: auto;">
+      <button mat-menu-item  [disabled]="sign.makingChanges"
+      (click)=" cc = n.cc "
+      *ngFor="let n of nations" 
+      [class.c_warn]=" cc  == n.cc "><mat-icon>{{ cc !== n.cc ? 'check_box_outline_blank':'check_box'}}</mat-icon> <b>{{n.name}}</b></button>
+      </div>
+    </mat-menu>

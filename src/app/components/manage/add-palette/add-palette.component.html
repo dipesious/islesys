@@ -1,0 +1,68 @@
+<h1 mat-dialog-title>Submit icon</h1>
+<div mat-dialog-content>
+
+  <mat-form-field appearance="fill" class="fullWidth">
+    <mat-label>Title</mat-label>
+    <input matInput placeholder="palette name" [(ngModel)]="palette.name" [disabled]="makingChanges">
+  </mat-form-field>
+
+  <!-- <mat-form-field appearance="fill" class="fullWidth">
+    <mat-label>Select Type</mat-label>
+    <mat-select [(ngModel)]="palette.type" [disabled]="makingChanges">
+      <mat-option *ngFor="let t of paletteType" [value]="t.code" [disabled]="makingChanges">{{t.name}}</mat-option>
+    </mat-select>
+  </mat-form-field> -->
+  <mat-form-field appearance="fill" class="fullWidth">
+    <mat-label>Select Type</mat-label>
+    <mat-select [(ngModel)]="palette" [disabled]="makingChanges">
+      <mat-option *ngFor="let t of resource.palatteList" [value]="t" [disabled]="makingChanges">{{t}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="fullWidth">
+    <mat-label>Hex Code</mat-label>
+    <input matInput placeholder="six digit color code" [(ngModel)]="palette.c1" [disabled]="makingChanges">
+    <span matPrefix>#</span>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="fullWidth">
+    <mat-label>Hex Code</mat-label>
+    <input matInput placeholder="six digit color code" [(ngModel)]="palette.c2" [disabled]="makingChanges">
+    <span matPrefix>#</span>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="fullWidth">
+    <mat-label>Hex Code</mat-label>
+    <input matInput placeholder="six digit color code" [(ngModel)]="palette.c3" [disabled]="makingChanges">
+    <span matPrefix>#</span>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="fullWidth">
+    <mat-label>Hex Code</mat-label>
+    <input matInput placeholder="six digit color code" [(ngModel)]="palette.c4" [disabled]="makingChanges">
+    <span matPrefix>#</span>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill" class="fullWidth">
+    <mat-label>Your Name</mat-label>
+    <input matInput placeholder="full name" [(ngModel)]="palette.by" [disabled]="makingChanges">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="fullWidth">
+    <mat-label>Your Contact</mat-label>
+    <input matInput placeholder="Phone number" [(ngModel)]="palette.contact" [disabled]="makingChanges">
+    <span matPrefix>{{palette.dial_code}}</span>
+    <button mat-icon-button matPrefix [matMenuTriggerFor]="menu" [disabled]="makingChanges"><mat-icon>unfold_more</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngFor="let x of resource.phoneCodes" (click)="palette.dial_code = x.dial_code">{{x.name}}</button>
+    </mat-menu>
+  </mat-form-field>
+
+
+  <p>You Agree to Terms of Service?</p>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button  mat-dialog-close>No Thanks</button>
+  <button mat-button cdkFocusInitial color="warn" (click)="submit()" [disabled]="makingChanges">Agree & Submit</button>
+</div>

@@ -1,0 +1,108 @@
+
+<section class="section1">
+    <div class="controls">
+
+        <div class="third">
+            <button mat-button color="primary" (click)="submitIcon()">Add New</button>
+        </div>
+
+        <div class="first">
+            <span class="wat">Fill</span>
+            <button mat-button (click)=" execute('Outline', page.toneX) "><mat-icon>{{ page.fillX == 'Outline' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Outline</button>
+            <!--button mat-button (click)=" execute('Light', toneX) "><mat-icon>{{ fillX == 'Light' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Light</button-->
+            <button mat-button (click)=" execute('Filled', page.toneX) "><mat-icon>{{ page.fillX == 'Filled' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Filled</button>
+        </div>
+
+        <div class="second">
+            <span class="wat">Tone</span>
+            <button mat-button (click)=" execute(page.fillX, 'Flat' ) "><mat-icon>{{ page.toneX == 'Flat' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Flat</button>
+            <button mat-button (click)=" execute(page.fillX, 'Duotone') "><mat-icon>{{ page.toneX == 'Duotone' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Duotone</button>
+            <button mat-button (click)=" execute(page.fillX, 'Vibrant') "><mat-icon>{{ page.toneX == 'Vibrant' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Vibrant</button>
+        </div>
+
+    </div>
+</section>
+
+<section class="infomative">
+    <video class="posterVideo finalPoster"
+    [src]="resource.videoOpensourceIcons" 
+    type="video/mp4" playsinline="" loop="" autoplay=""></video>
+    <div class="posterText textC">
+        <div class="knowLinks">
+        <div class="knowLink" *ngFor="let x of links">
+            <a href="https://github.com/dipesious/Myriad-Undertakings/blob/main/design-icons.md" target="_"><img *ngIf=" x.title == 'Design' " src="assets/creativity.png" /></a>
+            <a href="https://github.com/dipesious/Myriad-Undertakings" target="_"><img *ngIf=" x.title == 'Repo' " src="assets/folder.png" /></a>
+            <a href="https://github.com/dipesious/Myriad-Undertakings/blob/main/LICENSE" target="_"><img *ngIf=" x.title == 'License' " src="assets/contract.png" /></a>
+            <p>{{x.title}}</p>
+        </div>
+        </div>
+        <h2 class="knowTitle">The icons undertaking</h2>
+        <p class="knowinfo">We are building a gargantuan library of compatible icons<br>
+            <i><mat-icon class="c_warn">done_outline</mat-icon>SVG</i>
+            &nbsp;
+            <i><mat-icon class="c_warn">done_outline</mat-icon>WEBP</i>
+            &nbsp;
+            <i><mat-icon class="c_warn">done_outline</mat-icon>PNG</i>
+        </p>
+    </div>
+</section>
+
+
+<section class="section3 textC">
+    <div class="searchRight">
+        <button mat-stroked-button [matMenuTriggerFor]="menu1"><mat-icon>expand_more</mat-icon>Catagory</button>
+        <mat-menu #menu1="matMenu" overlapTrigger="true">
+          <div style="max-height: 300px; overflow-y: auto;">
+          <button mat-menu-item>All Icons</button>
+          <button mat-menu-item *ngFor="let c of resource.iconCat">{{c}}</button>
+          </div>
+        </mat-menu>
+    </div>
+    <div class="searchLeft">
+    <p>
+      <mat-form-field class="search" appearance="legacy">
+        <mat-label><mat-icon>search</mat-icon> Search</mat-label>
+        <input matInput placeholder="enter icon name" name="search"
+        [formControl]="searching"
+        [matAutocomplete]="auto">
+        <button matSuffix mat-icon-button (click)="searching.setValue('')"><mat-icon>backspace</mat-icon></button>
+        <button matSuffix mat-icon-button (click)="goDark=!goDark"><mat-icon>{{goDark ? 'light_mode':'nights_stay'}}</mat-icon></button>
+        <mat-hint align="end">Searching in {{page.fillX}} {{page.toneX}} icons</mat-hint>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option" class="b_white">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </p>
+    </div>
+</section>
+
+<!-- 
+<section>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4819038499310915"
+    crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+    style="display:block"
+    data-ad-format="autorelaxed"
+    data-ad-client="ca-pub-4819038499310915"
+    data-ad-slot="4559652686"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section> -->
+
+<section class="section4"><!--(click)="auth.setDate(x.id)"-->
+    <ng-container *ngFor="let x of page.dataO | async">
+    <a class="iconHold textC"
+    [class.b_white]="!goDark" [class.c_black]="!goDark"  [class.f_black]="!goDark" 
+    [class.b_black]="goDark" [class.c_white]="goDark"  [class.f_white]="goDark"
+     *ngIf=" !searching.value || x.name.toLowerCase().includes(searching.value.toLowerCase())"
+    [routerLink]=" '/free-icon/' + x.id "> 
+        <div class="image" [innerHtml]="x.data | safeHtml"></div>
+        <p>{{x.name}}<!--{{x.sin?.toDate()}}--></p>
+    </a>
+    </ng-container>
+
+    <app-loading *ngIf="!(page.dataO | async) || (page.loading | async) "></app-loading>
+</section>

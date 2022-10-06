@@ -1,0 +1,58 @@
+
+<section class="infomative">
+    <video class="posterVideo finalPoster"
+    [src]="resource.videoOpensourceColors" 
+    type="video/mp4" playsinline="" loop="" autoplay=""></video>
+    <div class="posterText textC">
+        <div class="knowLinks">
+        <div class="knowLink" *ngFor="let x of links">
+            <a href="https://github.com/dipesious/Myriad-Undertakings/blob/main/design-colors.md" target="_"><img *ngIf=" x.title == 'Design' " src="assets/creativity.png" /></a>
+            <a href="https://github.com/dipesious/Myriad-Undertakings" target="_"><img *ngIf=" x.title == 'Repo' " src="assets/folder.png" /></a>
+            <a href="https://github.com/dipesious/Myriad-Undertakings/blob/main/LICENSE" target="_"><img *ngIf=" x.title == 'License' " src="assets/contract.png" /></a>
+            <p>{{x.title}}</p>
+        </div>
+        </div>
+        <h2 class="knowTitle">The colors undertaking</h2>
+        <p class="knowinfo">We are building a researched library of stable colors<br>
+            <i><mat-icon class="c_warn">done_outline</mat-icon>BRANDING</i>
+            &nbsp;
+            <i><mat-icon class="c_warn">done_outline</mat-icon>SHADES</i>
+            &nbsp;
+            <i><mat-icon class="c_warn">done_outline</mat-icon>GUIDENCE</i>
+        </p>
+    </div>
+</section>
+
+
+<section class="section2">
+    <div class="brandColor" *ngFor="let x of listBranding">
+        <div class="brand">
+            <div [style.background]="x.color" class="color"></div>
+            <p class="textC">{{x.name}}</p>
+        </div>
+        <div class="name">
+            <span *ngFor="let y of x.list">{{y}}</span>
+            <p>{{x.info}}</p>
+        </div>
+    </div>
+</section>
+
+
+<section class="section3">
+    <div style="float: left;margin: 16px 8px 0 16px;">
+    <p>Keep in mind that the effect of your branding colors depends on the style and design they are used in, as well as the color combinations you choose. This is an abridged version, our connection to color goes lot deeper than this—for example, too much yellow can actually cause anxiety. If you want to learn more about these intricacies, read our full guide on how color impacts emotions and behaviors.</p>
+    </div>
+</section>
+
+
+<section class="section1">
+    <div class="holdColor" *ngFor="let c of colorz">
+        <p class="title">{{c.name}}</p>
+        <div class="color" [style]="'background:' + x.c + ';'" *ngFor="let x of c.p">
+            <h2>{{ false ? (c.name + ' ') : ''}}{{x.n}}</h2>
+            <span class="divide"></span>
+            <p>{{x.c}}</p>
+            <button mat-icon-button><mat-icon>content_copy</mat-icon></button>
+        </div>
+    </div>
+</section>

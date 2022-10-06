@@ -1,0 +1,92 @@
+.section1{
+    .mapEditor{ width: 80%; min-height: 66vh; vertical-align: middle;
+        display: flex; align-items: center; justify-content: center; float: left; 
+        overflow: hidden;
+        $grid-color: #eeeeee;
+
+	//background-color: rgba(#fff, .5);
+	background-image: linear-gradient($grid-color 2px, transparent 2px), linear-gradient(90deg, $grid-color 2px, transparent 2px), linear-gradient(rgba(150, 150, 150, .3) 1px, transparent 1px), linear-gradient(90deg, rgba(150, 150, 150, .3) 1px, transparent 1px);
+	background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+	background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+
+            .customizer{
+                width: 100%; 
+        svg{ width: 100%; max-width: 1200px;}
+            }
+    }
+    @media(max-width: 767px){
+        .mapEditor{ width: 100%; min-height: 46vh;
+            // svg{
+            //     .sm_state{background: green($color: #000000);}
+            // }
+        }
+    }
+
+    .mapOptions{ width: 20%; 
+        //background: #eeeeee; 
+        height: 66vh;vertical-align: middle;
+        display: flex; justify-content: center; float: right;
+        .know{
+            width:90%;
+            //max-height: 30vh;
+            max-height: 60vh;
+            .knowledge{
+                overflow-x: scroll; 
+                max-height: 44vh; height: 44vh; 
+                //max-height: 29vh; height: 29vh; 
+                margin: 0.5vh 0;padding: 0;
+                .head{
+                    display: flex; align-items: center;
+                    p{    padding: 0;
+                        margin: 4px 0 0 0;
+                        width: 100%;
+                        font-size: 14px;
+                        line-height: 35px;
+                        color: #607d8b;}
+                }
+                ul{
+                    padding: 0 0 8px 0; margin: 0; list-style: none;
+                    li{padding: 0; margin: 0; font-size: 8px;
+                        display: flex; align-items: center;
+                        button{vertical-align: middle;}
+                    }
+                }
+            }
+            .download{padding: 0 8px; min-width: auto;}
+            .palete{
+                max-width: 206px; margin: 0 auto;
+                button{ width: 26px;
+                    height: 26px;
+                    line-height: 26px;
+                    border: 1px solid #eeeeee; background: #fafafa;
+                    margin: 1px;
+                    mat-icon{vertical-align: middle;}
+                }
+            }
+            .add{padding: 0 4px; margin: 0 4px; font-size: 12px; border-radius: 16px;}
+            input{padding: 8px 4px 8px 8px;
+                margin: 0 0 4px 0;
+                border: 1px solid #eeeeee;
+                border-radius: 16px;}
+            .extras{
+                overflow-x: scroll; 
+                max-height: 14vh; height: 14vh; 
+                margin: 0.5vh 0 0.5vh 0;padding: 0;
+                .toggles{
+                    padding: 8px 0 0 16px;text-align: left;
+                }
+            }
+        }
+    }
+    @media(max-width: 767px){
+        .mapOptions{ width: 100%;height: auto; padding: 0 0 24px 0;
+            .know{
+                max-height: auto;
+                width:98%;
+                .knowledge{
+                    overflow-x: auto; 
+                    max-height: auto; height: auto; }
+            }
+        }
+    }
+}

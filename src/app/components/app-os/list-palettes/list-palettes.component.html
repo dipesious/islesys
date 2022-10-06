@@ -1,0 +1,80 @@
+
+<section class="infomative">
+  <video class="posterVideo finalPoster"
+  [src]="resource.videoOpensourcePalettes" 
+  type="video/mp4" playsinline="" loop="" autoplay=""></video>
+  <div class="posterText textC">
+      <div class="knowLinks">
+      <div class="knowLink" *ngFor="let x of links">
+        <a href="https://github.com/dipesious/Myriad-Undertakings/blob/main/design-palettes.md" target="_"><img *ngIf=" x.title == 'Design' " src="assets/creativity.png" /></a>
+        <a href="https://github.com/dipesious/Myriad-Undertakings" target="_"><img *ngIf=" x.title == 'Repo' " src="assets/folder.png" /></a>
+        <a href="https://github.com/dipesious/Myriad-Undertakings/blob/main/LICENSE" target="_"><img *ngIf=" x.title == 'License' " src="assets/contract.png" /></a>
+          <p>{{x.title}}</p>
+      </div>
+      </div>
+      <h2 class="knowTitle">The palettes undertaking</h2>
+      <p class="knowinfo">We are building an extraordinary library of unique palettes<br>
+          <i><mat-icon class="c_warn">done_outline</mat-icon>HEX</i>
+          &nbsp;
+          <i><mat-icon class="c_warn">done_outline</mat-icon>CSS</i>
+      </p>
+  </div>
+</section>
+
+<section class="section1 textC">
+    <div class="searchRight">
+      <p>
+    <button mat-button class="b_white hide" color="primary" (click)="submitPalette()"><mat-icon>add</mat-icon>New Palette</button>
+    <button mat-stroked-button [matMenuTriggerFor]="menu"><mat-icon>expand_more</mat-icon>{{ !currentTyp ? 'Categories': currentTyp}}</button>
+    <mat-menu #menu="matMenu" overlapTrigger="true">
+      <div style="max-height: 300px; overflow-y: auto;">
+      <button mat-menu-item (click)=" currentTyp = '' ">All Categories</button>
+      <button mat-menu-item *ngFor="let t of resource.palatteList"  (click)=" currentTyp = t ">{{t}}</button>
+      </div>
+    </mat-menu>
+      </p>
+    </div>
+    <div class="searchLeft">
+      <p>
+        <mat-form-field class="search" appearance="legacy">
+          <mat-label><mat-icon>search</mat-icon> Search</mat-label>
+          <input matInput placeholder="enter by name" name="search"
+          [formControl]="searching"
+          [matAutocomplete]="auto">
+          <button matSuffix mat-icon-button (click)="searching.setValue('')"><mat-icon>backspace</mat-icon></button>
+          <!--button matSuffix mat-icon-button (click)="goDark=!goDark"><mat-icon>{{goDark ? 'light_mode':'nights_stay'}}</mat-icon></button-->
+          <mat-hint align="end">Searching in palettes</mat-hint>
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option" class="b_white">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </p>
+    </div>
+  </section>
+
+<section class="section2">
+
+  <ng-container *ngFor="let x of page.dataO | async">
+    <div class="holdPalette" *ngIf=" !searching.value || !currentTyp && x.name.toLowerCase().includes(searching.value.toLowerCase()) || currentTyp && currentTyp == x.type ">
+        <button class="p1" [style.background]="'#' + x.c1" ><p>#{{x.c1}}</p><span class="divide"></span><mat-icon>content_copy</mat-icon></button>
+        <button class="p2" [style.background]="'#' + x.c2" ><p>#{{x.c2}}</p><span class="divide"></span><mat-icon>content_copy</mat-icon></button>
+        <button class="p3" [style.background]="'#' + x.c3" ><p>#{{x.c3}}</p><span class="divide"></span><mat-icon>content_copy</mat-icon></button>
+        <button class="p4" [style.background]="'#' + x.c4" ><p>#{{x.c4}}</p><span class="divide"></span><mat-icon>content_copy</mat-icon></button>
+        <div class="holdMine  b_white">
+          <p>{{x.name}}</p>
+          <span class="divide"></span>
+          <span class="date">{{x.sin.toDate() | date:'dd MMM yyyy'}}</span>
+          <button mat-icon-button><mat-icon>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path *ngIf="true" d="M17.867 3.493l4.133 3.444v5.127l-10 8.333-10-8.334v-5.126l4.133-3.444 5.867 3.911 5.867-3.911zm.133-2.493l-6 4-6-4-6 5v7l12 10 12-10v-7l-6-5z"/>
+              <path *ngIf="false" d="M18 1l-6 4-6-4-6 5v7l12 10 12-10v-7z"/>
+            </svg>
+          </mat-icon></button>
+        </div>
+    </div>
+  </ng-container>
+
+  <app-loading *ngIf="!(page.dataO | async) || (page.loading | async) "></app-loading>
+</section>

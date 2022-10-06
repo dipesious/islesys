@@ -1,0 +1,136 @@
+
+<section class="section1">
+  <div class="controls">
+
+      <div class="third"><!-- (click)="submitMap()" -->
+          <button mat-button color="primary" >Add New</button>
+      </div>
+
+      <div class="first">
+          <span class="wat">Demo</span>
+          <button mat-button ><mat-icon>{{ demoMode == 'Normal' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Normal</button>
+          <button mat-button ><mat-icon>{{ demoMode == 'Bold' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Bold</button>
+          <button mat-button ><mat-icon>{{ demoMode == 'Italic' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Italic</button>
+      </div>
+
+  </div>
+</section>
+
+
+<section class="infomative">
+  <video class="posterVideo finalPoster"
+  [src]="resource.videoOpensourceFonts" 
+  type="video/mp4" playsinline="" loop="" autoplay=""></video>
+  <div class="posterText textC">
+      <div class="knowLinks">
+      <div class="knowLink" *ngFor="let x of links">
+        <a href="https://github.com/dipesious/Myriad-Undertakings/blob/main/design-fonts.md" target="_"><img *ngIf=" x.title == 'Design' " src="assets/creativity.png" /></a>
+        <a href="https://github.com/dipesious/Myriad-Undertakings" target="_"><img *ngIf=" x.title == 'Repo' " src="assets/folder.png" /></a>
+        <a href="https://github.com/dipesious/Myriad-Undertakings/blob/main/LICENSE" target="_"><img *ngIf=" x.title == 'License' " src="assets/contract.png" /></a>
+          <p>{{x.title}}</p>
+      </div>
+      </div>
+      <h2 class="knowTitle">The fonts undertaking</h2>
+      <p class="knowinfo">We are building an extensive library of writing systems<br>
+          <i><mat-icon class="c_warn">done_outline</mat-icon>OTF</i>
+          &nbsp;
+          <i><mat-icon class="c_warn">done_outline</mat-icon>WOFF</i>
+          &nbsp;
+          <i><mat-icon class="c_warn">done_outline</mat-icon>TTF</i>
+          &nbsp;
+          <i><mat-icon class="c_warn">done_outline</mat-icon>HTML</i>
+          &nbsp;
+          <i><mat-icon class="c_warn">done_outline</mat-icon>CSS</i>
+      </p>
+  </div>
+</section>
+
+
+<section class="section2 textC">
+  <div class="searchLeft">
+    <p>
+      <mat-form-field class="search" appearance="legacy">
+        <mat-label><mat-icon>search</mat-icon> Search</mat-label>
+        <input matInput placeholder="enter table name" name="search"
+        [formControl]="searching"
+        [matAutocomplete]="auto">
+        <button matSuffix mat-icon-button (click)="searching.setValue('')"><mat-icon>backspace</mat-icon></button>
+        <!--button matSuffix mat-icon-button (click)="goDark=!goDark"><mat-icon>{{goDark ? 'light_mode':'nights_stay'}}</mat-icon></button-->
+        <mat-hint align="end">Searching in data</mat-hint>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option" class="b_white">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </p>
+  </div>
+  <div class="searchRight">
+    <p>
+  <button mat-stroked-button [matMenuTriggerFor]="menu">Languages</button>
+      <mat-menu #menu="matMenu" overlapTrigger="true">
+        <div style="max-height: 300px; overflow-y: auto;">
+        <button mat-menu-item>Arabic</button>
+        <button mat-menu-item>Bengali</button>
+        <button mat-menu-item>Chinese (Hong Kong)</button>
+        <button mat-menu-item>Chinese (Simplified)</button>
+        <button mat-menu-item>Chinese (Traditional)</button>
+        <button mat-menu-item>Cyrillic</button>
+        <button mat-menu-item>Cyrillic Extended</button>
+        <button mat-menu-item>Devanagari</button>
+        <button mat-menu-item>Greek</button>
+        <button mat-menu-item>Greek Extended</button>
+        <button mat-menu-item>Gujarati</button>
+        <button mat-menu-item>Gurmukhi</button>
+        <button mat-menu-item>Hebrew</button>
+        <button mat-menu-item>Japanese</button>
+        <button mat-menu-item>Kannada</button>
+        <button mat-menu-item>Khmer</button>
+        <button mat-menu-item>Korean</button>
+        <button mat-menu-item>Latin</button>
+        <button mat-menu-item>Latin Extended</button>
+        <button mat-menu-item>Malayalam</button>
+        <button mat-menu-item>Myanmar</button>
+        <button mat-menu-item>Oriya</button>
+        <button mat-menu-item>Sinhala</button>
+        <button mat-menu-item>Tamil</button>
+        <button mat-menu-item>Telugu</button>
+        <button mat-menu-item>Thai</button>
+        <button mat-menu-item>Tibetan</button>
+        <button mat-menu-item>Vietnamese</button>
+        </div>
+      </mat-menu>
+  <a mat-icon-button (click)="fontSizeSet(1)"><mat-icon>arrow_circle_up</mat-icon></a>
+  <a mat-icon-button (click)="fontSizeSet(-1)"><mat-icon>arrow_circle_down</mat-icon></a>
+    </p>
+  </div>
+</section>
+
+<section class="section3">
+
+  <ng-container *ngFor="let x of fontList$ | async">
+  <div class="fontHold" 
+  *ngIf=" !searching.value || x.name.toLowerCase().includes(searching.value.toLowerCase())">
+  <span [innerHtml]=" x.demoCSS | safeHtml"></span>
+    <div class="fontNames">
+    <p [style]=" 'line-height:' + (40 + fontSize) +  'px !important; font-size:' + (34 + fontSize) + 'px !important' ">{{x.demoText}}</p>
+    <span class="divide"></span>
+    </div>
+    <h4 class="c_primary">{{x.name}}</h4>
+    <div class="holdMine  b_white">
+      <button mat-button class="leftOut download"><mat-icon>download</mat-icon>font</button>
+      <button mat-button class="leftOut download"><mat-icon>integration_instructions</mat-icon> import</button>
+      <button mat-icon-button><mat-icon>content_copy</mat-icon></button>
+      <span class="divide"></span>
+      <span>3 Oct 2017</span>
+      <button mat-icon-button><mat-icon>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path *ngIf="true" d="M17.867 3.493l4.133 3.444v5.127l-10 8.333-10-8.334v-5.126l4.133-3.444 5.867 3.911 5.867-3.911zm.133-2.493l-6 4-6-4-6 5v7l12 10 12-10v-7l-6-5z"/>
+          <path *ngIf="false" d="M18 1l-6 4-6-4-6 5v7l12 10 12-10v-7z"/>
+        </svg>
+      </mat-icon></button>
+    </div>
+  </div>
+  </ng-container>
+
+</section>

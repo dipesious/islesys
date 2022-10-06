@@ -1,0 +1,83 @@
+<section class="section1" *ngIf="icon$ | async as icon" style="fill: #222222;">
+
+    <div class="title">
+        <h1 class="icon_name">{{icon.name}}</h1>
+        <!-- <p class="icon_type"><span>#{{icon.fill}}</span><span>#{{icon.tone}}</span><span>#{{icon.tone}}</span></p> -->
+    </div>
+<!--
+    [class.b_white]="!bgInvert" [class.b_black]="bgInvert"
+-->
+    <div class="demo"
+    [class.c_white]="bgInvert" [class.c_black]="!bgInvert" 
+
+    [class.redB]=" bgColor == 'red' "
+    [class.orangeB]=" bgColor == 'orange' "
+    [class.yellowB]=" bgColor == 'yellow' "
+    [class.greenB]=" bgColor == 'green' "
+    [class.blueB]=" bgColor == 'blue' "
+    [class.indigoB]=" bgColor == 'indigo' "
+    [class.violetB]=" bgColor == 'violet' "
+
+    [class.blackB]=" bgInvert && bgColor == '' "
+    [class.whiteB]=" !bgInvert && bgColor == '' "
+
+    >
+        <div class="colors">
+        <p class="icon_type"><span>#{{icon.fill}}</span><span>#{{icon.tone}}</span><span>#{{icon.tone}}</span></p>
+        </div>
+
+        <div class="icon"  (click)="bgInvert=!bgInvert"
+        [class.f_white]="bgInvert" [class.f_black]="!bgInvert" 
+        [innerHtml]="icon.data | safeHtml"></div>
+
+        <div class="colors">
+        <button mat-icon-button [class.c_white]=" bgColor == 'red' " (click)=" bgColor !== 'red' ? bgColor = 'red': bgColor = '' " class="red"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_white]=" bgColor == 'orange' " (click)=" bgColor !== 'orange' ? bgColor = 'orange': bgColor = '' " class="orange"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_white]=" bgColor == 'yellow' " (click)=" bgColor !== 'yellow' ? bgColor = 'yellow': bgColor = '' " class="yellow"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_white]=" bgColor == 'green' " (click)=" bgColor !== 'green' ? bgColor = 'green': bgColor = '' " class="green"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_white]=" bgColor == 'blue' " (click)=" bgColor !== 'blue' ? bgColor = 'blue': bgColor = '' " class="blue"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_white]=" bgColor == 'indigo' " (click)=" bgColor !== 'indigo' ? bgColor = 'indigo': bgColor = '' " class="indigo"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_white]=" bgColor == 'violet' " (click)=" bgColor !== 'violet' ? bgColor = 'violet': bgColor = '' " class="violet"><mat-icon>format_color_fill</mat-icon></button>
+        </div>
+    </div>
+
+    <div class="code">
+        <textarea placeholder="icon" [value]="icon.data"></textarea>
+        <p><mat-slide-toggle [(ngModel)]="sideToggle" color="warn"><b class="sideToggle">{{!sideToggle?'Do you Agree to ':'i Agree to '}}</b></mat-slide-toggle>&nbsp;<a href="#" class="c_warn">the License Agreement{{!sideToggle?'?':'.'}}</a></p>
+    </div>
+
+    <div class="download">
+        <button mat-flat-button class="c_primary" (click)=" getME('SVG', icon.name) ">SVG</button>
+        <button mat-flat-button class="c_primary" (click)=" getME('PNG', icon.name) ">PNG</button>
+        <button mat-flat-button class="c_primary" (click)=" getME('WEBP', icon.name) ">WEBP</button>
+        <button mat-flat-button class="c_primary" (click)=" getME('COPY', icon.name) "><mat-icon>content_copy</mat-icon></button>
+    </div>
+
+
+
+    <div class="recommended textL" style="fill: #222222;">
+        <div class="icon" *ngFor="let x of similar$ | async"
+        [routerLink]=" '/free-icon/' + x.id"
+        [innerHtml]="x.data | safeHtml">
+            <!-- <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="m3.514 6.636c-.317.179-.514.519-.514.887v8.95c0 .37.197.708.514.887 1.597.901 6.456 3.639 8.005 4.512.152.085.319.128.487.128.164 0 .328-.041.477-.123 1.549-.855 6.39-3.523 7.994-4.408.323-.177.523-.519.523-.891v-9.055c0-.368-.197-.708-.515-.887-1.595-.899-6.444-3.632-7.999-4.508-.151-.085-.319-.128-.486-.128-.168 0-.335.043-.486.128-1.555.876-6.405 3.609-8 4.508zm15.986 2.115v7.525l-6.75 3.722v-7.578zm-14.264-1.344 6.764-3.813 6.801 3.834-6.801 3.716z" fill-rule="nonzero"/>
+            </svg> -->
+        </div>
+    </div>
+
+
+
+    <div class="about textL">
+        <h1>Islesys & icons Undertaking</h1>
+        <!-- <img src="assets/backbanner.png" /> -->
+        <p>Islesys is a major initiative by Dipesh Bhoir (a leading South Asian programmer) and his associates with an aim to form an ecosystem around reusable tech dependencies that could be utilized to educate and sponsor inovation by students across the planet. The Myriad Undertakings by the guild is a expanding mecca for free digital assets.</p>
+        <p>Icons Undertaking is an ever improving library of opensource icons and APIs for convenient use via HTML-CSS in svg, png & webp format. The library has delightful and beautifully crafted icons in 24:24 viewbox for common actions. Download them for use in your digital products for Android, iOS, and web or your own creative projects.</p>
+        <ul>
+            <li>About</li>
+            <li>Q&A</li>
+            <li>License</li>
+            <li>Privacy</li>
+            <li>Legal</li>
+        </ul>
+    </div>
+</section>

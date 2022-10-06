@@ -1,0 +1,21 @@
+<!-- <div class="height-100 d-flex justify-content-center align-items-center">
+    <div class="position-relative">
+    </div>
+</div> -->
+        <div class="card">
+            <div>
+            <h6 class="c_warn">Please enter the one time password <br> to verify your account</h6>
+            <div> <span>A code has been sent to </span> <small>{{phone}}</small> </div>
+            <div id="otp" class="inputs"> 
+                <input [(ngModel)]="code.d1" (keyup)=" code.d1 ? second.focus() : true" type="text" name="first" #first maxlength="1" /> 
+                <input [(ngModel)]="code.d2" (keyup)=" code.d2 ? third.focus() : true" (keydown.backspace)="first.focus()" type="text" name="second" #second maxlength="1" /> 
+                <input [(ngModel)]="code.d3" (keyup)=" code.d3 ? fourth.focus() : true" (keydown.backspace)="second.focus()" type="text" name="third" #third maxlength="1" /> 
+                <input [(ngModel)]="code.d4" (keyup)=" code.d4 ? fifth.focus() : true" (keydown.backspace)="third.focus()" type="text" name="fourth" #fourth maxlength="1" /> 
+                <input [(ngModel)]="code.d5" (keyup)=" code.d5 ? sixth.focus() : true" (keydown.backspace)="fourth.focus()" type="text" name="fifth" #fifth maxlength="1" /> 
+                <input [(ngModel)]="code.d6" (keyup)=" code.d6 ? go.focus() : true" (keydown.backspace)="fifth.focus()" type="text" name="sixth" #sixth maxlength="1" /> 
+            </div>
+            <div class="foot"> 
+                <button mat-raised-button #go [disabled]="makingChanges" (click)="submit()" color="warn" class="validate">Validate</button> 
+            </div>
+            </div>
+        </div>
