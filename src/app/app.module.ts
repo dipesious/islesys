@@ -66,6 +66,7 @@ import { SignComponent } from './placeholders/sign/sign.component';
 import { VerifyOTPComponent } from './placeholders/verify-otp/verify-otp.component';
 import { WhoWeAreComponent } from './components/who-we-are/who-we-are.component';
 import { FileBugComponent } from './components/file-bug/file-bug.component';
+import { DemandComponent } from './components/demand/demand.component';
 
 //import { ScrollingModule } from '@angular/cdk/scrolling';
 
@@ -105,7 +106,8 @@ import { FileBugComponent } from './components/file-bug/file-bug.component';
     SignComponent,
     VerifyOTPComponent,
     WhoWeAreComponent,
-    FileBugComponent
+    FileBugComponent,
+    DemandComponent
   ],
   imports: [
     //ScrollingModule,

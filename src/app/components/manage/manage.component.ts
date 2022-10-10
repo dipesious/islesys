@@ -22,8 +22,8 @@ export class ManageComponent {
 
     {icon:"emoji_food_beverage", name:"Explore",path:"/explore"},
     // {icon:"emoji_food_beverage", name:"How it Works",path:"/how-it-works"},
-    {icon:"emoji_food_beverage", name:"Who We Are",path:"/who-we-are"},
-    {icon:"emoji_food_beverage", name:"File a Bug",path:"/file-a-bug"},
+    {icon:"workspace_premium", name:"Who We Are",path:"/who-we-are"},
+    {icon:"rocket_launch", name:"File a Bug",path:"/file-a-bug"},
 
     // {icon:"emoji_food_beverage", name:"Crowdfunding",path:"/ongoing-crowdfunds"},
     // {icon:"diversity_2", name:"Opensource",path:"/opensource-resources"},
@@ -125,5 +125,24 @@ export class ManageComponent {
       console.log('top')
     }
   } 
+
+  activeME(isActive:any, p:string){
+    return (isActive ||
+
+    p == '/explore' && this.resource.router.url.includes('/icons') ||
+    p == '/explore' && this.resource.router.url.includes('/maps') ||
+    p == '/explore' && this.resource.router.url.includes('/datasets') ||
+    p == '/explore' && this.resource.router.url.includes('/palettes') ||
+    p == '/explore' && this.resource.router.url.includes('/gradients') ||
+    p == '/explore' && this.resource.router.url.includes('/patterns') ||
+    p == '/explore' && this.resource.router.url.includes('/fonts') ||
+    p == '/explore' && this.resource.router.url.includes('/colors') ||
+
+    p == '/explore' && this.resource.router.url.includes('/free-icon/') ||
+    p == '/explore' && this.resource.router.url.includes('/edit-map/') ||
+
+    false)
+    
+  }
 
 }

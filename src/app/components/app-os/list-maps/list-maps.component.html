@@ -90,7 +90,7 @@
             <ng-container *ngFor="let x of mapList; let i = index;">
             <a class="listNation"
             *ngIf=" !searching.value || x.name.toLowerCase().includes(searching.value.toLowerCase())"
-            [routerLink]=" '/free-map/' + x.id ">
+            [routerLink]=" '/edit-map/' + x.id ">
             <div style="display: flex;">
                 <h5 class="c_black">{{x.about}}</h5>
                 <span class="divide"></span>

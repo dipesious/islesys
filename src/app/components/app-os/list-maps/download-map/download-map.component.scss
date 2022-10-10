@@ -1,4 +1,6 @@
 .section1{
+    width: 100%;
+    display: inline-block;
     .mapEditor{ width: 80%; min-height: 66vh; vertical-align: middle;
         display: flex; align-items: center; justify-content: center; float: left; 
         overflow: hidden;
@@ -28,11 +30,10 @@
         display: flex; justify-content: center; float: right;
         .know{
             width:90%;
-            //max-height: 30vh;
-            max-height: 60vh;
+            max-height: 66vh;
             .knowledge{
                 overflow-x: scroll; 
-                max-height: 44vh; height: 44vh; 
+                max-height: 50vh; //height: 50vh; 
                 //max-height: 29vh; height: 29vh; 
                 margin: 0.5vh 0;padding: 0;
                 .head{
@@ -49,35 +50,46 @@
                     li{padding: 0; margin: 0; font-size: 8px;
                         display: flex; align-items: center;
                         button{vertical-align: middle;}
+                        .coloringBtn{
+                            border-radius: 0 8px 8px 0;
+                            margin: 0 4px 0 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                        .aboutColoring{height: 40px;
+                            max-width: -webkit-fill-available;
+                            line-height: 40px;}
                     }
                 }
-            }
-            .download{padding: 0 8px; min-width: auto;}
-            .palete{
-                max-width: 206px; margin: 0 auto;
-                button{ width: 26px;
-                    height: 26px;
-                    line-height: 26px;
-                    border: 1px solid #eeeeee; background: #fafafa;
-                    margin: 1px;
-                    mat-icon{vertical-align: middle;}
+                .palete{
+                    max-width: 206px; margin: 0 auto;
+                    button{ width: 26px;
+                        height: 26px;
+                        line-height: 26px;
+                        border-bottom: 1px solid #eeeeee; background: #fafafa;
+                        margin: 1px;
+                        mat-icon{vertical-align: middle;}
+                    }
                 }
+                .add{padding: 0 4px; margin: 0 4px; font-size: 12px; border-radius: 16px;}
+                input{padding: 8px 4px 8px 8px;
+                    margin: 0 0 4px 0;
+                    border: 1px solid #eeeeee;
+                    border-radius: 16px;}
             }
-            .add{padding: 0 4px; margin: 0 4px; font-size: 12px; border-radius: 16px;}
-            input{padding: 8px 4px 8px 8px;
-                margin: 0 0 4px 0;
-                border: 1px solid #eeeeee;
-                border-radius: 16px;}
             .extras{
-                overflow-x: scroll; 
-                max-height: 14vh; height: 14vh; 
-                margin: 0.5vh 0 0.5vh 0;padding: 0;
+                // overflow-x: scroll; 
+                max-height: 15vh; //height: 15vh; 
+                margin: 0;padding: 0;
                 .toggles{
                     padding: 8px 0 0 16px;text-align: left;
                 }
             }
         }
+
     }
+
     @media(max-width: 767px){
         .mapOptions{ width: 100%;height: auto; padding: 0 0 24px 0;
             .know{
@@ -90,3 +102,35 @@
         }
     }
 }
+
+
+.section2{
+    width: 100%;
+    display: inline-block;
+    .code{
+        padding: 0;margin: 0 auto;
+        max-width: 1200px; 
+        // textarea{
+        //     padding: 8px; margin: 8px 16px;
+        //     border: 0px solid;
+        //     outline: 0px;
+        //     width: -webkit-fill-available; max-width: -webkit-fill-available; min-width: -webkit-fill-available;
+        //     height: 125px; max-height: 225px;
+        //     line-height: 25px; font-size: 14px;
+        // }
+        p{
+            margin: 12px 0;
+            display: flex; align-items: center; justify-content: center;
+            .sideToggle{vertical-align: middle;}
+            a{vertical-align: middle; text-decoration: none;}
+        }
+    }
+    .download{
+        button{
+            line-height: 50px;
+            //background: #ffffff;
+            margin: 0 4px 4px 4px;
+            font-weight: bold;
+        }
+    }
+}   

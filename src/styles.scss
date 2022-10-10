@@ -303,3 +303,12 @@ body { margin: 0; height: auto;
   }
 
   .mat-tab-link-container{background: #8bc34a !important;}
+
+
+  .downloadClass{
+    padding: 0;
+    .mat-dialog-container{
+      background: #ffffff;
+      padding: 8px !important;
+    }
+  } 

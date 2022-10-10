@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, of, take } from 'rxjs';
+import { DemandComponent } from 'src/app/components/demand/demand.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
 
@@ -21,6 +23,7 @@ export class DownloadMapComponent implements OnInit {
   // }
 
   map$: Observable<any> = of();
+  sideToggle = false;
 
   addArea = false;
   addBorders = true;
@@ -72,11 +75,25 @@ export class DownloadMapComponent implements OnInit {
 
   svgMap = "";
 
+  mySubscription;
+
   constructor(
     public auth:AuthService,
+    public dialog: MatDialog,
     public resource: ResourceService,
-    private actRoute: ActivatedRoute
-  ) { }
+    private actRoute: ActivatedRoute,
+    private router: Router
+  ) {
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.mySubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+  // Trick the Router into believing it's last link wasn't previously loaded
+      this.router.navigated = false;
+      }
+    });  
+
+  }
 
   ngOnInit(): void {
     const x = this.actRoute.snapshot.params;
@@ -224,5 +241,58 @@ if(x){
   //   // console.log(m)
   // }
 
+
+  getME(wat:string, name:string, id:string){
+    let state = "" + 
+    (wat == 'SVG' ? 'SVG ICON':'') + 
+    (wat == 'JPEG' ? 'PNG ICON':'') + 
+    (wat == 'PNG' ? 'PNG ICON':'') + 
+    (wat == 'WEBP' ? 'WEBP ICON':'');
+
+    const dialogRef = this.dialog.open(DemandComponent, {
+      width: '90%',
+      maxWidth: '750px',
+      data: {
+        id,
+        title:name, state: state,
+        sector:"icon"
+      },
+      panelClass:"downloadClass"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if(result && result.type == "Private"){
+
+        if(wat == 'SVG'){ this.getSVG() }
+        if(wat == 'JPEG'){ this.getJPEG() }
+        if(wat == 'PNG'){ this.getPNG() }
+        if(wat == 'WEBP'){ this.getWEBP() }
+
+      }
+      if(wat == 'Community'){
+
+      }
+      if(wat == 'Enterprise'){
+
+      }
+    });
+  }
+
+  getSVG(){
+
+  }
+
+  getJPEG(){
+
+  }
+
+  getPNG(){
+
+  }
+
+  getWEBP(){
+
+  }
 
 }

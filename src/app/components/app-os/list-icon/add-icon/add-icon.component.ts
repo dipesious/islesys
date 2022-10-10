@@ -37,9 +37,9 @@ icon:IconModel = {
 // icon:IconModel = {
 //   id:"",
 //   type: this.iconType[0].code, //undefined, 
-//   tone:'', fill:'', cat:'Audio',
+//   tone:'', fill:'', cat:'Bug',
 //   by:'Dipesh Bhoir', dial_code:'+91', contact:'9892381514',
-//   name:'Audio', data:'', 
+//   name:'Bug', data:'', 
 //   active:true,
 //   sin:null
 // }

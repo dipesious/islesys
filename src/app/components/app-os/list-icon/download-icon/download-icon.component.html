@@ -7,8 +7,16 @@
 <!--
     [class.b_white]="!bgInvert" [class.b_black]="bgInvert"
 -->
-    <div class="demo"
+    <div class="demo b_white"
     [class.c_white]="bgInvert" [class.c_black]="!bgInvert" 
+
+    >
+        <div class="colors">
+        <p class="icon_type"><span>#{{icon.fill}}</span><span>#{{icon.tone}}</span><span>#{{icon.tone}}</span></p>
+        </div>
+
+        <div class="icon"  (click)="bgInvert=!bgInvert"
+        [class.f_white]="bgInvert" [class.f_black]="!bgInvert"
 
     [class.redB]=" bgColor == 'red' "
     [class.orangeB]=" bgColor == 'orange' "
@@ -21,23 +29,16 @@
     [class.blackB]=" bgInvert && bgColor == '' "
     [class.whiteB]=" !bgInvert && bgColor == '' "
 
-    >
-        <div class="colors">
-        <p class="icon_type"><span>#{{icon.fill}}</span><span>#{{icon.tone}}</span><span>#{{icon.tone}}</span></p>
-        </div>
-
-        <div class="icon"  (click)="bgInvert=!bgInvert"
-        [class.f_white]="bgInvert" [class.f_black]="!bgInvert" 
         [innerHtml]="icon.data | safeHtml"></div>
 
         <div class="colors">
-        <button mat-icon-button [class.c_white]=" bgColor == 'red' " (click)=" bgColor !== 'red' ? bgColor = 'red': bgColor = '' " class="red"><mat-icon>format_color_fill</mat-icon></button>
-        <button mat-icon-button [class.c_white]=" bgColor == 'orange' " (click)=" bgColor !== 'orange' ? bgColor = 'orange': bgColor = '' " class="orange"><mat-icon>format_color_fill</mat-icon></button>
-        <button mat-icon-button [class.c_white]=" bgColor == 'yellow' " (click)=" bgColor !== 'yellow' ? bgColor = 'yellow': bgColor = '' " class="yellow"><mat-icon>format_color_fill</mat-icon></button>
-        <button mat-icon-button [class.c_white]=" bgColor == 'green' " (click)=" bgColor !== 'green' ? bgColor = 'green': bgColor = '' " class="green"><mat-icon>format_color_fill</mat-icon></button>
-        <button mat-icon-button [class.c_white]=" bgColor == 'blue' " (click)=" bgColor !== 'blue' ? bgColor = 'blue': bgColor = '' " class="blue"><mat-icon>format_color_fill</mat-icon></button>
-        <button mat-icon-button [class.c_white]=" bgColor == 'indigo' " (click)=" bgColor !== 'indigo' ? bgColor = 'indigo': bgColor = '' " class="indigo"><mat-icon>format_color_fill</mat-icon></button>
-        <button mat-icon-button [class.c_white]=" bgColor == 'violet' " (click)=" bgColor !== 'violet' ? bgColor = 'violet': bgColor = '' " class="violet"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_black]=" bgColor == 'red' " (click)=" bgColor !== 'red' ? bgColor = 'red': bgColor = '' " class="red"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_black]=" bgColor == 'orange' " (click)=" bgColor !== 'orange' ? bgColor = 'orange': bgColor = '' " class="orange"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_black]=" bgColor == 'yellow' " (click)=" bgColor !== 'yellow' ? bgColor = 'yellow': bgColor = '' " class="yellow"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_black]=" bgColor == 'green' " (click)=" bgColor !== 'green' ? bgColor = 'green': bgColor = '' " class="green"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_black]=" bgColor == 'blue' " (click)=" bgColor !== 'blue' ? bgColor = 'blue': bgColor = '' " class="blue"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_black]=" bgColor == 'indigo' " (click)=" bgColor !== 'indigo' ? bgColor = 'indigo': bgColor = '' " class="indigo"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_black]=" bgColor == 'violet' " (click)=" bgColor !== 'violet' ? bgColor = 'violet': bgColor = '' " class="violet"><mat-icon>format_color_fill</mat-icon></button>
         </div>
     </div>
 
@@ -45,17 +46,16 @@
         <textarea placeholder="icon" [value]="icon.data"></textarea>
         <p><mat-slide-toggle [(ngModel)]="sideToggle" color="warn"><b class="sideToggle">{{!sideToggle?'Do you Agree to ':'i Agree to '}}</b></mat-slide-toggle>&nbsp;<a href="#" class="c_warn">the License Agreement{{!sideToggle?'?':'.'}}</a></p>
     </div>
-
-    <div class="download">
-        <button mat-flat-button class="c_primary" (click)=" getME('SVG', icon.name) ">SVG</button>
-        <button mat-flat-button class="c_primary" (click)=" getME('PNG', icon.name) ">PNG</button>
-        <button mat-flat-button class="c_primary" (click)=" getME('WEBP', icon.name) ">WEBP</button>
-        <button mat-flat-button class="c_primary" (click)=" getME('COPY', icon.name) "><mat-icon>content_copy</mat-icon></button>
+    <div class="download textC">
+        <button mat-flat-button class="c_primary" (click)=" getME('SVG', icon.name, icon.id) ">SVG</button>
+        <button mat-flat-button class="c_primary" (click)=" getME('PNG', icon.name, icon.id) ">PNG</button>
+        <button mat-flat-button class="c_primary" (click)=" getME('WEBP', icon.name, icon.id) ">WEBP</button>
+        <button mat-flat-button class="c_primary" (click)=" getME('COPY', icon.name, icon.id) "><mat-icon>content_copy</mat-icon></button>
     </div>
 
 
 
-    <div class="recommended textL" style="fill: #222222;">
+    <div class="recommended textC" style="fill: #222222;">
         <div class="icon" *ngFor="let x of similar$ | async"
         [routerLink]=" '/free-icon/' + x.id"
         [innerHtml]="x.data | safeHtml">
@@ -67,9 +67,9 @@
 
 
 
-    <div class="about textL">
-        <h1>Islesys & icons Undertaking</h1>
         <!-- <img src="assets/backbanner.png" /> -->
+    <!-- <div class="about textL">
+        <h1>Islesys & icons Undertaking</h1>
         <p>Islesys is a major initiative by Dipesh Bhoir (a leading South Asian programmer) and his associates with an aim to form an ecosystem around reusable tech dependencies that could be utilized to educate and sponsor inovation by students across the planet. The Myriad Undertakings by the guild is a expanding mecca for free digital assets.</p>
         <p>Icons Undertaking is an ever improving library of opensource icons and APIs for convenient use via HTML-CSS in svg, png & webp format. The library has delightful and beautifully crafted icons in 24:24 viewbox for common actions. Download them for use in your digital products for Android, iOS, and web or your own creative projects.</p>
         <ul>
@@ -79,5 +79,5 @@
             <li>Privacy</li>
             <li>Legal</li>
         </ul>
-    </div>
+    </div> -->
 </section>

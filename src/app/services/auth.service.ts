@@ -103,11 +103,12 @@ export class AuthService {
       return updateDoc(cityRef, {id:ref.id, sin:sTS})
     });
   }
-  // setDate(id:string){
-  //   const sTS = this.getServerTimestamp();
-  //   const cityRef = doc(this.fs, this.dbICONS, id);
-  //   return updateDoc(cityRef, {id:id, sin:sTS})
-  // }
+  setDate(id:string){
+    // const sTS = this.getServerTimestamp();
+    const cityRef = doc(this.fs, this.dbICONS, id);
+    // return updateDoc(cityRef, {id:id, sin:sTS})
+    return updateDoc(cityRef, {doME:true})
+  }
 
   submitMAP(data:any){
     const sendData = {

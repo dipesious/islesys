@@ -10,14 +10,14 @@ export class ResourceService {
   videoEducation = "assets/videos/education.mp4";
   videoBusiness = "assets/videos/business.mp4";
 
-  videoOpensourceIcons = "assets/videos/recommend.mp4";
-  videoOpensourceMaps = "assets/videos/recommend.mp4";
+  videoOpensourceIcons = "assets/videos/video_icons.mp4";
+  videoOpensourceMaps = "assets/videos/video_maps.mp4";
   videoOpensourceDatasets = "assets/videos/recommend.mp4";
-  videoOpensourcePalettes = "assets/videos/recommend.mp4";
-  videoOpensourceGradients = "assets/videos/recommend.mp4";
-  videoOpensourcePatterns = "assets/videos/recommend.mp4";
+  videoOpensourcePalettes = "assets/videos/video_palettes.mp4";
+  videoOpensourceGradients = "assets/videos/video_gradients.mp4";
+  videoOpensourcePatterns = "assets/videos/video_patterns.mp4";
   videoOpensourceFonts = "assets/videos/recommend.mp4";
-  videoOpensourceColors = "assets/videos/recommend.mp4";
+  videoOpensourceColors = "assets/videos/video_colors.mp4";
 
   scaleMapX = 1;
   nowLang = "English"
@@ -1324,7 +1324,7 @@ export class ResourceService {
       "Halloween",
       "Wedding",
       "Kids",
-      "Happy", 
+      "Happy",
     ]
 
     gradientList = [
@@ -1381,7 +1381,32 @@ export class ResourceService {
     "Antenna",
     "Archive",
     "Arrow",
-    "Audio",
+    "Audio", 
+    "Award",
+    "Badge",
+    "Badminton",
+    "Banknote",
+    "Barcode",
+    "Baseball",
+    "Basket",
+    "Basketball",
+    "Battery",
+    "Bed",
+    "Beer",
+    "Bell",
+    "Bicycle",
+    "Binoculars",
+    "Bitcoin",
+    "Book",
+    "Bookmark",
+    "Bowling",
+    "Boxing",
+    "Brick",
+    "Bus",
+    "Brightness",
+    "Briefcase",
+    "Building",
+    "Bug",
     "Brand"
   ];
   

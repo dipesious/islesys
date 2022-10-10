@@ -1,0 +1,117 @@
+<div class="attribution">
+
+    <div class="attributionLeft">
+        <div class="attributionVideo">
+            <video autoplay loop style="
+                -webkit-mask-box-image: url('https://media.flaticon.com/dist/min/img/video/sad/mask.svg'); 
+                mask-image: url('https://media.flaticon.com/dist/min/img/video/sad/mask.svg');">
+                <source src="https://media.flaticon.com/dist/min/img/video/sad/video.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <div class="attributionRight">
+        <h2>Hey! Remember you have to attribute</h2>
+        <h6>Every time you attribute, you make a developer happy</h6>
+
+        <p>Select your favorite social network and share our icons with your contacts or friends, if you do not have social networks copy the link and paste it in the one you use. For more information read the <a href="#" target="_">download the license.</a></p>
+        <button mat-button (click)=" downloadNOW('Private') " class="b_primary"><span class="mobHide">Download </span>Private</button>
+        <button mat-button (click)=" downloadNOW('Community') " class="b_growth">Community<span class="mobHide"> Upgrade</span></button>
+        <button mat-button (click)=" downloadNOW('Enterprise') " class="b_warn">Enterprise</button>
+        <p><span class="pack">PRIVATE</span>: $0 FOREVAH!
+        <br><span class="pack">COMMUNITY</span>: $79 FOR FIRST YEAR THEN $99
+        <br><span class="pack">ENTERPRISE</span>: $499 PER YEAR</p>
+
+    </div>
+
+    <div class="banner" style="background-image: url(assets/premium.png);">
+        <div class="about">
+            <h6>Don't want to credit the author?</h6>
+            <p>You can go <a class="c_growth" href="#"><strong>Community</strong></a> or <a class="c_warn" href="#"><strong>Enterprise</strong></a> easily and use icons, maps, datasets, fonts, and more without attribution.</p>
+        </div>
+        <a href="#" class="premium"><strong>Get Support</strong></a>
+    </div>
+
+    <div class="link">
+        <input [ngModel]="link" name="link" readonly>
+        <button mat-icon-button color="primary"><mat-icon>content_copy</mat-icon></button>
+    </div>
+</div>
+
+<!--
+<div id="modal-attribution" class="modal modal-attribution-detail active" data-disable-mouse-up="">
+    <div class="modal-attribution__wrapper">
+        <div class="modal__container pd-none-i">
+            <button class="detail__download-confirmation__close button button--sm button--pill button--icon button--icon--only button--inverted--hover">
+                <i class="icon icon--md icon--mg-sm icon--cross"></i>
+            </button>
+            <div class="attribution" data-attr-id="1">
+                <div class="row row--vertical-center row--horizontal-center mg-none">
+
+                    <div class="attribution__video">
+                        <video style="-webkit-mask-box-image: url('https://media.flaticon.com/dist/min/img/video/sad/mask.svg'); mask-image: url('https://media.flaticon.com/dist/min/img/video/sad/mask.svg');">
+                            <source src="https://media.flaticon.com/dist/min/img/video/sad/video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="content paragraph-readable full-width push-center-i">
+                        <h2 class="first mg-bottom-lv2 font-h6 bold line-height-sm">
+                                Hey! Remember you have to attribute <a class="underline text__general--heading bold" href="https://www.flaticon.com/authors/dave-gandy" data-filter="format=author&amp;author=Dave Gandy">Dave Gandy</a>
+                        </h2>
+
+                        <h6 class="first font-xl medium mg-bottom-lv2 line-height-sm hide-mobile">
+                            Every time you attribute, you make a designer happy
+                        </h6>
+
+                        <p class="font-sm">
+                            Select your favorite social network and share our icons with your contacts or friends, if you do not have these social networks copy the link and paste it in the one you use. For more information read the <button data-modal="modal-attribution-new" class="bj-button bj-button--link underline text__general--heading modal__trigger" data-type="icon">attribution guide</button> or <a href="https://media.flaticon.com/license/license.pdf" target="_blank" class="underline text__general--heading">download the license.</a>
+                        </p>
+
+                        <div class="social-media-buttons">
+                            <button class="bj-button--icon bj-button bj-button--pinterest track" data-track-arguments="ga, event, attribution, pack, pinterest" onclick="share.popup({network: 'pinterest'}); return false">
+                                <i class="icon icon--pinterest"></i>
+                                
+                            </button>
+                            <button class="bj-button--icon bj-button bj-button--facebook track" data-track-arguments="ga, event, attribution, pack, facebook" onclick="share.popup({network: 'facebook'}); return false">
+                                <i class="icon icon--facebook"></i>
+                                
+                            </button>
+                            <button class="bj-button--icon bj-button bj-button--twitter track" data-track-arguments="ga, event, attribution, pack, twitter" onclick="share.popup({network: 'twitter'}); return false">
+                                <i class="icon icon--twitter"></i>
+                                
+                            </button>
+                            <span class="attribution__text"></span>
+                            <div class="copy__text">
+                                <input type="text" value="<a href=&quot;https://www.flaticon.com/free-icons/home&quot; title=&quot;home icons&quot;>Home icons created by Dave Gandy - Flaticon</a>">
+                            </div>
+                            <button class="bj-button bj-button--secondary bj-button--state copy__trigger" data-copy="<a href=&quot;&quot;></a>">
+                                <i class="icon icon--sm icon--url"></i>
+                                <span class="active hide-mobile">Copy link</span>
+                                <span class="hide-mobile">Copied!</span>
+                            </button>
+                        </div>
+
+                        <div class="row row--vertical-center mg-none download-problems-box">
+                            <i class="icon icon--xs icon--bug text__general--heading"></i>
+                            <a href="https://www.flaticon.com/profile/support" id="download-problems" class="button--link font-sm" target="_blank">
+                                Download Problems?
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="banner">
+                <div class="text mg-none">
+                    <h6 class="font-lg text-inverted first mg-bottom-lv1">Don't want to credit the author?</h6>
+                    <p>You can go <a href="https://www.flaticon.com/pricing" class="track" data-track-arguments="ga, event, premium, icon-attribute-modal"><strong>Premium</strong></a> easily and use more than 8.3M icons and stickers without attribution.</p>
+                </div>
+                <a class="bj-button bj-button--flat bj-button--yellow text-inverted mg-left-lv3 track" href="https://www.flaticon.com/pricing" data-track-arguments="ga, event, premium, icon-attribute-modal"><strong>Go Premium</strong></a>
+            </div>
+        
+
+            
+    </div>
+
+</div>
+-->

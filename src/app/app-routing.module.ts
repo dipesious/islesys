@@ -45,7 +45,7 @@ const routes: Routes = [
     {path:'colors', component: ListColorsComponent},
 
     {path:'free-icon/:id', component: DownloadIconComponent},
-    {path:'free-map/:id', component: DownloadMapComponent},
+    {path:'edit-map/:id', component: DownloadMapComponent},
     {path:'free-dataset/:id', component: DownloadDataComponent},
     {path:'free-gradient/:id', component: DownloadGradientComponent},
     {path:'free-palette/:id', component: DownloadPaletteComponent},

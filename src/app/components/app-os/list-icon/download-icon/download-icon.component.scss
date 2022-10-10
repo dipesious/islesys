@@ -20,7 +20,8 @@
     .whiteB{background: linear-gradient(140deg, #ffffff 98%, #ffffff 0%);}
     .demo{
         //background: #ffffff;
-        padding: 0;margin: 0 16px;
+        padding: 0;margin: 0 auto;
+        max-width: 580px; 
         .icon{
             height: 209px;
             width: 209px;
@@ -56,6 +57,8 @@
         }
     }
     .code{
+        padding: 0;margin: 0 auto;
+        max-width: 1200px; 
         textarea{
             padding: 8px; margin: 8px 16px;
             border: 0px solid;

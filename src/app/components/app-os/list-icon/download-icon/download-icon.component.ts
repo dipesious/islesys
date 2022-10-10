@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, of, take } from 'rxjs';
+import { DemandComponent } from 'src/app/components/demand/demand.component';
 import { AuthService } from 'src/app/services/auth.service';
 
 // import { AppAdvertComponent } from 'src/app/components/app-advert/app-advert.component';
@@ -15,10 +16,10 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
 
   mySubscription;
 
-  sideToggle = false;
   bgInvert = false;
   bgColor = "";
   icon$: Observable<any> = of();
+  sideToggle = false;
   similar$: Observable<any[]> = of();
 
   constructor(
@@ -61,23 +62,40 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
     this.similar$ = this.auth.getSIMILAR(id, name).pipe(take(1))
   }
 
-  getME(wat:string, name:string){
+  getME(wat:string, name:string, id:string){
     let state = "" + 
+    (wat == 'COPY' ? 'COPY ICON':'') + 
     (wat == 'SVG' ? 'SVG ICON':'') + 
     (wat == 'PNG' ? 'PNG ICON':'') + 
     (wat == 'WEBP' ? 'WEBP ICON':'');
 
-    // const dialogRef = this.dialog.open(AppAdvertComponent, {
-    //   width: '98%',
-    //   maxWidth: '450px',
-    //   data: {
-    //     title:name, state: state
-    //   },
-    // });
+    const dialogRef = this.dialog.open(DemandComponent, {
+      width: '90%',
+      maxWidth: '750px',
+      data: {
+        id,
+        title:name, state: state,
+        sector:"icon"
+      },
+      panelClass:"downloadClass"
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if(result && result.type == "Private"){
+
+        if(wat == 'SVG'){ this.getSVG() }
+        if(wat == 'PNG'){ this.getPNG() }
+        if(wat == 'WEBP'){ this.getWEBP() }
+
+      }
+      if(wat == 'Community'){
+
+      }
+      if(wat == 'Enterprise'){
+
+      }
+    });
   }
 
   getSVG(){

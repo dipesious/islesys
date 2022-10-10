@@ -152,7 +152,7 @@
           [style]=" 'padding: ' + ( resource.getWidth > 767 ? '0 24px;' : '0 16px;') " 
           
              [routerLink]="x.path" routerLinkActive #rla="routerLinkActive"
-             [active]="rla.isActive">
+             [active]=" activeME(rla.isActive, x.path) ">
              <mat-icon>{{x.icon}}</mat-icon><span class="title">&nbsp;{{x.name}}</span>
           </a>
         </nav>
@@ -192,7 +192,11 @@
           <li *ngFor="let x of resource.navCrowdfund"><a mat-button [matTooltip]=" x.title " matTooltipPosition="after" [routerLink]="x.path" routerLinkActive="active"><mat-icon>{{x.icon}}</mat-icon><span class="title">&nbsp;{{x.title}}</span></a></li>
         </ng-container> -->
   
-        <ng-container>
+        <ng-container *ngIf="
+        !resource.router.url.includes( '/free-icon/' ) &&
+        !resource.router.url.includes( '/edit-map/' ) &&
+        true
+        ">
           <li *ngFor="let x of resource.navOpensource"><a mat-button [matTooltip]="x.name" matTooltipPosition="after" [routerLink]="x.path" routerLinkActive="active"><mat-icon>{{x.icon}}</mat-icon><span class="title">&nbsp;{{x.name}}</span></a></li>
         </ng-container>
         <!-- <ng-container *ngIf="resource.router.url.includes( navLinks[4].path ) || resource.router.url.includes( 'articles' ) ">
@@ -200,7 +204,7 @@
           *ngFor="let x of resource.navTheCaveType"><a mat-button [matTooltip]=" x.title " matTooltipPosition="after" [routerLink]="x.path" routerLinkActive="active"><span class="title">&nbsp;{{x.title}}</span></a></li>
         </ng-container> -->
   
-        <ng-container *ngIf="resource.router.url.includes( '/free-map/' )">
+        <ng-container *ngIf="resource.router.url.includes( '/edit-map/' )">
           <li><a mat-button matTooltip="Move" matTooltipPosition="after" ><mat-icon>swipe</mat-icon><span class="title">&nbsp;Move</span></a></li>
           <li><a mat-button matTooltip="Reset zoom" matTooltipPosition="after" (click)="this.resource.scaleMapX = 1" ><mat-icon>zoom_out_map</mat-icon><span class="title">&nbsp;Reset zoom</span></a></li>
           <li><a mat-button matTooltip="+1 scale" matTooltipPosition="after" (click)="scaleMap(1)" ><mat-icon>zoom_in</mat-icon><span class="title">&nbsp;Zoom in</span></a></li>
