@@ -11,13 +11,24 @@ export interface IconModel {
 };
 
 export interface mapModel {
-  id:string,
-  type:number|undefined, 
-  about:string, info:string,
+  id:string;
+  type:number|undefined; 
+  about:string; info:string;
   
-  by:string, contact:string, dial_code:string;
-  name: string, data:any,
-  active:boolean,
+  by:string; contact:string; dial_code:string;
+  name: string; data:any;
+  active:boolean;
+  sin:any;
+};
+
+export interface DatasetModel {
+  id:string;
+  type:number|undefined; 
+  about:string; info:string; 
+
+  by:string; contact:string; dial_code:string;
+  name: string; data:any;
+  active:boolean;
   sin:any;
 };
 
@@ -45,11 +56,22 @@ export interface gradientModel {
   sin:any
 };
 
+export interface FontModel {
+  id:string;
+  type:number|undefined; demoText:string; demoCSS:string;
+  about:string; info:string; link: string;
+
+  by:string; contact:string; dial_code:string;
+  name: string; data:string;
+  active:boolean;
+  sin:any
+};
+
 export interface UserModel {
   uid: string; 
   name: string; display:string;  
   phone: string; iso: string; coin:string; 
-  email: string;  emailV:boolean; emails: string[],
+  email: string;  emailV:boolean; emails: string[];
   key:string;
 
   time_sin:any; time_upd:any; time_log:any; 

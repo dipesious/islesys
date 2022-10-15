@@ -2,9 +2,9 @@
 <section class="section1">
     <div class="controls">
 
-        <div class="third"><!-- -->
+        <!--<div class="third">
             <button mat-button color="primary" (click)="submitMap()" >Add New</button>
-        </div>
+        </div>-->
 
         <div class="first">
             <button mat-button ><mat-icon>expand_more</mat-icon>World</button>
@@ -19,6 +19,7 @@
 
     </div>
 </section>
+
 
 <section class="infomative">
     <video class="posterVideo finalPoster"
@@ -49,6 +50,7 @@
 
 <section class="section2 textC">
     <div class="searchRight">
+        <button mat-button class="b_white hide" color="primary" (click)="submitMap()"><mat-icon>add</mat-icon>New Map</button>
         <button mat-stroked-button [matMenuTriggerFor]="menu" ><mat-icon>expand_more</mat-icon>{{ !currentTyp ? 'Catagory': currentTyp}}</button>
         <mat-menu #menu="matMenu" overlapTrigger="true">
           <div style="max-height: 300px; overflow-y: auto;">
@@ -56,13 +58,6 @@
           <button mat-menu-item *ngFor="let t of resource.mapList"  (click)=" currentTyp = t.info ">{{t.name}}</button>
           </div>
         </mat-menu>
-        <!-- <button mat-stroked-button [matMenuTriggerFor]="menu1"><mat-icon>expand_more</mat-icon>Catagory</button>
-        <mat-menu #menu1="matMenu" overlapTrigger="true">
-          <div style="max-height: 300px; overflow-y: auto;">
-          <button mat-menu-item>All Icons</button>
-          <button mat-menu-item *ngFor="let c of resource.iconCat">{{c}}</button>
-          </div>
-        </mat-menu> -->
     </div>
     <div class="searchLeft">
     <p>
@@ -84,7 +79,95 @@
     </div>
 </section>
 
-<section class="section3">
+
+<section class="section4">
+    <div class="container">
+        <div class="row">
+
+    <div class="col col-100">
+        <h2 class="title">Regions</h2>
+        <ul class="b_white">
+            <li *ngFor="let x of globalMaps">
+                <p>
+                    <a class="c_warn" [routerLink]=" '/edit-map/' + x.id">{{x.title}}</a>
+                    <span class="divide"></span>
+                    <b class="soon" *ngIf="!x.id">COMING SOON</b>
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col col-100">
+        <h2 class="title">Nations</h2>
+        <ul class="b_white">
+            <li *ngFor="let x of nationMaps">
+                <p>
+                    <a class="c_warn" [routerLink]=" '/edit-map/' + x.id">{{x.title}}</a>
+                    <span class="divide"></span>
+                    <b class="soon" *ngIf="!x.id">COMING SOON</b>
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col col-100">
+        <h2 class="title">United States</h2>
+        <ul class="b_white">
+            <li *ngFor="let x of usaStatesMaps">
+                <p>
+                    <a class="c_warn" [routerLink]=" '/edit-map/' + x.id">{{x.title}}</a>
+                    <span class="divide"></span>
+                    <b class="soon" *ngIf="!x.id">COMING SOON</b>
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col col-100">
+        <h2 class="title">India</h2>
+        <ul class="b_white">
+            <li *ngFor="let x of indStatesMaps">
+                <p>
+                    <a class="c_warn" [routerLink]=" '/edit-map/' + x.id">{{x.title}}</a>
+                    <span class="divide"></span>
+                    <b class="soon" *ngIf="!x.id">COMING SOON</b>
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col col-100">
+        <h2 class="title">Major Cities</h2>
+        <ul class="b_white">
+            <li *ngFor="let x of cityMaps">
+                <p>
+                    <a class="c_warn" [routerLink]=" '/edit-map/' + x.id">{{x.title}}</a>
+                    <span class="divide"></span>
+                    <b class="soon" *ngIf="!x.id">COMING SOON</b>
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col col-100">
+        <h2 class="title">Other Maps</h2>
+        <ul class="b_white">
+            <li *ngFor="let x of otherMaps">
+                <p>
+                    <a class="c_warn" [routerLink]=" '/edit-map/' + x.id">{{x.title}}</a>
+                    <span class="divide"></span>
+                    <b class="soon" *ngIf="!x.id">COMING SOON</b>
+                </p>
+            </li>
+        </ul>
+    </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!--section class="section3">
         <div class="nations textL">
             <ng-container *ngIf=" page.dataO | async as mapList">
             <ng-container *ngFor="let x of mapList; let i = index;">
@@ -104,50 +187,9 @@
             </div>
                 <p class="c_warn">{{x.name}}</p>
             </a>
-            <hr *ngIf=" i !== 0 && i !== 1 && (x.info !== mapList[i+1]?.info) ">
+            <hr *ngIf=" (x.info !== mapList[i+1]?.info)">
             </ng-container>
             </ng-container>
-            
-            <!--a class="listNation" *ngFor="let x of [1]" routerLink="/">
-                <h5 class="c_black">Mercator</h5>
-                <p class="c_warn">World map</p>
-            </a>
-            <a class="listNation" *ngFor="let x of [1]" routerLink="/">
-                <h5 class="c_black">Mercator-Pacific</h5>
-                <p class="c_warn">World map</p>
-            </a>
-            <a class="listNation" *ngFor="let x of [1]" routerLink="/">
-                <h5 class="c_black">Peirce Quincuncial</h5>
-                <p class="c_warn">World map</p>
-            </a>
-            <a class="listNation" *ngFor="let x of [1]" routerLink="/">
-                <h5 class="c_black">South Asia</h5>
-                <p class="c_warn">India (reality)</p>
-            </a>
-            <a class="listNation" *ngFor="let x of [1]" routerLink="/">
-                <h5 class="c_black">South Asia</h5>
-                <p class="c_warn">India (disputes)</p>
-            </a>
-            <a class="listNation" *ngFor="let x of [1]" routerLink="/">
-                <h5 class="c_black">SA/India</h5>
-                <p class="c_warn">Maharashtra</p>
-            </a>
-            <a class="listNation" *ngFor="let x of [1]" routerLink="/">
-                <h5 class="c_black">SA/IN/Maharashtra</h5>
-                <p class="c_warn">Thane</p>
-            </a>
-            <a class="listNation" *ngFor="let x of [1]" routerLink="/">
-                <h5 class="c_black">History</h5>
-                <p class="c_warn">Maratha-Empire</p>
-            </a>
-            <a class="listNation" *ngFor="let x of [1]" routerLink="/">
-                <h5 class="c_black">History/Mercator</h5>
-                <p class="c_warn">World (2020)</p>
-            </a>
-            <a class="listNation" *ngFor="let x of [1]" routerLink="/">
-                <h5 class="c_black">History/Mercator-Pacific</h5>
-                <p class="c_warn">World (2020)</p>
-            </a-->
         </div>
         <app-loading *ngIf="!(page.dataO | async) || (page.loading | async) "></app-loading>
-</section>
+</section-->

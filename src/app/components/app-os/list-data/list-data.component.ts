@@ -4,16 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { map, Observable, of, startWith, take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
-import { AddDataComponent } from '../../manage/add-data/add-data.component';
-
-interface TableModel {
-  id:string,
-  type:number|undefined, about:string, info:string, 
-
-  by:string, contact:string, dial_code:string;
-  name: string, data:any,
-  active:boolean
-};
+import { DatasetModel } from 'src/app/universal.model';
+import { DemandComponent } from '../../demand/demand.component';
+import { AddDataComponent } from './add-data/add-data.component';
 
 @Component({
   selector: 'app-list-data',
@@ -28,11 +21,13 @@ export class ListDataComponent implements OnInit {
     {title:'License', link:''},
   ]
 
-  tableList$: Observable<TableModel[]> = of();
+  tableList$: Observable<DatasetModel[]> = of();
   
   searching = new FormControl('');
   options: string[] = [];
   filteredOptions: Observable<string[]>;
+
+  xxx = '';
 
   constructor(
     public auth:AuthService,
@@ -84,5 +79,59 @@ export class ListDataComponent implements OnInit {
     // }
     // this.mapList$ = of([values])
   }
+
+  getDataLanguage(id:string){
+    return  this.resource.tableType[ this.resource.tableType.findIndex(x =>  x.info == id ) ].name 
+  }
+
+
+
+  getME(wat:string, name:string, id:string, color:string){
+    let state = "" + 
+    (wat == 'CSV' ? 'CSV DATASET':'') + 
+    (wat == 'JSON' ? 'JSON DATASET':'') + 
+    "";
+    let title = "#" + color + " from " + name;
+
+    const dialogRef = this.dialog.open(DemandComponent, {
+      width: '90%',
+      maxWidth: '750px',
+      data: {
+        id,
+        title: title, state: state,
+        sector:"dataset"
+      },
+      panelClass:"downloadClass"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if(result && result.type == "Private"){
+
+        if(wat == 'CSV'){ this.getCSV() }
+        if(wat == 'JSON'){ this.getJSON() }
+
+      }
+      if(wat == 'Community'){
+
+      }
+      if(wat == 'Enterprise'){
+
+      }
+    });
+  }
+
+  getCSV(){
+    // DOWNLOAD CSV
+  }
+
+  getJSON(){
+    // COPY JSON TO CLIPBOARD
+  }
+
+  expandME(id:string){}
+
+
+
 
 }

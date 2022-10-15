@@ -32,14 +32,14 @@ icon:IconModel = {
   by:'', dial_code:'+91', contact:'',
   name:'', data:'', 
   active:false,
-    sin:null
+  sin:null
 }
 // icon:IconModel = {
 //   id:"",
 //   type: this.iconType[0].code, //undefined, 
-//   tone:'', fill:'', cat:'Bug',
+//   tone:'', fill:'', cat:'Clothing',
 //   by:'Dipesh Bhoir', dial_code:'+91', contact:'9892381514',
-//   name:'Bug', data:'', 
+//   name:'Clothing', data:'', 
 //   active:true,
 //   sin:null
 // }

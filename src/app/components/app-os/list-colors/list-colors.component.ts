@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ResourceService } from 'src/app/services/resource.service';
+import { DemandComponent } from '../../demand/demand.component';
 
 @Component({
   selector: 'app-list-colors',
@@ -334,9 +336,63 @@ export class ListColorsComponent implements OnInit {
 
   constructor(
     public resource: ResourceService,
+    public dialog: MatDialog,
     ) { }
 
   ngOnInit(): void {
   }
+
+
+
+
+  getME(wat:string, name:string, color:string){
+    let state = "" + 
+    (wat == 'CSS' ? 'CSS COLOR':'') + 
+    (wat == 'JPEG' ? 'JPEG COLOR':'') + 
+    (wat == 'HEX' ? 'HEX COLOR':'');
+    let title = "#" + color + " from " + name;
+
+    const dialogRef = this.dialog.open(DemandComponent, {
+      width: '90%',
+      maxWidth: '750px',
+      data: {
+        // id,
+        title: title, state: state,
+        sector:"color"
+      },
+      panelClass:"downloadClass"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if(result && result.type == "Private"){
+
+        if(wat == 'CSS'){ this.getCSS() }
+        if(wat == 'JPEG'){ this.getJPEG() }
+        if(wat == 'HEX'){ this.getHEX() }
+
+      }
+      if(wat == 'Community'){
+
+      }
+      if(wat == 'Enterprise'){
+
+      }
+    });
+  }
+
+  getCSS(){
+    // DO NOTHING HERE
+  }
+
+  getJPEG(){
+    // DO NOTHING HERE
+  }
+
+  getHEX(){
+    // COPY HEX TO CLIPBOARD
+  }
+
+
 
 }

@@ -1,0 +1,42 @@
+.reservation{
+    display: flex;
+    padding: 60px;
+    .text{
+        text-align: center;
+        flex: 50%;
+        padding: 40px 52px 0 0;
+        h3 {
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 9.4px;
+            margin: 0 0 15px 0;
+            color: #000;
+        }
+        mat-icon {
+            color: #9a9998;
+        }
+    }
+    .image-container{
+        display: flex;
+        flex: 50%;
+    }
+    img {
+        max-width: 100%;
+    }
+    .image {
+        margin-left: 20px;
+    }
+    .image1 {
+        margin-left: 0;
+    }
+    a {
+        text-decoration: none;
+    }
+    .a-CTA {
+        border-bottom: 2px solid #a96700;
+        padding-bottom: 4px;
+        letter-spacing: 1.5px;
+        font-size: 18px;
+        color: #a96700;
+    }
+}

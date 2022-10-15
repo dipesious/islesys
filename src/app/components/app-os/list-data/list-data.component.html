@@ -1,4 +1,29 @@
 
+<section class="section1">
+  <div class="controls">
+
+      <!--<div class="third">
+          <button mat-button color="primary" (click)="submitMap()" >Add New</button>
+      </div>-->
+
+      <div class="first">
+          <button mat-button (click)=" xxx = '' "><mat-icon>{{ xxx == '' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon>Global</button>
+          <button mat-button (click)=" xxx = 'Europe' " ><mat-icon>{{ xxx == 'Europe' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon>Europe</button>
+          <button mat-button (click)=" xxx = 'India' " ><mat-icon>{{ xxx == 'India' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon>India</button>
+          <button mat-button (click)=" xxx = 'United Kingdom' " ><mat-icon>{{ xxx == 'United Kingdom' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon>United Kingdom</button>
+          <button mat-button (click)=" xxx = 'United States' " ><mat-icon>{{ xxx == 'United States' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon>United States</button>
+      </div>
+
+    <!--
+      <button mat-menu-item>Global</button>
+      <button mat-menu-item>India</button>
+      <button mat-menu-item>United Kingdom</button>
+      <button mat-menu-item>United States</button>
+    -->
+  </div>
+</section>
+
+
 <section class="infomative">
   <video class="posterVideo finalPoster"
   [src]="resource.videoOpensourceDatasets" 
@@ -24,7 +49,16 @@
 </section>
 
 
-<section class="section1 textC">
+<section class="section2 textC">
+    <div class="searchRight">
+    <button mat-button class="b_white hide" color="primary" (click)="submitData()"><mat-icon>add</mat-icon>New Dataset</button>
+    <button mat-stroked-button [matMenuTriggerFor]="menu2"><mat-icon>expand_more</mat-icon>Languages</button>
+    <mat-menu #menu2="matMenu" overlapTrigger="true">
+      <div style="max-height: 300px; overflow-y: auto;">
+      <button mat-menu-item *ngFor="let lang of resource.tableType">{{lang.name}}</button>
+      </div>
+    </mat-menu>
+    </div>
     <div class="searchLeft">
       <p>
         <mat-form-field class="search" appearance="legacy">
@@ -43,44 +77,30 @@
         </mat-form-field>
       </p>
     </div>
-    <div class="searchRight">
-      <p>
-    <button mat-stroked-button [matMenuTriggerFor]="menu1"><mat-icon>expand_more</mat-icon>Data Family</button>
-    <mat-menu #menu1="matMenu" overlapTrigger="true">
-      <div style="max-height: 300px; overflow-y: auto;">
-      <button mat-menu-item>Global</button>
-      <button mat-menu-item>India</button>
-      </div>
-    </mat-menu>
-    <button mat-stroked-button [matMenuTriggerFor]="menu2"><mat-icon>expand_more</mat-icon>Languages</button>
-    <mat-menu #menu2="matMenu" overlapTrigger="true">
-      <div style="max-height: 300px; overflow-y: auto;">
-      <button mat-menu-item>English</button>
-      <button mat-menu-item>Marathi</button>
-      </div>
-    </mat-menu>
-    <button mat-button class="b_white hide" color="primary" (click)="submitData()"><mat-icon>add</mat-icon>New Data</button>
-      </p>
-    </div>
   </section>
 
-<section class="section2">
+<section class="section3">
 
   <ng-container *ngFor="let x of tableList$ | async">
     <div class="holdPalette"
     *ngIf=" !searching.value || x.name.toLowerCase().includes(searching.value.toLowerCase())" >
         <div class="palette">
             <div class="content">
-            <h4>{{x.name}}</h4>
+              <div style="display: flex;">
+                <h4><span class="title b_warn c_white">{{x.name}}</span></h4>
+                <span class="divide"></span>
+                <h4>{{  getDataLanguage(x.info) }}</h4>
+              </div>
+            <!-- <h4><span class="title">{{x.name}}</span> &nbsp; {{x.info == 'EN' ? 'English':''}}{{x.info == 'MA' ? 'Marathi':''}}</h4> -->
             <p>{{x.about}}</p>
             </div>
         </div>
         <div class="holdMine b_white">
-            <button mat-button class="leftOut download"><mat-icon>download</mat-icon>{{x.info == 'EN' ? 'English':''}}{{x.info == 'MA' ? 'Marathi':''}}</button>
-            <button mat-icon-button class="leftOut"><mat-icon>content_copy</mat-icon></button>
-            <button mat-icon-button class="leftOut"><mat-icon>view_in_ar</mat-icon></button>
+            <button mat-icon-button class="leftOut" (click)=" expandME(x.id) "><mat-icon>view_in_ar</mat-icon></button>
+            <button mat-button class="leftOut download" (click)=" getME('CSV', x.name, x.id, x.data) "><mat-icon>download</mat-icon> csv</button>
+            <button mat-button class="leftOut download" (click)=" getME('JSON', x.name, x.id, x.data) "><mat-icon>content_copy</mat-icon> json</button>
             <span class="divide"></span>
-            <span>3 Oct 2017</span>
+            <span class="date">{{x.sin.toDate() | date:'dd MMM yyyy'}}</span>
             <button mat-icon-button><mat-icon>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path *ngIf="true" d="M17.867 3.493l4.133 3.444v5.127l-10 8.333-10-8.334v-5.126l4.133-3.444 5.867 3.911 5.867-3.911zm.133-2.493l-6 4-6-4-6 5v7l12 10 12-10v-7l-6-5z"/>

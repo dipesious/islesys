@@ -1,0 +1,59 @@
+<h1 mat-dialog-title class="c_primary">Submit font</h1>
+<div mat-dialog-content>
+ 
+  <mat-form-field appearance="legacy" class="fullWidth">
+    <mat-label>Title</mat-label>
+    <input matInput placeholder="font name" [(ngModel)]="font.name" [disabled]="makingChanges">
+  </mat-form-field>
+
+  <mat-form-field appearance="legacy" class="fullWidth">
+    <mat-label>Import Link</mat-label>
+    <input matInput placeholder="font import link" [(ngModel)]="font.link" [disabled]="makingChanges">
+  </mat-form-field>
+
+  <mat-form-field appearance="legacy" class="fullWidth">
+    <mat-label>Font family: </mat-label>
+    <input matInput placeholder="font import name" [(ngModel)]="font.about" [disabled]="makingChanges">
+  </mat-form-field>
+
+  <mat-form-field appearance="legacy" class="fullWidth">
+    <mat-label>Select Type</mat-label>
+    <mat-select [(ngModel)]="font.type" [disabled]="makingChanges">
+      <mat-option *ngFor="let f of resource.fontType" [value]="f.code" [disabled]="makingChanges">{{f.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="legacy" color="warn" class="fullWidth">
+    <mat-label>Demo text = "</mat-label>
+    <textarea rows="3" matInput placeholder="paste data array here" [(ngModel)]="font.demoText" [disabled]="makingChanges"></textarea>
+    <span matSuffix>"</span>
+  </mat-form-field>
+
+  <!-- <mat-form-field appearance="legacy" color="warn" class="fullWidth">
+    <mat-label>Import &lt;/style&gt;</mat-label>
+    <textarea rows="3" matInput placeholder="paste data array here" [(ngModel)]="font.demoCSS" [disabled]="makingChanges"></textarea>
+    <span matSuffix>&lt;/style&gt;</span>
+  </mat-form-field> -->
+
+  <mat-form-field appearance="legacy" class="fullWidth">
+    <mat-label>Your Name</mat-label>
+    <input matInput placeholder="full name" [(ngModel)]="font.by" [disabled]="makingChanges">
+  </mat-form-field>
+
+  <mat-form-field appearance="legacy" class="fullWidth">
+    <mat-label>Your Contact</mat-label>
+    <input matInput placeholder="Phone number" [(ngModel)]="font.contact" [disabled]="makingChanges">
+    <span matPrefix>{{font.dial_code}}</span>
+    <button mat-icon-button matPrefix [matMenuTriggerFor]="menu" [disabled]="makingChanges"><mat-icon>unfold_more</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngFor="let x of resource.phoneCodes" (click)="font.dial_code = x.dial_code">{{x.name}}</button>
+    </mat-menu>
+  </mat-form-field>
+
+
+  <p>You Agree to Terms of Service?</p>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button  mat-dialog-close>No Thanks</button>
+  <button mat-button cdkFocusInitial color="warn" (click)="submit()" [disabled]="makingChanges">Agree & Submit</button>
+</div>

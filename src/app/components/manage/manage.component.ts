@@ -118,7 +118,7 @@ export class ManageComponent {
       this.pageIcon.more()
       this.pagePalette.more()
       this.pageGradient.more()
-      this.pageMap.more()
+      // this.pageMap.more()
       this.pagePattern.more()
     }
     if (top === 0) {

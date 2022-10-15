@@ -2,14 +2,15 @@
     h1{margin: 0 0 0 16px;}
 .controls{
     padding: 16px 0;
-    width: 98%;
-    background: #ffffff;
-    margin: 0 1% 16px 1%;
+    width: 100%;
+    margin: 0;
+    // background: #ffffff;
+    margin: 0 0 0 0;
     button{padding: 0 6px 0 8px; border-radius: 24px;}
     .first, .second, .third{
         min-width: 200px;
         display: inline-block;
-        width: 40%;
+        width: 50%;
         text-align: center;
         .wat{
             display: inline-block;
@@ -17,34 +18,35 @@
         }
         button{ font-size: 12px;}
     } 
-    .third{
-        width: 20%;
-        button{min-width: 120px; background: #fafafa; padding: 0; border-radius: 24px;}
-    }
+    // .third{
+    //     width: 20%;
+    //     button{min-width: 120px; background: #fafafa; padding: 0; border-radius: 24px;}
+    // }
     @media(max-width: 767px){
         .first, .second, .third{
             width: -webkit-fill-available;
             text-align: left;
+            margin: 0 0 0 24px;
         }
-        .third{
-           display: none;
-        }
+        // .third{
+        //    display: none;
+        // }
     }
 }
 }
 
 
 .section3{
-    margin: 16px 0 0 0; padding: 0;
+    margin: 0 0 0 0; padding: 0;
         .searchLeft{
-            width: 80%;  display: inline-block; 
+            width: 75%;  display: inline-block; 
         .search{
             width: -webkit-fill-available;
-            margin: 16px 24px 0 24px;
+            margin: 0 24px 0 24px;
         } 
         }
         .searchRight{
-            width: 20%; display: inline-block;
+            width: 25%; display: inline-block;
         button{
             margin: 0 8px;
             padding: 0 12px 0 0;
@@ -52,6 +54,18 @@
         }
     p{
         padding: 0 0 0 0; margin: 0;
+        }
+    }
+    @media(max-width: 767px){
+        .searchLeft{width: 60%;
+            .search{
+                margin: 16px 0 0 16px;
+            } 
+        }
+        .searchRight{width: 40%;
+            .hide{
+               display: none;
+            }
         }
     }
 }

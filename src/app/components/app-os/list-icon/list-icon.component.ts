@@ -29,6 +29,7 @@ export class ListIconComponent implements OnInit {
   options: string[] = [];
   filteredOptions: Observable<string[]>;
 
+
   constructor(
     public auth:AuthService,
     public resource:ResourceService,

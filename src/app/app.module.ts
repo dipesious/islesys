@@ -35,10 +35,10 @@ import { ListDataComponent } from './components/app-os/list-data/list-data.compo
 import { UpcomingComponent } from './placeholders/upcoming/upcoming.component';
 import { ManageComponent } from './components/manage/manage.component';
 import { AddIconComponent } from './components/app-os/list-icon/add-icon/add-icon.component';
-import { AddDataComponent } from './components/manage/add-data/add-data.component';
-import { AddPaletteComponent } from './components/manage/add-palette/add-palette.component';
+import { AddDataComponent } from './components/app-os/list-data/add-data/add-data.component';
+import { AddPaletteComponent } from './components/app-os/list-palettes/add-palette/add-palette.component';
 import { AddPatternComponent } from './components/app-os/list-patterns/add-pattern/add-pattern.component';
-import { AddGradientComponent } from './components/manage/add-gradient/add-gradient.component';
+import { AddGradientComponent } from './components/app-os/list-gradients/add-gradient/add-gradient.component';
 
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -59,7 +59,6 @@ import { DownloadFontComponent } from './components/app-os/list-fonts/download-f
 import { DownloadDataComponent } from './components/app-os/list-data/download-data/download-data.component';
 import { DownloadColorComponent } from './components/app-os/list-colors/download-color/download-color.component';
 import { AddMapComponent } from './components/app-os/list-maps/add-map/add-map.component';
-import { AddFontComponent } from './components/manage/add-font/add-font.component';
 import { LoadingComponent } from './placeholders/loading/loading.component';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { SignComponent } from './placeholders/sign/sign.component';
@@ -67,6 +66,7 @@ import { VerifyOTPComponent } from './placeholders/verify-otp/verify-otp.compone
 import { WhoWeAreComponent } from './components/who-we-are/who-we-are.component';
 import { FileBugComponent } from './components/file-bug/file-bug.component';
 import { DemandComponent } from './components/demand/demand.component';
+import { AddFontComponent } from './components/app-os/list-fonts/add-font/add-font.component';
 
 //import { ScrollingModule } from '@angular/cdk/scrolling';
 
@@ -111,6 +111,7 @@ import { DemandComponent } from './components/demand/demand.component';
   ],
   imports: [
     //ScrollingModule,
+    
 
     BrowserModule,
     AppRoutingModule, FormsModule, ReactiveFormsModule,

@@ -1,4 +1,26 @@
 
+<section class="section1">
+    <div class="controls">
+
+        <!--<div class="third">
+            <button mat-button color="primary" (click)="submitMap()" >Add New</button>
+        </div>-->
+
+        <div class="first">
+            <button mat-button ><mat-icon style="color: #f44336;">circle</mat-icon>Red</button>
+            <button mat-button ><mat-icon style="color: #ff9800;">circle</mat-icon>Yellow</button>
+            <button mat-button ><mat-icon style="color: #ffeb3b;">circle</mat-icon>Orange</button>
+            <button mat-button ><mat-icon style="color: #4caf50;">circle</mat-icon>Green</button>
+            <button mat-button ><mat-icon style="color: #3f51b5;">circle</mat-icon>Blue</button>
+            <button mat-button ><mat-icon style="color: #2196f3;">circle</mat-icon>Indigo</button>
+            <button mat-button ><mat-icon style="color: #673AB7;">circle</mat-icon>Violet</button>
+        </div>
+
+    </div>
+</section>
+
+
+
 <section class="infomative">
     <video class="posterVideo finalPoster"
     [src]="resource.videoOpensourceColors" 
@@ -37,22 +59,21 @@
     </div>
 </section>
 
-
 <section class="section3">
-    <div style="float: left;margin: 16px 8px 0 16px;">
+    <div class="about">
     <p>Keep in mind that the effect of your branding colors depends on the style and design they are used in, as well as the color combinations you choose. This is an abridged version, our connection to color goes lot deeper than this—for example, too much yellow can actually cause anxiety. If you want to learn more about these intricacies, read our full guide on how color impacts emotions and behaviors.</p>
     </div>
 </section>
 
 
-<section class="section1">
+<section class="section4">
     <div class="holdColor" *ngFor="let c of colorz">
         <p class="title">{{c.name}}</p>
         <div class="color" [style]="'background:' + x.c + ';'" *ngFor="let x of c.p">
             <h2>{{ false ? (c.name + ' ') : ''}}{{x.n}}</h2>
             <span class="divide"></span>
             <p>{{x.c}}</p>
-            <button mat-icon-button><mat-icon>content_copy</mat-icon></button>
+            <button mat-icon-button (click)=" getME('HEX', c.name, x.c) "><mat-icon>content_copy</mat-icon></button>
         </div>
     </div>
 </section>

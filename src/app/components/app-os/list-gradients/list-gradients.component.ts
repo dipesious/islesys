@@ -5,7 +5,8 @@ import { map, Observable, of, startWith, take } from 'rxjs';
 import { AlgoGradientService } from 'src/app/services/algorithm/algo-gradient.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
-import { AddGradientComponent } from '../../manage/add-gradient/add-gradient.component';
+import { DemandComponent } from '../../demand/demand.component';
+import { AddGradientComponent } from './add-gradient/add-gradient.component';
 
 @Component({
   selector: 'app-list-gradients',
@@ -26,6 +27,7 @@ export class ListGradientsComponent implements OnInit {
 
   currentTyp = "";
 
+  xxx = "Linear";
 
   constructor(
     public auth:AuthService,
@@ -66,5 +68,52 @@ export class ListGradientsComponent implements OnInit {
   }
 
   execute(){}
+
+
+  getME(wat:string, name:string, id:string, color:string){
+    let state = "" + 
+    (wat == 'CSS' ? 'CSS GRADIENT':'') + 
+    (wat == 'JPEG' ? 'JPEG GRADIENT':'') + 
+    "";
+    let title = "#" + color + " from " + name;
+
+    const dialogRef = this.dialog.open(DemandComponent, {
+      width: '90%',
+      maxWidth: '750px',
+      data: {
+        id,
+        title: title, state: state,
+        sector:"gradient"
+      },
+      panelClass:"downloadClass"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if(result && result.type == "Private"){
+
+        if(wat == 'CSS'){ this.getCSS() }
+        if(wat == 'JPEG'){ this.getJPEG() }
+
+      }
+      if(wat == 'Community'){
+
+      }
+      if(wat == 'Enterprise'){
+
+      }
+    });
+  }
+
+  getCSS(){
+    // COPY CSS TO CLIPBOARD
+  }
+
+  getJPEG(){
+    // DOWNLOAD JPEG
+  }
+
+
+  expandME(id:string){}
 
 }

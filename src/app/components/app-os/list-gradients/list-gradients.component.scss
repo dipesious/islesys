@@ -1,13 +1,51 @@
-
-
 .section1{
+    h1{margin: 0 0 0 16px;}
+.controls{
+    padding: 16px 0;
+    width: 100%;
+    margin: 0;
+    button{padding: 0 8px 0 0; border-radius: 24px;}
+    .first, .second, .third{
+        min-width: 200px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        .wat{
+            display: inline-block;
+            padding: 0 8px 0 0;
+        }
+        button{ font-size: 12px;}
+    } 
+    // .first{
+    //     width: 80%;
+    // }
+    // .third{
+    //     width: 20%;
+    //     button{min-width: 120px; background: #fafafa;padding: 0;}
+    // }
+    @media(max-width: 767px){
+        .first, .second, .third{
+            width: -webkit-fill-available;
+            text-align: left;
+            margin: 0 0 0 24px;
+        }
+        .third{
+           display: none;
+        }
+    }
+}
+}
+
+
+
+.section2{
     //background: #ffffff;
-    margin: 16px 0 0 0; padding: 0;
+    margin: 0 0 0 0; padding: 0;
         .searchLeft{
             width: 75%;  display: inline-block; 
         .search{
             width: -webkit-fill-available;
-            margin: 16px 24px 0 24px;
+            margin: 0 24px 0 24px;
         } 
         }
         .searchRight{
@@ -22,7 +60,11 @@
         }
     }
     @media(max-width: 767px){
-        .searchLeft{width: 60%;}
+        .searchLeft{width: 60%;
+            .search{
+                margin: 16px 0 0 16px;
+            } 
+        }
         .searchRight{width: 30%;
             .hide{
                display: none;
@@ -31,20 +73,20 @@
     }
 }
 
-.section2{
+.section3{
     .holdPalette{
-        width: 25%; margin: 0 0 16px 0; padding: 0; display: inline-block;
+        width: 50%; margin: 0 0 16px 0; padding: 0; display: inline-block;
         animation: loaded .3s;
         .holdMe{    
             display: flex; align-items: center; justify-content: center;
             vertical-align: middle; 
             height: 180px;
-            width: -webkit-fill-available; padding: 0; margin: 0 18px; border: 0px solid; outline: 0px; border-spacing: 0;
+            width: -webkit-fill-available; padding: 0; margin: 0 8px; border: 0px solid; outline: 0px; border-spacing: 0;
             button{background: rgba(0, 0, 0, 0.4); color: #ffffff; margin: 0 8px;}
             .download{padding: 0 8px 0 4px; min-width: auto;}
         }
             .holdMine{
-                display: flex; align-items: center;padding: 0; margin: 0 18px;
+                display: flex; align-items: center;padding: 0; margin: 0 8px;
                 p{padding: 0 0 0 8px;margin: 0; overflow: hidden;
                     display: -webkit-box;
                     -webkit-line-clamp: 1;

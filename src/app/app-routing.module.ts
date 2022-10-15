@@ -47,11 +47,11 @@ const routes: Routes = [
     {path:'free-icon/:id', component: DownloadIconComponent},
     {path:'edit-map/:id', component: DownloadMapComponent},
     {path:'free-dataset/:id', component: DownloadDataComponent},
-    {path:'free-gradient/:id', component: DownloadGradientComponent},
-    {path:'free-palette/:id', component: DownloadPaletteComponent},
-    {path:'free-pattern/:id', component: DownloadPatternComponent},
-    {path:'free-font/:id', component: DownloadFontComponent},
-    {path:'free-color/:id', component: DownloadColorComponent},
+    {path:'view-palette/:id', component: DownloadPaletteComponent},
+    {path:'view-gradient/:id', component: DownloadGradientComponent},
+    {path:'view-pattern/:id', component: DownloadPatternComponent},
+    {path:'opensource-font/:id', component: DownloadFontComponent},
+    {path:'shades-of-color/:id', component: DownloadColorComponent},
 
   ]},
 

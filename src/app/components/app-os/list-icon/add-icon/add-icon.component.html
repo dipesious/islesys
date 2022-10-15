@@ -1,40 +1,40 @@
-<h1 mat-dialog-title>Submit icon</h1>
+<h1 mat-dialog-title class="c_primary">Submit icon</h1>
 <!--div class="demo">
     <div [innerHTML]="getDemo"></div>
 </div-->
 <div mat-dialog-content>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Title</mat-label>
     <input matInput placeholder="icon name" [(ngModel)]="icon.name" [disabled]="makingChanges">
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Select Type</mat-label>
     <mat-select [(ngModel)]="icon.type" [disabled]="makingChanges">
       <mat-option *ngFor="let t of iconType" [value]="t.code" [disabled]="makingChanges">{{t.name}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Select Catagory</mat-label>
     <mat-select [(ngModel)]="icon.cat" [disabled]="makingChanges">
       <mat-option *ngFor="let c of resource.iconCat" [value]="c" [disabled]="makingChanges">{{c}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" color="warn" class="fullWidth">
+  <mat-form-field appearance="legacy" color="warn" class="fullWidth">
     <mat-label>&lt;svg viewBox="0 0 24 24" </mat-label>
     <textarea rows="3" matInput [placeholder]="placeholderIcon" [(ngModel)]="icon.data" [disabled]="makingChanges"></textarea>
     <span matSuffix>&lt;/svg&gt;</span>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Your Name</mat-label>
     <input matInput placeholder="full name" [(ngModel)]="icon.by" [disabled]="makingChanges">
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Your Contact</mat-label>
     <input matInput placeholder="Phone number" [(ngModel)]="icon.contact" [disabled]="makingChanges">
     <span matPrefix>{{icon.dial_code}}</span>

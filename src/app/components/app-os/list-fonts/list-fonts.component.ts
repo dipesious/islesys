@@ -4,16 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { map, Observable, of, startWith, take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
-
-interface TableModel {
-  id:string,
-  type:number|undefined, demoText:string; demoCSS:string;
-  //about:string, info:string, 
-
-  by:string, contact:string, dial_code:string;
-  name: string, data:any,
-  active:boolean
-};
+import { FontModel } from 'src/app/universal.model';
+import { DemandComponent } from '../../demand/demand.component';
+import { AddFontComponent } from './add-font/add-font.component';
 
 @Component({
   selector: 'app-list-fonts',
@@ -28,7 +21,8 @@ export class ListFontsComponent implements OnInit {
     {title:'License', link:''},
   ]
 
-  fontList$: Observable<TableModel[]> = of();
+  fontList$: Observable<FontModel[]> = of();
+  showCode:string[] = []
   
   searching = new FormControl('');
   options: string[] = [];
@@ -52,7 +46,17 @@ export class ListFontsComponent implements OnInit {
     this.execute()
   }
 
-  submitData(){}
+  submitFont(){
+    const dialogRef = this.dialog.open(AddFontComponent, {
+      width: '100%',
+      maxWidth: '450px',
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
   
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -84,6 +88,64 @@ export class ListFontsComponent implements OnInit {
     }else{
       this.fontSize = this.fontSize + 2;
     }
+  }
+
+
+  getME(wat:string, name:string, id:string, data:string, demoText:string, demoCSS:string){
+    let state = "" + 
+    (wat == 'ZIP' ? 'ZIP FILE':'') + 
+    (wat == 'IMPORT' ? 'IMPORT URL':'') + 
+    "";
+    let title = "Font " + name;
+
+    const dialogRef = this.dialog.open(DemandComponent, {
+      width: '90%',
+      maxWidth: '750px',
+      data: {
+        id,
+        title: title, state: state,
+        sector:"font"
+      },
+      panelClass:"downloadClass"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if(result && result.type == "Private"){
+
+        if(wat == 'ZIP'){ this.getZIP() }
+        if(wat == 'IMPORT'){ this.getIMPORT() }
+
+      }
+      if(wat == 'Community'){
+
+      }
+      if(wat == 'Enterprise'){
+
+      }
+    });
+  }
+
+  getZIP(){
+    // COPY CSS TO CLIPBOARD
+  }
+
+  getIMPORT(){
+    // DOWNLOAD JPEG
+  }
+
+
+  expandME(id:string){}
+
+  getLink(link:any){
+return `<style>
+${link}
+</style>`
+  }
+
+  getClass(about:any){
+return `.islesys{
+font-family: ${about} }`
   }
 
 }

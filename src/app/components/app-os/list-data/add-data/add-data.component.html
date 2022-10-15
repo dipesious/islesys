@@ -1,35 +1,35 @@
-<h1 mat-dialog-title>Submit data</h1>
+<h1 mat-dialog-title class="c_primary">Submit dataset</h1>
 <div mat-dialog-content>
-
-  <mat-form-field appearance="fill" class="fullWidth">
+ 
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Title</mat-label>
     <input matInput placeholder="table name" [(ngModel)]="table.name" [disabled]="makingChanges">
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>About data</mat-label>
     <input matInput placeholder="table name" [(ngModel)]="table.about" [disabled]="makingChanges">
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Select Type</mat-label>
     <mat-select [(ngModel)]="table.type" [disabled]="makingChanges">
-      <mat-option *ngFor="let t of tableType" [value]="t.code" [disabled]="makingChanges">{{t.name}}</mat-option>
+      <mat-option *ngFor="let t of resource.tableType" [value]="t.code" [disabled]="makingChanges">{{t.name}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" color="warn" class="fullWidth">
+  <mat-form-field appearance="legacy" color="warn" class="fullWidth">
     <mat-label>Data array [</mat-label>
     <textarea rows="3" matInput placeholder="paste data array here" [(ngModel)]="table.data" [disabled]="makingChanges"></textarea>
     <span matSuffix>]</span>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Your Name</mat-label>
     <input matInput placeholder="full name" [(ngModel)]="table.by" [disabled]="makingChanges">
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Your Contact</mat-label>
     <input matInput placeholder="Phone number" [(ngModel)]="table.contact" [disabled]="makingChanges">
     <span matPrefix>{{table.dial_code}}</span>

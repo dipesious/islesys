@@ -2,16 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
+import { DatasetModel } from 'src/app/universal.model';
 
-interface TableModel {
-  id:string,
-  type:number|undefined, 
-  about:string, info:string, 
 
-  by:string, contact:string, dial_code:string;
-  name: string, data:any,
-  active:boolean
-};
 
 @Component({
   selector: 'app-add-data',
@@ -20,19 +13,24 @@ interface TableModel {
 })
 export class AddDataComponent implements OnInit {
 
-  tableType = [
-    {name:"English", info:"EN", code:2},
-    {name:"Marathi", info:"MA", code:1},
-  ]
-
-  table:TableModel = {
+  table:DatasetModel = {
     id:"",
     type:undefined, 
     about:'', info:'',
     by:'', dial_code:'+91', contact:'',
     name:'', data:'', 
-    active:false
+    active:false,
+    sin:null
   }
+  // table:DatasetModel = {
+  //   id:"",
+  //   type: this.resource.tableType[0].code, //undefined, 
+  //   about:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum rerum, earum minima est cupiditate fugit harum ratione excepturi, nemo veniam quidem maxime architecto nobis deserunt perferendis ipsam consequuntur odio! Maiores!', info:'',
+  //   by:'Dipesh Bhoir', dial_code:'+91', contact:'9892381514',
+  //   name:'', data:'', 
+  //   active:true,
+  //   sin:null
+  // }
   makingChanges = false;
   
   constructor(
@@ -49,7 +47,7 @@ export class AddDataComponent implements OnInit {
     if(!this.table.type || !this.table.name || !this.table.data || !this.table.by || !this.table.contact ){
       this.makingChanges = false;
     }else{
-      const x = this.tableType[this.tableType.findIndex(i => i.code == this.table.type)];
+      const x = this.resource.tableType[this.resource.tableType.findIndex(i => i.code == this.table.type)];
       //this.table.about = x.name;
       this.table.info = x.info;
 

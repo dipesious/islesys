@@ -2,9 +2,9 @@
     h1{margin: 0 0 0 16px;}
 .controls{
     padding: 16px 0;
-    width: 98%;
-    background: #ffffff;
-    margin: 0 1% 16px 1%;
+    width: 100%;
+    // background: #ffffff;
+    margin: 0 0 0 0;
     button{padding: 0 6px 0 8px; border-radius: 24px;}
     .first, .second, .third{
         min-width: 200px;
@@ -17,12 +17,12 @@
         button{ font-size: 12px;}
     } 
     .first{
-        width: 80%;
+        width: 100%;
     }
-    .third{
-        width: 20%;
-        button{min-width: 120px; background: #fafafa; padding: 0; border-radius: 24px;}
-    }
+    // .third{
+    //     width: 20%;
+    //     button{min-width: 120px; background: #fafafa; padding: 0; border-radius: 24px;}
+    // }
     @media(max-width: 767px){
         .first, .second, .third{
             width: -webkit-fill-available;
@@ -37,12 +37,12 @@
 
 .section2{
     //background: #ffffff;
-    margin: 16px 0 0 0; padding: 0;
+    margin: 0 0 0 0; padding: 0;
         .searchLeft{
             width: 75%;  display: inline-block; 
         .search{
             width: -webkit-fill-available;
-            margin: 16px 24px 0 24px;
+            margin: 0 24px 0 24px;
         } 
         }
         .searchRight{
@@ -57,33 +57,62 @@
         }
     }
     @media(max-width: 767px){
-        .searchLeft{width: 100%;}
-        .searchRight{width: 100%;}
+        .searchLeft{width: 60%;
+            .search{
+                margin: 16px 0 0 16px;
+            } 
+        }
+        .searchRight{width: 40%;
+            .hide{
+               display: none;
+            }
+        }
     }
 }
 .section3{
     .fontHold{
-        width: 48%;
-        margin: 16px 1%;padding: 16px 0 0 0;
-        border-bottom: 2px solid #eeeeee; background: linear-gradient(45deg, #ffffff 60%, #eeeeee 20%, #ffffff 10%, #eeeeee 20%); color: #000;
+        width: 98%;
+        margin: 0 1% 16px 1%;padding: 8px 0 0 0;
+        border-bottom: 2px solid #eeeeee; 
+        background: linear-gradient(45deg, #ffffff 60%, #eeeeee 20%, #ffffff 10%, #eeeeee 20%); color: #000;
         h4, p{padding: 0; margin: 0 16px;}
+        .wild{
+            display: flex;  margin: 0 0 0 0;
+        }
+        .holdMine{
+            display: flex; align-items: center;padding: 0 0 0 8px; margin: 0 0 0 0;
+            p{padding: 0 0 0 8px;margin: 0;}
+            .leftOut{ margin: 0 0 0 8px;}
+            .download{padding: 0 8px 0 4px; min-width: auto;}
+            .date{font-size: 8px;}
+        }
         .fontNames{
             display: flex;
             align-items: flex-start; 
+            margin: 16px 0;
                 p{
                     overflow: hidden;
                     display: -webkit-box;
                     -webkit-line-clamp: 2;
                     -webkit-box-orient: vertical;
+                    min-height: 2em;
                     //max-width: 430px;
                 }
             }
-        .holdMine{
-            display: flex; align-items: center;padding: 0; margin: 0;
-            p{padding: 0 0 0 8px;margin: 0;}
-            .leftOut{ margin: 0 0 0 8px;}
-            .download{padding: 0 8px 0 4px; min-width: auto;}
-        }
+            .megamind{
+                padding: 16px 0; margin: 0 0 0 0;
+                background: rgb(98 0 234 / 20%);
+                textarea{
+                    width: -webkit-fill-available;
+                    margin: 0 0 0 8px;
+                    border: 0px solid;
+                    outline: none;
+                    background: #222222;
+                    color: #ffffff;
+                    padding: 8px;
+                    border-radius: 8px 0 0 8px;
+                }
+            }
         }
         @media(max-width: 767px){
             .fontHold{

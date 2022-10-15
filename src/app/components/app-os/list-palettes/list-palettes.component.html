@@ -1,4 +1,21 @@
 
+<section class="section1">
+  <div class="controls">
+
+      <!--<div class="third">
+          <button mat-button color="primary" (click)="submitMap()" >Add New</button>
+      </div>-->
+
+      <div class="first">
+        <button mat-button (click)=" xxx = '' "  ><mat-icon>{{ xxx == '' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon>All palettes</button>
+        <button mat-button (click)=" xxx = 'New' "  ><mat-icon>{{ xxx == 'New' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon>New first</button>
+        <button mat-button (click)=" xxx = 'Old' "  ><mat-icon>{{ xxx == 'Old' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon>Old first</button>
+    </div>
+
+  </div>
+</section>
+
+
 <section class="infomative">
   <video class="posterVideo finalPoster"
   [src]="resource.videoOpensourcePalettes" 
@@ -16,14 +33,13 @@
       <p class="knowinfo">We are building an extraordinary library of unique palettes<br>
           <i><mat-icon class="c_warn">done_outline</mat-icon>HEX</i>
           &nbsp;
-          <i><mat-icon class="c_warn">done_outline</mat-icon>CSS</i>
+          <i><mat-icon class="c_warn">done_outline</mat-icon>RGB</i>
       </p>
   </div>
 </section>
 
-<section class="section1 textC">
+<section class="section2 textC">
     <div class="searchRight">
-      <p>
     <button mat-button class="b_white hide" color="primary" (click)="submitPalette()"><mat-icon>add</mat-icon>New Palette</button>
     <button mat-stroked-button [matMenuTriggerFor]="menu"><mat-icon>expand_more</mat-icon>{{ !currentTyp ? 'Categories': currentTyp}}</button>
     <mat-menu #menu="matMenu" overlapTrigger="true">
@@ -32,7 +48,6 @@
       <button mat-menu-item *ngFor="let t of resource.palatteList"  (click)=" currentTyp = t ">{{t}}</button>
       </div>
     </mat-menu>
-      </p>
     </div>
     <div class="searchLeft">
       <p>
@@ -54,16 +69,16 @@
     </div>
   </section>
 
-<section class="section2">
+<section class="section3">
 
   <ng-container *ngFor="let x of page.dataO | async">
     <div class="holdPalette" *ngIf=" !searching.value || !currentTyp && x.name.toLowerCase().includes(searching.value.toLowerCase()) || currentTyp && currentTyp == x.type ">
-        <button class="p1" [style.background]="'#' + x.c1" ><p>#{{x.c1}}</p><span class="divide"></span><mat-icon>content_copy</mat-icon></button>
-        <button class="p2" [style.background]="'#' + x.c2" ><p>#{{x.c2}}</p><span class="divide"></span><mat-icon>content_copy</mat-icon></button>
-        <button class="p3" [style.background]="'#' + x.c3" ><p>#{{x.c3}}</p><span class="divide"></span><mat-icon>content_copy</mat-icon></button>
-        <button class="p4" [style.background]="'#' + x.c4" ><p>#{{x.c4}}</p><span class="divide"></span><mat-icon>content_copy</mat-icon></button>
+        <button class="p1" (click)=" getME('HEX', x.name, x.id, x.c1) "  [style.background]="'#' + x.c1" ><p>#{{x.c1}}</p><span class="divide"></span><mat-icon>content_copy</mat-icon></button>
+        <button class="p2" (click)=" getME('HEX', x.name, x.id, x.c2) "  [style.background]="'#' + x.c2" ><p>#{{x.c2}}</p><span class="divide"></span><mat-icon>content_copy</mat-icon></button>
+        <button class="p3" (click)=" getME('HEX', x.name, x.id, x.c3) "  [style.background]="'#' + x.c3" ><p>#{{x.c3}}</p><span class="divide"></span><mat-icon>content_copy</mat-icon></button>
+        <button class="p4" (click)=" getME('HEX', x.name, x.id, x.c4) "  [style.background]="'#' + x.c4" ><p>#{{x.c4}}</p><span class="divide"></span><mat-icon>content_copy</mat-icon></button>
         <div class="holdMine  b_white">
-          <p>{{x.name}}</p>
+          <p><a class="c_warn" [routerLink]=" '/view-palette/' + x.id ">{{x.name}}</a></p>
           <span class="divide"></span>
           <span class="date">{{x.sin.toDate() | date:'dd MMM yyyy'}}</span>
           <button mat-icon-button><mat-icon>

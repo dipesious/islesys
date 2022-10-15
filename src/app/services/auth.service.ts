@@ -138,18 +138,20 @@ export class AuthService {
   }
 
   submitFONT(data:any){
+    const sTS = this.getServerTimestamp();
     const cityRefC = collection(this.fs, this.dbFONTS);
     return addDoc(cityRefC, data).then(ref => {
       const cityRef = doc(this.fs, this.dbFONTS, ref.id);
-      return updateDoc(cityRef, {id:ref.id})
+      return updateDoc(cityRef, {id:ref.id, sin:sTS})
     });
   }
 
   submitTABLE(data:any){
+    const sTS = this.getServerTimestamp();
     const cityRefC = collection(this.fs, this.dbTABLES);
     return addDoc(cityRefC, data).then(ref => {
       const cityRef = doc(this.fs, this.dbTABLES, ref.id);
-      return updateDoc(cityRef, {id:ref.id})
+      return updateDoc(cityRef, {id:ref.id, sin:sTS})
     });
   }
 

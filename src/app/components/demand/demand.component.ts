@@ -9,15 +9,44 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DemandComponent implements OnInit {
 
   link = "LINK HERE";
+  CTA = "";
 
   constructor(
     private dialogRef: MatDialogRef<DemandComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) { 
     console.log(data)
+
+    this.CTA = `
+${data.sector == 'icon' ? 'Download':'' }
+${data.sector == 'map' ? 'Download':'' }
+${data.sector == 'dataset' ? (
+  (data.state == 'CSV DATASET' ? 'CSV File':'') + (data.state == 'JSON DATASET' ? 'Copy JSON':'') + ""
+) : '' }
+${data.sector == 'palette' ? 'Copy HEX':'' }
+${data.sector == 'gradient' ? (
+  (data.state == 'JPEG GRADIENT' ? '16:9 JPEG':'') + (data.state == 'CSS GRADIENT' ? 'Copy CSS':'') + ""
+) : '' }
+${data.sector == 'pattern' ? (
+  (data.state == 'JPEG PATTERN' ? '16:9 JPEG':'') + (data.state == 'CSS PATTERN' ? 'Copy CSS':'') + ""
+) : '' }
+${data.sector == 'font' ? (
+  (data.state == 'ZIP FILE' ? 'Download':'') + (data.state == 'IMPORT URL' ? 'Copy CSS':'') + ""
+) : '' }
+${data.sector == 'color' ? 'Copy HEX':'' }
+`;
+
     this.link = `<a href="https://islesys.com/
 ${data.sector == 'icon' ? 'icons':'' }
-">${data.title} from Islesys website</a>`
+${data.sector == 'map' ? 'maps':'' }
+${data.sector == 'dataset' ? 'datasets':'' }
+${data.sector == 'palette' ? 'palettes':'' }
+${data.sector == 'gradient' ? 'gradients':'' }
+${data.sector == 'pattern' ? 'patterns':'' }
+${data.sector == 'font' ? 'fonts':'' }
+${data.sector == 'color' ? 'colors':'' }
+">${data.title} from Islesys website</a>`;
+
   }
 
   ngOnInit(): void {

@@ -1,36 +1,36 @@
-<h1 mat-dialog-title>Submit pattern</h1>
+<h1 mat-dialog-title class="c_primary">Submit pattern</h1>
 <div mat-dialog-content>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Title</mat-label>
     <input matInput placeholder="pattern name" [(ngModel)]="pattern.name" [disabled]="makingChanges">
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Select primary color</mat-label>
     <mat-select [(ngModel)]="pattern.type" [disabled]="makingChanges">
       <mat-option *ngFor="let t of resource.patternType" [value]="t.code" [disabled]="makingChanges"><mat-icon [style.color]="t.color">circle</mat-icon> {{t.name}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" color="warn" class="fullWidth">
+  <mat-form-field appearance="legacy" color="warn" class="fullWidth">
     <mat-label>.pattern_css &#123;</mat-label>
     <textarea rows="3" matInput placeholder="css code with comments here" [(ngModel)]="pattern.data" [disabled]="makingChanges"></textarea>
     <span matSuffix>&#125;</span>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" color="warn" class="fullWidth">
+  <mat-form-field appearance="legacy" color="warn" class="fullWidth">
     <mat-label>.pattern_css &#123;</mat-label>
     <textarea rows="3" matInput placeholder="css code without comments here" [(ngModel)]="pattern.demoCSS" [disabled]="makingChanges"></textarea>
     <span matSuffix>&#125;</span>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Your Name</mat-label>
     <input matInput placeholder="full name" [(ngModel)]="pattern.by" [disabled]="makingChanges">
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Your Contact</mat-label>
     <input matInput placeholder="Phone number" [(ngModel)]="pattern.contact" [disabled]="makingChanges">
     <span matPrefix>{{pattern.dial_code}}</span>

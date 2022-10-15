@@ -5,6 +5,7 @@ import { map, Observable, of, startWith, take } from 'rxjs';
 import { AlgoPatternService } from 'src/app/services/algorithm/algo-pattern.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
+import { DemandComponent } from '../../demand/demand.component';
 import { AddPatternComponent } from './add-pattern/add-pattern.component';
 
 interface PatternModel {
@@ -33,6 +34,8 @@ export class ListPatternsComponent implements OnInit {
   options: string[] = [];
   filteredOptions: Observable<string[]>;
 
+  xxx = "";
+  
   constructor(
     public auth:AuthService,
     public resource: ResourceService,
@@ -72,5 +75,56 @@ export class ListPatternsComponent implements OnInit {
   }
 
   execute(){}
+
+
+  getME(wat:string, name:string, id:string, color:string){
+    let state = "" + 
+    (wat == 'CSS' ? 'CSS PATTERN':'') + 
+    (wat == 'JPEG' ? 'JPEG PATTERN':'') + 
+    (wat == 'HEX' ? 'HEX PATTERN':'');
+    let title = "#" + color + " from " + name;
+
+    const dialogRef = this.dialog.open(DemandComponent, {
+      width: '90%',
+      maxWidth: '750px',
+      data: {
+        id,
+        title: title, state: state,
+        sector:"pattern"
+      },
+      panelClass:"downloadClass"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if(result && result.type == "Private"){
+
+        if(wat == 'CSS'){ this.getCSS() }
+        if(wat == 'JPEG'){ this.getJPEG() }
+        if(wat == 'HEX'){ this.getHEX() }
+
+      }
+      if(wat == 'Community'){
+
+      }
+      if(wat == 'Enterprise'){
+
+      }
+    });
+  }
+
+  getCSS(){
+    // COPY CSS TO CLIPBOARD
+  }
+
+  getJPEG(){
+
+  }
+
+  getHEX(){
+    // DO NOTHING HERE
+  }
+
+  expandME(id:string){}
 
 }

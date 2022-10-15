@@ -1,33 +1,33 @@
-<h1 mat-dialog-title>Submit icon</h1>
+<h1 mat-dialog-title class="c_primary">Submit map</h1>
 <!--div class="demo">
     <div [innerHTML]="getDemo"></div>
 </div-->
 <div mat-dialog-content>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Title</mat-label>
     <input matInput placeholder="map name" [(ngModel)]="map.name" [disabled]="makingChanges">
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Select Type</mat-label>
     <mat-select [(ngModel)]="map.type" [disabled]="makingChanges">
       <mat-option *ngFor="let t of resource.mapList" [value]="t.code" [disabled]="makingChanges">{{t.name}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" color="warn" class="fullWidth">
+  <mat-form-field appearance="legacy" color="warn" class="fullWidth">
     <mat-label>&lt;svg viewBox="0 0 24 24" </mat-label>
     <textarea rows="3" matInput [placeholder]="placeholderIcon" [(ngModel)]="map.data" [disabled]="makingChanges"></textarea>
     <span matSuffix>&lt;/svg&gt;</span>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Your Name</mat-label>
     <input matInput placeholder="full name" [(ngModel)]="map.by" [disabled]="makingChanges">
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="fullWidth">
+  <mat-form-field appearance="legacy" class="fullWidth">
     <mat-label>Your Contact</mat-label>
     <input matInput placeholder="Phone number" [(ngModel)]="map.contact" [disabled]="makingChanges">
     <span matPrefix>{{map.dial_code}}</span>

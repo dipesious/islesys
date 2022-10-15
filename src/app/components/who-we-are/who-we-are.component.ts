@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WhoWeAreComponent implements OnInit {
 
-  constructor() { }
+  loaded = false;
+
+  constructor() { 
+    this.execute()
+  }
 
   ngOnInit(): void {
   }
 
+  execute(){
+    this.loaded = false;
+
+  }
 }

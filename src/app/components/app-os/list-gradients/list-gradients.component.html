@@ -1,4 +1,20 @@
 
+<section class="section1">
+  <div class="controls">
+
+      <!--<div class="third">
+          <button mat-button color="primary" (click)="submitMap()" >Add New</button>
+      </div>-->
+
+      <div class="first">
+        <button mat-button (click)=" xxx = 'Linear' "  ><mat-icon>{{ xxx == 'Linear' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon>Linear gradients</button>
+        <button mat-button (click)=" xxx = 'Radical' "  ><mat-icon>{{ xxx == 'Radical' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon>Radical gradients</button>
+    </div>
+
+  </div>
+</section>
+
+
 <section class="infomative">
   <video class="posterVideo finalPoster"
   [src]="resource.videoOpensourceGradients" 
@@ -14,7 +30,7 @@
       </div>
       <h2 class="knowTitle">The gradients undertaking</h2>
       <p class="knowinfo">We are building an extraordinary library of unique gradients<br>
-          <i><mat-icon class="c_warn">done_outline</mat-icon>HEX</i>
+          <i><mat-icon class="c_warn">done_outline</mat-icon>JPEG</i>
           &nbsp;
           <i><mat-icon class="c_warn">done_outline</mat-icon>CSS</i>
       </p>
@@ -22,7 +38,17 @@
 </section>
 
 
-<section class="section1 textC">
+<section class="section2 textC">
+    <div class="searchRight">
+    <button mat-button class="b_white hide" color="primary" (click)="submitGradient()"><mat-icon>add</mat-icon>New Gradient</button>
+    <button mat-stroked-button [matMenuTriggerFor]="menu"><mat-icon>expand_more</mat-icon>Categories</button>
+    <mat-menu #menu="matMenu" overlapTrigger="true">
+      <div style="max-height: 300px; overflow-y: auto;">
+        <button mat-menu-item (click)=" currentTyp = '' ">All Categories</button>
+        <button mat-menu-item *ngFor="let t of resource.gradientList"  (click)=" currentTyp = t.info ">{{t.name}}</button>
+      </div>
+    </mat-menu>
+    </div>
     <div class="searchLeft">
       <p>
         <mat-form-field class="search" appearance="legacy">
@@ -41,32 +67,20 @@
         </mat-form-field>
       </p>
     </div>
-    <div class="searchRight">
-      <p>
-    <button mat-stroked-button [matMenuTriggerFor]="menu"><mat-icon>expand_more</mat-icon>Categories</button>
-    <mat-menu #menu="matMenu" overlapTrigger="true">
-      <div style="max-height: 300px; overflow-y: auto;">
-        <button mat-menu-item (click)=" currentTyp = '' ">All Categories</button>
-        <button mat-menu-item *ngFor="let t of resource.gradientList"  (click)=" currentTyp = t.info ">{{t.name}}</button>
-      </div>
-    </mat-menu>
-    <button mat-button class="b_white hide" color="primary" (click)="submitGradient()"><mat-icon>add</mat-icon>New Gradient</button>
-      </p>
-    </div>
   </section>
 
-<section class="section2">
+<section class="section3">
 
   <ng-container *ngFor="let x of page.dataO | async">
     <div class="holdPalette"
     *ngIf=" !searching.value || x.name.toLowerCase().includes(searching.value.toLowerCase())" >
         <div class="holdMe" [style]="x.demoCSS">
-          <button mat-button class="download"><mat-icon>download</mat-icon> css</button>
-          <button mat-icon-button><mat-icon>content_copy</mat-icon></button>
-          <button mat-icon-button><mat-icon>view_in_ar</mat-icon></button>
+          <button mat-icon-button (click)=" expandME(x.id) "><mat-icon>view_in_ar</mat-icon></button>
+          <button mat-button class="download" (click)=" getME('JPEG', x.name, x.id, x.data) "><mat-icon>download</mat-icon> jpeg</button>
+          <button mat-button class="download" (click)=" getME('CSS', x.name, x.id, x.data) "><mat-icon>content_copy</mat-icon> css</button>
         </div>
         <div class="holdMine b_white">
-            <p>{{x.name}}</p>
+            <p><a class="c_warn" [routerLink]=" '/view-gradient/' + x.id ">{{x.name}}</a></p>
             <span class="divide"></span>
             <span class="date">{{x.sin.toDate() | date:'dd MMM yyyy'}}</span>
             <button mat-icon-button><mat-icon>
