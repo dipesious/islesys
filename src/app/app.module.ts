@@ -67,6 +67,8 @@ import { WhoWeAreComponent } from './components/who-we-are/who-we-are.component'
 import { FileBugComponent } from './components/file-bug/file-bug.component';
 import { DemandComponent } from './components/demand/demand.component';
 import { AddFontComponent } from './components/app-os/list-fonts/add-font/add-font.component';
+import { PaymentsComponent } from './placeholders/payments/payments.component';
+import { CartComponent } from './components/cart/cart.component';
 
 //import { ScrollingModule } from '@angular/cdk/scrolling';
 
@@ -107,7 +109,9 @@ import { AddFontComponent } from './components/app-os/list-fonts/add-font/add-fo
     VerifyOTPComponent,
     WhoWeAreComponent,
     FileBugComponent,
-    DemandComponent
+    DemandComponent,
+    PaymentsComponent,
+    CartComponent
   ],
   imports: [
     //ScrollingModule,

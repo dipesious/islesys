@@ -4,6 +4,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, of, take } from 'rxjs';
 import { DemandComponent } from 'src/app/components/demand/demand.component';
 import { AuthService } from 'src/app/services/auth.service';
+import { ResourceService } from 'src/app/services/resource.service';
 
 // import { AppAdvertComponent } from 'src/app/components/app-advert/app-advert.component';
 
@@ -16,8 +17,6 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
 
   mySubscription;
 
-  bgInvert = false;
-  bgColor = "";
   icon$: Observable<any> = of();
   sideToggle = false;
   similar$: Observable<any[]> = of();
@@ -25,6 +24,7 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
   constructor(
     public dialog: MatDialog,
     public auth:AuthService,
+    public resource:ResourceService,
     private actRoute: ActivatedRoute,
     private router: Router, 
     // private activatedRoute: ActivatedRoute
@@ -59,7 +59,7 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
   execute(id:string){
     this.icon$ = this.auth.getICON(id).pipe(take(1))
     let name = "Adhesive Bandage"
-    this.similar$ = this.auth.getSIMILAR(id, name).pipe(take(1))
+    this.similar$ = this.auth.getSIMILAR(id, name, 25).pipe(take(1))
   }
 
   getME(wat:string, name:string, id:string){

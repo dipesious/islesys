@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Firestore, collectionData, collection, setDoc, doc, addDoc, limitToLast, orderBy, query, where, limit, updateDoc, docData, Timestamp, serverTimestamp } from '@angular/fire/firestore';
 
 import { Observable, of, switchMap } from 'rxjs';
-import { PaginationService } from './pagination.service';
 
 import { Storage, ref, uploadString } from '@angular/fire/storage';
 import { getDownloadURL, getBlob } from '@firebase/storage';
@@ -14,6 +13,8 @@ import { Auth, authState } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class AuthService {
+
+  dbWALT = "walt";
 
   dbICONS = "icons";
   dbMAPS = "maps";
@@ -264,19 +265,44 @@ export class AuthService {
     return docData(cityRef);
   }
 
-  getSIMILAR(id:string, name:string){
+  getSIMILAR(id:string, name:string, s:number){
     const cityRef = collection(this.fs, this.dbICONS);
     const qu = query(cityRef, 
       where("active", "==", true),
       where("name", "==", name),
       // orderBy("name"), 
-      limit(8)
+      limit(s)
     );
     return collectionData(qu);
   }
 
   getMAP(id:string){
     const cityRef = doc(this.fs, this.dbMAPS, id);
+    return docData(cityRef);
+  }
+
+
+
+
+  submitWALT(data:any){
+    const sTS = this.getServerTimestamp();
+    const cityRefC = collection(this.fs, this.dbWALT);
+    return addDoc(cityRefC, data).then(ref => {
+      const cityRef = doc(this.fs, this.dbWALT, ref.id);
+      return updateDoc(cityRef, {id:ref.id, sin:sTS}).then(() => {
+        return {id: ref.id}
+      })
+    });
+  }
+
+  
+  updateFieldWALT(id:string, fieldX:string, valueX:any){
+    const userRef = doc(this.fs, `${this.dbWALT}/${id}`);
+    return updateDoc(userRef, { [fieldX]:valueX })
+  }
+
+  getWALT(id:string){
+    const cityRef = doc(this.fs, this.dbWALT, id);
     return docData(cityRef);
   }
 

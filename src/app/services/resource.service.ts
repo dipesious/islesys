@@ -19,8 +19,10 @@ export class ResourceService {
   videoOpensourceFonts = "assets/videos/recommend.mp4";
   videoOpensourceColors = "assets/videos/video_colors.mp4";
 
-  scaleMapX = 1;
   nowLang = "English"
+  bgInvert = false; // icon
+  bgColor = ""; // icon
+  scaleMapX = 1; // map
   
   navOpensource = [
     {count:3000, about:"24:24 viewbox", icon:"shape_line", name:"Icons",path:"/icons"},

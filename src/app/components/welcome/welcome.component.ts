@@ -41,6 +41,8 @@ export class WelcomeComponent implements OnInit {
     { cost:49.99, price: 79.99, off: 15, name:'Islesys Army Bag', a:'', f:'', j:'' },
   ]
 
+  imgLoaded:string[] = [];
+
   constructor(
     public auth: AuthService,
     public resource: ResourceService
@@ -67,14 +69,33 @@ export class WelcomeComponent implements OnInit {
 
       if(!mine){
         this.resource.router.navigate(['/sign']);
+
+        if(!what){
+
+        }else{
+          if(what == 'Upgrade'){
+            this.resource.router.navigate(['/sign/upgrade-account']);
+          }else{
+            if(what == 'Apply'){
+              this.resource.router.navigate(['/sign/apply-for-enterprise']);
+            }else{
+              // 'Error'
+            }
+          }
+        }
+
       }else{
         
+        if(what == ''){
+          this.resource.router.navigate(['/cart/continue-upgrade']);
+        }
+        
         if(what == 'Upgrade'){
-          'Upgrade'
+          this.resource.router.navigate(['/cart/upgrade-account']);
         }
 
         if(what == 'Apply'){
-          'Apply'
+          this.resource.router.navigate(['/cart/apply-for-enterprise']);
         }
         
       }

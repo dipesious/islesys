@@ -186,4 +186,10 @@ export class SignitureService {
       return credential;
     }
 
+
+    updateFieldUSER(userID:string, fieldX:string, valueX:any){
+      const userRef = doc(this.firestore, `${'users'}/${userID}`);
+      return updateDoc(userRef, { [fieldX]:valueX })
+    }
+
 }

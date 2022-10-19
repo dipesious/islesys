@@ -22,11 +22,16 @@ import { ManageComponent } from './components/manage/manage.component';
 import { SignComponent } from './placeholders/sign/sign.component';
 import { WhoWeAreComponent } from './components/who-we-are/who-we-are.component';
 import { FileBugComponent } from './components/file-bug/file-bug.component';
+import { CartComponent } from './components/cart/cart.component';
+import { PaymentsComponent } from './placeholders/payments/payments.component';
 
 const routes: Routes = [
 
   {path:'', redirectTo:'/explore', pathMatch:"full"},
   {path:'sign', component: SignComponent},
+  {path:'sign/:go', component: SignComponent},
+  {path:'cart/:pack', component: CartComponent},
+  {path:'order-status/:id', component: PaymentsComponent},
 
   {path:'', component: ManageComponent, children:[
       

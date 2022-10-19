@@ -21,7 +21,7 @@
               background-size: cover;
               margin: 0;
               padding: 0 0 16px 0;
-              img{
+              .loading, img{
                   width: -webkit-fill-available; min-width: 80%;
                   transform: scale(1); transition-duration: .3s;
                   height: 160px; line-height: 160px; text-align: center;
@@ -29,7 +29,9 @@
                   background: rgb(41 98 255 / 20%);
                   border-radius: 8px 8px 16px 16px;
                   overflow: hidden;
+                  display: none;
               }
+              .loadShow{display: inline-block;}
               h2{padding: 0 16px; margin: 0;}
               p{padding: 0 16px; margin: 0;}
           }
@@ -48,6 +50,21 @@
     }
   }
   
+
+
+
+.sectionZ{  
+  background: linear-gradient(-45deg, #8bc34a 82%, rgba(139, 195, 74, 0.4) 18%); color: #ffffff;
+  height: 120px;
+  margin: 24px 0;
+  width: -webkit-fill-available;
+  .about{
+    display: flex; align-items:center; justify-content: center;height: 120px;
+    h2{padding: 0 8px; margin:0; text-align: center; background: rgb(0 0 0 / 38%);}
+    img{width: 32px; margin: 0 4px;}
+  }
+}
+
 
 
 .section3{

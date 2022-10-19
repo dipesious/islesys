@@ -7,7 +7,6 @@ import { AlgoMapService } from './../../services/algorithm/algo-map.service';
 import { AlgoPaletteService } from './../../services/algorithm/algo-palette.service';
 import { AlgoPatternService } from './../../services/algorithm/algo-pattern.service';
 import { AuthService } from './../../services/auth.service';
-import { PaginationService } from './../../services/pagination.service';
 import { ResourceService } from './../../services/resource.service';
 
 @Component({
@@ -127,7 +126,8 @@ export class ManageComponent {
   } 
 
   activeME(isActive:any, p:string){
-    return (isActive ||
+    return (
+    isActive ||
 
     p == '/explore' && this.resource.router.url.includes('/icons') ||
     p == '/explore' && this.resource.router.url.includes('/maps') ||

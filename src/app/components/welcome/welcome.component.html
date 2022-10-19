@@ -3,14 +3,15 @@
   <div class="apps" *ngFor="let x of resource.navOpensource">
       <a class="appsHold" [routerLink]="x.path"><!-- style="background-image: url(assets/backbanner.png);" -->
           <div class="anim" >
-          <img *ngIf="x.name == 'Icons'" alt="Recommend One" src="assets/posters/poster_icons.png" />
-          <img *ngIf="x.name == 'Maps'" alt="Recommend One" src="assets/posters/poster_maps.png" />
-          <img *ngIf="x.name == 'Datasets'" alt="Recommend One" src="assets/posters/poster_datasets.png" />
-          <img *ngIf="x.name == 'Palettes'" alt="Recommend One" src="assets/posters/poster_palettes.png" />
-          <img *ngIf="x.name == 'Gradients'" alt="Recommend One" src="assets/posters/poster_gradients.png" />
-          <img *ngIf="x.name == 'Patterns'" alt="Recommend One" src="assets/posters/poster_patterns.png" />
-          <img *ngIf="x.name == 'Fonts'" alt="Recommend One" src="assets/posters/poster_fonts.png" />
-          <img *ngIf="x.name == 'Colors'" alt="Recommend One" src="assets/posters/poster_colors.png" />
+            <div class="loading b_growth" [class.loadShow]="!imgLoaded.includes(x.name)" ></div>
+          <img [class.loadShow]="imgLoaded.includes(x.name)" (load)="imgLoaded.push(x.name)" *ngIf="x.name == 'Icons'" alt="Recommend One" src="assets/posters/poster_icons.png" />
+          <img [class.loadShow]="imgLoaded.includes(x.name)" (load)="imgLoaded.push(x.name)" *ngIf="x.name == 'Maps'" alt="Recommend One" src="assets/posters/poster_maps.png" />
+          <img [class.loadShow]="imgLoaded.includes(x.name)" (load)="imgLoaded.push(x.name)" *ngIf="x.name == 'Datasets'" alt="Recommend One" src="assets/posters/poster_datasets.png" />
+          <img [class.loadShow]="imgLoaded.includes(x.name)" (load)="imgLoaded.push(x.name)" *ngIf="x.name == 'Palettes'" alt="Recommend One" src="assets/posters/poster_palettes.png" />
+          <img [class.loadShow]="imgLoaded.includes(x.name)" (load)="imgLoaded.push(x.name)" *ngIf="x.name == 'Gradients'" alt="Recommend One" src="assets/posters/poster_gradients.png" />
+          <img [class.loadShow]="imgLoaded.includes(x.name)" (load)="imgLoaded.push(x.name)" *ngIf="x.name == 'Patterns'" alt="Recommend One" src="assets/posters/poster_patterns.png" />
+          <img [class.loadShow]="imgLoaded.includes(x.name)" (load)="imgLoaded.push(x.name)" *ngIf="x.name == 'Fonts'" alt="Recommend One" src="assets/posters/poster_fonts.png" />
+          <img [class.loadShow]="imgLoaded.includes(x.name)" (load)="imgLoaded.push(x.name)" *ngIf="x.name == 'Colors'" alt="Recommend One" src="assets/posters/poster_colors.png" />
           <h2 class="c_warn">{{x.name}}</h2>
           <p class="c_black">{{x.about}}</p>
           </div>
@@ -125,7 +126,7 @@
             </ul>
             <span class="pricing-price c_growth"><sup>$</sup>499</span>
             <ul class="pricing-features">
-            <li class="pricing-features-item">$499 per year</li>
+            <li class="pricing-features-item">$499 per month</li>
             </ul>
             <a (click)=" this.goPack('Apply') " mat-stroked-button color="warn" class="pricing-button nFont">Apply</a>
           </div>
@@ -142,19 +143,22 @@
 
 
 
-<section class="sectionZ" style="    
-background: linear-gradient(-45deg, #8bc34a 82%, transparent 18%); color: #ffffff;
-height: 120px;
-margin: 24px 0;
-width: -webkit-fill-available;">
-<div style="display: flex; align-items:center; justify-content: center;height: 120px;">
-  <h2 style="padding: 0; margin:0;">Asia's Largest<br>Opensource Project</h2>
+<section class="sectionZ">
+<div class="about">
+  <h2>Asia's Largest Content Library
+    <br>
+    <img src="assets/nations/india.png" />
+    <img src="assets/nations/japan.png" />
+    <img src="assets/nations/israel.png" />
+    <img src="assets/nations/china.png" />
+    <img src="assets/nations/south-korea.png" />
+  </h2>
 </div>
 </section>
 
 
 
-<section class="section-products">
+<section class="section-products" *ngIf="false">
   <div class="container">
     
       <div class="row">
@@ -198,36 +202,36 @@ width: -webkit-fill-available;">
 
   <div class="col col-50 col-sm-100">
     <div class="cardX card1 c_white">
-      <h2>Customize before downloading</h2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum impedit necessitatibus ducimus tempore, tenetur possimus officia recusandae aut qui quidem, perspiciatis, soluta dolor quis. Dolorem saepe porro est deleniti illo.</p>
+      <h2><mat-icon>tips_and_updates</mat-icon> Customize before downloading</h2>
+      <p>Continuesly integrating customization methods for undertaking.</p>
     </div>
   </div>
 
   <div class="col col-50 col-sm-100">
     <div class="cardX card2 c_white">
-      <h2>Choose every possible format</h2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum impedit necessitatibus ducimus tempore, tenetur possimus officia recusandae aut qui quidem, perspiciatis, soluta dolor quis. Dolorem saepe porro est deleniti illo.</p>
+      <h2><mat-icon>tips_and_updates</mat-icon> Choose every possible format</h2>
+      <p>We provide diverse aligment to suit your needs such as file format.</p>
     </div>
   </div>
 
   <div class="col col-30 col-sm-100">
     <div class="cardX card3 c_white">
-      <h2>Recognition</h2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum impedit necessitatibus ducimus tempore, tenetur possimus officia recusandae aut qui quidem, perspiciatis, soluta dolor quis. Dolorem saepe porro est deleniti illo.</p>
+      <h2><mat-icon>tips_and_updates</mat-icon> Recognition</h2>
+      <p>Looking to reach more people so you could be our voice.</p>
     </div>
   </div>
 
   <div class="col col-40 col-sm-100">
     <div class="cardX card4 c_white">
-      <h2>Communities Benifit</h2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum impedit necessitatibus ducimus tempore, tenetur possimus officia recusandae aut qui quidem, perspiciatis, soluta dolor quis. Dolorem saepe porro est deleniti illo.</p>
+      <h2><mat-icon>tips_and_updates</mat-icon> Communities Benifit</h2>
+      <p>We provide single licence with minimal charges to helps you save.</p>
     </div>
   </div>
 
   <div class="col col-30 col-sm-100">
     <div class="cardX card5 c_white">
-      <h2>Simplicity</h2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum impedit necessitatibus ducimus tempore, tenetur possimus officia recusandae aut qui quidem, perspiciatis, soluta dolor quis. Dolorem saepe porro est deleniti illo.</p>
+      <h2><mat-icon>tips_and_updates</mat-icon> Simplicity</h2>
+      <p>We try to keep things simple so that even a child could understand.</p>
     </div>
   </div>
 

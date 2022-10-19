@@ -1,0 +1,23 @@
+<div class="body" *ngIf="payment$ | async as payment">
+
+      <div class="card">
+      <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+        <mat-icon class="loading" *ngIf=" payment.status == 0 ">{{ 'hourglass_top' }}</mat-icon>
+        <mat-icon class="checkmark" *ngIf=" payment.status > 0 ">{{ 'verified' }}</mat-icon>
+        <mat-icon class="failed" *ngIf=" payment.status < 0 ">{{ 'close' }}</mat-icon>
+      </div>
+        <h1
+        [class.loading]="payment.status == 0"
+        [class.checkmark]="payment.status > 0"
+        [class.failed]="payment.status < 0"
+        >{{ payment.status > 0 ? 'Success':''}}{{ payment.status < 0 ? 'Failed':''}}{{ payment.status == 0 ? 'Wait for Sec':''}}</h1> 
+        <p>We received your purchase request;<br> 
+            <span *ngIf="payment.status == 0">we'll take a movement!</span>
+            <span *ngIf="payment.status > 0">we'll add !</span>
+            <span *ngIf="payment.status < 0">email us incase of issues!</span>
+        </p>
+        <button mat-button color="primary" class="dFont" *ngIf=" payment.status > 0 " routerLink="/explore">Next</button>
+        <button mat-button color="primary" class="dFont" *ngIf=" payment.status < 0 " routerLink="/cart/upgrade-account">Please Retry</button>
+      </div>
+
+</div>

@@ -5,57 +5,85 @@
         <!-- <p class="icon_type"><span>#{{icon.fill}}</span><span>#{{icon.tone}}</span><span>#{{icon.tone}}</span></p> -->
     </div>
 <!--
-    [class.b_white]="!bgInvert" [class.b_black]="bgInvert"
+    [class.b_white]="!resource.bgInvert" [class.b_black]="resource.bgInvert"
 -->
-    <div class="demo b_white"
-    [class.c_white]="bgInvert" [class.c_black]="!bgInvert" 
+    <div class="demo"
+
+    [class.whiteX]=" !resource.bgInvert "
+    [class.blackX]=" resource.bgInvert "
+
+    [class.redX]=" resource.bgColor == 'red' "
+    [class.orangeX]=" resource.bgColor == 'orange' "
+    [class.yellowX]=" resource.bgColor == 'yellow' "
+    [class.greenX]=" resource.bgColor == 'green' "
+    [class.blueX]=" resource.bgColor == 'blue' "
+    [class.indigoX]=" resource.bgColor == 'indigo' "
+    [class.violetX]=" resource.bgColor == 'violet' "
+
+    [class.c_white]="resource.bgInvert" [class.c_black]="!resource.bgInvert" 
 
     >
         <div class="colors">
-        <p class="icon_type"><span>#{{icon.fill}}</span><span>#{{icon.tone}}</span><span>#{{icon.tone}}</span></p>
+        <p class="icon_type" 
+
+        [class.whiteD]="resource.bgInvert" 
+        [class.blackD]="!resource.bgInvert"
+
+        [class.red]=" resource.bgColor == 'red' "
+        [class.orange]=" resource.bgColor == 'orange' "
+        [class.yellow]=" resource.bgColor == 'yellow' "
+        [class.green]=" resource.bgColor == 'green' "
+        [class.blue]=" resource.bgColor == 'blue' "
+        [class.indigo]=" resource.bgColor == 'indigo' "
+        [class.violet]=" resource.bgColor == 'violet' "
+
+        ><span>#{{icon.fill}}</span><span>#{{icon.tone}}</span><span>#Insider</span></p>
         </div>
 
-        <div class="icon"  (click)="bgInvert=!bgInvert"
-        [class.f_white]="bgInvert" [class.f_black]="!bgInvert"
+        <div class="icon"  (click)="resource.bgInvert=!resource.bgInvert"
+        [class.f_white]="resource.bgInvert" 
+        [class.f_black]="!resource.bgInvert"
 
-    [class.redB]=" bgColor == 'red' "
-    [class.orangeB]=" bgColor == 'orange' "
-    [class.yellowB]=" bgColor == 'yellow' "
-    [class.greenB]=" bgColor == 'green' "
-    [class.blueB]=" bgColor == 'blue' "
-    [class.indigoB]=" bgColor == 'indigo' "
-    [class.violetB]=" bgColor == 'violet' "
+    [class.redB]=" resource.bgColor == 'red' "
+    [class.orangeB]=" resource.bgColor == 'orange' "
+    [class.yellowB]=" resource.bgColor == 'yellow' "
+    [class.greenB]=" resource.bgColor == 'green' "
+    [class.blueB]=" resource.bgColor == 'blue' "
+    [class.indigoB]=" resource.bgColor == 'indigo' "
+    [class.violetB]=" resource.bgColor == 'violet' "
 
-    [class.blackB]=" bgInvert && bgColor == '' "
-    [class.whiteB]=" !bgInvert && bgColor == '' "
+    [class.blackB]=" resource.bgInvert && resource.bgColor == '' "
+    [class.whiteB]=" !resource.bgInvert && resource.bgColor == '' "
 
         [innerHtml]="icon.data | safeHtml"></div>
 
-        <div class="colors">
-        <button mat-icon-button [class.c_black]=" bgColor == 'red' " (click)=" bgColor !== 'red' ? bgColor = 'red': bgColor = '' " class="red"><mat-icon>format_color_fill</mat-icon></button>
-        <button mat-icon-button [class.c_black]=" bgColor == 'orange' " (click)=" bgColor !== 'orange' ? bgColor = 'orange': bgColor = '' " class="orange"><mat-icon>format_color_fill</mat-icon></button>
-        <button mat-icon-button [class.c_black]=" bgColor == 'yellow' " (click)=" bgColor !== 'yellow' ? bgColor = 'yellow': bgColor = '' " class="yellow"><mat-icon>format_color_fill</mat-icon></button>
-        <button mat-icon-button [class.c_black]=" bgColor == 'green' " (click)=" bgColor !== 'green' ? bgColor = 'green': bgColor = '' " class="green"><mat-icon>format_color_fill</mat-icon></button>
-        <button mat-icon-button [class.c_black]=" bgColor == 'blue' " (click)=" bgColor !== 'blue' ? bgColor = 'blue': bgColor = '' " class="blue"><mat-icon>format_color_fill</mat-icon></button>
-        <button mat-icon-button [class.c_black]=" bgColor == 'indigo' " (click)=" bgColor !== 'indigo' ? bgColor = 'indigo': bgColor = '' " class="indigo"><mat-icon>format_color_fill</mat-icon></button>
-        <button mat-icon-button [class.c_black]=" bgColor == 'violet' " (click)=" bgColor !== 'violet' ? bgColor = 'violet': bgColor = '' " class="violet"><mat-icon>format_color_fill</mat-icon></button>
-        </div>
+        <!-- <div class="colors">
+        <button mat-icon-button [class.c_black]=" resource.bgColor == 'red' " (click)=" resource.bgColor !== 'red' ? resource.bgColor = 'red': resource.bgColor = '' " class="red"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_black]=" resource.bgColor == 'orange' " (click)=" resource.bgColor !== 'orange' ? resource.bgColor = 'orange': resource.bgColor = '' " class="orange"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_black]=" resource.bgColor == 'yellow' " (click)=" resource.bgColor !== 'yellow' ? resource.bgColor = 'yellow': resource.bgColor = '' " class="yellow"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_black]=" resource.bgColor == 'green' " (click)=" resource.bgColor !== 'green' ? resource.bgColor = 'green': resource.bgColor = '' " class="green"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_black]=" resource.bgColor == 'blue' " (click)=" resource.bgColor !== 'blue' ? resource.bgColor = 'blue': resource.bgColor = '' " class="blue"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_black]=" resource.bgColor == 'indigo' " (click)=" resource.bgColor !== 'indigo' ? resource.bgColor = 'indigo': resource.bgColor = '' " class="indigo"><mat-icon>format_color_fill</mat-icon></button>
+        <button mat-icon-button [class.c_black]=" resource.bgColor == 'violet' " (click)=" resource.bgColor !== 'violet' ? resource.bgColor = 'violet': resource.bgColor = '' " class="violet"><mat-icon>format_color_fill</mat-icon></button>
+        </div> -->
     </div>
 
     <div class="code">
-        <textarea placeholder="icon" [value]="icon.data"></textarea>
-        <p><mat-slide-toggle [(ngModel)]="sideToggle" color="warn"><b class="sideToggle">{{!sideToggle?'Do you Agree to ':'i Agree to '}}</b></mat-slide-toggle>&nbsp;<a href="#" class="c_warn">the License Agreement{{!sideToggle?'?':'.'}}</a></p>
+        <p><mat-slide-toggle [(ngModel)]="sideToggle" color="warn"><b class="sideToggle">{{!sideToggle?'Do you Agree to ':'i Agree to '}}</b></mat-slide-toggle>&nbsp;<a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/LICENSE" class="c_warn">the License Agreement{{!sideToggle?'?':'.'}}</a></p>
+        <textarea *ngIf="sideToggle" placeholder="icon" [value]="icon.data" readonly></textarea>
     </div>
     <div class="download textC">
         <button mat-flat-button class="c_primary" (click)=" getME('SVG', icon.name, icon.id) ">SVG</button>
         <button mat-flat-button class="c_primary" (click)=" getME('PNG', icon.name, icon.id) ">PNG</button>
         <button mat-flat-button class="c_primary" (click)=" getME('WEBP', icon.name, icon.id) ">WEBP</button>
-        <button mat-flat-button class="c_primary" (click)=" getME('COPY', icon.name, icon.id) "><mat-icon>content_copy</mat-icon></button>
+        <button mat-flat-button class="c_primary" (click)=" getME('COPY', icon.name, icon.id) " *ngIf="sideToggle" ><mat-icon>content_copy</mat-icon></button>
     </div>
 
 
 
     <div class="recommended textC" style="fill: #222222;">
+        <h1 class="icon_name">Explore {{icon.name}} icons</h1>
+
         <div class="icon" *ngFor="let x of similar$ | async"
         [routerLink]=" '/free-icon/' + x.id"
         [innerHtml]="x.data | safeHtml">

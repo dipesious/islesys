@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
-import { PaginationService } from 'src/app/services/pagination.service';
 import { ResourceService } from 'src/app/services/resource.service';
 import { PaletteModel } from 'src/app/universal.model';
 

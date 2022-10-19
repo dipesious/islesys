@@ -1,6 +1,7 @@
 
   
     <div class="containerX" [class.sign-up-mode]="signUp">
+
       <div class="forms-containerX">
         <div class="signin-signup">
 
@@ -16,7 +17,7 @@
             </div>
             <div class="input-field">
               <mat-icon><span class="phoneCC">{{cc}}</span></mat-icon>
-              <input [disabled]="sign.makingChanges" [(ngModel)]="userLog.phone" type="phone" value="+91" name="phone" autocomplete="phone" placeholder="Phone" required="yes">
+              <input [disabled]="sign.makingChanges" [(ngModel)]="userLog.phone" type="phone" value="+91" name="phone" autocomplete="phone" placeholder="Phone Number" required="yes">
               <mat-icon [matMenuTriggerFor]="nat">unfold_more</mat-icon>
             </div>
             <div class="input-field">
@@ -61,23 +62,23 @@
               </select> -->
             <div class="input-field">
               <mat-icon><span class="phoneCC">{{cc}}</span></mat-icon>
-              <input [disabled]="sign.makingChanges" [(ngModel)]="userSign.phone" type="phone" value="+91" name="phone" autocomplete="phone" placeholder="Phone" required="yes">
+              <input [disabled]="sign.makingChanges" [(ngModel)]="userSign.phone" type="phone" value="+91" name="phone" autocomplete="phone" placeholder="Phone Number" required="yes">
               <mat-icon [matMenuTriggerFor]="nat">unfold_more</mat-icon>
             </div>
             <div class="input-field">
                 <mat-icon>mail</mat-icon>
-              <input [disabled]="sign.makingChanges" [(ngModel)]="userSign.email" type="email" name="email" autocomplete="email" placeholder="Email" required="yes">
+              <input [disabled]="sign.makingChanges" [(ngModel)]="userSign.email" type="email" name="email" autocomplete="email" placeholder="Email Address" required="yes">
             </div>
             <div class="input-field">
                 <mat-icon>verified_user</mat-icon>
-              <input [disabled]="sign.makingChanges" [(ngModel)]="userSign.pass" type="password" name="password" autocomplete="current-password" placeholder="Password" id="id_reg" required="yes">
+              <input [disabled]="sign.makingChanges" [(ngModel)]="userSign.pass" [type]="!pass ? 'password' : 'text'" name="password" autocomplete="current-password" placeholder="Password" id="id_reg" required="yes">
               <mat-icon (click)="pass = !pass" >key</mat-icon>
             </div>
   
             <label class="check">
               <input [disabled]="sign.makingChanges" [(ngModel)]="userSign.accept" name="accept" type="checkbox">
               &nbsp;
-              <span class="checkmark">I accept the <a href="#">terms of services</a></span>
+              <span class="checkmark">I accept the <a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/TERMS-OF-SERVICE">terms of services</a></span>
             </label>
 
             <input [disabled]="sign.makingChanges" type="submit" [value]=" !sign.makingChanges ? 'Create account' : 'Processing...' " class="btn solid">
@@ -90,6 +91,7 @@
 
         </div>
       </div>
+
       <div class="panels-containerX">
         <div class="panel left-panel">
           <div class="content">
@@ -98,7 +100,7 @@
             <button class="btn transparent" (click)="signUp = !signUp" id="sign-up-btn">Register</button>
           </div>
           <div class="image imageLOG">
-            <img src="assets/logo.svg" class="logIMG" alt="">
+            <img src="assets/logoSign.png" class="logIMG" alt="">
           </div>
         </div>
   
@@ -109,10 +111,11 @@
             <button class="btn transparent" (click)="signUp = !signUp" id="sign-in-btn">Sign in</button>
           </div>
           <div class="image imageSIGN">
-            <img src="assets/logo.svg" class="signIMG" alt="">
+            <img src="assets/logoSign.png" class="signIMG" alt="">
           </div>
         </div>
       </div>
+
     </div>
   
     <div id="recaptcha-container"></div>
