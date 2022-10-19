@@ -54,14 +54,17 @@
 
 
 .sectionZ{  
-  background: linear-gradient(-45deg, #8bc34a 82%, rgba(139, 195, 74, 0.4) 18%); color: #ffffff;
+  background: linear-gradient(-45deg, #8bc34a 82%, rgba(139, 195, 74, 0.4) 0%); 
+  color: #ffffff;
   height: 120px;
-  margin: 24px 0;
+  margin: 24px 8px;
   width: -webkit-fill-available;
   .about{
-    display: flex; align-items:center; justify-content: center;height: 120px;
-    h2{padding: 0 8px; margin:0; text-align: center; background: rgb(0 0 0 / 38%);}
-    img{width: 32px; margin: 0 4px;}
+    display: flex;  justify-content: center;height: 120px;align-items:center;
+    .we{background: rgb(41 98 255 / 20%);
+      h2{padding: 0 8px; margin:4px 0; text-align: center;}
+      img{width: 22px; margin: 2px 4px;vertical-align: middle;}
+    }
   }
 }
 
