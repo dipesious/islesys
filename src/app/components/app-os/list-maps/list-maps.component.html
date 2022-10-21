@@ -141,7 +141,7 @@
         <ul class="b_white">
             <li *ngFor="let x of cityMaps">
                 <p>
-                    <a class="c_warn" [routerLink]=" '/edit-map/' + x.id">{{x.title}}</a>
+                    <a class="c_warn" [routerLink]=" '/edit-map/' + x.id">{{x.title}}, {{x.about}}</a>
                     <span class="divide"></span>
                     <b class="soon" *ngIf="!x.id">COMING SOON</b>
                 </p>
