@@ -10,7 +10,7 @@ export const environment = {
     measurementId: "G-698TG3HDX8"
   },
   
-  server:"",
+  server:"https://islesys.com",
 
   production: true
 };
