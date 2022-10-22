@@ -95,8 +95,8 @@ app.post('/api/foreign-apps/contact/:id', (req, res) => {
         // code:errors.Forbidden, //route
         data:null, info:"Please post valid data"
     });
-  }else{
-    return admin.firestore().collection('contacts').doc(req.params.id).create({
+  }else{ //.doc(req.params.id)
+    return admin.firestore().collection('contacts').add({
       from: req.params.id,
       name: req.body.name,
       email: req.body.email, phone: req.body.phone,

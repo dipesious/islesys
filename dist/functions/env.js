@@ -1,5 +1,5 @@
 module.exports = {
-    production: false,
+    production: true,
 
     YOUR_DOMAIN: 'http://localhost:5001/islesys-79de1/us-central1/server_global',
     YOUR_CLIENT: 'http://localhost:4200',
