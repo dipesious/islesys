@@ -3,7 +3,7 @@
 <section class="section1">
     <div class="mapEditor" [style]=" (!addBackground ? '':'background: linear-gradient(to left, #2B32B2, #1488CC);') ">
 
-<div class="customizer" #me [style]=" ('transform:scale(' + resource.scaleMapX + ');')" (click)="goWith($event)" 
+<div class="customizer" #me [style]=" ('transform: translate(' + resource.moveMapLR + 'px, ' + resource.moveMapUD + 'px) scale(' + resource.scaleMapX + ');')" (click)="goWith($event)" 
 [innerHtml]="svgMap | safeHtml"></div>
 
 

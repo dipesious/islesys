@@ -88,6 +88,30 @@ app.post(`/api/create-checkout-session/:countryCode`, async (req, res) => {
 });
 */
 
+app.post('/api/native/contact/:id', (req, res) => {
+  if(!req.params.id || !req.body.name || !req.body.email || !req.body.title || !req.body.about ){
+    res.json({ 
+        success:true, status:200, //http
+        // code:errors.Forbidden, //route
+        data:null, info:"Please post valid data"
+    });
+  }else{ //.doc(req.params.id)
+    return admin.firestore().collection('contacts').add({
+      from: req.params.id,
+      name: req.body.name,
+      email: req.body.email,
+      title: req.body.title,
+      about: req.body.about,
+    }).then(() => {
+      res.json({ 
+          success:true, status:200, //http
+          // code:errors.Forbidden, //route
+          data:null, info:"OK"
+      });
+    })
+  }
+})
+
 app.post('/api/foreign-apps/contact/:id', (req, res) => {
   if(!req.params.id || !req.body.name || !req.body.email || !req.body.phone || !req.body.about ){
     res.json({ 
@@ -100,6 +124,7 @@ app.post('/api/foreign-apps/contact/:id', (req, res) => {
       from: req.params.id,
       name: req.body.name,
       email: req.body.email, phone: req.body.phone,
+      title:"foreign",
       about: req.body.about,
     }).then(() => {
       res.json({ 

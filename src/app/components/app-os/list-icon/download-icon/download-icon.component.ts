@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, of, take } from 'rxjs';
 import { DemandComponent } from 'src/app/components/demand/demand.component';
@@ -27,6 +28,7 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
     public resource:ResourceService,
     private actRoute: ActivatedRoute,
     private router: Router, 
+    private snackBar: MatSnackBar,
     // private activatedRoute: ActivatedRoute
   ) {
 
@@ -62,7 +64,15 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
     this.similar$ = this.auth.getSIMILAR(id, name, 25).pipe(take(1))
   }
 
-  getME(wat:string, name:string, id:string){
+  getME(wat:string, name:string, id:string, data:any){
+    if(!this.sideToggle){
+      let mess = "You need to accept terms of service.";
+      this.snackBar.open(mess, "", {
+        horizontalPosition: "center", verticalPosition: "bottom", 
+        duration: 2000,
+        panelClass:"c_white" })
+    }else{
+
     let state = "" + 
     (wat == 'COPY' ? 'COPY ICON':'') + 
     (wat == 'SVG' ? 'SVG ICON':'') + 
@@ -82,32 +92,120 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-      if(result && result.type == "Private"){
 
-        if(wat == 'SVG'){ this.getSVG() }
-        if(wat == 'PNG'){ this.getPNG() }
-        if(wat == 'WEBP'){ this.getWEBP() }
+      if(result?.type == "Private"){
+        let newData = `<svg fill="${ '' +
+        ( !this.resource.fgColor && this.resource.bgInvert ? '#ffffff' : '' ) +
+        ( !this.resource.fgColor && !this.resource.bgInvert ? '#000000' : '' ) +
 
+        ( this.resource.fgColor == 'red' ? '#f44336' : '' ) +
+        ( this.resource.fgColor == 'orange' ? '#ff9800' : '' ) +
+        ( this.resource.fgColor == 'yellow' ? '#ffeb3b' : '' ) +
+        ( this.resource.fgColor == 'green' ? '#4caf50' : '' ) +
+        ( this.resource.fgColor == 'blue' ? '#3f51b5' : '' ) +
+        ( this.resource.fgColor == 'indigo' ? '#9c27b0' : '' ) +
+        ( this.resource.fgColor == 'violet' ? '#ee82ee' : '' ) +
+
+        '' }" ${ data.split("<svg")[1] }`;
+        // console.log(newData);
+
+        if(wat == 'SVG'){ this.getSVG(id, name, newData) }
+        if(wat == 'PNG'){ this.getPNG(id, name, newData) }
+        if(wat == 'WEBP'){ this.getWEBP(id, name, newData) }
+
+        if(wat == 'COPY'){ this.resource.copyCLIPBOARD(data) }
       }
-      if(wat == 'Community'){
 
+      if(result?.type == 'Community'){
+        this.router.navigate(['/cart/upgrade-account']);
       }
-      if(wat == 'Enterprise'){
-
+      if(result?.type == 'Enterprise'){
+        this.router.navigate(['/cart/apply-for-enterprise']);
+      }
+      if(result?.type == 'getHelp'){
+        this.router.navigate(['/getHelp/icons']);
       }
     });
-  }
 
-  getSVG(){
-
-  }
-
-  getPNG(){
+    }
 
   }
 
-  getWEBP(){
-
+  getSVG(id:string, title:string, dataSVG:string){
+var svgBlob = new Blob([dataSVG], {type:"image/svg+xml;charset=utf-8"});
+var svgUrl = URL.createObjectURL(svgBlob);
+var downloadLink = document.createElement("a");
+downloadLink.href = svgUrl;
+downloadLink.download = id + "_" + title + ".svg";
+document.body.appendChild(downloadLink);
+downloadLink.click();
+document.body.removeChild(downloadLink);
   }
+
+  getPNG(id:string, title:string, dataSVG:any){
+  const svg = dataSVG;
+
+  const url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
+  const svgImage = document.createElement('img');
+  document.body.appendChild(svgImage);
+  svgImage.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = svgImage.clientWidth;
+    canvas.height = svgImage.clientHeight;
+    const canvasCtx:any = canvas.getContext('2d');
+    canvasCtx.drawImage(svgImage, 0, 0);
+    const imgData = canvas.toDataURL('image/png');
+    // console.log(imgData)
+    // return imgData;
+    // callback(imgData);
+
+
+    var downloadLink = document.createElement("a");
+    downloadLink.href = imgData;
+    downloadLink.download = id + "_" + title + ".png";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+
+
+
+    document.body.removeChild(svgImage);
+  };
+  svgImage.src = url;
+  }
+
+  getWEBP(id:string, title:string, dataSVG:any){
+    const svg = dataSVG;
+  
+    const url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
+    const svgImage = document.createElement('img');
+    document.body.appendChild(svgImage);
+    svgImage.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = svgImage.clientWidth;
+      canvas.height = svgImage.clientHeight;
+      const canvasCtx:any = canvas.getContext('2d');
+      canvasCtx.drawImage(svgImage, 0, 0);
+      const imgData = canvas.toDataURL('image/webp');
+      // console.log(imgData)
+      // return imgData;
+      // callback(imgData);
+  
+  
+      var downloadLink = document.createElement("a");
+      downloadLink.href = imgData;
+      downloadLink.download = id + "_" + title + ".webp";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+  
+  
+  
+      document.body.removeChild(svgImage);
+    };
+    svgImage.src = url;
+  }
+
 
 }
+

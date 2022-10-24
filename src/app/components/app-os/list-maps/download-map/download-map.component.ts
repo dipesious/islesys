@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, of, take } from 'rxjs';
 import { DemandComponent } from 'src/app/components/demand/demand.component';
@@ -82,6 +83,7 @@ export class DownloadMapComponent implements OnInit {
     public dialog: MatDialog,
     public resource: ResourceService,
     private actRoute: ActivatedRoute,
+    private snackBar: MatSnackBar,
     private router: Router
   ) {
 
@@ -243,6 +245,14 @@ if(x){
 
 
   getME(wat:string, name:string, id:string){
+    if(!this.sideToggle){
+      let mess = "You need to accept terms of service.";
+      this.snackBar.open(mess, "", {
+        horizontalPosition: "center", verticalPosition: "bottom", 
+        duration: 2000,
+        panelClass:"c_white" })
+    }else{
+      
     let state = "" + 
     (wat == 'SVG' ? 'SVG ICON':'') + 
     (wat == 'JPEG' ? 'PNG ICON':'') + 
@@ -263,36 +273,135 @@ if(x){
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       if(result && result.type == "Private"){
+        let newData = this.me.nativeElement.innerHTML;
+        // console.log(newData)
 
-        if(wat == 'SVG'){ this.getSVG() }
-        if(wat == 'JPEG'){ this.getJPEG() }
-        if(wat == 'PNG'){ this.getPNG() }
-        if(wat == 'WEBP'){ this.getWEBP() }
+        if(wat == 'SVG'){ this.getSVG(id, name, newData) }
+        if(wat == 'JPEG'){ this.getJPEG(id, name, newData) }
+        if(wat == 'PNG'){ this.getPNG(id, name, newData) }
+        if(wat == 'WEBP'){ this.getWEBP(id, name, newData) }
 
       }
       if(wat == 'Community'){
-
+        this.router.navigate(['/cart/upgrade-account']);
       }
       if(wat == 'Enterprise'){
-
+        this.router.navigate(['/cart/apply-for-enterprise']);
+      }
+      if(result?.type == 'getHelp'){
+        this.router.navigate(['/getHelp/maps']);
       }
     });
-  }
 
-  getSVG(){
-
-  }
-
-  getJPEG(){
+    }
 
   }
 
-  getPNG(){
-
+  getSVG(id:string, title:string, dataSVG:any){
+var svgBlob = new Blob([dataSVG], {type:"image/svg+xml;charset=utf-8"});
+var svgUrl = URL.createObjectURL(svgBlob);
+var downloadLink = document.createElement("a");
+downloadLink.href = svgUrl;
+downloadLink.download = id + "_" + title + ".svg";
+document.body.appendChild(downloadLink);
+downloadLink.click();
+document.body.removeChild(downloadLink);
   }
 
-  getWEBP(){
+  getJPEG(id:string, title:string, dataSVG:any){
+  const svg = dataSVG;
 
+  const url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
+  const svgImage = document.createElement('img');
+  document.body.appendChild(svgImage);
+  svgImage.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = svgImage.clientWidth;
+    canvas.height = svgImage.clientHeight;
+    const canvasCtx:any = canvas.getContext('2d');
+    canvasCtx.drawImage(svgImage, 0, 0);
+    const imgData = canvas.toDataURL('image/jpeg');
+    // console.log(imgData)
+    // return imgData;
+    // callback(imgData);
+
+
+    var downloadLink = document.createElement("a");
+    downloadLink.href = imgData;
+    downloadLink.download = id + "_" + title + ".jpeg";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+
+
+
+    document.body.removeChild(svgImage);
+  };
+  svgImage.src = url;
+  }
+
+  getPNG(id:string, title:string, dataSVG:any){
+  const svg = dataSVG;
+
+  const url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
+  const svgImage = document.createElement('img');
+  document.body.appendChild(svgImage);
+  svgImage.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = svgImage.clientWidth;
+    canvas.height = svgImage.clientHeight;
+    const canvasCtx:any = canvas.getContext('2d');
+    canvasCtx.drawImage(svgImage, 0, 0);
+    const imgData = canvas.toDataURL('image/png');
+    // console.log(imgData)
+    // return imgData;
+    // callback(imgData);
+
+
+    var downloadLink = document.createElement("a");
+    downloadLink.href = imgData;
+    downloadLink.download = id + "_" + title + ".png";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+
+
+
+    document.body.removeChild(svgImage);
+  };
+  svgImage.src = url;
+  }
+
+  getWEBP(id:string, title:string, dataSVG:any){
+    const svg = dataSVG;
+  
+    const url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
+    const svgImage = document.createElement('img');
+    document.body.appendChild(svgImage);
+    svgImage.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = svgImage.clientWidth;
+      canvas.height = svgImage.clientHeight;
+      const canvasCtx:any = canvas.getContext('2d');
+      canvasCtx.drawImage(svgImage, 0, 0);
+      const imgData = canvas.toDataURL('image/webp');
+      // console.log(imgData)
+      // return imgData;
+      // callback(imgData);
+  
+  
+      var downloadLink = document.createElement("a");
+      downloadLink.href = imgData;
+      downloadLink.download = id + "_" + title + ".webp";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+  
+  
+  
+      document.body.removeChild(svgImage);
+    };
+    svgImage.src = url;
   }
 
 }

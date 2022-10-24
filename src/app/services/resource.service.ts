@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 
+import {Clipboard} from '@angular/cdk/clipboard';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,8 +23,12 @@ export class ResourceService {
 
   nowLang = "English"
   bgInvert = false; // icon
+  modeBgFc = true; // icon
   bgColor = ""; // icon
+  fgColor = ""; // icon
   scaleMapX = 1; // map
+  moveMapUD = 0; // map
+  moveMapLR = 0; // map
   
   navOpensource = [
     {count:3000, about:"24:24 viewbox", icon:"shape_line", name:"Icons",path:"/icons"},
@@ -1469,6 +1475,7 @@ export class ResourceService {
 
   constructor(
     public router: Router,
+    public clipboard: Clipboard
   ) { }
 
   get getHeight(){
@@ -1505,5 +1512,10 @@ export class ResourceService {
     ]);
     return newKey.invalid;
   }
+
+  copyCLIPBOARD(x:any){
+    this.clipboard.copy(x);
+  }
+
 
 }

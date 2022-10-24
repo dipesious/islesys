@@ -35,7 +35,7 @@ ${data.sector == 'font' ? (
 ) : '' }
 ${data.sector == 'color' ? 'Copy HEX':'' }
 `;
-
+//${data.title}
     this.link = `<a href="https://islesys.com/
 ${data.sector == 'icon' ? 'icons':'' }
 ${data.sector == 'map' ? 'maps':'' }
@@ -45,7 +45,16 @@ ${data.sector == 'gradient' ? 'gradients':'' }
 ${data.sector == 'pattern' ? 'patterns':'' }
 ${data.sector == 'font' ? 'fonts':'' }
 ${data.sector == 'color' ? 'colors':'' }
-">${data.title} from Islesys website</a>`;
+">High quality ${
+(data.sector == 'icon' ? 'icons':'') +
+(data.sector == 'map' ? 'maps':'' ) +
+(data.sector == 'dataset' ? 'datasets':'' ) +
+(data.sector == 'palette' ? 'palettes':'' ) +
+(data.sector == 'gradient' ? 'gradients':'' ) +
+(data.sector == 'pattern' ? 'patterns':'' ) +
+(data.sector == 'font' ? 'fonts':'' ) +
+(data.sector == 'color' ? 'colors':'') 
+} from islesys.com</a>`;
 
   }
 
@@ -56,4 +65,7 @@ ${data.sector == 'color' ? 'colors':'' }
     this.dialogRef.close({type:w})
   }
 
+  getSuport(){
+    this.dialogRef.close({type:"getHelp"})
+  }
 }

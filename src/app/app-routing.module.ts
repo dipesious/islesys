@@ -38,6 +38,7 @@ const routes: Routes = [
     {path:'explore', component: WelcomeComponent},
     {path:'who-we-are', component: WhoWeAreComponent},
     {path:'file-a-bug', component: FileBugComponent },
+    {path:'getHelp/:topic', component: FileBugComponent },
     {path:'manage', component: ManageComponent },
 
     {path:'icons', component: ListIconComponent},

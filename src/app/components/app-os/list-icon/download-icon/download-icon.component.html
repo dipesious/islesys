@@ -44,6 +44,14 @@
         [class.f_white]="resource.bgInvert" 
         [class.f_black]="!resource.bgInvert"
 
+        [class.f_red]=" resource.fgColor == 'red' "
+        [class.f_orange]=" resource.fgColor == 'orange' "
+        [class.f_yellow]=" resource.fgColor == 'yellow' "
+        [class.f_green]=" resource.fgColor == 'green' "
+        [class.f_blue]=" resource.fgColor == 'blue' "
+        [class.f_indigo]=" resource.fgColor == 'indigo' "
+        [class.f_violet]=" resource.fgColor == 'violet' "
+
     [class.redB]=" resource.bgColor == 'red' "
     [class.orangeB]=" resource.bgColor == 'orange' "
     [class.yellowB]=" resource.bgColor == 'yellow' "
@@ -73,10 +81,10 @@
         <textarea *ngIf="sideToggle" placeholder="icon" [value]="icon.data" readonly></textarea>
     </div>
     <div class="download textC">
-        <button mat-flat-button class="c_primary" (click)=" getME('SVG', icon.name, icon.id) ">SVG</button>
-        <button mat-flat-button class="c_primary" (click)=" getME('PNG', icon.name, icon.id) ">PNG</button>
-        <button mat-flat-button class="c_primary" (click)=" getME('WEBP', icon.name, icon.id) ">WEBP</button>
-        <button mat-flat-button class="c_primary" (click)=" getME('COPY', icon.name, icon.id) " *ngIf="sideToggle" ><mat-icon>content_copy</mat-icon></button>
+        <button mat-flat-button class="c_primary" (click)=" getME('SVG', icon.name, icon.id, icon.data) ">SVG</button>
+        <button mat-flat-button class="c_primary" (click)=" getME('PNG', icon.name, icon.id, icon.data) ">PNG</button>
+        <button mat-flat-button class="c_primary" (click)=" getME('WEBP', icon.name, icon.id, icon.data) ">WEBP</button>
+        <button mat-flat-button class="c_primary" (click)=" getME('COPY', icon.name, icon.id, icon.data) " *ngIf="sideToggle" ><mat-icon>content_copy</mat-icon></button>
     </div>
 
 

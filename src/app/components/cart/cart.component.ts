@@ -4,7 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { DependencyService } from 'src/app/services/dependency.service';
+import { ResourceService } from 'src/app/services/resource.service';
 import { SignitureService } from 'src/app/services/signiture.service';
+import { UserModel } from 'src/app/universal.model';
 
 @Component({
   selector: 'app-cart',
@@ -40,22 +42,43 @@ export class CartComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
+    public resource: ResourceService,
     private sign: SignitureService,
     private depends: DependencyService,
     private actRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
 
-  ) { 
+  ) {
     let pack = this.actRoute.snapshot.params['pack'];
-    if( pack == 'continue-upgrade' ){
-      this.cartPack = this.cartList[0];
-    }
-    if( pack == 'upgrade-account' ){
-      this.cartPack = this.cartList[1];
-    }
-    if( pack == 'apply-for-enterprise' ){
-      this.cartPack = this.cartList[2];
-    }
+
+    this.auth.user$.pipe(take(1)).subscribe((mine:UserModel) => {
+      if(!mine){
+
+        if( pack == 'continue-upgrade' ){
+          this.resource.router.navigate(['/sign/' + pack])
+        }
+        if( pack == 'upgrade-account' ){
+          this.resource.router.navigate(['/sign/' + pack])
+        }
+        if( pack == 'apply-for-enterprise' ){
+          this.resource.router.navigate(['/sign/' + pack])
+        }
+
+      }else{
+
+        if( pack == 'continue-upgrade' ){
+          this.cartPack = this.cartList[0];
+        }
+        if( pack == 'upgrade-account' ){
+          this.cartPack = this.cartList[1];
+        }
+        if( pack == 'apply-for-enterprise' ){
+          this.cartPack = this.cartList[2];
+        }
+
+      }
+    })
+  
   }
 
   ngOnInit(): void {

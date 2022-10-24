@@ -204,15 +204,28 @@
         </ng-container> -->
   
         <ng-container *ngIf="resource.router.url.includes( '/edit-map/' )">
-          <li><a mat-button matTooltip="Move" matTooltipPosition="after" ><mat-icon>swipe</mat-icon><span class="title">&nbsp;Move</span></a></li>
-          <li><a mat-button matTooltip="Reset zoom" matTooltipPosition="after" (click)="this.resource.scaleMapX = 1" ><mat-icon>zoom_out_map</mat-icon><span class="title">&nbsp;Reset zoom</span></a></li>
+          <li><a mat-button matTooltip="Move" matTooltipPosition="after" (click)="moveMapLR(1)" ><mat-icon>arrow_forward</mat-icon><span class="title">&nbsp;Move Right</span></a></li>
+          <li><a mat-button matTooltip="Move" matTooltipPosition="after" (click)="moveMapUD(-1)" ><mat-icon>arrow_upward</mat-icon><span class="title">&nbsp;Move Up</span></a></li>
+          <li><a mat-button matTooltip="Move" matTooltipPosition="after" (click)="moveMapUD(1)" ><mat-icon>arrow_downward</mat-icon><span class="title">&nbsp;Move Down</span></a></li>
+          <li><a mat-button matTooltip="Move" matTooltipPosition="after" (click)="moveMapLR(-1)" ><mat-icon>arrow_back</mat-icon><span class="title">&nbsp;Move Left</span></a></li>
           <li><a mat-button matTooltip="+1 scale" matTooltipPosition="after" (click)="scaleMap(1)" ><mat-icon>zoom_in</mat-icon><span class="title">&nbsp;Zoom in</span></a></li>
           <li><a mat-button matTooltip="-1 scale" matTooltipPosition="after" (click)="scaleMap(-1)" ><mat-icon>zoom_out</mat-icon><span class="title">&nbsp;Zoom out</span></a></li>
+          <li><a mat-button matTooltip="Reset" matTooltipPosition="after" (click)="this.resource.scaleMapX = 1; this.resource.moveMapLR = 0; this.resource.moveMapUD = 0;" ><mat-icon>zoom_out_map</mat-icon><span class="title">&nbsp;Reset</span></a></li>
           <!-- <li><a mat-button matTooltip="Share" matTooltipPosition="after" ><mat-icon>share</mat-icon><span class="title">&nbsp;Share</span></a></li> -->
         </ng-container>
   
         <ng-container *ngIf="resource.router.url.includes( '/free-icon/' )">
-          <li><a mat-button
+          <li>
+            <a mat-button (click)="resource.modeBgFc = !resource.modeBgFc"><mat-icon>{{!resource.modeBgFc ? 'format_color_fill':'format_paint'}}</mat-icon><span class="title dFont">&nbsp;Invert Mode</span></a>
+          </li>
+          
+          <li *ngFor="let c of iconicColors"><a mat-button
+              (click)=" setIconColor(c.id) " 
+              [class]="c.id" [matTooltip]="c.name" matTooltipPosition="after" ><mat-icon
+              [class.c_black]=" resource.modeBgFc && resource.fgColor == c.id || !resource.modeBgFc && resource.bgColor == c.id " 
+              >{{resource.modeBgFc ? 'format_color_fill':'format_paint'}}</mat-icon><span class="title dFont">&nbsp;{{c.name}}</span></a></li>
+
+          <!--li><a mat-button
               [class.c_primary]=" resource.bgColor == 'red' " 
               (click)=" resource.bgColor !== 'red' ? resource.bgColor = 'red': resource.bgColor = '' " 
               class="red" matTooltip="Red" matTooltipPosition="after" ><mat-icon>format_color_fill</mat-icon><span class="title dFont">&nbsp;Red</span></a></li>
@@ -239,7 +252,7 @@
           <li><a mat-button
               [class.c_primary]=" resource.bgColor == 'violet' " 
               (click)=" resource.bgColor !== 'violet' ? resource.bgColor = 'violet': resource.bgColor = '' " 
-              class="violet" matTooltip="Violet" matTooltipPosition="after" ><mat-icon>format_color_fill</mat-icon><span class="title dFont">&nbsp;Violet</span></a></li>
+              class="violet" matTooltip="Violet" matTooltipPosition="after" ><mat-icon>format_color_fill</mat-icon><span class="title dFont">&nbsp;Violet</span></a></li-->
         </ng-container>
   
       </ul>

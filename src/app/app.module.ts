@@ -23,6 +23,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 
 import { ListIconComponent } from './components/app-os/list-icon/list-icon.component';
 import { ListMapsComponent } from './components/app-os/list-maps/list-maps.component';
@@ -122,8 +123,7 @@ import { CartComponent } from './components/cart/cart.component';
     BrowserAnimationsModule,
     HttpClientModule, HttpClientJsonpModule,
 
-    MatButtonModule,
-    MatTabsModule,MatSidenavModule, MatIconModule, MatTooltipModule, MatFormFieldModule, MatInputModule,MatSelectModule, MatDialogModule, MatMenuModule, MatSnackBarModule,
+    MatButtonModule, ClipboardModule, MatTabsModule,MatSidenavModule, MatIconModule, MatTooltipModule, MatFormFieldModule, MatInputModule,MatSelectModule, MatDialogModule, MatMenuModule, MatSnackBarModule,
     
     MatAutocompleteModule, MatSlideToggleModule, MatBottomSheetModule,
 

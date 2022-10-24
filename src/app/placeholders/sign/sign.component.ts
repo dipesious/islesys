@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
@@ -50,6 +51,7 @@ export class SignComponent implements OnInit {
     public sign: SignitureService,
     public auth: AuthService,
     public resource: ResourceService,
+    private actRoute: ActivatedRoute,
     private bSheet: MatBottomSheet
   ) { }
 
@@ -58,7 +60,20 @@ export class SignComponent implements OnInit {
       if(!mine){
 
       }else{
-        this.resource.router.navigate(['/explore'])
+        let pack = this.actRoute.snapshot.params['go'];
+        if( !pack ){
+          this.resource.router.navigate(['/explore'])
+        }
+        if( pack == 'continue-upgrade' ){
+          this.resource.router.navigate(['/cart/' + pack])
+        }
+        if( pack == 'upgrade-account' ){
+          this.resource.router.navigate(['/cart/' + pack])
+        }
+        if( pack == 'apply-for-enterprise' ){
+          this.resource.router.navigate(['/cart/' + pack])
+        }
+        // this.resource.router.navigate(['/explore'])
       }
     })
   }
@@ -222,7 +237,22 @@ export class SignComponent implements OnInit {
                 }else{
                   this.sign.makingChanges = false;
                   this.snackMe("Welcome Back!");
-                  this.sign.router.navigate(['/explore'])
+                  
+        let pack = this.actRoute.snapshot.params['go'];
+        if( !pack ){
+          this.resource.router.navigate(['/explore'])
+        }
+        if( pack == 'continue-upgrade' ){
+          this.resource.router.navigate(['/cart/' + pack])
+        }
+        if( pack == 'upgrade-account' ){
+          this.resource.router.navigate(['/cart/' + pack])
+        }
+        if( pack == 'apply-for-enterprise' ){
+          this.resource.router.navigate(['/cart/' + pack])
+        }
+
+      
                 }
               }
             }).catch(err => {

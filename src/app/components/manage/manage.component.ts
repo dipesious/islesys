@@ -63,6 +63,16 @@ export class ManageComponent {
     "Yue Chinese",
   ]
   
+  iconicColors = [
+    {name:"Red", id:"red"},
+    {name:"Orange", id:"orange"},
+    {name:"Yellow", id:"yellow"},
+    {name:"Green", id:"green"},
+    {name:"Blue", id:"blue"},
+    {name:"Indigo", id:"indigo"},
+    {name:"Violet", id:"violet"},
+  ];
+
   constructor(
     //public auth:AuthService,
   
@@ -92,11 +102,33 @@ export class ManageComponent {
     this.mainContentDiv.nativeElement.scrollTop = 0;
   }
 
+  setIconColor(id:string){
+    if(!this.resource.modeBgFc){
+      this.resource.bgColor !== id ? this.resource.bgColor = id: this.resource.bgColor = '';
+    }else{
+      this.resource.fgColor !== id ? this.resource.fgColor = id: this.resource.fgColor = '';
+    }
+  }
+
   scaleMap(x:number){
     if(x == -1){
       this.resource.scaleMapX = this.resource.scaleMapX - 0.1;
     }else{
       this.resource.scaleMapX = this.resource.scaleMapX + 0.1;
+    }
+  }
+  moveMapUD(x:number){
+    if(x == -1){
+      this.resource.moveMapUD = this.resource.moveMapUD - 10;
+    }else{
+      this.resource.moveMapUD = this.resource.moveMapUD + 10;
+    }
+  }
+  moveMapLR(x:number){
+    if(x == -1){
+      this.resource.moveMapLR = this.resource.moveMapLR - 10;
+    }else{
+      this.resource.moveMapLR = this.resource.moveMapLR + 10;
     }
   }
 
