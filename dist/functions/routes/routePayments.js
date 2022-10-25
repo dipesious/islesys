@@ -9,7 +9,60 @@ const stripe = require('stripe')(enviroment.STRIPE_Secret_key);
 const YOUR_DOMAIN = enviroment.production ? enviroment.YOUR_DOMAIN_PROD : enviroment.YOUR_DOMAIN;
 const YOUR_CLIENT = enviroment.production ? enviroment.YOUR_CLIENT_PROD : enviroment.YOUR_CLIENT;
 
+const admin = require('firebase-admin');
 
+
+routePayments.get('/success/:id', (req, res) => {
+  if(!req.params.id){
+    res.json({ 
+        success:false, status:200, //http
+        // code:errors.Forbidden, //route
+        data:err, info:"Please post valid data"
+    });
+  }else{
+
+    return admin.firestore().collection('walt').doc(req.params.id).update({
+      status:10
+    }).then(() => {
+      res.redirect(YOUR_CLIENT +'/order-status/'+ req.params.id);
+    }).catch(err => {
+  
+      res.json({ 
+          success:false, status:200, //http
+          // code:errors.Forbidden, //route
+          data:err, info:"Please post valid data"
+      });
+  
+    })
+
+  }
+})
+
+routePayments.get('/failure/:id', (req, res) => {
+  if(!req.params.id){
+    res.json({ 
+        success:false, status:200, //http
+        // code:errors.Forbidden, //route
+        data:err, info:"Please post valid data"
+    });
+  }else{
+
+  return admin.firestore().collection('walt').doc(req.params.id).update({
+    status:-10
+  }).then(() => {
+    res.redirect(YOUR_CLIENT +'/order-status/'+ req.params.id);
+  }).catch(err => {
+
+    res.json({ 
+        success:false, status:200, //http
+        // code:errors.Forbidden, //route
+        data:err, info:"Please post valid data"
+    });
+
+  })
+  
+  }
+})
 
 
 routePayments.post(`/create-payment/:countryCode`, async (req, res) => {
@@ -57,8 +110,8 @@ routePayments.post(`/create-payment/:countryCode`, async (req, res) => {
         ],
   
         mode: mode,
-        success_url: `${YOUR_DOMAIN}/api/success/${req.body.id}`,
-        cancel_url: `${YOUR_DOMAIN}/api/failure/${req.body.id}`,
+        success_url: `${YOUR_DOMAIN}/api/payments/success/${req.body.id}`,
+        cancel_url: `${YOUR_DOMAIN}/api/payments/failure/${req.body.id}`,
         automatic_tax: {enabled: false},
       });
 

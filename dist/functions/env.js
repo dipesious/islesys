@@ -4,7 +4,7 @@ module.exports = {
     YOUR_DOMAIN: 'http://localhost:5001/islesys-79de1/us-central1/server_global',
     YOUR_CLIENT: 'http://localhost:4200',
 
-    YOUR_DOMAIN_PROD: 'http://islesys.com/api',
+    YOUR_DOMAIN_PROD: 'http://islesys.com',
     YOUR_CLIENT_PROD: 'http://islesys.com',
 
     firebaseConfig: {

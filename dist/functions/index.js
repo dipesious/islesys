@@ -27,8 +27,8 @@ const routeSNS = require('./routes/routeSNS');
 // const app = express();
 // app.use(express.static('public'));
 
-const YOUR_DOMAIN = enviroment.production ? enviroment.YOUR_DOMAIN_PROD : enviroment.YOUR_DOMAIN;
-const YOUR_CLIENT = enviroment.production ? enviroment.YOUR_CLIENT_PROD : enviroment.YOUR_CLIENT;
+// const YOUR_DOMAIN = enviroment.production ? enviroment.YOUR_DOMAIN_PROD : enviroment.YOUR_DOMAIN;
+// const YOUR_CLIENT = enviroment.production ? enviroment.YOUR_CLIENT_PROD : enviroment.YOUR_CLIENT;
 
 
 app.use('/api/payments', routePayments);
@@ -136,21 +136,6 @@ app.post('/api/foreign-apps/contact/:id', (req, res) => {
   }
 })
 
-app.get('/api/success/:id', (req, res) => {
-  return admin.firestore().collection('walt').doc(req.params.id).update({
-    status:10
-  }).then(() => {
-    res.redirect(YOUR_CLIENT +'/order-status/'+ req.params.id);
-  })
-})
-
-app.get('/api/failure/:id', (req, res) => {
-  return admin.firestore().collection('walt').doc(req.params.id).update({
-    status:-10
-  }).then(() => {
-    res.redirect(YOUR_CLIENT +'/order-status/'+ req.params.id);
-  })
-})
 
 
 // app.listen(4242, () => console.log('Running on port 4242'));
