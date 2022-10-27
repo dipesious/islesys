@@ -6,7 +6,6 @@ import { map, Observable, of, startWith, take } from 'rxjs';
 import { AlgoIconService } from 'src/app/services/algorithm/algo-icon.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
-import { IconModel } from 'src/app/universal.model';
 import { AddIconComponent } from './add-icon/add-icon.component';
 
 

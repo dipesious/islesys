@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { map, Observable, of, startWith, take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
@@ -33,6 +34,7 @@ export class ListDataComponent implements OnInit {
     public auth:AuthService,
     public dialog: MatDialog,
     public resource: ResourceService,
+    private router: Router, 
   ) {
     this.filteredOptions = this.searching.valueChanges.pipe(
       startWith(''),
@@ -86,19 +88,19 @@ export class ListDataComponent implements OnInit {
 
 
 
-  getME(wat:string, name:string, id:string, color:string){
+  getME(wat:string, name:string, id:string, data:string){
     let state = "" + 
-    (wat == 'CSV' ? 'CSV DATASET':'') + 
-    (wat == 'JSON' ? 'JSON DATASET':'') + 
+    (wat == 'JS' ? 'JS DATASET':'') + 
+    (wat == 'COPY' ? 'COPY DATASET':'') + 
     "";
-    let title = "#" + color + " from " + name;
+    // let title = "#" + id + " from " + name;
 
     const dialogRef = this.dialog.open(DemandComponent, {
       width: '90%',
       maxWidth: '750px',
       data: {
         id,
-        title: title, state: state,
+        title: name, state: state,
         sector:"dataset"
       },
       panelClass:"downloadClass"
@@ -107,29 +109,40 @@ export class ListDataComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       if(result && result.type == "Private"){
+        let newData = `[ 
+          ${data} 
+        ]`;
 
-        if(wat == 'CSV'){ this.getCSV() }
-        if(wat == 'JSON'){ this.getJSON() }
-
+        if(wat == 'JS'){ this.getJS(id, name, newData) }
+        if(wat == 'COPY'){ this.resource.copyCLIPBOARD(newData) }
       }
-      if(wat == 'Community'){
 
+      if(result?.type == 'Community'){
+        this.router.navigate(['/cart/upgrade-account']);
       }
-      if(wat == 'Enterprise'){
-
+      if(result?.type == 'Enterprise'){
+        this.router.navigate(['/cart/apply-for-enterprise']);
+      }
+      if(result?.type == 'getHelp'){
+        this.router.navigate(['/getHelp/icons']);
       }
     });
   }
 
-  getCSV(){
+  getJS(id:string, title:string, dataSVG:string){
     // DOWNLOAD CSV
+    let text = dataSVG;
+
+    const a = document.createElement('a');
+    const type = text.split(".").pop();
+    a.href = URL.createObjectURL( new Blob([text], { type:`text/${type === "txt" ? "plain" : type}` }) );
+    a.download = title +'_' + id + '_' + '.js';
+    a.click();
   }
 
-  getJSON(){
-    // COPY JSON TO CLIPBOARD
+  expandME(id:string){
+    this.router.navigate([ '/each-dataset/' + id ])
   }
-
-  expandME(id:string){}
 
 
 

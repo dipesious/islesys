@@ -1,1 +1,33 @@
-<p>download-palette works!</p>
+<section class="section1" *ngIf="palette$ | async as x">
+    <div class="container">
+        <div class="row">
+
+            <div class="col col-100">
+                <div class="title textC">
+                    <h2 class="c_warn">{{x.name}}</h2>
+                    <p>Color Palettes for Designers and Artists</p>
+                </div>
+
+                <div class="code">
+                    <p><mat-slide-toggle [(ngModel)]="sideToggle" color="warn"><b class="sideToggle">{{!sideToggle?'Do you Agree to ':'i Agree to '}}</b></mat-slide-toggle>&nbsp;<a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/LICENSE" class="c_warn">the License Agreement{{!sideToggle?'?':'.'}}</a></p>
+                </div>
+
+                <div class="colors">
+                    <div class="list color1" [style]=" 'background:#' + x.c1 + ';' ">
+                        <button mat-button (click)=" getME('HEX', x.name, x.id, x.c1) " >#{{x.c1}}</button>
+                    </div>
+                    <div class="list color2" [style]=" 'background:#' + x.c2 + ';' ">
+                        <button mat-button (click)=" getME('HEX', x.name, x.id, x.c2) " >#{{x.c2}}</button>
+                    </div>
+                    <div class="list color3" [style]=" 'background:#' + x.c3 + ';' ">
+                        <button mat-button (click)=" getME('HEX', x.name, x.id, x.c3) " >#{{x.c3}}</button>
+                    </div>
+                    <div class="list color4" [style]=" 'background:#' + x.c4 + ';' ">
+                        <button mat-button (click)=" getME('HEX', x.name, x.id, x.c4) " >#{{x.c4}}</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

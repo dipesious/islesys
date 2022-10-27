@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { map, Observable, of, startWith, take } from 'rxjs';
 import { AlgoPaletteService } from 'src/app/services/algorithm/algo-palette.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -42,6 +43,7 @@ export class ListPalettesComponent implements OnInit {
     public page: AlgoPaletteService,
     public resource:ResourceService,
     public dialog: MatDialog,
+    private router: Router, 
   ) {
     this.filteredOptions = this.searching.valueChanges.pipe(
       startWith(''),
@@ -79,8 +81,8 @@ export class ListPalettesComponent implements OnInit {
 
   getME(wat:string, name:string, id:string, color:string){
     let state = "" + 
-    (wat == 'CSS' ? 'CSS COLOR':'') + 
-    (wat == 'JPEG' ? 'JPEG COLOR':'') + 
+    // (wat == 'CSS' ? 'CSS COLOR':'') + 
+    // (wat == 'JPEG' ? 'JPEG COLOR':'') + 
     (wat == 'HEX' ? 'HEX COLOR':'');
     let title = "#" + color + " from " + name;
 
@@ -98,33 +100,41 @@ export class ListPalettesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       if(result && result.type == "Private"){
+        let newData = `#${color}`;
 
-        if(wat == 'CSS'){ this.getCSS() }
-        if(wat == 'JPEG'){ this.getJPEG() }
-        if(wat == 'HEX'){ this.getHEX() }
-
-      }
-      if(wat == 'Community'){
+        // if(wat == 'CSS'){ this.getCSS() }
+        // if(wat == 'JPEG'){ this.getJPEG() }
+        if(wat == 'HEX'){ this.resource.copyCLIPBOARD(newData) }
 
       }
-      if(wat == 'Enterprise'){
 
+      if(result?.type == 'Community'){
+        this.router.navigate(['/cart/upgrade-account']);
+      }
+      if(result?.type == 'Enterprise'){
+        this.router.navigate(['/cart/apply-for-enterprise']);
+      }
+      if(result?.type == 'getHelp'){
+        this.router.navigate(['/getHelp/icons']);
       }
     });
   }
 
-  getCSS(){
-    // DO NOTHING HERE
-  }
+  // getCSS(){
+  //   // DO NOTHING HERE
+  // }
 
-  getJPEG(){
-    // DO NOTHING HERE
-  }
+  // getJPEG(){
+  //   // DO NOTHING HERE
+  // }
 
-  getHEX(){
-    // COPY HEX TO CLIPBOARD
-  }
+  // getHEX(){
+  //   // COPY HEX TO CLIPBOARD
+  // }
 
+  expandME(id:string){
+    this.router.navigate([ '/view-palette/' + id ])
+  }
 
 
 }

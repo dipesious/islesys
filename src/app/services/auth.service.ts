@@ -281,6 +281,26 @@ export class AuthService {
     return docData(cityRef);
   }
 
+  getDataset(id:string){
+    const cityRef = doc(this.fs, this.dbTABLES, id);
+    return docData(cityRef);
+  }
+
+  getPalette(id:string){
+    const cityRef = doc(this.fs, this.dbPALETTES, id);
+    return docData(cityRef);
+  }
+
+  getGradient(id:string){
+    const cityRef = doc(this.fs, this.dbGRADIENTS, id);
+    return docData(cityRef);
+  }
+
+  getPattern(id:string){
+    const cityRef = doc(this.fs, this.dbPATTERNS, id);
+    return docData(cityRef);
+  }
+
 
 
 

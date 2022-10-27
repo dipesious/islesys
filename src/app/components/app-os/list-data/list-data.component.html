@@ -97,8 +97,8 @@
         </div>
         <div class="holdMine b_white">
             <button mat-icon-button class="leftOut" (click)=" expandME(x.id) "><mat-icon>view_in_ar</mat-icon></button>
-            <button mat-button class="leftOut download" (click)=" getME('CSV', x.name, x.id, x.data) "><mat-icon>download</mat-icon> csv</button>
-            <button mat-button class="leftOut download" (click)=" getME('JSON', x.name, x.id, x.data) "><mat-icon>content_copy</mat-icon> json</button>
+            <button mat-button class="leftOut download" (click)=" getME('JS', x.name, x.id, x.data) "><mat-icon>download</mat-icon> JS</button>
+            <button mat-button class="leftOut download" (click)=" getME('COPY', x.name, x.id, x.data) "><mat-icon>content_copy</mat-icon> JS</button>
             <span class="divide"></span>
             <span class="date">{{x.sin.toDate() | date:'dd MMM yyyy'}}</span>
             <button mat-icon-button><mat-icon>

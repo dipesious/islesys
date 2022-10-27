@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { map, Observable, of, startWith, take } from 'rxjs';
 import { AlgoPatternService } from 'src/app/services/algorithm/algo-pattern.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -41,6 +42,7 @@ export class ListPatternsComponent implements OnInit {
     public resource: ResourceService,
     public page: AlgoPatternService,
     public dialog: MatDialog,
+    private router: Router, 
   ) {
     this.filteredOptions = this.searching.valueChanges.pipe(
       startWith(''),
@@ -77,19 +79,19 @@ export class ListPatternsComponent implements OnInit {
   execute(){}
 
 
-  getME(wat:string, name:string, id:string, color:string){
+  getME(wat:string, name:string, id:string, cssData:string){
     let state = "" + 
     (wat == 'CSS' ? 'CSS PATTERN':'') + 
     (wat == 'JPEG' ? 'JPEG PATTERN':'') + 
     (wat == 'HEX' ? 'HEX PATTERN':'');
-    let title = "#" + color + " from " + name;
+    // let title = "#" + color + " from " + name;
 
     const dialogRef = this.dialog.open(DemandComponent, {
       width: '90%',
       maxWidth: '750px',
       data: {
         id,
-        title: title, state: state,
+        title: name, state: state,
         sector:"pattern"
       },
       panelClass:"downloadClass"
@@ -99,22 +101,27 @@ export class ListPatternsComponent implements OnInit {
       console.log('The dialog was closed', result);
       if(result && result.type == "Private"){
 
-        if(wat == 'CSS'){ this.getCSS() }
+        if(wat == 'CSS'){ this.getCSS(cssData) }
         if(wat == 'JPEG'){ this.getJPEG() }
         if(wat == 'HEX'){ this.getHEX() }
 
       }
-      if(wat == 'Community'){
 
+      if(result?.type == 'Community'){
+        this.router.navigate(['/cart/upgrade-account']);
       }
-      if(wat == 'Enterprise'){
-
+      if(result?.type == 'Enterprise'){
+        this.router.navigate(['/cart/apply-for-enterprise']);
+      }
+      if(result?.type == 'getHelp'){
+        this.router.navigate(['/getHelp/patterns']);
       }
     });
   }
 
-  getCSS(){
+  getCSS(cssData:string){
     // COPY CSS TO CLIPBOARD
+    this.resource.copyCLIPBOARD(cssData)
   }
 
   getJPEG(){
@@ -125,6 +132,8 @@ export class ListPatternsComponent implements OnInit {
     // DO NOTHING HERE
   }
 
-  expandME(id:string){}
+  expandME(id:string){
+    this.router.navigate([ '/view-pattern/' + id ])
+  }
 
 }

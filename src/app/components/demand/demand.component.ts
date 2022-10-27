@@ -21,7 +21,7 @@ export class DemandComponent implements OnInit {
 ${data.sector == 'icon' ? 'Download':'' }
 ${data.sector == 'map' ? 'Download':'' }
 ${data.sector == 'dataset' ? (
-  (data.state == 'CSV DATASET' ? 'CSV File':'') + (data.state == 'JSON DATASET' ? 'Copy JSON':'') + ""
+  (data.state == 'JS DATASET' ? 'JS File':'') + (data.state == 'COPY DATASET' ? 'Copy JS':'') + ""
 ) : '' }
 ${data.sector == 'palette' ? 'Copy HEX':'' }
 ${data.sector == 'gradient' ? (

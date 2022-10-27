@@ -103,6 +103,8 @@ export class DownloadMapComponent implements OnInit {
     this.execute(id)
     console.log(id)
     this.resource.scaleMapX = 1;
+    this.resource.moveMapLR = 0;
+    this.resource.moveMapUD = 0;
   }
 
   execute(id:string){

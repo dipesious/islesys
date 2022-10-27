@@ -29,7 +29,6 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
     private actRoute: ActivatedRoute,
     private router: Router, 
     private snackBar: MatSnackBar,
-    // private activatedRoute: ActivatedRoute
   ) {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -60,8 +59,12 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
 
   execute(id:string){
     this.icon$ = this.auth.getICON(id).pipe(take(1))
-    let name = "Adhesive Bandage"
-    this.similar$ = this.auth.getSIMILAR(id, name, 25).pipe(take(1))
+    this.icon$.pipe(take(1)).subscribe(ref => {
+      if(ref){
+        let name = ref.name;//"Adhesive Bandage"
+        this.similar$ = this.auth.getSIMILAR(id, name, 25).pipe(take(1))
+      }
+    })
   }
 
   getME(wat:string, name:string, id:string, data:any){

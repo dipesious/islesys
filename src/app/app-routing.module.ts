@@ -52,7 +52,7 @@ const routes: Routes = [
 
     {path:'free-icon/:id', component: DownloadIconComponent},
     {path:'edit-map/:id', component: DownloadMapComponent},
-    {path:'free-dataset/:id', component: DownloadDataComponent},
+    {path:'each-dataset/:id', component: DownloadDataComponent},
     {path:'view-palette/:id', component: DownloadPaletteComponent},
     {path:'view-gradient/:id', component: DownloadGradientComponent},
     {path:'view-pattern/:id', component: DownloadPatternComponent},

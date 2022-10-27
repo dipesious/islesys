@@ -1,1 +1,25 @@
-<p>download-gradient works!</p>
+<section class="section1" *ngIf="gradient$ | async as x">
+    <div class="container">
+        <div class="row">
+
+            <div class="col col-100">
+                <div class="title textC">
+                    <h2 class="c_warn">{{x.name}}</h2>
+                    <p>Color Gradients for Designers and Artists</p>
+                </div>
+
+                <div class="code">
+                    <p><mat-slide-toggle [(ngModel)]="sideToggle" color="warn"><b class="sideToggle">{{!sideToggle?'Do you Agree to ':'i Agree to '}}</b></mat-slide-toggle>&nbsp;<a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/LICENSE" class="c_warn">the License Agreement{{!sideToggle?'?':'.'}}</a></p>
+                </div>
+
+                <div class="colors" [style]=" x.demoCSS ">
+                    <div class="list">
+                        <button mat-button class="download" (click)=" getME('JPEG', x.name, x.id, x.data) "><mat-icon>download</mat-icon> jpeg</button>
+                        <button mat-button class="download" (click)=" getME('CSS', x.name, x.id, x.data) "><mat-icon>content_copy</mat-icon> css</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

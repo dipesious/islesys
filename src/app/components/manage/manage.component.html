@@ -115,21 +115,21 @@
         <h2>insider projects</h2>
       </div>
   
-      <div class="col-25 col-sm-100">
+      <div class="col-30 col-sm-100">
         <div class="card card-1">
           <h3>Aimtera platform</h3>
           <p>GIG Ecosystem<br>2020-NOW</p>
           <a mat-stroked-button color="warn" href="https://paypal.me/islesys" target="_">Contribute</a>
         </div>
       </div>
-      <div class="col-25 col-sm-100">
+      <div class="col-30 col-sm-100">
         <div class="card card-2">
           <h3>RayanshOS</h3>
           <p>Operating System<br>2019-NOW</p>
           <a mat-stroked-button color="warn" href="https://paypal.me/islesys" target="_">Contribute</a>
         </div>
       </div>
-      <div class="col-25 col-sm-100">
+      <div class="col-30 col-sm-100">
         <div class="card card-3">
           <h3>Tehzeeb Creative</h3>
           <p>Content Publisher<br>2021-NOW</p>
@@ -194,6 +194,12 @@
         <ng-container *ngIf="
         !resource.router.url.includes( '/free-icon/' ) &&
         !resource.router.url.includes( '/edit-map/' ) &&
+        !resource.router.url.includes( '/each-dataset/' ) &&
+        !resource.router.url.includes( '/view-palette/' ) &&
+        !resource.router.url.includes( '/view-gradient/' ) &&
+        !resource.router.url.includes( '/view-pattern/' ) &&
+        !resource.router.url.includes( '/opensource-font/' ) &&
+        !resource.router.url.includes( '/shades-of-color/' ) &&
         true
         ">
           <li *ngFor="let x of resource.navOpensource"><a mat-button [matTooltip]="x.name" matTooltipPosition="after" [routerLink]="x.path" routerLinkActive="active"><mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span></a></li>

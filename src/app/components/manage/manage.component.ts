@@ -172,6 +172,12 @@ export class ManageComponent {
 
     p == '/explore' && this.resource.router.url.includes('/free-icon/') ||
     p == '/explore' && this.resource.router.url.includes('/edit-map/') ||
+    p == '/explore' && this.resource.router.url.includes('/each-dataset/') ||
+    p == '/explore' && this.resource.router.url.includes('/view-palette/') ||
+    p == '/explore' && this.resource.router.url.includes('/view-gradient/') ||
+    p == '/explore' && this.resource.router.url.includes('/view-pattern/') ||
+    p == '/explore' && this.resource.router.url.includes('/opensource-font/') ||
+    p == '/explore' && this.resource.router.url.includes('/shades-of-color/') ||
 
     false)
     
