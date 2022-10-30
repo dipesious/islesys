@@ -207,25 +207,25 @@ export class AuthService {
   //   return collectionData(qu);
   // }
 
-  getAllFONT(){
-    const cityRef = collection(this.fs, this.dbFONTS);
-    const qu = query(cityRef, 
-      where("active", "==", true),
-      orderBy("name"), 
-      limit(100)
-    );
-    return collectionData(qu);
-  }
+  // getAllFONT(){
+  //   const cityRef = collection(this.fs, this.dbFONTS);
+  //   const qu = query(cityRef, 
+  //     where("active", "==", true),
+  //     orderBy("name"), 
+  //     limit(100)
+  //   );
+  //   return collectionData(qu);
+  // }
 
-  getAllTABLE(){
-    const cityRef = collection(this.fs, this.dbTABLES);
-    const qu = query(cityRef, 
-      where("active", "==", true),
-      orderBy("name"), 
-      limit(100)
-    );
-    return collectionData(qu);
-  }
+  // getAllTABLE(){
+  //   const cityRef = collection(this.fs, this.dbTABLES);
+  //   const qu = query(cityRef, 
+  //     where("active", "==", true),
+  //     orderBy("name"), 
+  //     limit(100)
+  //   );
+  //   return collectionData(qu);
+  // }
 
   // getAllPALETTE(){
   //   const cityRef = collection(this.fs, this.dbPALETTES);

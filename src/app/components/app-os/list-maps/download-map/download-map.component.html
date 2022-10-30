@@ -1,3 +1,5 @@
+<app-loading *ngIf="!(map$ | async)"></app-loading>
+
 <ng-container *ngIf="map$ | async as map">
 
 <section class="section1">

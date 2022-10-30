@@ -1,3 +1,5 @@
+<app-loading *ngIf="!(gradient$ | async)"></app-loading>
+
 <section class="section1" *ngIf="gradient$ | async as x">
     <div class="container">
         <div class="row">

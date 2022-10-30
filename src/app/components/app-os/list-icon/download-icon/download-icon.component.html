@@ -1,3 +1,5 @@
+<app-loading *ngIf="!(icon$ | async)"></app-loading>
+
 <section class="section1" *ngIf="icon$ | async as icon" style="fill: #222222;">
 
     <div class="title">

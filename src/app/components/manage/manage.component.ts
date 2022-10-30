@@ -1,5 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { AlgoDatasetService } from 'src/app/services/algorithm/algo-dataset.service';
+import { AlgoFontService } from 'src/app/services/algorithm/algo-font.service';
 import { SignitureService } from 'src/app/services/signiture.service';
 import { AlgoGradientService } from './../../services/algorithm/algo-gradient.service';
 import { AlgoIconService } from './../../services/algorithm/algo-icon.service';
@@ -77,10 +79,12 @@ export class ManageComponent {
     //public auth:AuthService,
   
     public pageIcon: AlgoIconService,
+    // public pageMap: AlgoMapService,
+    public pageDataset: AlgoDatasetService,
     public pagePalette: AlgoPaletteService,
     public pageGradient: AlgoGradientService,
-    public pageMap: AlgoMapService,
     public pagePattern: AlgoPatternService,
+    public pageFont: AlgoFontService,
     public auth:AuthService,
     public resource: ResourceService,
     public sign: SignitureService,
@@ -147,10 +151,12 @@ export class ManageComponent {
     if (top > ((height - offset) - 2)) {
       console.log('bottom')
       this.pageIcon.more()
+      // this.pageMap.more()
+      this.pageDataset.more()
       this.pagePalette.more()
       this.pageGradient.more()
-      // this.pageMap.more()
       this.pagePattern.more()
+      this.pageFont.more()
     }
     if (top === 0) {
       console.log('top')

@@ -1,1 +1,5 @@
-<p>download-font works!</p>
+<app-loading *ngIf="!(font$ | async)"></app-loading>
+
+<section class="section1" *ngIf="font$ | async as x">
+    <p>download-font works!</p>
+</section>

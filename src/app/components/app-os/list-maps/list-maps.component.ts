@@ -414,7 +414,7 @@ export class ListMapsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.execute()
+    this.execute()
   }
 
   submitMap(){

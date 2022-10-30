@@ -12,7 +12,7 @@ import { ResourceService } from 'src/app/services/resource.service';
   templateUrl: './download-gradient.component.html',
   styleUrls: ['./download-gradient.component.scss']
 })
-export class DownloadGradientComponent implements OnInit {
+export class DownloadGradientComponent implements OnInit, AfterViewInit {
 
   mySubscription;
 

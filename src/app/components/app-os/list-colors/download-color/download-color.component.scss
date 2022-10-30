@@ -1,0 +1,32 @@
+
+.section4{
+    margin: 0 0 18px 0;
+    .holdColor{
+        width: 98%;
+        margin: 16px 0.5% 8px 1.5%; padding: 0;
+        display: inline-block;
+        vertical-align: top;
+        .title{    margin: 0;
+            padding: 0 16px; text-align: center;
+            background: #ffffff;
+            color: #eeeeee;
+            border-radius: 8px 8px 0 0;}
+        .color{
+            display: flex;
+            align-items: center;
+            height: 50px;
+            padding: 0 0 0 0;
+            color: #eeeeee;
+            h2, p{margin: 0; padding: 0 8px; background: #000000;}
+            h2{border-radius: 0 8px 8px 0;}
+            p{font-family: monospace; border-radius: 8px;}
+            button{background: rgba(0, 0, 0, 0.4); margin: 0 8px;}
+        }
+        .color:last-child{border-radius: 0 0 8px 8px;}
+    }
+    @media(max-width: 767px){
+        .holdColor{
+            width: 96%;
+        }    
+    }
+}

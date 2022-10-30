@@ -1,9 +1,11 @@
-<section>
+<app-loading *ngIf="!(dataset$ | async)"></app-loading>
+
+<section *ngIf="dataset$ | async as x">
 
     <div class="container">
         <div class="row">
 
-            <div class="col col-100 textC" *ngIf="dataset$ | async as x">
+            <div class="col col-100 textC">
                 <div class="title">
                     <h2 class="c_warn">{{x.name}}</h2>
                     <p>{{x.about}}</p>

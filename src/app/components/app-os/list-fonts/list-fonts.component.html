@@ -82,7 +82,7 @@
 
 <section class="section3">
 
-  <ng-container *ngFor="let x of fontList$ | async">
+  <ng-container *ngFor="let x of page.dataO | async">
   <div class="fontHold" 
   *ngIf=" !searching.value || x.name.toLowerCase().includes(searching.value.toLowerCase())">
   <span [innerHtml]=" x.demoCSS | safeHtml"></span>
@@ -119,4 +119,5 @@
   </div>
   </ng-container>
 
+  <app-loading *ngIf="!(page.dataO | async) || (page.loading | async) "></app-loading>
 </section>

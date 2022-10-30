@@ -1,3 +1,5 @@
+<app-loading *ngIf="!(pattern$ | async)"></app-loading>
+
 <section class="section1" *ngIf="pattern$ | async as x">
     <div class="container">
         <div class="row">

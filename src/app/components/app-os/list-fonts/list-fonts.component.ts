@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { map, Observable, of, startWith, take } from 'rxjs';
+import { AlgoFontService } from 'src/app/services/algorithm/algo-font.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
 import { FontModel } from 'src/app/universal.model';
@@ -21,7 +23,6 @@ export class ListFontsComponent implements OnInit {
     {title:'License', link:''},
   ]
 
-  fontList$: Observable<FontModel[]> = of();
   showCode:string[] = []
   
   searching = new FormControl('');
@@ -33,13 +34,19 @@ export class ListFontsComponent implements OnInit {
 
   constructor(
     public auth:AuthService,
-    public dialog: MatDialog,
     public resource: ResourceService,
+    public page: AlgoFontService,
+    public dialog: MatDialog,
+    private router: Router, 
   ) {
     this.filteredOptions = this.searching.valueChanges.pipe(
       startWith(''),
       map((value:string) => this._filter(!value ? '' : value )),
     );
+
+    if(!page.firstHit){
+    this.page.init('fonts', 'name', { reverse: false, prepend: false,  })
+    }
   }
 
   ngOnInit(): void {
@@ -65,21 +72,6 @@ export class ListFontsComponent implements OnInit {
   }
 
   execute(){
-    this.auth.getAllFONT().pipe(take(1)).subscribe((values:any[]) => {
-      this.fontList$ = of(values)
-      this.options = [];
-      for (let i = 0; i < values.length; i++) {
-        const element = values[i];
-        this.options.push(element.name)
-      }
-    })
-    // const values = {
-    //   id:"KCchYPIYgNMqfARGXgGB",
-    //   by:"Dipesh Bhoir", contact:"+919876543210", 
-    //   name: "World map", about:"Mercator", data:{},
-    //   active:true
-    // }
-    // this.mapList$ = of([values])
   }
 
   fontSizeSet(x:number){
@@ -135,7 +127,9 @@ export class ListFontsComponent implements OnInit {
   }
 
 
-  expandME(id:string){}
+  expandME(id:string){
+    this.router.navigate([ '/opensource-font/' + id ])
+  }
 
   getLink(link:any){
 return `<style>

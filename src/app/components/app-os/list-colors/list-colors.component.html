@@ -67,8 +67,8 @@
 
 
 <section class="section4">
-    <div class="holdColor" *ngFor="let c of colorz">
-        <p class="title">{{c.name}}</p>
+    <div class="holdColor" *ngFor="let c of resource.colorz">
+        <p class="title"><a class="c_warn" [routerLink]=" '/shades-of-color/' + c.id ">{{c.name}}</a></p>
         <div class="color" [style]="'background:' + x.c + ';'" *ngFor="let x of c.p">
             <h2>{{ false ? (c.name + ' ') : ''}}{{x.n}}</h2>
             <span class="divide"></span>

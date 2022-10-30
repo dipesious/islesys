@@ -1,8 +1,18 @@
-<header>
+<header *ngIf="
+!resource.router.url.includes( '/free-icon/' ) &&
+!resource.router.url.includes( '/edit-map/' ) &&
+!resource.router.url.includes( '/each-dataset/' ) &&
+!resource.router.url.includes( '/view-palette/' ) &&
+!resource.router.url.includes( '/view-gradient/' ) &&
+!resource.router.url.includes( '/view-pattern/' ) &&
+!resource.router.url.includes( '/opensource-font/' ) &&
+!resource.router.url.includes( '/shades-of-color/' ) &&
+true
+">
     <div class="holdHeader">
     <!--img src="" height="30px" /-->
-    <div class="branding" routerLink="/">
-    <span class="logo"><img src="assets/logo.png"></span>
+    <div class="branding">
+    <span class="logo"><a routerLink="/explore"><img src="assets/logo.png"></a></span>
     <!-- <span class="slogan"><br>Small steps Long vision</span> -->
     </div>
     <span class="divide"></span>
@@ -31,7 +41,18 @@
     </div>
   </header>
   
-  <div class="content" #mainContent  (scroll)="scrollHandler($event)">
+  <div class="content" [style]=" 'height: ' + (
+    !resource.router.url.includes( '/free-icon/' ) &&
+    !resource.router.url.includes( '/edit-map/' ) &&
+    !resource.router.url.includes( '/each-dataset/' ) &&
+    !resource.router.url.includes( '/view-palette/' ) &&
+    !resource.router.url.includes( '/view-gradient/' ) &&
+    !resource.router.url.includes( '/view-pattern/' ) &&
+    !resource.router.url.includes( '/opensource-font/' ) &&
+    !resource.router.url.includes( '/shades-of-color/' ) &&
+    true ? '84vh' : '94vh')
+    + ';' "
+  #mainContent  (scroll)="scrollHandler($event)">
   
   
   
@@ -141,18 +162,64 @@
     </div>
   
     <div class="nav">
-      <div class="menu c_white"><button mat-icon-button (click)="menuShow = !menuShow; clickS();"><mat-icon>star</mat-icon></button></div>
-      <div class="menus" >
-        <nav mat-tab-nav-bar  
+      <div class="menu c_white" [style]=" 'top: ' + (
+      !resource.router.url.includes( '/free-icon/' ) &&
+      !resource.router.url.includes( '/edit-map/' ) &&
+      !resource.router.url.includes( '/each-dataset/' ) &&
+      !resource.router.url.includes( '/view-palette/' ) &&
+      !resource.router.url.includes( '/view-gradient/' ) &&
+      !resource.router.url.includes( '/view-pattern/' ) &&
+      !resource.router.url.includes( '/opensource-font/' ) &&
+      !resource.router.url.includes( '/shades-of-color/' ) &&
+      true ? '10vh' : '0vh')
+      + ';' ">
+
+        <button mat-icon-button *ngIf="
+        !resource.router.url.includes( '/free-icon/' ) &&
+        !resource.router.url.includes( '/edit-map/' ) &&
+        !resource.router.url.includes( '/each-dataset/' ) &&
+        !resource.router.url.includes( '/view-palette/' ) &&
+        !resource.router.url.includes( '/view-gradient/' ) &&
+        !resource.router.url.includes( '/view-pattern/' ) &&
+        !resource.router.url.includes( '/opensource-font/' ) &&
+        !resource.router.url.includes( '/shades-of-color/' ) &&
+        true "
+        (click)="menuShow = !menuShow; clickS();"><mat-icon>star</mat-icon></button>
+
+        <button mat-icon-button *ngIf="
+        resource.router.url.includes( '/free-icon/' ) ||
+        resource.router.url.includes( '/edit-map/' ) ||
+        resource.router.url.includes( '/each-dataset/' ) ||
+        resource.router.url.includes( '/view-palette/' ) ||
+        resource.router.url.includes( '/view-gradient/' ) ||
+        resource.router.url.includes( '/view-pattern/' ) ||
+        resource.router.url.includes( '/opensource-font/' ) ||
+        resource.router.url.includes( '/shades-of-color/' ) ||
+        false "
+        [routerLink]=" '/' +
+        ( resource.router.url.includes( '/free-icon/') ? 'icons':'') +
+        ( resource.router.url.includes( '/edit-map/') ? 'maps':'') +
+        ( resource.router.url.includes( '/each-dataset/') ? 'datasets':'') +
+        ( resource.router.url.includes( '/view-palette/') ? 'palettes':'') +
+        ( resource.router.url.includes( '/view-gradient/') ? 'gradients':'') +
+        ( resource.router.url.includes( '/view-pattern/') ? 'patterns':'') +
+        ( resource.router.url.includes( '/opensource-font/') ? 'fonts':'') +
+        ( resource.router.url.includes( '/shades-of-color/') ? 'colors':'') +
+        '' "><mat-icon>arrow_back</mat-icon></button>
+
+      </div>
+      <div class="menus" ><!-- mat-tab-nav-bar  
         [attr.mat-align-tabs]=" resource.getWidth > 767 ? 'end' : 'center' "
-          color="accent" backgroundColor="accent" class="b_growth">
-          <a mat-tab-link *ngFor="let x of navLinks"
-          style="opacity: 1;  min-width: auto; padding: 0;"
+          color="accent" backgroundColor="accent" 
+         mat-tab-link
+      -->
+        <nav class="b_growth">
+          <a *ngFor="let x of navLinks"
           [style]=" 'padding: ' + ( resource.getWidth > 767 ? '0 24px;' : '0 16px;') " 
           
              [routerLink]="x.path" routerLinkActive #rla="routerLinkActive"
-             [active]=" activeME(rla.isActive, x.path) ">
-             <mat-icon>{{x.icon}}</mat-icon><span class="title">&nbsp;{{x.name}}</span>
+             [class.active]=" activeME(rla.isActive, x.path) ">
+             <mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span>
           </a>
         </nav>
       </div>
@@ -162,8 +229,17 @@
   <mat-sidenav-container>
     <mat-sidenav mode="side" opened class="leftNav">
       <div class="spread"></div>
-      <div class="types"
-      >
+      <div class="types" [style]=" 'margin: ' + (
+        !resource.router.url.includes( '/free-icon/' ) &&
+        !resource.router.url.includes( '/edit-map/' ) &&
+        !resource.router.url.includes( '/each-dataset/' ) &&
+        !resource.router.url.includes( '/view-palette/' ) &&
+        !resource.router.url.includes( '/view-gradient/' ) &&
+        !resource.router.url.includes( '/view-pattern/' ) &&
+        !resource.router.url.includes( '/opensource-font/' ) &&
+        !resource.router.url.includes( '/shades-of-color/' ) &&
+        true ? '52px 0 0 0' : '0px 0 0 0')
+        + ';' " >
       <ul style=" overflow: hidden; overflow-y: auto;  max-height: 70vh; padding: 0 0 2vh 0;">
   
         <!-- <ng-container *ngIf="resource.router.url == '/explore' ">
@@ -269,6 +345,18 @@
         <router-outlet></router-outlet>
   
   
+        <div class="textC" *ngIf="
+        resource.router.url.includes( '/free-icon/' ) ||
+        resource.router.url.includes( '/edit-map/' ) ||
+        resource.router.url.includes( '/each-dataset/' ) ||
+        resource.router.url.includes( '/view-palette/' ) ||
+        resource.router.url.includes( '/view-gradient/' ) ||
+        resource.router.url.includes( '/view-pattern/' ) ||
+        resource.router.url.includes( '/opensource-font/' ) ||
+        resource.router.url.includes( '/shades-of-color/' ) ||
+        false ">
+          <a routerLink="/explore"><img src="assets/logo.png"></a>
+        </div>
         <div class="maintainFooter" [class.maintainFooterHide]="hideTop"></div>
       </div>
     </mat-sidenav-content>

@@ -24,7 +24,7 @@ module.exports = {
     // STRIPE_Publishable_key :'pk_test_51IJSwWENE7uabJh2Eqdq6aDs4rYefwE7sIoHUigj99tOW3Jn0z55dqEkqU31h3aplAMmRorqPTAtmXFURgnF4aLR00X7QWeeCP',
     // STRIPE_Secret_key :'sk_test_51IJSwWENE7uabJh2qbxlfM2If5MLKbI9wwhKFPOCGsTrkekeQFiKoKoslcRBy0dAgbzXYnGcWYdxbtMHvQ08aob100vc2l4BSj',
 
-    STRIPE_Publishable_key :'pk_live_51IJSwWENE7uabJh2VmcLpbiUqdVOhgjk7FRf7UJ7GfPiTmmBP0ZNRFjw5JiRFEHhsOT7zVITsmNueAMYIjiHZITQ001HHBOKAC',
-    STRIPE_Secret_key :'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',
+    STRIPE_Publishable_key :'pk_live_51IJSwWENE7uabJh24AGD4BlHr02TToQJaQonZl894GzwO4w8ygjCGMVpSYMl0Fn8XG7xfqN6rVHurRKvCMom2XW100ngfYhCiC',
+    STRIPE_Secret_key :'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',
 
 }

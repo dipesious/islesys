@@ -81,7 +81,7 @@
 
 <section class="section3">
 
-  <ng-container *ngFor="let x of tableList$ | async">
+  <ng-container *ngFor="let x of page.dataO | async">
     <div class="holdPalette"
     *ngIf=" !searching.value || x.name.toLowerCase().includes(searching.value.toLowerCase())" >
         <div class="palette">
@@ -111,4 +111,5 @@
     </div>
   </ng-container>
 
+  <app-loading *ngIf="!(page.dataO | async) || (page.loading | async) "></app-loading>
 </section>
