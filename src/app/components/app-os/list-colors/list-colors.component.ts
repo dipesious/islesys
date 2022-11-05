@@ -47,7 +47,7 @@ export class ListColorsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    let xTitle = "islesys shades free download";
+    let xTitle = "Library of stable color shades";
     let xDescription = "We are building a researched library of stable colors. The shades undertaking by Dipesh Bhoir with over 50k+ shades at your fingertips.";
     let xURL = "https://islesys.com/shades";
     let xImage = "";
@@ -94,7 +94,7 @@ export class ListColorsComponent implements OnInit {
         this.router.navigate(['/cart/apply-for-enterprise']);
       }
       if(result?.type == 'getHelp'){
-        this.router.navigate(['/getHelp/colors']);
+        this.router.navigate(['/getHelp/shades']);
       }
     });
   }

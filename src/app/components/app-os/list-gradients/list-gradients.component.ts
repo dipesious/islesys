@@ -53,7 +53,7 @@ export class ListGradientsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let xTitle = "islesys gradients free download";
+    let xTitle = "Library of unique gradients";
     let xDescription = "We are building an extraordinary library of unique gradients. The gradients undertaking by Dipesh Bhoir with over 3k+ gradients at your fingertips.";
     let xURL = "https://islesys.com/gradients";
     let xImage = "";

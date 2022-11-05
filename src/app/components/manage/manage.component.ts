@@ -174,7 +174,7 @@ export class ManageComponent {
     p == '/explore' && this.resource.router.url.includes('/gradients') ||
     p == '/explore' && this.resource.router.url.includes('/patterns') ||
     p == '/explore' && this.resource.router.url.includes('/fonts') ||
-    p == '/explore' && this.resource.router.url.includes('/colors') ||
+    p == '/explore' && this.resource.router.url.includes('/shades') ||
 
     p == '/explore' && this.resource.router.url.includes('/free-icon/') ||
     p == '/explore' && this.resource.router.url.includes('/edit-map/') ||

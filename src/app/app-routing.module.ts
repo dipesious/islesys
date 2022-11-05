@@ -46,7 +46,7 @@ const routes: Routes = [
     {path:'palettes', component: ListPalettesComponent},
     {path:'patterns', component: ListPatternsComponent},
     {path:'gradients', component: ListGradientsComponent},
-    {path:'colors', component: ListColorsComponent},
+    {path:'shades', component: ListColorsComponent},
 
     {path:'Periodic-Table-of-Elements', component: PeriodicTableComponent},
 

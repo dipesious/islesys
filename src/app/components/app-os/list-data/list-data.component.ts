@@ -58,7 +58,7 @@ export class ListDataComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let xTitle = "islesys datasets free download";
+    let xTitle = "Download datasets xml, json, csv";
     let xDescription = "We are building a massive library of formatted datasets. The datasets undertaking by Dipesh Bhoir with over 50k+ datasets at your fingertips.";
     let xURL = "https://islesys.com/datasets";
     let xImage = "";

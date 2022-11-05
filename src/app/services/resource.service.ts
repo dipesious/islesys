@@ -37,7 +37,7 @@ export class ResourceService {
   videoOpensourceGradients = "assets/videos/video_gradients.mp4";
   videoOpensourcePatterns = "assets/videos/video_patterns.mp4";
   videoOpensourceFonts = "assets/videos/recommend.mp4";
-  videoOpensourceColors = "assets/videos/video_colors.mp4";
+  videoOpensourceShades = "assets/videos/video_shades.mp4";
 
   nowLang = "English"
   bgInvert = false; // icon
@@ -56,7 +56,7 @@ export class ResourceService {
     {count:1500, about:"css backgrounds", icon:"gradient", name:"Gradients",path:"/gradients"},
     {count:22, about:"css collections", icon:"pattern", name:"Patterns",path:"/patterns"},
     {count:1442, about:"regional scripts", icon:"font_download", name:"Fonts",path:"/fonts"},
-    {count:268, about:"hex code list", icon:"format_color_fill", name:"Colors",path:"/colors"},
+    {count:268, about:"hex code list", icon:"format_color_fill", name:"Shades",path:"/shades"},
   ]
   navCrowdfund = [
     {title:"Book",icon:"auto_stories", path:"/fundraisers/1" },

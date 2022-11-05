@@ -44,7 +44,7 @@ ${data.sector == 'palette' ? 'palettes':'' }
 ${data.sector == 'gradient' ? 'gradients':'' }
 ${data.sector == 'pattern' ? 'patterns':'' }
 ${data.sector == 'font' ? 'fonts':'' }
-${data.sector == 'color' ? 'colors':'' }
+${data.sector == 'shade' ? 'shades':'' }
 ">High quality ${
 (data.sector == 'icon' ? 'icons':'') +
 (data.sector == 'map' ? 'maps':'' ) +
@@ -53,7 +53,7 @@ ${data.sector == 'color' ? 'colors':'' }
 (data.sector == 'gradient' ? 'gradients':'' ) +
 (data.sector == 'pattern' ? 'patterns':'' ) +
 (data.sector == 'font' ? 'fonts':'' ) +
-(data.sector == 'color' ? 'colors':'') 
+(data.sector == 'shade' ? 'shades':'') 
 } from islesys.com</a>`;
 
   }

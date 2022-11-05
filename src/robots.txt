@@ -22,7 +22,7 @@ Allow: /palettes
 Allow: /gradients
 Allow: /patterns
 Allow: /fonts
-Allow: /colors
+Allow: /shades
 Allow: /free-icon/**
 Allow: /edit-map/**
 Allow: /each-dataset/**

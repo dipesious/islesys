@@ -55,7 +55,7 @@ export class ListFontsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let xTitle = "islesys fonts free download";
+    let xTitle = "Library of fonts & writing systems";
     let xDescription = "We are building an extensive library of writing systems. The fonts undertaking by Dipesh Bhoir with over 1200+ fonts at your fingertips.";
     let xURL = "https://islesys.com/fonts";
     let xImage = "";

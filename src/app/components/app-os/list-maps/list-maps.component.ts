@@ -419,7 +419,7 @@ export class ListMapsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let xTitle = "islesys maps free download";
+    let xTitle = "Download maps svg, jpeg, png, webp";
     let xDescription = "We are building a diverse library of interactive maps. The maps undertaking by Dipesh Bhoir with over 1k+ maps at your fingertips.";
     let xURL = "https://islesys.com/maps";
     let xImage = "";

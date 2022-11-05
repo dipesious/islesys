@@ -17,7 +17,7 @@ export class SeoService {
     let xTitle = ztitle || "islesys - Small steps Long vision";
     let xImage = zdescription || "World's Largest Open Content & Asia's Largest Content Library. An Ecosystem around Reusable tech dependencies that is an expanding mecca for digital assets.";
     let xDescription = zimage || "https://islesys.com/assets/logo.png";
-    let xKeywords = zkeywords || "Islesys, icons, maps, datasets, palettes, gradients, patterns, fonts, colors, free download, Dipesh Bhoir";
+    let xKeywords = zkeywords || "Islesys, icons, maps, datasets, palettes, gradients, patterns, fonts, shades, free download, Dipesh Bhoir";
 
     this.updateOgUrl(xURL);
     this.updateTitle(xTitle);

@@ -51,7 +51,7 @@ export class ListIconComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let xTitle = "islesys icons free download";
+    let xTitle = "Download icons svg, webp, png";
     let xDescription = "We are building a gargantuan library of compatible icons. The icons undertaking by Dipesh Bhoir with over 50k+ icons at your fingertips.";
     let xURL = "https://islesys.com/icons";
     let xImage = "";

@@ -101,7 +101,7 @@ export class DownloadColorComponent implements OnInit {
         this.router.navigate(['/cart/apply-for-enterprise']);
       }
       if(result?.type == 'getHelp'){
-        this.router.navigate(['/getHelp/colors']);
+        this.router.navigate(['/getHelp/shades']);
       }
     });
   }
