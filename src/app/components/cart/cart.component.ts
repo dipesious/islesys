@@ -6,7 +6,10 @@ import { AuthService } from 'src/app/services/auth.service';
 import { DependencyService } from 'src/app/services/dependency.service';
 import { ResourceService } from 'src/app/services/resource.service';
 import { SignitureService } from 'src/app/services/signiture.service';
+import { WindowService } from 'src/app/services/window.service';
 import { UserModel } from 'src/app/universal.model';
+
+declare var RazorpayCheckout:any;
 
 @Component({
   selector: 'app-cart',
@@ -17,13 +20,8 @@ export class CartComponent implements OnInit {
 
 
 
-  cartList = [
-    {id:'price_1LuTMaENE7uabJh2F2h4YBiO', name:"Startup Community", way:"79 First Year then $99", price:99, cost:79, during:"1 Year" },
-    {id:'price_1LuTPKENE7uabJh2rrXnRV5u', name:"Pledged Community", way:"33/year Prepaid", price:297, cost:99, during:"3 Year" },
-    {id:'price_1LuTQrENE7uabJh2aYyTOtfT', name:"Prepaid Enterprise", way:"499/month Prepaid", price:499, cost:499 , during:"Monthly" },
-  ]
 
-  cartPack = this.cartList[1];
+  cartPack = this.resource.cartList[1];
   checkX = "";
 
   nameCompany = "";
@@ -32,12 +30,12 @@ export class CartComponent implements OnInit {
   makingChanges = false;
 
   xPay = {
-    paymethod:"CARD",
-    // name:"", 
+    paymethod:"RAZORPAY",
+  //   // name:"", 
     // card:"", cvv:"", MmYy:"",
-    card:"4242 4242 4242 4242", MmYy:"12 / 34", cvv:"567",
-    vpa:"",
-    email:"",
+  //   // card:"4242 4242 4242 4242", MmYy:"12 / 34", cvv:"567",
+  //   vpa:"",
+  //   email:"",
   }
 
   constructor(
@@ -48,6 +46,7 @@ export class CartComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
 
+    private winRef: WindowService,
   ) {
     let pack = this.actRoute.snapshot.params['pack'];
 
@@ -67,13 +66,13 @@ export class CartComponent implements OnInit {
       }else{
 
         if( pack == 'continue-upgrade' ){
-          this.cartPack = this.cartList[0];
+          this.cartPack = this.resource.cartList[0];
         }
         if( pack == 'upgrade-account' ){
-          this.cartPack = this.cartList[1];
+          this.cartPack = this.resource.cartList[1];
         }
         if( pack == 'apply-for-enterprise' ){
-          this.cartPack = this.cartList[2];
+          this.cartPack = this.resource.cartList[2];
         }
 
       }
@@ -114,11 +113,11 @@ export class CartComponent implements OnInit {
     }
   }
 
-  setPAY(x:any){
-    if(!this.makingChanges){
-      this.xPay.paymethod = x;
-    }
-  }
+  // setPAY(x:any){
+  //   if(!this.makingChanges){
+  //     this.xPay.paymethod = x;
+  //   }
+  // }
 
   submitPay(){
     this.makingChanges = true;
@@ -140,29 +139,49 @@ export class CartComponent implements OnInit {
         duration: 2000,
         panelClass:"c_white" })
     }else{
+
       this.auth.user$.pipe(take(1)).subscribe(mine => {
+        let cost = 0 + 
+        (mine.coin == "INR" ? this.cartPack.costINR : 0) + 
+        (mine.coin == "EUR" ? this.cartPack.costEUR : 0) + 
+        (mine.coin == "USD" ? this.cartPack.costUSD : 0) + 
+        ((mine.coin !== "INR" || mine.coin !== "EUR" || mine.coin !== "USD" || false) ? this.cartPack.costUSD : 0) + 
+        0;
+        let price = 0 + 
+        (mine.coin == "INR" ? this.cartPack.priceINR : 0) + 
+        (mine.coin == "EUR" ? this.cartPack.priceEUR : 0) + 
+        (mine.coin == "USD" ? this.cartPack.priceUSD : 0) + 
+        ((mine.coin !== "INR" || mine.coin !== "EUR" || mine.coin !== "USD" || false) ? this.cartPack.priceUSD : 0) + 
+        0;
+        let save = 0 + 
+        (mine.coin == "INR" ? (this.cartPack.priceINR - this.cartPack.costINR) : 0) + 
+        (mine.coin == "EUR" ? (this.cartPack.priceEUR - this.cartPack.costEUR) : 0) + 
+        (mine.coin == "USD" ? (this.cartPack.priceUSD - this.cartPack.costUSD) : 0) + 
+        ((mine.coin !== "INR" || mine.coin !== "EUR" || mine.coin !== "USD" || false) ? (this.cartPack.priceUSD - this.cartPack.costUSD) : 0) + 
+        0;
+
         const data = {
           id:"", name:mine.name, by: mine.uid, to:"Islesys",
           productID:this.cartPack.id,
           coin:mine.coin, iso:mine.iso, 
           phone:mine.phone, email:mine.email,
           companyCARD:this.cardCompany, companyCODE:this.codeCompany, companyNAME:this.nameCompany,
-          cost:this.cartPack.cost, price:this.cartPack.price, save:(this.cartPack.price - this.cartPack.cost), 
+          cost, price, save,
           pack:(
-            ( this.cartList[0] == this.cartPack ? "community":"") +
-            ( this.cartList[1] == this.cartPack ? "community":"") +
-            ( this.cartList[2] == this.cartPack ? "enterprise":"") +
+            ( this.resource.cartList[0] == this.cartPack ? "community":"") +
+            ( this.resource.cartList[1] == this.cartPack ? "community":"") +
+            ( this.resource.cartList[2] == this.cartPack ? "enterprise":"") +
             "" ), 
             varient:this.cartPack.name, recuring:("" + 
-            ( this.cartList[1] == this.cartPack ? "yearly":"") + 
-            ( this.cartList[2] == this.cartPack ? "monthly":"") +
+            ( this.resource.cartList[1] == this.cartPack ? "yearly":"") + 
+            ( this.resource.cartList[2] == this.cartPack ? "monthly":"") +
             "" ), 
           payment: this.xPay,
           status:0, sin:null
         }
   
         this.auth.submitWALT(data).then(refWalt => {
-  
+  /*
   if(this.xPay.paymethod == 'CARD'){
     const payStripeCUST = mine.payStripeCUST || "";
 
@@ -195,13 +214,95 @@ export class CartComponent implements OnInit {
             }
           })
   }
-  
+  */
   if(this.xPay.paymethod == 'UPI'){
   
   }
   
   if(this.xPay.paymethod == 'PAYPAL'){
   
+  }
+  
+  if(this.xPay.paymethod == 'RAZORPAY'){
+    // const payStripeCUST = mine.payStripeCUST || "";
+
+          this.depends.startRazorpayNew("IN", 
+          refWalt.id, data.by, 
+          data.name, data.phone, data.email,
+          // data.productID,
+          // payStripeCUST
+          // this.xPay.card, this.xPay.MmYy, this.xPay.cvv
+          data.cost,
+          data.coin
+          ).pipe(take(1)).subscribe((getPayRes:any) => {
+            console.log("getPayRes", getPayRes);
+
+            // console.log("MANHANDLE", ref)
+            if(!getPayRes || !getPayRes.success //|| !ref.data || !ref.data.url 
+              ){
+              let mess = "There was a problem placing an order.";
+              this.snackBar.open(mess, "", {
+                horizontalPosition: "center", verticalPosition: "bottom", 
+                duration: 2000,
+                panelClass:"c_white" })
+            }else{
+                  
+        getPayRes.modal = {
+          ondismiss: () => {
+            console.log("ondismiss")
+            this.payStatus(refWalt.id, -10, "Payment Exited, Try again...", {});
+          },
+        };
+        getPayRes.handler = (response:any, error:any) => {
+          console.log("hello bro: ")
+          if (response) {
+          console.log("response: ", response)
+          const dataVerify = {
+            amount:data.cost, currency:data.coin,
+            paymentId: response.razorpay_payment_id,
+            signature: response.razorpay_signature,
+            order_id: response.razorpay_order_id
+          }
+          console.log("dataVerify",dataVerify)
+          this.payStatus(refWalt.id, 10, "Payment Success!", response);
+
+          /*
+          this.depends.verifyPayment("IND", dataVerify).pipe(take(1)).subscribe((getVerifyRes:any) => {
+             console.log("getPayRes", getVerifyRes)
+             if(!getVerifyRes || !getVerifyRes.success){
+              //this.payFailed("Payment Failed, Try again...");
+             }else{
+              // this.payComplete("razorpay", response, getVerifyRes.gwInfo, orderId,
+              // referalCODE,
+              // referalUID, referalCashback)
+             }
+          })
+          */
+          //Check if success
+          }
+          if(error){
+            console.log("error: ", error)
+            this.payStatus(refWalt.id, -10, "Payment Failed, Try again...", error); // You need to store error
+          }
+        };
+
+/*
+              this.auth.updateFieldWALT(refWalt.id, "startDATA", ref.data).then(() => {
+                console.log("startDATA")
+                // if(payStripeCUST !== ref.payStripeCUST){
+                //   this.sign.updateFieldUSER(data.by, "payStripeCUST", payStripeCUST).then(() => {
+                //     window.open(ref.data.url, "_self");
+                //   })
+                // }else{
+                //   window.open(ref.data.url, "_self");
+                // }
+              })
+*/
+        const rzp = new this.winRef.nativeWindow.Razorpay(getPayRes);
+        rzp.open();
+
+            }
+          })
   }
   
         })
@@ -211,6 +312,14 @@ export class CartComponent implements OnInit {
     }
   }
 
+  payStatus(id:string, status:number, info:string, happen:any){
+    const data = {
+      info, happen
+    }
+    this.auth.updateFieldWALT(id, "endDATA", data).then(() => {
+      console.log("startDATA")
+    })
+  }
 
   // startPay(){
   //   this.disableALL = true;
@@ -231,7 +340,7 @@ export class CartComponent implements OnInit {
   //   }
   // }
 
-
+/*
     card_format(value:any) {
       var v = value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
       var matches = v.match(/\d{4,16}/g);
@@ -261,6 +370,8 @@ export class CartComponent implements OnInit {
         this.xPay.MmYy = value;
       }
     }
+*/
+
 /*
 
 document.getElementById("card_number").oninput = function () {

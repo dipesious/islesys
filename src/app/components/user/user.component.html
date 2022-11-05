@@ -1,0 +1,55 @@
+<div class="nav">
+    <ul>
+        <a mat-button routerLink="/explore" style="margin: 16px auto 8px auto; display:inline-block; width: 100%;"><mat-icon>{{'arrow_back'}}</mat-icon> Back to Explore</a>
+
+        <li>My Account</li>
+        <li [class.active]="resource.router.url.includes( '/user/my-contact-info' )"><mat-icon>person_pin</mat-icon> <a routerLink="/user/my-contact-info">My Contact</a></li>
+        <li [class.active]="resource.router.url.includes( '/user/my-profiles' )"><mat-icon>badge</mat-icon> <a routerLink="/user/my-profiles">My Profiles</a></li>
+
+        <li>Manage Projects</li>
+        <li 
+        [class.active]="resource.router.url.includes( '/user/manage' ) && x == activePayment" 
+        *ngFor="let x of myPayments" routerLink="/user/manage">
+            <mat-icon>shopping_bag</mat-icon> <a (click)="activePayment = x;">{{x.companyNAME}}</a><span class="status b_accent">Expired</span></li>
+        <li><mat-icon>link</mat-icon> <a routerLink="/cart/upgrade-account">Get new Community pack</a></li>
+
+        <li>Manage Companies</li>
+        <li 
+        [class.active]="resource.router.url.includes( '/user/manage' ) && x == activePayment" 
+        *ngFor="let x of myPaymentsEnterprise" routerLink="/user/manage">
+            <mat-icon>store</mat-icon> <a (click)="activePayment = x;">{{x.companyNAME}}</a><span class="status b_accent">Failed</span></li>
+        <li><mat-icon>link</mat-icon> <a routerLink="/cart/apply-for-enterprise">Get new Enterprise pack</a></li>
+
+        <li>Advertise with Us</li>
+        <li><mat-icon>highlight</mat-icon> <a routerLink="">My Advertising</a></li>
+        <li><mat-icon>link</mat-icon> <a routerLink="/explore">Static Ads</a><span class="status b_growth">Coming Soon</span></li>
+        <li><mat-icon>link</mat-icon> <a routerLink="/explore">Dynamic Ads</a><span class="status b_growth">Coming Soon</span></li>
+    </ul>
+</div>
+
+<div class="main-container">
+    <div class="containerX">
+
+        <div class="top-part">
+            <img src="assets/logo.png" />
+        </div>
+
+        <div class="bottom-part">
+            <app-loading *ngIf="loading"></app-loading>
+
+            <p style="    line-height: 240px;
+font-size: 28px;
+text-align: center;
+margin: 0;
+padding: 0;">
+{{!loading && resource.router.url.includes( '/user/my-contact-info' ) && !activeBio ? 'Log in Required!':''}}
+{{!loading && resource.router.url.includes( '/user/my-profiles' ) && !activeProfiles ? 'You have no KYC docs!':''}}
+{{!loading && resource.router.url.includes( '/user/manage' ) && !activePayment ? 'You are on Private Pack!':''}}
+</p>
+
+            <app-bio *ngIf="resource.router.url.includes( '/user/my-contact-info' )" [activeBio]=" activeBio "></app-bio>
+            <app-profiles *ngIf="resource.router.url.includes( '/user/my-profiles' )" [activeProfiles]=" activeProfiles "></app-profiles>
+            <app-registry *ngIf="resource.router.url.includes( '/user/manage' )" [activePayment]=" activePayment "></app-registry>
+        </div>
+    </div>
+</div>

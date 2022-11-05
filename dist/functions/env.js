@@ -27,4 +27,9 @@ module.exports = {
     STRIPE_Publishable_key :'pk_live_51IJSwWENE7uabJh24AGD4BlHr02TToQJaQonZl894GzwO4w8ygjCGMVpSYMl0Fn8XG7xfqN6rVHurRKvCMom2XW100ngfYhCiC',
     STRIPE_Secret_key :'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',
 
+    // RAZOR_PAY_KEY_ID: "rzp_test_IJu8k9IvBRMQkf",
+    // RAZOR_PAY_KEY_SECRET: "mt1hrrolhSs42LpW7wI6OTVt",
+
+    RAZOR_PAY_KEY_ID: "rzp_live_b1UdexxytuhZRY",
+    RAZOR_PAY_KEY_SECRET: "shJkkWgb9RxZwMsvIUtQMuwv",
 }

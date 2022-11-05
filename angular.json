@@ -46,7 +46,7 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "8kb",
-                  "maximumError": "20kb"
+                  "maximumError": "80kb"
                 }
               ],
               "fileReplacements": [
@@ -107,5 +107,8 @@
       }
     }
   },
-  "defaultProject": "client"
+  "defaultProject": "client",
+  "cli": {
+    "analytics": "136eaf34-6377-4514-b8ad-d7b6e9b36c4e"
+  }
 }

@@ -24,6 +24,11 @@ import { WhoWeAreComponent } from './components/who-we-are/who-we-are.component'
 import { FileBugComponent } from './components/file-bug/file-bug.component';
 import { CartComponent } from './components/cart/cart.component';
 import { PaymentsComponent } from './placeholders/payments/payments.component';
+import { PeriodicTableComponent } from './components/app-ov/periodic-table/periodic-table.component';
+import { AppOsComponent } from './components/app-os/app-os.component';
+import { UserComponent } from './components/user/user.component';
+import { RegistryComponent } from './components/user/registry/registry.component';
+import { ProfilesComponent } from './components/user/profiles/profiles.component';
 
 const routes: Routes = [
 
@@ -33,13 +38,19 @@ const routes: Routes = [
   {path:'cart/:pack', component: CartComponent},
   {path:'order-status/:id', component: PaymentsComponent},
 
+  {path:'user', component: UserComponent, children:[
+    {path:'', redirectTo:'/my-contact-info', pathMatch:"full"},
+    {path:'my-contact-info', component: ProfilesComponent},
+    {path:'my-profiles', component: ProfilesComponent},
+    {path:'manage', component: RegistryComponent},
+  ]},
+
   {path:'', component: ManageComponent, children:[
       
     {path:'explore', component: WelcomeComponent},
     {path:'who-we-are', component: WhoWeAreComponent},
     {path:'file-a-bug', component: FileBugComponent },
     {path:'getHelp/:topic', component: FileBugComponent },
-    {path:'manage', component: ManageComponent },
 
     {path:'icons', component: ListIconComponent},
     {path:'maps', component: ListMapsComponent},
@@ -49,6 +60,8 @@ const routes: Routes = [
     {path:'patterns', component: ListPatternsComponent},
     {path:'gradients', component: ListGradientsComponent},
     {path:'colors', component: ListColorsComponent},
+
+    {path:'Periodic-Table-of-Elements', component: PeriodicTableComponent},
 
     {path:'free-icon/:id', component: DownloadIconComponent},
     {path:'edit-map/:id', component: DownloadMapComponent},

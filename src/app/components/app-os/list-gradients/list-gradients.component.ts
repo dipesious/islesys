@@ -6,6 +6,7 @@ import { map, Observable, of, startWith, take } from 'rxjs';
 import { AlgoGradientService } from 'src/app/services/algorithm/algo-gradient.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
+import { SeoService } from 'src/app/services/seo.service';
 import { DemandComponent } from '../../demand/demand.component';
 import { AddGradientComponent } from './add-gradient/add-gradient.component';
 
@@ -36,19 +37,28 @@ export class ListGradientsComponent implements OnInit {
     public resource:ResourceService,
     public dialog: MatDialog,
     private router: Router, 
+    public seo: SeoService,
   ) {
+    let x:any = '';
     this.filteredOptions = this.searching.valueChanges.pipe(
-      startWith(''),
+      startWith(x),
       map((value:string) => this._filter(!value ? '' : value )),
     );
 
     if(!page.firstHit){
     this.page.init('gradients', 'name', { reverse: false, prepend: false,  })
     }
+  
+    // this.execute()
   }
 
   ngOnInit(): void {
-    // this.execute()
+    let xTitle = "islesys gradients free download";
+    let xDescription = "We are building an extraordinary library of unique gradients. The gradients undertaking by Dipesh Bhoir with over 3k+ gradients at your fingertips.";
+    let xURL = "https://islesys.com/gradients";
+    let xImage = "";
+    let xKeywords = "gradients, free download, Islesys, Dipesh Bhoir";
+    this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
   }
 
   submitGradient(){

@@ -6,6 +6,7 @@ import { map, Observable, of, startWith, take } from 'rxjs';
 import { AlgoFontService } from 'src/app/services/algorithm/algo-font.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
+import { SeoService } from 'src/app/services/seo.service';
 import { FontModel } from 'src/app/universal.model';
 import { DemandComponent } from '../../demand/demand.component';
 import { AddFontComponent } from './add-font/add-font.component';
@@ -38,19 +39,28 @@ export class ListFontsComponent implements OnInit {
     public page: AlgoFontService,
     public dialog: MatDialog,
     private router: Router, 
+    public seo: SeoService,
   ) {
+    let x:any = '';
     this.filteredOptions = this.searching.valueChanges.pipe(
-      startWith(''),
+      startWith(x),
       map((value:string) => this._filter(!value ? '' : value )),
     );
 
     if(!page.firstHit){
     this.page.init('fonts', 'name', { reverse: false, prepend: false,  })
     }
+  
+    this.execute()
   }
 
   ngOnInit(): void {
-    this.execute()
+    let xTitle = "islesys fonts free download";
+    let xDescription = "We are building an extensive library of writing systems. The fonts undertaking by Dipesh Bhoir with over 1200+ fonts at your fingertips.";
+    let xURL = "https://islesys.com/fonts";
+    let xImage = "";
+    let xKeywords = "fonts, free download, Islesys, Dipesh Bhoir";
+    this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
   }
 
   submitFont(){

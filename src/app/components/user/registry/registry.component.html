@@ -1,0 +1,29 @@
+<ng-container *ngIf="activePayment">
+    <div class="word-section">
+        <p>Expires on {{activePayment.sin.toDate() | date}}<br>You can now access millions of assets<br>on any device at anytime!</p>
+    </div>
+    
+    <div class="plan-section">
+        <div class="img">
+            <img *ngIf="activePayment.varient == 'Startup Community'" src="assets/pack_private.png" alt="">
+            <img *ngIf="activePayment.varient == 'Pledged Community'" src="assets/pack_community.png" alt="">
+            <img *ngIf="activePayment.varient == 'Prepaid Enterprise'" src="assets/pack_enterprise.png" alt="">
+        </div>
+        <div class="annual-plan">
+            <h2>{{activePayment.varient}}</h2>
+            <p>${{ getPay( activePayment.varient ) }}<!--{{activePayment.coin}} {{activePayment.cost | number:'1.2-2'}}/year--></p>
+        </div>
+        <div class="change">
+            <!-- <a href="#">Choose</a> -->
+            <mat-icon>verified</mat-icon>
+        </div>
+    </div>
+    
+    <div class="btn-section">
+        <button class="btn-payment btn"
+        routerLink="/cart/upgrade-account" *ngIf="activePayment.pack == 'community'" 
+        type="submit">Register a Project</button>
+        <button class="btn-payment btn" *ngIf="activePayment.pack == 'enterprise'" 
+        type="submit">Register an Enterprise Project</button>
+    </div>
+</ng-container>

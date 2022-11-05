@@ -14,9 +14,9 @@ export class WindowService {
   }
   
 
-  // get nativeWindow(): any {
-  //   if (isPlatformBrowser(this.platformId)) {
-  //     return this.windowRef;
-  //   }
-  // }
+  get nativeWindow(): any {
+    if (isPlatformBrowser(this.platformId)) {
+      return this.windowRef;
+    }
+  }
 }

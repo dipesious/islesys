@@ -3,7 +3,7 @@
 <section class="section4" *ngIf="c">
     <div class="holdColor">
         <h2>Shades of {{c.name}}</h2>
-        <p class="title"><a class="c_warn" [routerLink]=" '/shades-of-color/' + c.id ">{{c.name}}</a></p>
+        <!-- <p class="title"><a class="c_warn" [routerLink]=" '/shades-of-color/' + c.id ">{{c.name}}</a></p> -->
         <div class="color" [style]="'background:' + x.c + ';'" *ngFor="let x of c.p">
             <h2>{{ false ? (c.name + ' ') : ''}}{{x.n}}</h2>
             <span class="divide"></span>

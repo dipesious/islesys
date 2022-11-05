@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-welcome',
@@ -45,10 +46,17 @@ export class WelcomeComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
-    public resource: ResourceService
+    public resource: ResourceService,
+    public seo: SeoService,
     ) { }
 
   ngOnInit(): void {
+    let xTitle = "";
+    let xDescription = "";
+    let xURL = "";
+    let xImage = "";
+    let xKeywords = "";
+    this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
   }
 
   changeTestmo(doW:number){

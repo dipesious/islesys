@@ -6,6 +6,7 @@ import { map, Observable, of, startWith, take } from 'rxjs';
 import { AlgoPatternService } from 'src/app/services/algorithm/algo-pattern.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
+import { SeoService } from 'src/app/services/seo.service';
 import { DemandComponent } from '../../demand/demand.component';
 import { AddPatternComponent } from './add-pattern/add-pattern.component';
 
@@ -43,19 +44,28 @@ export class ListPatternsComponent implements OnInit {
     public page: AlgoPatternService,
     public dialog: MatDialog,
     private router: Router, 
+    public seo: SeoService,
   ) {
+    let x:any = '';
     this.filteredOptions = this.searching.valueChanges.pipe(
-      startWith(''),
+      startWith(x),
       map((value:string) => this._filter(!value ? '' : value )),
     );
 
     if(!page.firstHit){
     this.page.init('patterns', 'name', { reverse: false, prepend: false,  })
     }
+  
+    this.execute()
   }
 
   ngOnInit(): void {
-    this.execute()
+    let xTitle = "islesys patterns free download";
+    let xDescription = "We are building an extraordinary library of unique patterns. The patterns undertaking by Dipesh Bhoir with over 28+ patterns at your fingertips.";
+    let xURL = "https://islesys.com/patterns";
+    let xImage = "";
+    let xKeywords = "patterns, free download, Islesys, Dipesh Bhoir";
+    this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
   }
 
   submitPattern(){

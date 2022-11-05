@@ -6,6 +6,7 @@ import { Observable, of, take } from 'rxjs';
 import { DemandComponent } from 'src/app/components/demand/demand.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
+import { SeoService } from 'src/app/services/seo.service';
 
 // import { AppAdvertComponent } from 'src/app/components/app-advert/app-advert.component';
 
@@ -29,6 +30,7 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
     private actRoute: ActivatedRoute,
     private router: Router, 
     private snackBar: MatSnackBar,
+    public seo: SeoService,
   ) {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -41,8 +43,7 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(){
     const x = this.actRoute.snapshot.params;
@@ -62,6 +63,14 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
     this.icon$.pipe(take(1)).subscribe(ref => {
       if(ref){
         let name = ref.name;//"Adhesive Bandage"
+
+    let xTitle = "Download icon for " + name;
+    let xDescription = "We are building a gargantuan library of compatible icons. The icons undertaking by Dipesh Bhoir with over 50k+ icons at your fingertips.";
+    let xURL = "https://islesys.com/free-icon/" + ref.id;
+    let xImage = "";
+    let xKeywords = "icons, free download, " + name + ", Islesys, Dipesh Bhoir";
+
+        this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
         this.similar$ = this.auth.getSIMILAR(id, name, 25).pipe(take(1))
       }
     })

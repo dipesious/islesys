@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ResourceService } from 'src/app/services/resource.service';
+import { SeoService } from 'src/app/services/seo.service';
 import { DemandComponent } from '../../demand/demand.component';
 
 @Component({
@@ -41,10 +42,17 @@ export class ListColorsComponent implements OnInit {
     public resource: ResourceService,
     public dialog: MatDialog,
     private router: Router, 
+    public seo: SeoService,
 
     ) { }
 
   ngOnInit(): void {
+    let xTitle = "islesys shades free download";
+    let xDescription = "We are building a researched library of stable colors. The shades undertaking by Dipesh Bhoir with over 50k+ shades at your fingertips.";
+    let xURL = "https://islesys.com/shades";
+    let xImage = "";
+    let xKeywords = "shades, free download, Islesys, Dipesh Bhoir";
+    this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
   }
 
 

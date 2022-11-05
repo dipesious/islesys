@@ -293,9 +293,9 @@
                 }
               }
               mat-icon {
-                vertical-align: sub;
-                font-size: 18px;
-                margin-right: 5px;
+                vertical-align: middle;
+                font-size: 18px; height: 1em;
+                //margin-right: 5px;
               }
               @keyframes arrow {
                 0% {

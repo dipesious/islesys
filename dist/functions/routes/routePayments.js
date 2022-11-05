@@ -1,7 +1,16 @@
 const express = require("express");
 const routePayments = express.Router();
 
-const enviroment = require("./../env");
+const enviroment = require("../env");
+const errors = require("./src/errors");
+var Razorpay = require('razorpay');
+// INASELIZE
+const key_id = enviroment.RAZOR_PAY_KEY_ID;
+const key_secret = enviroment.RAZOR_PAY_KEY_SECRET;
+const razorpay = new Razorpay({
+    key_id: key_id,
+    key_secret,
+});
 
 // This is your test secret API key.
 const stripe = require('stripe')(enviroment.STRIPE_Secret_key);
@@ -11,8 +20,9 @@ const YOUR_CLIENT = enviroment.production ? enviroment.YOUR_CLIENT_PROD : enviro
 
 const admin = require('firebase-admin');
 
+const crypto = require('crypto')
 
-routePayments.get('/success/:id', (req, res) => {
+routePayments.get('/success-stripe/:id', (req, res) => {
   if(!req.params.id){
     res.json({ 
         success:false, status:200, //http
@@ -38,7 +48,7 @@ routePayments.get('/success/:id', (req, res) => {
   }
 })
 
-routePayments.get('/failure/:id', (req, res) => {
+routePayments.get('/failure-stripe/:id', (req, res) => {
   if(!req.params.id){
     res.json({ 
         success:false, status:200, //http
@@ -65,7 +75,7 @@ routePayments.get('/failure/:id', (req, res) => {
 })
 
 
-routePayments.post(`/create-payment/:countryCode`, async (req, res) => {
+routePayments.post(`/create-stripe-payment/:countryCode`, async (req, res) => {
     if(!req.params.countryCode || 
       !req.body.id || !req.body.by || 
       !req.body.description ||
@@ -110,8 +120,8 @@ routePayments.post(`/create-payment/:countryCode`, async (req, res) => {
         ],
   
         mode: mode,
-        success_url: `${YOUR_DOMAIN}/api/payments/success/${req.body.id}`,
-        cancel_url: `${YOUR_DOMAIN}/api/payments/failure/${req.body.id}`,
+        success_url: `${YOUR_DOMAIN}/api/payments/success-stripe/${req.body.id}`,
+        cancel_url: `${YOUR_DOMAIN}/api/payments/failure-stripe/${req.body.id}`,
         automatic_tax: {enabled: false},
       });
 
@@ -199,6 +209,115 @@ routePayments.post(`/create-payment/:countryCode`, async (req, res) => {
       */
     }
   });
+
+
+
+
+
+
+
+  routePayments.post(`/create-razorpay-payment/:countryCode`, async (req, res) => {
+    if( !req.params.countryCode || !req.body.type ||
+      !req.body.amount || !req.body.currency || !req.body.receipt
+
+      // !req.params.countryCode || !req.body.type ||
+      //   !req.body.amount || !req.body.currency ||
+      //   !req.body.gwID || !req.body.gwSIGN || !req.body.gwORDR
+
+      // !req.params.countryCode || 
+      // !req.body.id || !req.body.by || 
+      // !req.body.description ||
+      // !req.body.name || !req.body.phone || !req.body.email || 
+      // false
+      ){
+        res.json({
+            success: false,
+            status: 200, //http
+            code: errors.Forbidden, //route
+            data: null,
+            info: "Please post valid data t"
+        });
+    }else{
+      
+      const lotsOfDecimal = req.body.amount;
+      const twoDecimalPlaces = lotsOfDecimal.toFixed(2);
+      const razorpayAMT = twoDecimalPlaces * 100;
+      //const razorpayPAID = req.body.amount_paid * 100; const razorpayDUE = req.body.amount_due * 100;
+
+      const options = {
+          amount: razorpayAMT,
+          currency: req.body.currency,
+          //amount_paid:razorpayPAID, amount_due:razorpayDUE,
+          receipt: req.body.receipt,
+
+          notes: {
+              description: 'descriptionX'
+          },
+          payment_capture: 1 //optional
+              /*
+                      payment_capture: 0,
+                      
+                      payment: {
+                        capture : 'automatic',
+                        capture_options : {
+                          automatic_expiry_period : 12,
+                          manual_expiry_period : 7200,
+                          refund_speed : 'optimum'
+                        }  
+                      },
+              */
+      };
+      try {
+          const MyOrder = await razorpay.orders.create(options);
+          //console.error("Mankind", MyOrder)
+
+          res.json({
+              ...MyOrder,
+              amount: razorpayAMT,
+              currency: req.body.currency,
+              //amount_paid:razorpayPAID, amount_due:razorpayDUE,
+              receipt: req.body.receipt,
+              order_id: MyOrder['id'],
+              key: key_id,
+
+              name: req.body.name || "Refr Tech", // To Name
+              description: req.body.description || "Payment to Refr",
+
+
+              prefill: {
+                  name: req.body.userData.name,
+                  contact: req.body.userData.phone ? req.body.userData.phone : null,
+                  email: req.body.userData.email ? req.body.userData.email : null
+              },
+              theme: { color: req.body.theme || "#000000" },
+              /*
+                      // notes: [{ useWallet: req.body.useWallet }],
+              */
+
+              success: true,
+              status: 200,
+              code: errors.ok,
+              //data:{}, info:"Hello action"
+          });
+
+
+      } catch (error) {
+          res.json({
+              success: false,
+              status: 200, //http
+              code: errors.Forbidden, //route
+              data: error,
+              info: "Unable to create order"
+          });
+      }
+
+
+
+    }
+  });
+
+
+
 
 
 

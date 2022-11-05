@@ -17,7 +17,6 @@ import { VerifyOTPComponent } from '../verify-otp/verify-otp.component';
 export class SignComponent implements OnInit {
 
   signUp:boolean = false;
-  cc = "+91";
   pass:boolean = false;
   currentTheme:string = 'light';
 
@@ -34,17 +33,7 @@ export class SignComponent implements OnInit {
     pass:""
   }
 
-  nations = [
-    {cc:"+86", iso:"CH", name:"Mainland China"},
-    {cc:"+33", iso:"FR", name:"France"},
-    {cc:"+91", iso:"IN", name:"India"},
-    {cc:"+81", iso:"JP", name:"Japan"},
-    {cc:"+86", iso:"RU", name:"Russia"},
-    {cc:"+65", iso:"SG", name:"Singapore"},
-    {cc:"+82", iso:"KR", name:"South Korea"},
-    {cc:"+44", iso:"UK", name:"United Kingdom"},
-    {cc:"+1", iso:"US", name:"United States"},
-  ]
+  chosenNation = this.resource.nations[25];
 
   constructor(
     private snackBar: MatSnackBar,
@@ -56,6 +45,7 @@ export class SignComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.auth.user$.pipe(take(1)).subscribe((mine:UserModel) => {
       if(!mine){
 
@@ -89,10 +79,10 @@ export class SignComponent implements OnInit {
 
   signup(){
     this.sign.makingChanges = true;
-    let completePhone = this.cc + this.userSign.phone
+    let completePhone = this.chosenNation.cc + this.userSign.phone
     //console.log(this.userSign)
     if(
-      !this.cc || 
+      !this.chosenNation.cc || 
       !this.userSign.name || this.resource.testName(this.userSign.name) ||
       !this.userSign.phone || this.resource.testPhone(this.userSign.phone) ||
       !this.userSign.email || this.resource.testEmail(this.userSign.email) ||
@@ -103,7 +93,7 @@ export class SignComponent implements OnInit {
       this.sign.makingChanges = false;
       this.snackMe(mess);
         // console.log(
-        //   !this.cc , 
+        //   !this.chosenNation.cc , 
         //   !this.userSign.name , this.testName(this.userSign.name) ,
         //   !this.userSign.phone , this.testPhone(this.userSign.phone) ,
         //   !this.userSign.email , this.testEmail(this.userSign.email) ,
@@ -124,7 +114,7 @@ export class SignComponent implements OnInit {
             this.sign.createUser(completePhone)
             // create new user
             const refBS = this.bSheet.open(VerifyOTPComponent, {
-              data:{cc:this.cc, phone:this.userSign.phone},
+              data:{cc:this.chosenNation.cc, phone:this.userSign.phone},
               disableClose:true
             });
             refBS.afterDismissed().subscribe(ref => {
@@ -143,7 +133,7 @@ export class SignComponent implements OnInit {
                       this.userSign.name, this.userSign.pass, 
                       completePhone, 
                       this.userSign.email, 
-                      "IN", "INR" ).then(creUser => {
+                      this.chosenNation.iso, this.chosenNation.coin ).then(creUser => {
                         if(!creUser.success){
                           console.log(creUser.info);
                           this.sign.makingChanges = false;
@@ -203,10 +193,10 @@ export class SignComponent implements OnInit {
 
   signInWithPassword(){
     this.sign.makingChanges = true;
-    let completePhone = this.cc + this.userLog.phone
+    let completePhone = this.chosenNation.cc + this.userLog.phone
     console.log(this.userLog)
     if(
-      !this.cc || 
+      !this.chosenNation.cc || 
       !this.userLog.phone || this.resource.testPhone(this.userLog.phone) ||
       !this.userLog.pass || this.resource.testPass(this.userLog.pass) ||
       false

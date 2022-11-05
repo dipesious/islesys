@@ -9,6 +9,24 @@ import {Clipboard} from '@angular/cdk/clipboard';
 })
 export class ResourceService {
 
+  cartList = [
+    {id:'price_1LuTMaENE7uabJh2F2h4YBiO', name:"Startup Community", way:"79 First Year then $99", price:99, cost:79,  
+    priceINR:8204, costINR:6549,  
+    priceEUR:102, costEUR:82, 
+    priceUSD:99, costUSD:79,
+    during:"1 Year" },
+    {id:'price_1LuTPKENE7uabJh2rrXnRV5u', name:"Pledged Community", way:"33/year Prepaid", price:297, cost:99, 
+    priceINR:24623, costINR:8204, 
+    priceEUR:305, costEUR:102, 
+    priceUSD:297, costUSD:99, 
+    during:"3 Year" },
+    {id:'price_1LuTQrENE7uabJh2aYyTOtfT', name:"Prepaid Enterprise", way:"499/month Prepaid", price:499, cost:499, 
+    priceINR:413670, costINR:413670, 
+    priceEUR:513, costEUR:513, 
+    priceUSD:499, costUSD:499, 
+    during:"Monthly" },
+  ]
+  
   videoEducation = "assets/videos/education.mp4";
   videoBusiness = "assets/videos/business.mp4";
 
@@ -90,6 +108,65 @@ export class ResourceService {
     {title:"Political",icon:"circle", path:"/articles/political" },
   ]
 
+  nations = [
+    {coin: "CAD",cc: "+1",iso: "CA",name: "Canada" },
+    {coin: "USD",cc: "+1",iso: "US",name: "United States" },
+    {coin: "ZAR",cc: "+27",iso: "ZA",name: "South Africa" },
+    {coin: "EUR",cc: "+30",iso: "GR",name: "Greece" },
+    {coin: "EUR",cc: "+31",iso: "NL",name: "the Netherlands" },
+    {coin: "EUR",cc: "+32",iso: "BE",name: "Belgium" },
+    {coin: "EUR",cc: "+33",iso: "FR",name: "France" },
+    {coin: "EUR",cc: "+34",iso: "ES",name: "Spain" },
+    {coin: "HUF",cc: "+36",iso: "HU",name: "Hungary" },
+    {coin: "EUR",cc: "+39",iso: "IT",name: "Italy" },
+    {coin: "RON",cc: "+40",iso: "RO",name: "Romania" },
+    {coin: "CHF",cc: "+41",iso: "CH",name: "Switzerland" },
+    {coin: "EUR",cc: "+43",iso: "AT",name: "Austria" },
+    {coin: "GBP",cc: "+44",iso: "UK",name: "United Kingdom" },
+    {coin: "DKK",cc: "+45",iso: "DK",name: "Denmark" },
+    {coin: "SEK",cc: "+46",iso: "SE",name: "Sweden" },
+    {coin: "NOK",cc: "+47",iso: "NO",name: "Norway" },
+    {coin: "PLN",cc: "+48",iso: "PL",name: "Poland" },
+    {coin: "EUR",cc: "+49",iso: "DE",name: "Germany" },
+    {coin: "BRL",cc: "+55",iso: "BR",name: "Brazil" },
+    {coin: "SGD",cc: "+65",iso: "SG",name: "Singapore" },
+    {coin: "JPY",cc: "+81",iso: "JP",name: "Japan" },
+    {coin: "KRW",cc: "+82",iso: "KR",name: "South Korea" },
+    {coin: "RUB",cc: "+86",iso: "RU",name: "Russia" },
+    {coin: "CNY",cc: "+86",iso: "CH",name: "Mainland China" },
+    {coin: "INR",cc: "+91",iso: "IN",name: "India" },
+    {coin: "GIP",cc: "+350",iso: "GI",name: "Gibraltar" },
+    {coin: "EUR",cc: "+351",iso: "PT",name: "Portugal" },
+    {coin: "EUR",cc: "+352",iso: "LU",name: "Luxembourg" },
+    {coin: "EUR",cc: "+353",iso: "IE",name: "Ireland" },
+    {coin: "ISK",cc: "+354",iso: "IS",name: "Iceland" },
+    {coin: "ALL",cc: "+355",iso: "AL",name: "Albania" },
+    {coin: "EUR",cc: "+356",iso: "MT",name: "Malta" },
+    {coin: "EUR",cc: "+357",iso: "CY",name: "Cyprus" },
+    {coin: "EUR",cc: "+358",iso: "FI",name: "Finland" },
+    {coin: "BGN",cc: "+359",iso: "BG",name: "Bulgaria" },
+    {coin: "EUR",cc: "+370",iso: "LT",name: "Lithuania" },
+    {coin: "EUR",cc: "+371",iso: "LV",name: "Latvia" },
+    {coin: "EUR",cc: "+372",iso: "EE",name: "Estonia" },
+    {coin: "MDL",cc: "+373",iso: "MD",name: "Moldova" },
+    {coin: "AMD",cc: "+374",iso: "AM",name: "Armenia" },
+    {coin: "BYN",cc: "+375",iso: "BY",name: "Belarus" },
+    {coin: "AND",cc: "+376",iso: "AD",name: "Andorra" },
+    {coin: "EUR",cc: "+377",iso: "MC",name: "Monaco" },
+    {coin: "EUR",cc: "+378",iso: "SM",name: "San Marino" },
+    {coin: "EUR",cc: "+379",iso: "VA",name: "Vatican" },
+    {coin: "UAH",cc: "+380",iso: "UA",name: "Ukraine" },
+    {coin: "RSD",cc: "+381",iso: "RS",name: "Serbia" },
+    {coin: "EUR",cc: "+382",iso: "ME",name: "Montenegro" },
+    {coin: "HRK",cc: "+385",iso: "HR\t",name: "Croatia" },
+    {coin: "EUR",cc: "+386",iso: "SL",name: "Slovenia" },
+    {coin: "BAM",cc: "+387",iso: "BA",name: "Bosnia & Herzegovina" },
+    {coin: "MKD",cc: "+389",iso: "MK",name: "North Macedonia" },
+    {coin: "CZK",cc: "+420",iso: "CZ",name: "Czech Republic" },
+    {coin: "EUR",cc: "+421",iso: "SK",name: "Slovakia" },
+    {coin: "CHF",cc: "+423",iso: "LI",name: "Liechtenstein"}
+];
+/*
   phoneCodes = [
     {
     "name": "Afghanistan",
@@ -1302,7 +1379,9 @@ export class ResourceService {
     "code": "ZW"
     }
     ];
+*/
 
+    
 
     palatteList = [ 
       "Pastel",

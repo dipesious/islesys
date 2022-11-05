@@ -6,6 +6,7 @@ import { map, Observable, of, startWith, take } from 'rxjs';
 import { AlgoIconService } from 'src/app/services/algorithm/algo-icon.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
+import { SeoService } from 'src/app/services/seo.service';
 import { AddIconComponent } from './add-icon/add-icon.component';
 
 
@@ -34,9 +35,11 @@ export class ListIconComponent implements OnInit {
     public resource:ResourceService,
     public page: AlgoIconService,
     public dialog: MatDialog,
+    public seo: SeoService,
     ) { 
+      let x:any = '';
     this.filteredOptions = this.searching.valueChanges.pipe(
-      startWith(''),
+      startWith(x),
       map((value:string) => this._filter(!value ? '' : value )),
     );
 
@@ -48,15 +51,12 @@ export class ListIconComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // const values = [
-    //   {
-    //     type:"", fill:"Regular", tone:"Flat",
-    //     by:"Dipesh", contact:"+919892381514", 
-    //     name:'name', data:`<svg viewBox="0 0 24 24"><path d="m22 4.75c0-.206-.163-.75-.75-.75-.159 0-.305.071-.45.15-1.772.966-3.4 1.85-3.4 1.85v11.996s1.913 1.054 3.399 1.854c.146.079.292.15.451.15.583 0 .75-.533.75-.75zm-20 0c0-.206.163-.75.75-.75.159 0 .305.071.45.15 1.772.966 3.4 1.85 3.4 1.85v11.996s-1.913 1.054-3.399 1.854c-.146.079-.292.15-.451.15-.583 0-.75-.533-.75-.75zm14 2.25c0-.552-.448-1-1-1h-6c-.552 0-1 .448-1 1v10c0 .552.448 1 1 1h6c.552 0 1-.448 1-1z" fill-rule="nonzero"/></svg>`,
-    //     active:true
-    //   },
-    // ];
-    // this.execute("Outline", "Flat")
+    let xTitle = "islesys icons free download";
+    let xDescription = "We are building a gargantuan library of compatible icons. The icons undertaking by Dipesh Bhoir with over 50k+ icons at your fingertips.";
+    let xURL = "https://islesys.com/icons";
+    let xImage = "";
+    let xKeywords = "icons, free download, Islesys, Dipesh Bhoir";
+    this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
   }
 
   submitIcon(){

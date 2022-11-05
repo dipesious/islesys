@@ -9,6 +9,7 @@ import { getDownloadURL, getBlob } from '@firebase/storage';
 import { HttpClient } from '@angular/common/http';
 import { Auth, authState } from '@angular/fire/auth';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -324,6 +325,12 @@ export class AuthService {
   getWALT(id:string){
     const cityRef = doc(this.fs, this.dbWALT, id);
     return docData(cityRef);
+  }
+
+  getMySuccessWALT(uid:string){
+    const cityRef = collection(this.fs, this.dbWALT);
+    const cityQ = query(cityRef, where("status", "==", 10))
+    return collectionData(cityQ);
   }
 
 

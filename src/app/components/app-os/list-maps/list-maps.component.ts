@@ -10,6 +10,7 @@ import { AddMapComponent } from './add-map/add-map.component';
 
 import { getStorage } from "firebase/storage";
 import { AlgoMapService } from 'src/app/services/algorithm/algo-map.service';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-list-maps',
@@ -402,19 +403,28 @@ export class ListMapsComponent implements OnInit {
     // public page: AlgoMapService,
     public resource: ResourceService,
     public dialog: MatDialog,
+    public seo: SeoService,
   ) {
+    let x:any = '';
     this.filteredOptions = this.searching.valueChanges.pipe(
-      startWith(''),
+      startWith(x),
       map((value:string) => this._filter(!value ? '' : value )),
     );
 
     // if(!page.firstHit){
     //   this.page.init('maps', 'info', { reverse: false, prepend: false,  })
     // }
+  
+    this.execute()
   }
 
   ngOnInit(): void {
-    this.execute()
+    let xTitle = "islesys maps free download";
+    let xDescription = "We are building a diverse library of interactive maps. The maps undertaking by Dipesh Bhoir with over 1k+ maps at your fingertips.";
+    let xURL = "https://islesys.com/maps";
+    let xImage = "";
+    let xKeywords = "maps, free download, Islesys, Dipesh Bhoir";
+    this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
   }
 
   submitMap(){

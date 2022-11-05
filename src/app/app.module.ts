@@ -70,6 +70,11 @@ import { DemandComponent } from './components/demand/demand.component';
 import { AddFontComponent } from './components/app-os/list-fonts/add-font/add-font.component';
 import { PaymentsComponent } from './placeholders/payments/payments.component';
 import { CartComponent } from './components/cart/cart.component';
+import { PeriodicTableComponent } from './components/app-ov/periodic-table/periodic-table.component';
+import { UserComponent } from './components/user/user.component';
+import { ProfilesComponent } from './components/user/profiles/profiles.component';
+import { RegistryComponent } from './components/user/registry/registry.component';
+import { BioComponent } from './components/user/bio/bio.component';
 
 //import { ScrollingModule } from '@angular/cdk/scrolling';
 
@@ -112,7 +117,12 @@ import { CartComponent } from './components/cart/cart.component';
     FileBugComponent,
     DemandComponent,
     PaymentsComponent,
-    CartComponent
+    CartComponent,
+    PeriodicTableComponent,
+    UserComponent,
+    ProfilesComponent,
+    RegistryComponent,
+    BioComponent
   ],
   imports: [
     //ScrollingModule,

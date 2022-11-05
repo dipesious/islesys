@@ -7,6 +7,7 @@
 !resource.router.url.includes( '/view-pattern/' ) &&
 !resource.router.url.includes( '/opensource-font/' ) &&
 !resource.router.url.includes( '/shades-of-color/' ) &&
+!resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
 true
 ">
     <div class="holdHeader">
@@ -29,8 +30,8 @@ true
     <a mat-icon-button color="primary" [matMenuTriggerFor]="userDO" ><mat-icon>person_pin</mat-icon></a>
     <mat-menu #userDO="matMenu" overlapTrigger="true">
       <div style="max-height: 300px; overflow-y: auto;">
-      <button mat-menu-item><mat-icon>manage_accounts</mat-icon> <b>My Account</b></button>
-      <button mat-menu-item><mat-icon>account_balance</mat-icon> <b>Manage Payments</b></button>
+      <button mat-menu-item routerLink="/user/my-contact-info"><mat-icon>manage_accounts</mat-icon> <b>My Account</b></button>
+      <button mat-menu-item routerLink="/user/manage"><mat-icon>account_balance</mat-icon> <b>Manage Payments</b></button>
       <button mat-menu-item><mat-icon>local_activity</mat-icon> <b>Advertsing Here</b></button>
       <button mat-menu-item><mat-icon>manage_history</mat-icon> <b>User History</b></button>
       <button mat-menu-item (click)="sign.signOut()"><mat-icon>logout</mat-icon> <b>Sign Out</b></button>
@@ -50,6 +51,7 @@ true
     !resource.router.url.includes( '/view-pattern/' ) &&
     !resource.router.url.includes( '/opensource-font/' ) &&
     !resource.router.url.includes( '/shades-of-color/' ) &&
+    !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
     true ? '84vh' : '94vh')
     + ';' "
   #mainContent  (scroll)="scrollHandler($event)">
@@ -171,6 +173,7 @@ true
       !resource.router.url.includes( '/view-pattern/' ) &&
       !resource.router.url.includes( '/opensource-font/' ) &&
       !resource.router.url.includes( '/shades-of-color/' ) &&
+      !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
       true ? '10vh' : '0vh')
       + ';' ">
 
@@ -183,6 +186,7 @@ true
         !resource.router.url.includes( '/view-pattern/' ) &&
         !resource.router.url.includes( '/opensource-font/' ) &&
         !resource.router.url.includes( '/shades-of-color/' ) &&
+        !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
         true "
         (click)="menuShow = !menuShow; clickS();"><mat-icon>star</mat-icon></button>
 
@@ -195,6 +199,7 @@ true
         resource.router.url.includes( '/view-pattern/' ) ||
         resource.router.url.includes( '/opensource-font/' ) ||
         resource.router.url.includes( '/shades-of-color/' ) ||
+        resource.router.url.includes( '/Periodic-Table-of-Elements' ) ||
         false "
         [routerLink]=" '/' +
         ( resource.router.url.includes( '/free-icon/') ? 'icons':'') +
@@ -205,6 +210,7 @@ true
         ( resource.router.url.includes( '/view-pattern/') ? 'patterns':'') +
         ( resource.router.url.includes( '/opensource-font/') ? 'fonts':'') +
         ( resource.router.url.includes( '/shades-of-color/') ? 'colors':'') +
+        ( resource.router.url.includes( '/Periodic-Table-of-Elements') ? 'colors':'') +
         '' "><mat-icon>arrow_back</mat-icon></button>
 
       </div>
@@ -238,6 +244,7 @@ true
         !resource.router.url.includes( '/view-pattern/' ) &&
         !resource.router.url.includes( '/opensource-font/' ) &&
         !resource.router.url.includes( '/shades-of-color/' ) &&
+        !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
         true ? '52px 0 0 0' : '0px 0 0 0')
         + ';' " >
       <ul style=" overflow: hidden; overflow-y: auto;  max-height: 70vh; padding: 0 0 2vh 0;">
@@ -276,6 +283,7 @@ true
         !resource.router.url.includes( '/view-pattern/' ) &&
         !resource.router.url.includes( '/opensource-font/' ) &&
         !resource.router.url.includes( '/shades-of-color/' ) &&
+        !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
         true
         ">
           <li *ngFor="let x of resource.navOpensource"><a mat-button [matTooltip]="x.name" matTooltipPosition="after" [routerLink]="x.path" routerLinkActive="active"><mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span></a></li>
@@ -354,6 +362,7 @@ true
         resource.router.url.includes( '/view-pattern/' ) ||
         resource.router.url.includes( '/opensource-font/' ) ||
         resource.router.url.includes( '/shades-of-color/' ) ||
+        resource.router.url.includes( '/Periodic-Table-of-Elements' ) ||
         false ">
           <a routerLink="/explore"><img src="assets/logo.png"></a>
         </div>
@@ -401,6 +410,8 @@ true
                 <ul>
                     <li><a routerLink="/who-we-are">Who We Are</a></li>
                     <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings">Myriad Undertakings</a></li>
+                    <li><a target="_" href="https://merchant.razorpay.com/policy/KbRyW6Y0TpfEhJ/refund">Refunds Policy</a></li>
+                    <li><a target="_" href="https://merchant.razorpay.com/policy/KbRyW6Y0TpfEhJ/shipping">Shipping Policy</a></li>
                     <!-- <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Pricing</a></li>
@@ -441,7 +452,7 @@ true
     </div>
   </footer>
     <div class="rights b_white textL">
-      <p>&nbsp;© 2018-2021 All Rights Reserved</p>
+      <p>&nbsp;© 2018-2022 All Rights Reserved</p>
     </div>
   </div>
   

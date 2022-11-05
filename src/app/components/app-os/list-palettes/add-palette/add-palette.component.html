@@ -55,7 +55,7 @@
     <span matPrefix>{{palette.dial_code}}</span>
     <button mat-icon-button matPrefix [matMenuTriggerFor]="menu" [disabled]="makingChanges"><mat-icon>unfold_more</mat-icon></button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item *ngFor="let x of resource.phoneCodes" (click)="palette.dial_code = x.dial_code">{{x.name}}</button>
+      <button mat-menu-item *ngFor="let x of resource.nations" (click)="palette.dial_code = x.cc">{{x.cc}} {{x.name}}</button>
     </mat-menu>
   </mat-form-field>
 

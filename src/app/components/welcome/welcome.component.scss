@@ -57,7 +57,7 @@
   background: linear-gradient(-45deg, #8bc34a 82%, rgba(139, 195, 74, 0.4) 0%); 
   color: #ffffff;
   height: 120px;
-  margin: 24px 8px;
+  margin: 24px 8px 0 16px;
   width: -webkit-fill-available;
   .about{
     display: flex;  justify-content: center;height: 120px;align-items:center;
@@ -68,7 +68,24 @@
   }
 }
 
-
+.sectionY{
+  margin: 0 8px 24px 16px;
+  background: linear-gradient(45deg, #8bc34a 82%, rgba(139, 195, 74, 0.4) 0%);
+  //height: 240px;
+  width: -webkit-fill-available;
+  .intrestingProjects{
+    h2{padding: 0 8px; margin:4px 0; display: inline-block;width: -webkit-fill-available;}
+    ul{
+      list-style: none;display: inline-block;
+      padding: 0; margin: 0; width: -webkit-fill-available;
+      li{
+        padding: 0; margin: 0 0 16px 24px;
+        display: inline-block;
+        a{text-decoration: none;}
+      }
+    }
+  }
+}
 
 .section3{
   margin: 20px 8px 40px 8px;

@@ -1,3 +1,4 @@
+
 <div class="container body">
 <div class="row">
 <div class="col col-100 col-sm-100">
@@ -25,7 +26,7 @@
 
 
 
-          <div class="tr_item" *ngFor="let x of cartList; let i = index;" (click)="setCart(x)">
+          <div class="tr_item" *ngFor="let x of resource.cartList; let i = index;" (click)="setCart(x)">
             <div class="td_item item_img">
               <img *ngIf="i == 2" src="assets/pack_enterprise.png" />
               <img *ngIf="i == 1" src="assets/pack_private.png" />
@@ -85,31 +86,31 @@
           <p class="c_white">Access to Everexpanding library of Icons, Maps, Datasets, Palettes, Gradients, Patterns, Fonts, Colors to download & modify anytime.</p>
         </div>
         <div class="form_group">
-          <input class="input" [(ngModel)]="cardCompany" name="cardCompany"
+          <input class="input" [(ngModel)]="cardCompany" name="ID_NAME"
           placeholder="Identity Card Name" />
         </div>
         <div class="form_group">
-          <input class="input" [(ngModel)]="codeCompany" name="codeCompany"
+          <input class="input" [(ngModel)]="codeCompany" name="VOTER_ID"
           placeholder="Enter Your ID" />
         </div>
 
         <div class="form_group">
-          <p class="c_white" *ngIf="cartPack == this.cartList[0]">Startup License valid for single project by user or company for a year.</p>
-          <p class="c_white" *ngIf="cartPack == this.cartList[1]">Pledged License valid for single project by user or company for 3 years.</p>
-          <p class="c_white" *ngIf="cartPack == this.cartList[2]">Enterprise License valid only incase of multiple projects for one company.</p>
+          <p class="c_white" *ngIf="cartPack == this.resource.cartList[0]">Startup License valid for single project by user or company for a year.</p>
+          <p class="c_white" *ngIf="cartPack == this.resource.cartList[1]">Pledged License valid for single project by user or company for 3 years.</p>
+          <p class="c_white" *ngIf="cartPack == this.resource.cartList[2]">Enterprise License valid only incase of multiple projects for one company.</p>
         </div>
         <div class="form_group">
-          <input class="input" [(ngModel)]="nameCompany" name="nameCompany"
+          <input class="input" [(ngModel)]="nameCompany" name="PROJECT"
           [placeholder]="
-          'Enter ' + ( cartPack == this.cartList[2] ? 'company':'project') + ' name'
+          'Enter ' + ( cartPack == this.resource.cartList[2] ? 'company':'project') + ' name'
           " />
         </div>  
 
-        <div class="form_group w_100">
+        <!--div class="form_group w_100">
           <p class="c_white" (click)=" setPAY( 'CARD' ) "><mat-icon>{{ xPay.paymethod == 'CARD' ? 'check_box':'check_box_outline_blank'}}</mat-icon> Pay with Credit/Debit card</p>
           <p class="c_white" (click)=" setPAY( 'UPI' ) "><mat-icon>{{ xPay.paymethod == 'UPI' ? 'check_box':'check_box_outline_blank'}}</mat-icon> Pay with UPI</p>
           <p class="c_white" (click)=" setPAY( 'PAYPAL' ) "><mat-icon>{{ xPay.paymethod == 'PAYPAL' ? 'check_box':'check_box_outline_blank'}}</mat-icon> Pay with Paypal</p>
-        </div>
+        </div-->
 </ng-container>
 
 <!--
