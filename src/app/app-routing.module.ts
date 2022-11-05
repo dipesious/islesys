@@ -32,21 +32,8 @@ import { ProfilesComponent } from './components/user/profiles/profiles.component
 
 const routes: Routes = [
 
-  {path:'', redirectTo:'/explore', pathMatch:"full"},
-  {path:'sign', component: SignComponent},
-  {path:'sign/:go', component: SignComponent},
-  {path:'cart/:pack', component: CartComponent},
-  {path:'order-status/:id', component: PaymentsComponent},
-
-  {path:'user', component: UserComponent, children:[
-    {path:'', redirectTo:'/my-contact-info', pathMatch:"full"},
-    {path:'my-contact-info', component: ProfilesComponent},
-    {path:'my-profiles', component: ProfilesComponent},
-    {path:'manage', component: RegistryComponent},
-  ]},
-
   {path:'', component: ManageComponent, children:[
-      
+    {path:'', redirectTo:'/explore', pathMatch:"full"},
     {path:'explore', component: WelcomeComponent},
     {path:'who-we-are', component: WhoWeAreComponent},
     {path:'file-a-bug', component: FileBugComponent },
@@ -73,6 +60,20 @@ const routes: Routes = [
     {path:'shades-of-color/:id', component: DownloadColorComponent},
 
   ]},
+
+  {path:'sign', component: SignComponent},
+  {path:'sign/:go', component: SignComponent},
+  {path:'cart/:pack', component: CartComponent},
+  {path:'order-status/:id', component: PaymentsComponent},
+
+  {path:'user', component: UserComponent, children:[
+    {path:'', redirectTo:'/my-contact-info', pathMatch:"full"},
+    {path:'my-contact-info', component: ProfilesComponent},
+    {path:'my-profiles', component: ProfilesComponent},
+    {path:'manage', component: RegistryComponent},
+  ]},
+
+  {path:'**', redirectTo:'/explore', pathMatch:"full"},
 
 ];
 

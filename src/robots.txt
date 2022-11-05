@@ -1,0 +1,40 @@
+# robots.txt
+#
+# This file is to prevent the crawling and indexing of certain parts of your site by web crawlers and spiders run by sites like Yahoo! and Google. By telling these "robots" where not to go on your site, you save bandwidth and server resources.
+
+User-agent: *
+# CSS, JS, Images
+Allow: /**/*.css$
+Allow: /**/*.css?
+Allow: /**/*.js$
+Allow: /**/*.js?
+Allow: /**/*.gif
+Allow: /**/*.ico
+Allow: /**/*.jpg
+Allow: /**/*.jpeg
+Allow: /**/*.png
+Allow: /**/*.svg
+# Directories
+Allow: /icons
+Allow: /maps
+Allow: /datasets
+Allow: /palettes
+Allow: /gradients
+Allow: /patterns
+Allow: /fonts
+Allow: /colors
+Allow: /free-icon/**
+Allow: /edit-map/**
+Allow: /each-dataset/**
+Allow: /view-palette/**
+Allow: /view-gradient/**
+Allow: /view-pattern/**
+Allow: /opensource-font/**
+Allow: /shades-of-color/**
+Disallow: /sign
+Disallow: /cart
+Disallow: /user/**
+Disallow: /order-status/**
+Disallow: /who-we-are
+Disallow: /file-a-bug
+Disallow: /getHelp/**
