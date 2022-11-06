@@ -6,6 +6,7 @@ import { Observable, of, take } from 'rxjs';
 import { DemandComponent } from 'src/app/components/demand/demand.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-download-data',
@@ -25,7 +26,8 @@ export class DownloadDataComponent implements OnInit {
     public dialog: MatDialog,
     private actRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router, 
+    public seo: SeoService,
   ) { 
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -47,6 +49,19 @@ export class DownloadDataComponent implements OnInit {
 
   execute(id:string){
     this.dataset$ = this.auth.getDataset(id).pipe(take(1))
+    this.dataset$.pipe(take(1)).subscribe(ref => {
+      if(ref){
+        let name = ref.name;
+
+    let xTitle = "Download datasets for " + name;
+    let xDescription = "We are building a massive library of formatted datasets. The datasets undertaking by Dipesh Bhoir with over 50k+ datasets at your fingertips.";
+    let xURL = "https://islesys.com/each-dataset/" + ref.id;
+    let xImage = "";
+    let xKeywords = "datasets, free download, " + name + ", Islesys, Dipesh Bhoir";
+
+        this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
+      }
+    })
   }
 
   arangeData(data:any){

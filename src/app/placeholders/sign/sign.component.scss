@@ -230,7 +230,7 @@
       width: 55px;
       color: $XYZinput-icon;
       font-size: 1.1rem;
-      transform: scale(1.8);
+      transform: scale(1.2);
     }
   }
   
@@ -292,14 +292,16 @@
     margin: 10px 10%;
     transition: 0.5s;
     font-size: 24px;
-    background: linear-gradient(45deg, rgb(98 0 234 / 20%) 5%, #6200ea 0%);
+    //background: linear-gradient(45deg, rgb(98 0 234 / 20%) 5%, #6200ea 0%);
     //background-color: #6200ea;
   }
-  
-  .btn:hover {
-    //background-color: $XYZbtn-h
+  .btn_active{
     background: linear-gradient(45deg, rgb(41 98 255 / 20%) 5%, #2962ff 0%);
   }
+  // .btn:hover {
+  //   //background-color: $XYZbtn-h
+  //   background: linear-gradient(45deg, rgb(41 98 255 / 20%) 5%, #2962ff 0%);
+  // }
   
   .check {
     display: block;

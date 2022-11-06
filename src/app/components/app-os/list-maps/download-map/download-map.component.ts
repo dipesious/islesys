@@ -6,6 +6,7 @@ import { Observable, of, take } from 'rxjs';
 import { DemandComponent } from 'src/app/components/demand/demand.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-download-map',
@@ -84,7 +85,8 @@ export class DownloadMapComponent implements OnInit {
     public resource: ResourceService,
     private actRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    public seo: SeoService,
   ) {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -110,8 +112,17 @@ export class DownloadMapComponent implements OnInit {
   execute(id:string){
     this.regionClass = "islesys_state";
     this.map$ = this.auth.getMAP(id).pipe(take(1))
-    this.map$.pipe(take(1)).subscribe(mY => {
-      this.auth.cloudDownload(mY.data).pipe(take(1)).subscribe((text:any) => this.svgMap = text);
+    this.map$.pipe(take(1)).subscribe(ref => {
+      let name = ref.name;
+
+      let xTitle = name + " download svg, jpeg, png, webp";
+      let xDescription = "We are building a diverse library of interactive maps. The maps undertaking by Dipesh Bhoir with over 1k+ maps at your fingertips.";
+      let xURL = "https://islesys.com/edit-map/" + ref.id;
+      let xImage = "";
+      let xKeywords = "maps, free download, " + name + ", Islesys, Dipesh Bhoir";
+
+      this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
+      this.auth.cloudDownload(ref.data).pipe(take(1)).subscribe((text:any) => this.svgMap = text);
     })
   }
 

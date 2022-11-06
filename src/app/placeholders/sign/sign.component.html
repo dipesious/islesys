@@ -26,7 +26,12 @@
             </div>
   
 
-            <input [disabled]="sign.makingChanges" type="submit" [value]=" !sign.makingChanges ? 'Confirm identity' : 'Processing...' " class="btn solid">
+            <input [disabled]="sign.makingChanges" type="submit" [value]=" !sign.makingChanges ? 'Confirm identity' : 'Processing...' " 
+            class="btn solid"
+            [class.btn_active]="
+            !sign.makingChanges && userLog.phone && userLog.pass
+            "
+            >
   
             <div class="footX">
               <p class="textC"><br>OR<br></p>
@@ -77,10 +82,15 @@
             <label class="check">
               <input [disabled]="sign.makingChanges" [(ngModel)]="userSign.accept" name="accept" type="checkbox">
               &nbsp;
-              <span class="checkmark">I accept the <a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/TERMS-OF-SERVICE">terms of services</a></span>
+              <span class="checkmark">I accept the <a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/TERMS-OF-SERVICE">Terms of Services</a></span>
             </label>
 
-            <input [disabled]="sign.makingChanges" type="submit" [value]=" !sign.makingChanges ? 'Create account' : 'Processing...' " class="btn solid">
+            <input [disabled]="sign.makingChanges" type="submit" [value]=" !sign.makingChanges ? 'Create account' : 'Processing...' " 
+            class="btn solid"
+            [class.btn_active]="
+            !sign.makingChanges && userSign.phone && userSign.email && userSign.pass && userSign.accept
+            "
+            >
           </form>
 
 

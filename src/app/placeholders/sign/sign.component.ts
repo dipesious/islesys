@@ -185,9 +185,18 @@ export class SignComponent implements OnInit {
       this.signInWithPassword()
     }
 
-    if(methodX == 'google'){}
-    if(methodX == 'twitter'){}
-    if(methodX == 'microsoft'){}
+    if(methodX == 'google'){
+      let mess = "You dont have an Account linked with the islesys.";
+      this.snackMe(mess);
+    }
+    if(methodX == 'twitter'){
+      let mess = "You dont have an Account linked with the islesys.";
+      this.snackMe(mess);
+    }
+    if(methodX == 'microsoft'){
+      let mess = "You dont have an Account linked with the islesys.";
+      this.snackMe(mess);
+    }
 
   }
 

@@ -6,6 +6,7 @@ import { Observable, of, take } from 'rxjs';
 import { DemandComponent } from 'src/app/components/demand/demand.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-download-gradient',
@@ -26,6 +27,7 @@ export class DownloadGradientComponent implements OnInit, AfterViewInit {
     private actRoute: ActivatedRoute,
     private router: Router, 
     private snackBar: MatSnackBar,
+    public seo: SeoService,
   ) {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -39,6 +41,13 @@ export class DownloadGradientComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    let xTitle = "Library of unique gradients";
+    let xDescription = "We are building an extraordinary library of unique gradients. The gradients undertaking by Dipesh Bhoir with over 3k+ gradients at your fingertips.";
+    let xURL = "https://islesys.com/gradients";
+    let xImage = "";
+    let xKeywords = "gradients, free download, Islesys, Dipesh Bhoir";
+    this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
+  
   }
 
   ngAfterViewInit(){
