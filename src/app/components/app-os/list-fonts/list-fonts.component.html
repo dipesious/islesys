@@ -92,7 +92,7 @@
       <h4>{{x.info}}</h4>
     </div>
     <div class="fontNames">
-    <p [style]=" 'line-height:' + (50 + fontSize) +  'px !important; font-size:' + (30 + fontSize) + 'px !important' ">{{x.demoText}}</p>
+    <p [style]=" 'line-height:' + (50 + fontSize) +  'px !important; font-size:' + (30 + fontSize) + 'px !important' ">{{getFont(x.info)}}<!--{{x.demoText}}--></p>
     <span class="divide"></span>
     </div>
     <div class="megamind" *ngIf="showCode.includes(x.id)">

@@ -1,5 +1,53 @@
 <app-loading *ngIf="!(font$ | async)"></app-loading>
 
-<section class="section1" *ngIf="font$ | async as x">
-    <p>download-font works!</p>
+<ng-container *ngIf="font$ | async as x">
+    
+<section class="section1">
+    <div class="fontHold" >
+    <span [innerHtml]=" x.demoCSS | safeHtml"></span>
+      <div class="wild">
+        <h4 class="c_warn"><a class="c_warn">{{x.name}}</a></h4>
+        <span class="divide"></span>
+        <h4>{{x.info}}</h4>
+      </div>
+      <div class="fontNames">
+      <p [style]=" 'line-height:' + (50 + fontSize) +  'px !important; font-size:' + (30 + fontSize) + 'px !important' ">{{getFont(x.info)}}<!--{{x.demoText}}--></p>
+      <span class="divide"></span>
+      </div>
+      <div class="megamind">
+        <p>To embed a font, copy the code into the head of your html</p>
+        <textarea [value]="getLink(x.link)" (click)=" getME('IMPORT', x.name, x.id, x.data, x.demoText, x.demoCSS) " readonly rows="3"></textarea>
+        <p>CSS rules to specify families</p>
+        <textarea [value]="getClass(x.about)" (click)=" getME('IMPORT', x.name, x.id, x.data, x.demoText, x.demoCSS) " readonly rows="2"></textarea>
+      </div>
+      <div class="holdMine  b_white">
+        <!-- <button mat-icon-button (click)=" expandME(x.id) "><mat-icon>view_in_ar</mat-icon></button> -->
+        <button mat-button class="leftOut download" (click)=" getME('ZIP', x.name, x.id, x.data, x.demoText, x.demoCSS) "><mat-icon>download</mat-icon>font</button>
+        <!-- <button mat-button class="leftOut download" ><mat-icon>integration_instructions</mat-icon> import</button> -->
+        <a mat-icon-button (click)="fontSizeSet(1)"><mat-icon>arrow_circle_up</mat-icon></a>
+        <a mat-icon-button (click)="fontSizeSet(-1)"><mat-icon>arrow_circle_down</mat-icon></a>
+        <span class="divide"></span>
+        <span class="date">{{x.sin.toDate() | date:'dd MMM yyyy'}}</span>
+        <button mat-icon-button><mat-icon>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path *ngIf="true" d="M17.867 3.493l4.133 3.444v5.127l-10 8.333-10-8.334v-5.126l4.133-3.444 5.867 3.911 5.867-3.911zm.133-2.493l-6 4-6-4-6 5v7l12 10 12-10v-7l-6-5z"/>
+            <path *ngIf="false" d="M18 1l-6 4-6-4-6 5v7l12 10 12-10v-7z"/>
+          </svg>
+        </mat-icon></button>
+      </div>
+    </div>
 </section>
+
+<section class="section1">
+    
+    <div class="fontHold" *ngFor="let y of resource.fontType">
+        <span [innerHtml]=" x.demoCSS | safeHtml"></span>
+        <div class="fontNames">
+        <p [style]=" 'line-height:' + (50 + fontSize) +  'px !important; font-size:' + (30 + fontSize) + 'px !important' ">{{y.demo}}<!--{{x.demoText}}--></p>
+        <span class="divide"></span>
+        </div>
+    </div>
+
+</section>
+
+</ng-container>

@@ -152,4 +152,8 @@ return `.islesys{
 font-family: ${about} }`
   }
 
+  getFont(info:string){
+    return this.resource.fontType[this.resource.fontType.findIndex(x => x.name == info)].demo;
+  }
+
 }

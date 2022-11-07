@@ -32,11 +32,11 @@ export class ResourceService {
 
   videoOpensourceIcons = "assets/videos/video_icons.mp4";
   videoOpensourceMaps = "assets/videos/video_maps.mp4";
-  videoOpensourceDatasets = "assets/videos/recommend.mp4";
+  videoOpensourceDatasets = "assets/videos/video_datasets.mp4";
   videoOpensourcePalettes = "assets/videos/video_palettes.mp4";
   videoOpensourceGradients = "assets/videos/video_gradients.mp4";
   videoOpensourcePatterns = "assets/videos/video_patterns.mp4";
-  videoOpensourceFonts = "assets/videos/recommend.mp4";
+  videoOpensourceFonts = "assets/videos/video_fonts.mp4";
   videoOpensourceShades = "assets/videos/video_shades.mp4";
 
   nowLang = "English"
@@ -1468,35 +1468,36 @@ export class ResourceService {
     {name:"Spanish", info:"ES", code:6},
   ]
   fontType = [
-    {name:"Arabic", code:1},
-    {name:"Bengali", code:2},
-    {name:"Chinese (Hong Kong)", code:3},
-    {name:"Chinese (Simplified)", code:4},
-    {name:"Chinese (Traditional)", code:5},
-    {name:"Cyrillic", code:6},
-    {name:"Cyrillic Extended", code:7},
-    {name:"Devanagari", code:8},
-    {name:"Greek", code:9},
-    {name:"Greek Extended", code:10},
-    {name:"Gujarati", code:11},
-    {name:"Gurmukhi", code:12},
-    {name:"Hebrew", code:13},
-    {name:"Japanese", code:14},
-    {name:"Kannada", code:15},
-    {name:"Khmer", code:16},
-    {name:"Korean", code:17},
-    {name:"Latin", code:18},
-    {name:"Latin Extended", code:19},
-    {name:"Malayalam", code:20},
-    {name:"Myanmar", code:21},
-    {name:"Oriya", code:22},
-    {name:"Sinhala", code:23},
-    {name:"Tamil", code:24},
-    {name:"Telugu", code:25},
-    {name:"Thai", code:26},
-    {name:"Tibetan", code:27},
-    {name:"Vietnamese", code:28},
-    {name:"Other", code:99},
+    {name:"Arabic", code:1, demo:"يجب أن يُمنح كل إنسان كرامته في كل جزء من العالم."},
+    {name:"Amharic", code:29, demo:"ሰው ሁሉ በሁሉም የዓለም ክፍል ክብሩን ሊሰጠው ይገባል ።"},
+    {name:"Bengali", code:2, demo:"পৃথিবীর প্রতিটি প্রান্তে প্রতিটি মানুষকে তার মর্যাদা দিতে হবে।"},
+    {name:"Chinese (Hong Kong)", code:3, demo:"喺世界嘅每個地方，個個都必須得到尊嚴。"},
+    {name:"Chinese (Simplified)", code:4, demo:"在世界的每一个角落，每个人都必须被赋予尊严。"},
+    {name:"Chinese (Traditional)", code:5, demo:"在世界的每一個角落，每個人都必須被賦予尊嚴。"},
+    {name:"Cyrillic", code:6, demo:"Каждому человеку должно быть предоставлено его достоинство в любой части мира."},
+    {name:"Cyrillic Extended", code:7, demo:"Каждому человеку должно быть предоставлено его достоинство в любой части мира."},
+    {name:"Devanagari", code:8, demo:"प्रत्येक माणसाला जगाच्या प्रत्येक भागात त्याची प्रतिष्ठा दिली पाहिजे."},
+    {name:"Greek", code:9, demo:"Σε κάθε άνθρωπο πρέπει να δοθεί η αξιοπρέπειά του σε κάθε μέρος του κόσμου."},
+    {name:"Greek Extended", code:10, demo:"Σε κάθε άνθρωπο πρέπει να δοθεί η αξιοπρέπειά του σε κάθε μέρος του κόσμου."},
+    {name:"Gujarati", code:11, demo:"વિશ્વના દરેક ભાગમાં દરેક માણસને તેનું ગૌરવ મળવું જોઈએ."},
+    {name:"Gurmukhi", code:12, demo:"ਹਰ ਮਨੁੱਖ ਨੂੰ ਦੁਨੀਆ ਦੇ ਹਰ ਹਿੱਸੇ ਵਿੱਚ ਉਸਦੀ ਇੱਜ਼ਤ ਦਿੱਤੀ ਜਾਣੀ ਚਾਹੀਦੀ ਹੈ।"},
+    {name:"Hebrew", code:13, demo:"יש לתת לכל אדם את כבודו בכל חלקי העולם."},
+    {name:"Japanese", code:14, demo:"すべての人は、世界のあらゆる場所で尊厳を与えられなければなりません。"},
+    {name:"Kannada", code:15, demo:"ಪ್ರಪಂಚದ ಪ್ರತಿಯೊಂದು ಭಾಗದಲ್ಲೂ ಪ್ರತಿಯೊಬ್ಬ ಮನುಷ್ಯನಿಗೂ ಅವನ ಘನತೆಯನ್ನು ನೀಡಬೇಕು."},
+    {name:"Khmer", code:16, demo:"មនុស្សគ្រប់រូបត្រូវតែផ្តល់ភាពថ្លៃថ្នូររបស់ខ្លួននៅគ្រប់ផ្នែកនៃពិភពលោក។"},
+    {name:"Korean", code:17, demo:"모든 사람은 세계 어느 곳에서나 자신의 존엄성을 부여받아야 합니다."},
+    {name:"Latin", code:18, demo:"Unicuique homini tribuendum est suam dignitatem in quavis parte terrarum."},
+    {name:"Latin Extended", code:19, demo:"Every man must be given his dignity in every part of world."},
+    {name:"Malayalam", code:20, demo:"ലോകത്തിന്റെ എല്ലാ ഭാഗത്തും ഓരോ മനുഷ്യനും അവന്റെ മഹത്വം നൽകണം."},
+    {name:"Myanmar", code:21, demo:"လူတိုင်းကို ကမ္ဘာ့ဒေသတိုင်းမှာ ဂုဏ်သိက္ခာရှိရမယ်။"},
+    {name:"Oriya", code:22, demo:"ପ୍ରତ୍ୟେକ ବ୍ୟକ୍ତିଙ୍କୁ ଦୁନିଆର ପ୍ରତ୍ୟେକ ଭାଗରେ ନିଜର ସମ୍ମାନ ଦିଆଯିବା ଆବଶ୍ୟକ |"},
+    {name:"Sinhala", code:23, demo:"ලෝකයේ සෑම තැනකම සෑම මිනිසෙකුටම ඔහුගේ ගෞරවය ලබා දිය යුතුය."},
+    {name:"Tamil", code:24, demo:"உலகின் ஒவ்வொரு பகுதியிலும் ஒவ்வொரு மனிதனுக்கும் அவனது கௌரவம் வழங்கப்பட வேண்டும்."},
+    {name:"Telugu", code:25, demo:"ప్రపంచంలోని ప్రతి ప్రాంతంలో ప్రతి మనిషికి తన గౌరవం ఇవ్వాలి."},
+    {name:"Thai", code:26, demo:"ทุกคนต้องได้รับศักดิ์ศรีของตนในทุกส่วนของโลก"},
+    {name:"Tibetan", code:27, demo:"མི་རེ་རེ་ཚང་མར་ངེས་པར་དུ་འཛམ་གླིང་གི་ས་ཆ་རེ་རེར་རང་ཉིད་ཀྱི་ལ་རྒྱ་ཡོད་དགོས།"},
+    {name:"Vietnamese", code:28, demo:"Mỗi người đàn ông phải được ban cho phẩm giá của mình ở mọi nơi trên thế giới."},
+    {name:"Other", code:99, demo:"0 1 2 3 4 5 6 7 8 9"},
   ]
   iconCat = [
     "Accessibility",

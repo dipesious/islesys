@@ -1,0 +1,52 @@
+
+.section1{
+    .fontHold{
+        width: 98%;
+        margin: 16px 1% 16px 1%;padding: 8px 0 0 0;
+        border-bottom: 2px solid #eeeeee; 
+        background: linear-gradient(45deg, #ffffff 60%, #eeeeee 20%, #ffffff 10%, #eeeeee 20%); color: #000;
+        h4, p{padding: 0; margin: 0 16px;}
+        .wild{
+            display: flex;  margin: 0 0 0 0;
+        }
+        .holdMine{
+            display: flex; align-items: center;padding: 0 0 0 8px; margin: 0 0 0 0;
+            p{padding: 0 0 0 8px;margin: 0;}
+            .leftOut{ margin: 0 0 0 8px;}
+            .download{padding: 0 8px 0 4px; min-width: auto;}
+            .date{font-size: 8px;}
+        }
+        .fontNames{
+            display: flex;
+            align-items: flex-start; 
+            margin: 16px 0;
+                p{
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    min-height: 1em;
+                    //max-width: 430px;
+                }
+            }
+            .megamind{
+                padding: 16px 0; margin: 0 0 0 0;
+                background: rgb(98 0 234 / 20%);
+                textarea{
+                    width: -webkit-fill-available;
+                    margin: 0 0 0 8px;
+                    border: 0px solid;
+                    outline: none;
+                    background: #222222;
+                    color: #ffffff;
+                    padding: 8px;
+                    border-radius: 8px 0 0 8px;
+                }
+            }
+        }
+        @media(max-width: 767px){
+            .fontHold{
+                width: 98%;
+            }
+        }
+}

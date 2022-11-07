@@ -60,7 +60,7 @@ export class ListPatternsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let xTitle = "Library of unique patterns";
+    let xTitle = "Worlds largest patterns library";
     let xDescription = "We are building an extraordinary library of unique patterns. The patterns undertaking by Dipesh Bhoir with over 28+ patterns at your fingertips.";
     let xURL = "https://islesys.com/patterns";
     let xImage = "";

@@ -61,7 +61,7 @@ export class ListPalettesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let xTitle = "Library of unique palettes";
+    let xTitle = "Worlds largest palettes library";
     let xDescription = "We are building an extraordinary library of unique palettes. The palettes undertaking by Dipesh Bhoir with over 5k+ palettes at your fingertips.";
     let xURL = "https://islesys.com/palettes";
     let xImage = "";

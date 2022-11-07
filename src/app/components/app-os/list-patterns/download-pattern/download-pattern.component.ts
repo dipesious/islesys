@@ -40,15 +40,7 @@ export class DownloadPatternComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngOnInit(): void {
-    let xTitle = "Library of unique patterns";
-    let xDescription = "We are building an extraordinary library of unique patterns. The patterns undertaking by Dipesh Bhoir with over 28+ patterns at your fingertips.";
-    let xURL = "https://islesys.com/patterns";
-    let xImage = "";
-    let xKeywords = "patterns, free download, Islesys, Dipesh Bhoir";
-    this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
-  
-  }
+  ngOnInit(): void { }
 
   ngAfterViewInit(){
     const x = this.actRoute.snapshot.params;
@@ -60,6 +52,19 @@ export class DownloadPatternComponent implements OnInit, AfterViewInit {
 
   execute(id:string){
     this.pattern$ = this.auth.getPattern(id).pipe(take(1))
+    this.pattern$.pipe(take(1)).subscribe(ref => {
+      if(ref){
+        let name = ref.name;
+
+    let xTitle = "Pattern - " + name + " css background";
+    let xDescription = "We are building an extraordinary library of unique patterns. The patterns undertaking by Dipesh Bhoir with over 28+ patterns at your fingertips.";
+    let xURL = "https://islesys.com/view-pattern/" + ref.id;
+    let xImage = "";
+    let xKeywords = "patterns, free download, " + name + ", Islesys, Dipesh Bhoir";
+    this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
+ 
+      }
+    })
   }
 
 

@@ -302,6 +302,11 @@ export class AuthService {
     return docData(cityRef);
   }
 
+  getFont(id:string){
+    const cityRef = doc(this.fs, this.dbFONTS, id);
+    return docData(cityRef);
+  }
+
 
 
 

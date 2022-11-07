@@ -40,25 +40,31 @@ export class DownloadPaletteComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngOnInit(): void {
-    let xTitle = "Library of unique palettes";
-    let xDescription = "We are building an extraordinary library of unique palettes. The palettes undertaking by Dipesh Bhoir with over 5k+ palettes at your fingertips.";
-    let xURL = "https://islesys.com/palettes";
-    let xImage = "";
-    let xKeywords = "palettes, free download, Islesys, Dipesh Bhoir";
-    this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(){
     const x = this.actRoute.snapshot.params;
     const id = x['id'];
     this.execute(id)
-    console.log(id)
+    //console.log(id)
   }
 
 
   execute(id:string){
     this.palette$ = this.auth.getPalette(id).pipe(take(1))
+    this.palette$.pipe(take(1)).subscribe(ref => {
+      if(ref){
+        let name = ref.name;
+
+    let xTitle = "Palette - " + name + " with #" + ref.c1 + " #" + ref.c2 + " #" + ref.c3 + " #" + ref.c4;
+    let xDescription = "We are building an extraordinary library of unique palettes. The palettes undertaking by Dipesh Bhoir with over 5k+ palettes at your fingertips.";
+    let xURL = "https://islesys.com/view-palette/" + ref.id;
+    let xImage = "";
+    let xKeywords = "palettes, free download, " + name + ", Islesys, Dipesh Bhoir";
+    this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
+  
+      }
+    })
   }
 
 

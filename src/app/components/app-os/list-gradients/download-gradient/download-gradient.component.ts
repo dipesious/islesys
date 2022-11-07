@@ -40,15 +40,7 @@ export class DownloadGradientComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngOnInit(): void {
-    let xTitle = "Library of unique gradients";
-    let xDescription = "We are building an extraordinary library of unique gradients. The gradients undertaking by Dipesh Bhoir with over 3k+ gradients at your fingertips.";
-    let xURL = "https://islesys.com/gradients";
-    let xImage = "";
-    let xKeywords = "gradients, free download, Islesys, Dipesh Bhoir";
-    this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
-  
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(){
     const x = this.actRoute.snapshot.params;
@@ -60,6 +52,19 @@ export class DownloadGradientComponent implements OnInit, AfterViewInit {
 
   execute(id:string){
     this.gradient$ = this.auth.getGradient(id).pipe(take(1))
+    this.gradient$.pipe(take(1)).subscribe(ref => {
+      if(ref){
+        let name = ref.name;
+
+    let xTitle = "Gradient - " + name + " css background";
+    let xDescription = "We are building an extraordinary library of unique gradients. The gradients undertaking by Dipesh Bhoir with over 3k+ gradients at your fingertips.";
+    let xURL = "https://islesys.com/view-gradient/" + ref.id;
+    let xImage = "";
+    let xKeywords = "gradients, free download, " + name + ", Islesys, Dipesh Bhoir";
+    this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
+    
+      }
+    })
   }
 
 

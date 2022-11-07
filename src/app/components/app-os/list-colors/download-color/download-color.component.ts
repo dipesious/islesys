@@ -6,6 +6,7 @@ import { Observable, of, take } from 'rxjs';
 import { DemandComponent } from 'src/app/components/demand/demand.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { ResourceService } from 'src/app/services/resource.service';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-download-color',
@@ -26,6 +27,7 @@ export class DownloadColorComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private router: Router, 
     private snackBar: MatSnackBar,
+    public seo: SeoService,
   ) {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -56,6 +58,13 @@ export class DownloadColorComponent implements OnInit {
       let y = this.resource.colorz[x]
       if(y){
         this.c = y;
+
+        let xTitle = "Shades of " + y.name + " with Hex codes";
+        let xDescription = "We are building a researched library of stable colors. The shades undertaking by Dipesh Bhoir with over 50k+ shades at your fingertips.";
+        let xURL = "https://islesys.com/shades-of-color/" + y.id;
+        let xImage = "";
+        let xKeywords = "shades, free download, " + y.name + ", Islesys, Dipesh Bhoir";
+        this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
       }else{
         // this.colorz$ = of();
       }
