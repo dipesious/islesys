@@ -1555,6 +1555,7 @@ export class ResourceService {
     "Connection",
     "Construction",
     "Control Panel",
+    "Flashlight",
 
     "Brand",
   ];
