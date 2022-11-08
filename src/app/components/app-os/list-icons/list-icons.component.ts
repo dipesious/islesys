@@ -11,11 +11,11 @@ import { AddIconComponent } from './add-icon/add-icon.component';
 
 
 @Component({
-  selector: 'app-list-icon',
-  templateUrl: './list-icon.component.html',
-  styleUrls: ['./list-icon.component.scss']
+  selector: 'app-list-icons',
+  templateUrl: './list-icons.component.html',
+  styleUrls: ['./list-icons.component.scss']
 })
-export class ListIconComponent implements OnInit {
+export class ListIconsComponent implements OnInit {
 
   links = [
     {title:'Design', link:''},

@@ -1,0 +1,45 @@
+<app-loading *ngIf="!(dataset$ | async)"></app-loading>
+
+<section *ngIf="dataset$ | async as x">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col col-100 textC">
+                <div class="title">
+                    <h2 class="c_warn">{{x.name}}</h2>
+                    <p>{{x.about}}</p>
+                </div>
+
+                <div class="code">
+                    <textarea placeholder="icon" [value]="arangeData(x.data)" readonly></textarea>
+                    <p><mat-slide-toggle [(ngModel)]="sideToggle" color="warn"><b class="sideToggle">{{!sideToggle?'Do you Agree to ':'i Agree to '}}</b></mat-slide-toggle>&nbsp;<a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/LICENSE" class="c_warn">the License Agreement{{!sideToggle?'?':'.'}}</a></p>
+                </div>
+                <div class="download textC">
+                    <button mat-flat-button class="c_primary" (click)=" getME('JS', x.name, x.id, x.data) "><mat-icon>download</mat-icon> DOWNLOAD</button>
+                    <button mat-flat-button class="c_primary" (click)=" getME('COPY', x.name, x.id, x.data) " *ngIf="sideToggle" ><mat-icon>content_copy</mat-icon></button>
+                    <!--button mat-flat-button class="c_primary" (click)=" getME('SVG', icon.name, icon.id, icon.data) ">SVG</button>
+                    <button mat-flat-button class="c_primary" (click)=" getME('PNG', icon.name, icon.id, icon.data) ">PNG</button>
+                    <button mat-flat-button class="c_primary" (click)=" getME('WEBP', icon.name, icon.id, icon.data) ">WEBP</button>
+                    <button mat-flat-button class="c_primary" (click)=" getME('COPY', icon.name, icon.id, icon.data) " *ngIf="sideToggle" ><mat-icon>content_copy</mat-icon></button-->
+                </div>
+            </div>
+            <!--div class="col col-100 textC" *ngIf="dataset$ | async as x">
+                <h2 class="c_warn">{{x.name}}</h2>
+                <p>{{x.about}}</p>
+
+                <textarea class="textL" [value]="arangeData(x.data)" readonly></textarea>
+
+                <div class="code">
+                    <p><mat-slide-toggle [(ngModel)]="sideToggle" color="warn"><b class="sideToggle">{{!sideToggle?'Do you Agree to ':'i Agree to '}}</b></mat-slide-toggle>&nbsp;<a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/LICENSE" class="c_warn">the License Agreement{{!sideToggle?'?':'.'}}</a></p>
+                </div>
+                <div class="download textC">
+                    <button mat-flat-button class="c_primary" (click)=" getME('JS', x.name, x.id, x.data) "><mat-icon>download</mat-icon> DOWNLOAD</button>
+                    <button mat-flat-button class="c_primary" (click)=" getME('COPY', x.name, x.id, x.data) " *ngIf="sideToggle" ><mat-icon>content_copy</mat-icon></button>
+                </div>
+            </div-->
+
+        </div>
+    </div>
+
+</section>

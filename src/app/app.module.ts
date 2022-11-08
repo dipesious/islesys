@@ -25,18 +25,15 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 
-import { ListIconComponent } from './components/app-os/list-icon/list-icon.component';
+import { ListIconsComponent } from './components/app-os/list-icons/list-icons.component';
 import { ListMapsComponent } from './components/app-os/list-maps/list-maps.component';
 import { ListFontsComponent } from './components/app-os/list-fonts/list-fonts.component';
 import { ListPatternsComponent } from './components/app-os/list-patterns/list-patterns.component';
 import { ListGradientsComponent } from './components/app-os/list-gradients/list-gradients.component';
-import { ListColorsComponent } from './components/app-os/list-colors/list-colors.component';
 import { ListPalettesComponent } from './components/app-os/list-palettes/list-palettes.component';
-import { ListDataComponent } from './components/app-os/list-data/list-data.component';
 import { UpcomingComponent } from './placeholders/upcoming/upcoming.component';
 import { ManageComponent } from './components/manage/manage.component';
-import { AddIconComponent } from './components/app-os/list-icon/add-icon/add-icon.component';
-import { AddDataComponent } from './components/app-os/list-data/add-data/add-data.component';
+import { AddIconComponent } from './components/app-os/list-icons/add-icon/add-icon.component';
 import { AddPaletteComponent } from './components/app-os/list-palettes/add-palette/add-palette.component';
 import { AddPatternComponent } from './components/app-os/list-patterns/add-pattern/add-pattern.component';
 import { AddGradientComponent } from './components/app-os/list-gradients/add-gradient/add-gradient.component';
@@ -51,14 +48,12 @@ import { environment } from 'src/environments/environment';
 import { SafePipe } from './pipes/safe.pipe';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DownloadIconComponent } from './components/app-os/list-icon/download-icon/download-icon.component';
+import { DownloadIconComponent } from './components/app-os/list-icons/download-icon/download-icon.component';
 import { DownloadMapComponent } from './components/app-os/list-maps/download-map/download-map.component';
 import { DownloadPaletteComponent } from './components/app-os/list-palettes/download-palette/download-palette.component';
 import { DownloadPatternComponent } from './components/app-os/list-patterns/download-pattern/download-pattern.component';
 import { DownloadGradientComponent } from './components/app-os/list-gradients/download-gradient/download-gradient.component';
 import { DownloadFontComponent } from './components/app-os/list-fonts/download-font/download-font.component';
-import { DownloadDataComponent } from './components/app-os/list-data/download-data/download-data.component';
-import { DownloadColorComponent } from './components/app-os/list-colors/download-color/download-color.component';
 import { AddMapComponent } from './components/app-os/list-maps/add-map/add-map.component';
 import { LoadingComponent } from './placeholders/loading/loading.component';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
@@ -75,6 +70,11 @@ import { UserComponent } from './components/user/user.component';
 import { ProfilesComponent } from './components/user/profiles/profiles.component';
 import { RegistryComponent } from './components/user/registry/registry.component';
 import { BioComponent } from './components/user/bio/bio.component';
+import { ListShadesComponent } from './components/app-os/list-shades/list-shades.component';
+import { ListDatasetsComponent } from './components/app-os/list-datasets/list-datasets.component';
+import { AddDatasetComponent } from './components/app-os/list-datasets/add-dataset/add-dataset.component';
+import { DownloadDatasetComponent } from './components/app-os/list-datasets/download-dataset/download-dataset.component';
+import { DownloadShadeComponent } from './components/app-os/list-shades/download-shade/download-shade.component';
 
 //import { ScrollingModule } from '@angular/cdk/scrolling';
 
@@ -83,18 +83,15 @@ import { BioComponent } from './components/user/bio/bio.component';
     AppComponent,
     WelcomeComponent,
     AppOsComponent,
-    ListIconComponent,
+    ListIconsComponent,
     ListMapsComponent,
     ListFontsComponent,
     ListPatternsComponent,
     ListGradientsComponent,
-    ListColorsComponent,
     ListPalettesComponent,
-    ListDataComponent,
     UpcomingComponent,
     ManageComponent,
     AddIconComponent,
-    AddDataComponent,
     AddPaletteComponent,
     AddPatternComponent,
     AddGradientComponent,
@@ -106,8 +103,6 @@ import { BioComponent } from './components/user/bio/bio.component';
     DownloadPatternComponent,
     DownloadGradientComponent,
     DownloadFontComponent,
-    DownloadDataComponent,
-    DownloadColorComponent,
     AddMapComponent,
     AddFontComponent,
     LoadingComponent,
@@ -122,7 +117,12 @@ import { BioComponent } from './components/user/bio/bio.component';
     UserComponent,
     ProfilesComponent,
     RegistryComponent,
-    BioComponent
+    BioComponent,
+    ListShadesComponent,
+    ListDatasetsComponent,
+    AddDatasetComponent,
+    DownloadDatasetComponent,
+    DownloadShadeComponent
   ],
   imports: [
     //ScrollingModule,

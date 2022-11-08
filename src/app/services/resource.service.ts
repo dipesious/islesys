@@ -49,14 +49,14 @@ export class ResourceService {
   moveMapLR = 0; // map
   
   navOpensource = [
-    {count:3000, about:"24:24 viewbox", icon:"shape_line", name:"Icons",path:"/icons"},
-    {count:214, about:"svg & jpeg", icon:"map", name:"Maps",path:"/maps"},
-    {count:9999, about:"json documents", icon:"data_object", name:"Datasets",path:"/datasets"},
-    {count:2500, about:"hex library", icon:"palette", name:"Palettes",path:"/palettes"},
-    {count:1500, about:"css backgrounds", icon:"gradient", name:"Gradients",path:"/gradients"},
-    {count:22, about:"css collections", icon:"pattern", name:"Patterns",path:"/patterns"},
-    {count:1442, about:"regional scripts", icon:"font_download", name:"Fonts",path:"/fonts"},
-    {count:268, about:"hex code list", icon:"format_color_fill", name:"Shades",path:"/shades"},
+    {count:3000, about:"svg png webp with 24:24 viewbox", icon:"shape_line", name:"Icons",path:"/icons"},
+    {count:214, about:"svg jpeg png webp with editor", icon:"map", name:"Maps",path:"/maps"},
+    {count:9999, about:"json xml csv documents", icon:"data_object", name:"Datasets",path:"/datasets"},
+    {count:2500, about:"World's largest quards hex library", icon:"palette", name:"Palettes",path:"/palettes"},
+    {count:1500, about:"Asia's css backgrounds library", icon:"gradient", name:"Gradients",path:"/gradients"},
+    {count:22, about:"All possible css patterns collections", icon:"pattern", name:"Patterns",path:"/patterns"},
+    {count:1442, about:"Library of regional font scripts", icon:"font_download", name:"Fonts",path:"/fonts"},
+    {count:268, about:"Time tested stable hex codes", icon:"format_color_fill", name:"Shades",path:"/shades"},
   ]
   navCrowdfund = [
     {title:"Book",icon:"auto_stories", path:"/fundraisers/1" },
@@ -1549,7 +1549,14 @@ export class ResourceService {
     "Code Fork",
     "Christmas",
     "Clothing",
-    "Brand"
+    "Coin",
+    "Compass",
+    "Computer",
+    "Connection",
+    "Construction",
+    "Control Panel",
+
+    "Brand",
   ];
   
   colorz = [

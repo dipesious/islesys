@@ -366,8 +366,9 @@ export class ListMapsComponent implements OnInit {
     { title:"Tianjin", about:"China" , id:"" },
   ]
   otherMaps = [
-    { title:"Tibet", id:"" },
-    { title:"Kurdistan", id:"" },
+    { title:"Tibet", id:"eknk2qZgvRquCwIyZO9W" },
+    { title:"Kurdistan", id:"3B20yfhZwuD8xeAimeeF" },
+    /*
     { title:"Quebec", id:"" },
     { title:"East Turkestan", id:"" },
     { title:"Macau", id:"" },
@@ -396,6 +397,7 @@ export class ListMapsComponent implements OnInit {
     { title:"Yuan dynasty", id:"" },
     { title:"Ottoman Empire", id:"" },
     { title:"Roman Empire", id:"" },
+    */
   ]
 
   constructor(

@@ -25,24 +25,24 @@ iconType = [
   {name:"Filled & Vibrant", fill:"Filled", tone:"Vibrant", code:6},
 ]
 
-icon:IconModel = {
-  id:"",
-  type:undefined, 
-  tone:'', fill:'', cat:'',
-  by:'', dial_code:'+91', contact:'',
-  name:'', data:'', 
-  active:false,
-  sin:null
-}
 // icon:IconModel = {
 //   id:"",
-//   type: this.iconType[0].code, //undefined, 
-//   tone:'', fill:'', cat:'Clothing',
-//   by:'Dipesh Bhoir', dial_code:'+91', contact:'9892381514',
-//   name:'Clothing', data:'', 
-//   active:true,
+//   type:undefined, 
+//   tone:'', fill:'', cat:'',
+//   by:'', dial_code:'+91', contact:'',
+//   name:'', data:'', 
+//   active:false,
 //   sin:null
 // }
+icon:IconModel = {
+  id:"",
+  type: this.iconType[1].code, //undefined, 
+  tone:'', fill:'', cat:'Control Panel',
+  by:'Dipesh Bhoir', dial_code:'+91', contact:'9892381514',
+  name:'Control Panel', data:'', 
+  active:true,
+  sin:null
+}
 
 makingChanges = false;
 

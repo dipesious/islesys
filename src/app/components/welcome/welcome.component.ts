@@ -26,13 +26,13 @@ export class WelcomeComponent implements OnInit {
     {name:"South Korea", img:"south-korea.png", ers:2.1,ed:89,score:1},
   ];
 
-  testmo = [
-    {name:"Katherine Langford", desig:"Designer", img:"assets/test_4.png", info:"Very simple to use, great automation and keeps me on track with all I need to do. I also like that it can be shared with others."},
-    {name:"Will Tudor", desig:"Project Manager", img:"assets/test_1.png", info:"Everyone loves it; it has democratized our finance function. In some ways they shattered hierarchy and brought us together."},
-    {name:"Krishna Hundal", desig:"Developer", img:"assets/test_2.png", info:"Islesys makes it easy to keep everyone on the same page. As changes happen, the real-time updates with email notifications have been key."},
-    {name:"Terry Ivans", desig:"Marketing", img:"assets/test_3.png", info:"Now that we've switched to a remote environment, with the use of Islesys, we can now limit the number of meetings we have regarding specific projects and turn to Islesys for updates instead."},
-  ];
-  tesNow = this.testmo[0];
+  // testmo = [
+  //   {name:"Katherine Langford", desig:"Designer", img:"assets/test_4.png", info:"Very simple to use, great automation and keeps me on track with all I need to do. I also like that it can be shared with others."},
+  //   {name:"Will Tudor", desig:"Project Manager", img:"assets/test_1.png", info:"Everyone loves it; it has democratized our finance function. In some ways they shattered hierarchy and brought us together."},
+  //   {name:"Krishna Hundal", desig:"Developer", img:"assets/test_2.png", info:"Islesys makes it easy to keep everyone on the same page. As changes happen, the real-time updates with email notifications have been key."},
+  //   {name:"Terry Ivans", desig:"Marketing", img:"assets/test_3.png", info:"Now that we've switched to a remote environment, with the use of Islesys, we can now limit the number of meetings we have regarding specific projects and turn to Islesys for updates instead."},
+  // ];
+  // tesNow = this.testmo[0];
 
 
   products = [
@@ -59,18 +59,18 @@ export class WelcomeComponent implements OnInit {
     this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
   }
 
-  changeTestmo(doW:number){
-    let x = this.testmo.indexOf(this.tesNow)
-    if(doW < 0){
-      const v = x == 0;
-      console.log(v)
-      this.tesNow = !v ? this.testmo[x + doW] : this.testmo[this.testmo.length - 1];
-    }else{
-      const v = this.testmo.length == (x+1);
-      console.log(v)
-      this.tesNow = !v ? this.testmo[x + doW] : this.testmo[0];
-    }
-  }
+  // changeTestmo(doW:number){
+  //   let x = this.testmo.indexOf(this.tesNow)
+  //   if(doW < 0){
+  //     const v = x == 0;
+  //     console.log(v)
+  //     this.tesNow = !v ? this.testmo[x + doW] : this.testmo[this.testmo.length - 1];
+  //   }else{
+  //     const v = this.testmo.length == (x+1);
+  //     console.log(v)
+  //     this.tesNow = !v ? this.testmo[x + doW] : this.testmo[0];
+  //   }
+  // }
 
   goPack(what:string){
     this.auth.user$.pipe(take(1)).subscribe(mine => {
