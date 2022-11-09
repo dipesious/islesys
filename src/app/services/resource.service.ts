@@ -1557,6 +1557,24 @@ export class ResourceService {
     "Control Panel",
     "Flashlight",
 
+    "Direction",
+    "Disc",
+    "Disk",
+    "Door",
+    "Download",
+    "Cricket",
+    "Fish",
+
+    "Eraser",
+    "Eye",
+    "Edit",
+    "Error",
+    "Equalizer",
+    "Email",
+    "Easter",
+    "Eat",
+    "Drop",
+
     "Brand",
   ];
   

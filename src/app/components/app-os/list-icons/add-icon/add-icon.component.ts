@@ -25,24 +25,24 @@ iconType = [
   {name:"Filled & Vibrant", fill:"Filled", tone:"Vibrant", code:6},
 ]
 
-// icon:IconModel = {
-//   id:"",
-//   type:undefined, 
-//   tone:'', fill:'', cat:'',
-//   by:'', dial_code:'+91', contact:'',
-//   name:'', data:'', 
-//   active:false,
-//   sin:null
-// }
 icon:IconModel = {
   id:"",
-  type: this.iconType[0].code, //undefined, 
-  tone:'', fill:'', cat:'Flashlight',
-  by:'Dipesh Bhoir', dial_code:'+91', contact:'9892381514',
-  name:'Flashlight', data:'', 
-  active:true,
+  type:undefined, 
+  tone:'', fill:'', cat:'',
+  by:'', dial_code:'+91', contact:'',
+  name:'', data:'', 
+  active:false,
   sin:null
 }
+// icon:IconModel = {
+//   id:"",
+//   type: this.iconType[0].code, //undefined, 
+//   tone:'', fill:'', cat:'Drop',
+//   by:'Dipesh Bhoir', dial_code:'+91', contact:'9892381514',
+//   name:'Drop', data:'', 
+//   active:true,
+//   sin:null
+// }
 
 makingChanges = false;
 

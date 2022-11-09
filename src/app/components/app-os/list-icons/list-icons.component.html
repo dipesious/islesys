@@ -62,8 +62,8 @@
     </div>
     <div class="searchLeft textR">
     <p>
-        <button mat-icon-button (click)="goDark=!goDark"><mat-icon>{{goDark ? 'light_mode':'nights_stay'}}</mat-icon></button>
-      <!--mat-form-field class="search" appearance="legacy">
+        <!-- <button mat-icon-button (click)="goDark=!goDark"><mat-icon>{{goDark ? 'light_mode':'nights_stay'}}</mat-icon></button> -->
+      <mat-form-field class="search" appearance="legacy">
         <mat-label><mat-icon>search</mat-icon> Search</mat-label>
         <input matInput placeholder="enter icon name" name="search"
         [formControl]="searching"
@@ -76,7 +76,7 @@
             {{option}}
           </mat-option>
         </mat-autocomplete>
-      </mat-form-field-->
+      </mat-form-field>
     </p>
     </div>
 </section>

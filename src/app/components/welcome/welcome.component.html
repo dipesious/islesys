@@ -12,7 +12,7 @@
           <img [class.loadShow]="imgLoaded.includes(x.name)" (load)="imgLoaded.push(x.name)" *ngIf="x.name == 'Patterns'" alt="Recommend One" src="assets/posters/poster_patterns.png" />
           <img [class.loadShow]="imgLoaded.includes(x.name)" (load)="imgLoaded.push(x.name)" *ngIf="x.name == 'Fonts'" alt="Recommend One" src="assets/posters/poster_fonts.png" />
           <img [class.loadShow]="imgLoaded.includes(x.name)" (load)="imgLoaded.push(x.name)" *ngIf="x.name == 'Shades'" alt="Recommend One" src="assets/posters/poster_shades.png" />
-          <h2 class="c_warn">Order of {{x.name}}</h2>
+          <h2 class="c_warn">{{x.name}} library</h2>
           <p class="c_black">{{x.about}}</p>
           </div>
       </a>
