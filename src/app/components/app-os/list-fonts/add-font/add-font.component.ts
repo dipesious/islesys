@@ -18,7 +18,7 @@ export class AddFontComponent implements OnInit {
     about:'', info:'', 
     link:'',
     demoText:'', 
-    demoCSS:'',
+    // demoCSS:'',
     by:'', dial_code:'+91', contact:'',
     name:'', data:'', 
     active:false,
@@ -52,16 +52,17 @@ export class AddFontComponent implements OnInit {
 
   submit(){
     this.makingChanges = true;
-    if(!this.font.type || !this.font.name || !this.font.link || !this.font.demoText || !this.font.demoCSS || !this.font.by || !this.font.contact ){
+    if(!this.font.type || !this.font.name || !this.font.link || !this.font.demoText  //|| !this.font.demoCSS 
+      || !this.font.by || !this.font.contact ){
       this.makingChanges = false;
     }else{
       const x = this.resource.fontType[this.resource.fontType.findIndex(i => i.code == this.font.type)];
       //this.table.about = x.name;
       this.font.info = x.name;
-this.font.demoCSS = `<style>
-${this.font.link}
-.fontNames p{ font-family: ${this.font.about};}
-</style>`;
+// this.font.demoCSS = `<style>
+// ${this.font.link}
+// .fontNames p{ font-family: ${this.font.about};}
+// </style>`;
 
       console.log(this.font)
       this.auth.submitFONT(this.font).then(() => {

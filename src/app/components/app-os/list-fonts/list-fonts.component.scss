@@ -86,19 +86,7 @@
             .download{padding: 0 8px 0 4px; min-width: auto;}
             .date{font-size: 8px;}
         }
-        .fontNames{
-            display: flex;
-            align-items: flex-start; 
-            margin: 16px 0;
-                p{
-                    overflow: hidden;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 1;
-                    -webkit-box-orient: vertical;
-                    min-height: 1em;
-                    //max-width: 430px;
-                }
-            }
+
             .megamind{
                 padding: 16px 0; margin: 0 0 0 0;
                 background: rgb(98 0 234 / 20%);

@@ -1,0 +1,15 @@
+
+        .fontNames{
+            display: flex;
+            align-items: flex-start; 
+            margin: 16px 0;
+            h4, p{padding: 0; margin: 0 16px;}
+                p{
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    min-height: 1em;
+                    //max-width: 430px;
+                }
+            }

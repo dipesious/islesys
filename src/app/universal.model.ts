@@ -58,7 +58,7 @@ export interface gradientModel {
 
 export interface FontModel {
   id:string;
-  type:number|undefined; demoText:string; demoCSS:string;
+  type:number|undefined; demoText:string; //demoCSS:string;
   about:string; info:string; link: string;
 
   by:string; contact:string; dial_code:string;

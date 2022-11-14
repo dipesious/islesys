@@ -1,4 +1,6 @@
 <header *ngIf="
+!resource.router.url.includes( '/referal' ) &&
+
 !resource.router.url.includes( '/free-icon/' ) &&
 !resource.router.url.includes( '/edit-map/' ) &&
 !resource.router.url.includes( '/each-dataset/' ) &&
@@ -33,7 +35,7 @@ true
       <button mat-menu-item routerLink="/user/my-contact-info"><mat-icon>manage_accounts</mat-icon> <b>My Account</b></button>
       <button mat-menu-item routerLink="/user/manage"><mat-icon>account_balance</mat-icon> <b>Manage Payments</b></button>
       <button mat-menu-item><mat-icon>local_activity</mat-icon> <b>Advertsing Here</b></button>
-      <button mat-menu-item><mat-icon>manage_history</mat-icon> <b>User History</b></button>
+      <button mat-menu-item routerLink="/referal"><mat-icon>manage_history</mat-icon> <b>Referal Program</b></button>
       <button mat-menu-item (click)="sign.signOut()"><mat-icon>logout</mat-icon> <b>Sign Out</b></button>
       </div>
     </mat-menu>
@@ -43,6 +45,8 @@ true
   </header>
   
   <div class="content" [style]=" 'height: ' + (
+    !resource.router.url.includes( '/referal' ) &&
+    
     !resource.router.url.includes( '/free-icon/' ) &&
     !resource.router.url.includes( '/edit-map/' ) &&
     !resource.router.url.includes( '/each-dataset/' ) &&
@@ -165,6 +169,8 @@ true
   
     <div class="nav">
       <div class="menu c_white" [style]=" 'top: ' + (
+      !resource.router.url.includes( '/referal' ) &&
+
       !resource.router.url.includes( '/free-icon/' ) &&
       !resource.router.url.includes( '/edit-map/' ) &&
       !resource.router.url.includes( '/each-dataset/' ) &&
@@ -178,6 +184,8 @@ true
       + ';' ">
 
         <button mat-icon-button *ngIf="
+        !resource.router.url.includes( '/referal' ) &&
+        
         !resource.router.url.includes( '/free-icon/' ) &&
         !resource.router.url.includes( '/edit-map/' ) &&
         !resource.router.url.includes( '/each-dataset/' ) &&
@@ -191,6 +199,8 @@ true
         (click)="menuShow = !menuShow; clickS();"><mat-icon>star</mat-icon></button>
 
         <button mat-icon-button *ngIf="
+        resource.router.url.includes( '/referal' ) ||
+        
         resource.router.url.includes( '/free-icon/' ) ||
         resource.router.url.includes( '/edit-map/' ) ||
         resource.router.url.includes( '/each-dataset/' ) ||
@@ -202,6 +212,8 @@ true
         resource.router.url.includes( '/Periodic-Table-of-Elements' ) ||
         false "
         [routerLink]=" '/' +
+        ( resource.router.url.includes( '/referal') ? 'explore':'') +
+
         ( resource.router.url.includes( '/free-icon/') ? 'icons':'') +
         ( resource.router.url.includes( '/edit-map/') ? 'maps':'') +
         ( resource.router.url.includes( '/each-dataset/') ? 'datasets':'') +
@@ -236,6 +248,8 @@ true
     <mat-sidenav mode="side" opened class="leftNav">
       <div class="spread"></div>
       <div class="types" [style]=" 'margin: ' + (
+        !resource.router.url.includes( '/referal' ) &&
+        
         !resource.router.url.includes( '/free-icon/' ) &&
         !resource.router.url.includes( '/edit-map/' ) &&
         !resource.router.url.includes( '/each-dataset/' ) &&
@@ -275,6 +289,8 @@ true
         </ng-container> -->
   
         <ng-container *ngIf="
+        !resource.router.url.includes( '/referal' ) &&
+        
         !resource.router.url.includes( '/free-icon/' ) &&
         !resource.router.url.includes( '/edit-map/' ) &&
         !resource.router.url.includes( '/each-dataset/' ) &&
@@ -409,9 +425,9 @@ true
                 <h4>Islesys.com</h4>
                 <ul>
                     <li><a routerLink="/who-we-are">Who We Are</a></li>
-                    <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings">Myriad Undertakings</a></li>
                     <li><a target="_" href="https://merchant.razorpay.com/policy/KbRyW6Y0TpfEhJ/refund">Refunds Policy</a></li>
                     <li><a target="_" href="https://merchant.razorpay.com/policy/KbRyW6Y0TpfEhJ/shipping">Shipping Policy</a></li>
+                    <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/PRIVACY-POLICY">Privacy Policy</a></li>
                     <!-- <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Pricing</a></li>
@@ -421,6 +437,7 @@ true
             <div class="footer-col footer-links">
                 <h4>Get Help</h4>
                 <ul>
+                  <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings">Myriad Undertakings</a></li>
                     <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/LICENSE">License</a></li>
                     <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/TERMS-OF-SERVICE">Terms of Service</a></li>
                     <li><a routerLink="/file-a-bug">File a Bug</a></li>

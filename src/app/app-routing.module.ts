@@ -29,12 +29,14 @@ import { ListDatasetsComponent } from './components/app-os/list-datasets/list-da
 import { DownloadDatasetComponent } from './components/app-os/list-datasets/download-dataset/download-dataset.component';
 import { ListShadesComponent } from './components/app-os/list-shades/list-shades.component';
 import { DownloadShadeComponent } from './components/app-os/list-shades/download-shade/download-shade.component';
+import { ReferComponent } from './components/user/refer/refer.component';
 
 const routes: Routes = [
 
   {path:'', component: ManageComponent, children:[
     {path:'', redirectTo:'/explore', pathMatch:"full"},
     {path:'explore', component: WelcomeComponent},
+    {path:'referal', component: ReferComponent },
     {path:'who-we-are', component: WhoWeAreComponent},
     {path:'file-a-bug', component: FileBugComponent },
     {path:'getHelp/:topic', component: FileBugComponent },

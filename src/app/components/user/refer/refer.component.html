@@ -1,0 +1,99 @@
+<div class="container">
+
+        <div class="row">
+
+          <div class="col col-25 col-sm-100">
+            <div class="share-boxes">
+              <img src="assets/referal/img1.png" alt="img1" border="0">
+              <p class="dFont">Share with your followers</p>
+            </div>
+          </div>
+
+          <div class="col col-10"></div>
+
+          <div class="col col-25 col-sm-100">
+            <div class="share-boxes">
+              <img src="assets/referal/img2.png" alt="img2" border="0">
+              <p class="dFont">Give them upto 40% Discount</p>
+              <img src="assets/referal/dotted-arrow1.png" alt="dotted-arrow1" class="dotted-line">
+              <img src="assets/referal/dotted-arrow2.png" alt="dotted-arrow2" class="dotted-line2">
+            </div>
+          </div>
+
+          <div class="col col-10"></div>
+
+          <div class="col col-25 col-sm-100">
+            <div class="share-boxes">
+              <img src="assets/referal/img3.png" alt="img3" border="0">
+              <p class="dFont">Get $10 for every Subscriber</p>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+
+
+        <div class="row refer-form-sec">
+          <div class="col col-40">
+            <div class="refer-image">
+              <img src="assets/referal/big-image.jpg" alt="big-image" border="0" />
+            </div>
+          </div>
+          <div class="col col-60">
+            <!-- <div class="refer-form">
+              <ul>
+                <li class="facebook-color"><a href="#">Facebook</a></li>
+                <li class="youtube-color"><a href="#">you tube</a></li>
+                <li class="twitter-color"><a href="#">twitter</a></li>
+              </ul>
+            </div> -->
+            <div class="refer-form-content">
+              <h2 class="textC">Join referal program</h2>
+              <!-- <p>Talking about friends sexually helps to normalize it. You can start <a href="#">NOW!</a></p> -->
+              <form action="#" method="post">
+
+                <input type="text" name="NAME" placeholder="Your Name as per Bank">
+
+                <select value="" placeholder="Select Country" >
+                  <option value="">No Selection</option>
+                  <option value="IN">India</option>
+                  <option value="US">United States</option>
+                </select>
+
+                <input type="text" name="AC" placeholder="Your Account Number">
+                <input type="text" name="IFSC" placeholder="Your Bank IFSC">
+                <!-- <p>
+                  <label class="container-checkbox">i have read and accept the T & C and privacy policy
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label></p> -->
+                <button
+                [class.btn_active]="!apply.makingChanges" >Start Earning Today</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col col-100">
+            <div class="referal-progress">
+              <h2>YOUR REFERAL PROGRESS</h2>
+              <table class="table table-hover" style="width: -webkit-fill-available;">
+                <tbody>
+                  <tr *ngFor="let x of [1,2,3,4,5,6,7,8]">
+                    <td>Dipesh Bhoir Subscribed with your Code</td>
+                    <td><strong>USD 10.00</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+
+    </div>

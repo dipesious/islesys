@@ -1,0 +1,167 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	transition: all 0.5s ease 0s;
+	-webkit-transition: all 0.5s ease 0s;
+	-moz-transition: all 0.5s ease 0s;
+	-ms-transition: all 0.5s ease 0s;
+	-o-transition: all 0.5s ease 0s;
+}
+.container{margin: 50px 0 0 0;}
+address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul, dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object, a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span, strong, sub, sup, tt, var, legend, fieldset, p {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+a, input, select, textarea {
+	outline: none;
+	margin: 0;
+	padding: 0;
+}
+a:hover,focus{
+	text-decoration:none;
+	outline: none;
+	border: none;
+}
+img, fieldset {
+	border: 0;
+}
+a {
+	outline: none;
+	border: none;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	width: auto\9;
+	vertical-align: middle;
+	border: none;
+	outline: none;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+div, h1, h2, h3, h4, span, p, input, select, form, img, hr, img, a {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+.mt-30, .mb-30{margin: 30px 0;}
+.clear {
+	clear: both;
+}
+.share-boxes p {margin: 15px 0 0; font-size: 15px; font-weight: bold;}
+.share-boxes {background: #f9f9f9; text-align: center; border-radius: 10px;  box-shadow: 0 0 17px #ccc;
+    padding: 20px 0;  position: relative;}
+.share-boxes img.dotted-line {position: absolute; left: -167px; top: 5px; transform: rotate(-3deg);}
+.share-boxes img.dotted-line2 {position: absolute; right: -173px; top: 5px; transform: rotate(-4deg);}
+.refer-image img {width: 100%;}
+.refer-form ul li {float: left; list-style: none; width: 33.333%; text-align: center;}
+.refer-form ul li a {background: #9fb0f8; display: block; padding: 14px; color: #fff; text-transform: uppercase;
+    font-weight: 600;}
+.refer-form ul {margin: 0;}
+// .refer-form ul li.facebook-color a{background: #9fb0f8}
+// .refer-form ul li.youtube-color a{background: #eb8c8c}
+// .refer-form ul li.twitter-color a{background: #9cd0fc}
+// .refer-form ul li.facebook-color a:hover{background: #4667f7; text-decoration: none;}
+// .refer-form ul li.youtube-color a:hover{background: #dd2020; text-decoration: none;}
+// .refer-form ul li.twitter-color a:hover{background: #40a7ff; text-decoration: none;}
+.refer-form-content {float: left; width: -webkit-fill-available; background: #f9f9f9; padding: 0 30px; }
+.refer-form-content h2 {color: #2962ff; font-weight: bold; text-transform: uppercase; font-size: 25px; margin: 0 0 10px; }
+//.refer-form-content p a {color: #2962ff; font-weight: 500; }
+.refer-form-content input, .refer-form-content select{
+	line-height: 50px;
+    height: 50px;
+    width: 320px;
+    min-width: 320px;
+    max-width: 320px;
+    padding: 0 0 0 24px;
+    border-radius: 24px;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 0 6px #ccc;
+    display: block;
+    border-spacing: 0;
+}
+.refer-form-content select{
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+//.container-checkbox {display: block; position: relative; padding-left: 30px; margin-bottom: 12px; cursor: pointer; font-size: 16px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+//.container-checkbox input {position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; } 
+//.checkmark {position: absolute; top: 3px; left: 0; height: 20px; width: 20px; background-color: transparent; border: 2px solid #2962ff; }
+//.container-checkbox:hover input ~ .checkmark {background-color: #ccc; } 
+//.container-checkbox input:checked ~ .checkmark {background-color: #2962ff; } 
+//.checkmark:after {content: ""; position: absolute; display: none; } 
+//.container-checkbox input:checked ~ .checkmark:after {display: block; } 
+//.container-checkbox .checkmark:after {left: 5px; top: 0px; width: 7px; height: 12px; border: solid white; border-width: 0 3px 3px 0; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); } 
+
+.refer-form-content form button {
+    min-width: 320px;
+    height: 49px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px auto;
+    transition: 0.5s;
+    font-size: 24px;
+	display: block;
+	//background: #2962ff; color: #fff; font-weight: 500; font-size: 18px; width: 100%; height: 50px; cursor: pointer; 
+} 
+.refer-form-content form .btn_active{
+    background: linear-gradient(45deg, rgb(41 98 255 / 20%) 5%, #2962ff 0%);
+  
+	//background: #000;
+}
+
+.refer-form-content input::placeholder, .refer-form-content select::placeholder{color:#c5c5c5; font-size: 14px;}
+.row.refer-form-sec {height: 450px; overflow: hidden; margin-top: 55px; }
+.referal-progress table td:nth-child(2) {text-align: right; } 
+.referal-progress table td {border: 0px solid #cccc;border-top: 1px solid #cccc; padding: 15px 20px; } 
+.row.refer-form-sec .col:first-child {padding-right: 0; } 
+.row.refer-form-sec .col:last-child {padding-left: 0; }
+.referal-progress h2 {color: #2962ff; font-size: 22px; margin: 10px 0 15px; }
+.share-boxes:after {content: ""; 
+	//background: url("assets/referal/circle.png") no-repeat 0 0; 
+	position: absolute; left: 0; right: 0; bottom: -65px; margin: 0 auto; z-index: 99999; height: 60px; width: 20px; }
+@media only screen and (max-width: 1100px){
+.share-boxes img.dotted-line, .share-boxes img.dotted-line2 {
+    display: none;
+}
+
+}
+@media only screen and (max-width: 767px){
+.share-boxes {
+    margin: 0 0 52px;
+}
+.row.refer-form-sec {
+    height: auto;
+    overflow: hidden;
+    margin-top: 55px;
+    display: block;
+}
+.row.refer-form-sec .col:first-child {
+    padding-right: 15px;
+    margin: 0 0 30px;
+}
+.row.refer-form-sec .col:last-child {
+    padding-left: 15px;
+}
+}
+@media only screen and (max-width: 380px){
+.refer-form ul li a {
+    padding: 9px;
+    font-size: 14px;
+}
+.refer-form-content h2 {
+    font-size: 22px;
+}
+}

@@ -8,9 +8,9 @@
 
       <div class="first">
           <span class="wat">Demo</span>
-          <button mat-button ><mat-icon>{{ demoMode == 'Normal' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Normal</button>
-          <button mat-button ><mat-icon>{{ demoMode == 'Bold' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Bold</button>
-          <button mat-button ><mat-icon>{{ demoMode == 'Italic' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Italic</button>
+          <button mat-button (click)=" demoMode = 'Normal' " ><mat-icon>{{ demoMode == 'Normal' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Normal</button>
+          <button mat-button (click)=" demoMode = 'Bold' " ><mat-icon>{{ demoMode == 'Bold' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Bold</button>
+          <button mat-button (click)=" demoMode = 'Italic' " ><mat-icon>{{ demoMode == 'Italic' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Italic</button>
       </div>
 
   </div>
@@ -68,6 +68,9 @@
         [formControl]="searching"
         [matAutocomplete]="auto">
         <button matSuffix mat-icon-button (click)="searching.setValue('')"><mat-icon>backspace</mat-icon></button>
+
+        <a matSuffix mat-icon-button (click)="fontSizeSet(1)"><mat-icon>arrow_circle_up</mat-icon></a>
+        <a matSuffix mat-icon-button (click)="fontSizeSet(-1)"><mat-icon>arrow_circle_down</mat-icon></a>
         <!--button matSuffix mat-icon-button (click)="goDark=!goDark"><mat-icon>{{goDark ? 'light_mode':'nights_stay'}}</mat-icon></button-->
         <mat-hint align="end">Searching in data</mat-hint>
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
@@ -82,19 +85,25 @@
 
 <section class="section3">
 
-  <ng-container *ngFor="let x of page.dataO | async">
+  <ng-container *ngIf=" page.dataO | async as dataO">
+  <ng-container *ngFor="let x of dataO; let i = index; ">
   <div class="fontHold" 
   *ngIf=" !searching.value || x.name.toLowerCase().includes(searching.value.toLowerCase())">
-  <span [innerHtml]=" x.demoCSS | safeHtml"></span>
+  <!-- <span [innerHtml]=" x.demoCSS | safeHtml"></span> -->
     <div class="wild">
       <h4 class="c_warn"><a class="c_warn" [routerLink]=" '/opensource-font/' + x.id ">{{x.name}}</a></h4>
       <span class="divide"></span>
       <h4>{{x.info}}</h4>
     </div>
-    <div class="fontNames">
-    <p [style]=" 'line-height:' + (50 + fontSize) +  'px !important; font-size:' + (30 + fontSize) + 'px !important' ">{{getFont(x.info)}}<!--{{x.demoText}}--></p>
-    <span class="divide"></span>
-    </div>
+    <app-font-demo 
+    [indexFont]="i"
+    [linkFont]="x.link"
+    [aboutFont]="x.about"
+    [demoMode]="demoMode"
+
+    [fontSize]="fontSize"
+    [textStyle]="x.demoCSS"
+    [textDemo]="getFont(x.info)"></app-font-demo>
     <div class="megamind" *ngIf="showCode.includes(x.id)">
       <p>To embed a font, copy the code into the head of your html</p>
       <textarea [value]="getLink(x.link)" (click)=" getME('IMPORT', x.name, x.id, x.data, x.demoText, x.demoCSS) " readonly rows="3"></textarea>
@@ -105,8 +114,7 @@
       <button mat-icon-button (click)=" expandME(x.id) "><mat-icon>view_in_ar</mat-icon></button>
       <button mat-button class="leftOut download" (click)=" getME('ZIP', x.name, x.id, x.data, x.demoText, x.demoCSS) "><mat-icon>download</mat-icon>font</button>
       <button mat-button class="leftOut download" (click)=" !showCode.includes(x.id) ? showCode.push(x.id) : showCode.splice( showCode.indexOf(x.id), 1) "><mat-icon>integration_instructions</mat-icon> import</button>
-      <a mat-icon-button (click)="fontSizeSet(1)"><mat-icon>arrow_circle_up</mat-icon></a>
-      <a mat-icon-button (click)="fontSizeSet(-1)"><mat-icon>arrow_circle_down</mat-icon></a>
+
       <span class="divide"></span>
       <span class="date">{{x.sin.toDate() | date:'dd MMM yyyy'}}</span>
       <button mat-icon-button><mat-icon>
@@ -117,6 +125,7 @@
       </mat-icon></button>
     </div>
   </div>
+  </ng-container>
   </ng-container>
 
   <app-loading *ngIf="!(page.dataO | async) || (page.loading | async) "></app-loading>

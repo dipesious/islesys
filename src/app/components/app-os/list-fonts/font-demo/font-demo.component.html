@@ -1,0 +1,10 @@
+<span [innerHtml]=" getMyStyle() | safeHtml"></span>
+
+<div class="fontNames">
+    <p [class]=" 'font'+ indexFont " [style]=" 
+    'line-height:' + (50 + fontSize) +  'px !important; font-size:' + (30 + fontSize) + 'px !important; ' +
+    'font-style: ' + (demoMode == 'Italic' ? 'italic':'normal') + ';' +
+    'font-weight: ' + (demoMode == 'Bold' ? 'bold':'normal') + ';' +
+    ''
+    ">{{textDemo}}</p>    
+</div>
