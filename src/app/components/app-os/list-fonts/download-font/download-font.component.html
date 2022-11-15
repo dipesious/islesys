@@ -1,17 +1,26 @@
 <app-loading *ngIf="!(font$ | async)"></app-loading>
 
 <ng-container *ngIf="font$ | async as x">
+  <span [innerHtml]=" getMyStyle(x.link, x.about) | safeHtml"></span>
     
 <section class="section1">
     <div class="fontHold" >
-    <span [innerHtml]=" x.demoCSS | safeHtml"></span>
+    <!--  <span [innerHtml]=" x.demoCSS | safeHtml"></span> -->
       <div class="wild">
         <h4 class="c_warn"><a class="c_warn">{{x.name}}</a></h4>
         <span class="divide"></span>
         <h4>{{x.info}}</h4>
       </div>
       <div class="fontNames">
-      <p [style]=" 'line-height:' + (50 + fontSize) +  'px !important; font-size:' + (30 + fontSize) + 'px !important' ">{{getFont(x.info)}}<!--{{x.demoText}}--></p>
+      <p class="fontX" [style]=" 'line-height:' + (50 + fontSize) +  'px !important; font-size:' + (30 + fontSize) + 'px !important' ">{{getFont(x.info)}}<!--{{x.demoText}}--></p>
+      <span class="divide"></span>
+      </div>
+      <div class="fontNames">
+      <p class="fontX" [style]=" 'line-height:' + (50 + fontSize) +  'px !important; font-size:' + (30 + fontSize) + 'px !important; font-weight: bold;' ">{{getFont(x.info)}}<!--{{x.demoText}}--></p>
+      <span class="divide"></span>
+      </div>
+      <div class="fontNames">
+      <p class="fontX" [style]=" 'line-height:' + (50 + fontSize) +  'px !important; font-size:' + (30 + fontSize) + 'px !important; font-style: italic;' ">{{getFont(x.info)}}<!--{{x.demoText}}--></p>
       <span class="divide"></span>
       </div>
       <div class="megamind">
@@ -41,9 +50,9 @@
 <section class="section1">
     
     <div class="fontHold" *ngFor="let y of resource.fontType">
-        <span [innerHtml]=" x.demoCSS | safeHtml"></span>
+        <!-- <span [innerHtml]=" x.demoCSS | safeHtml"></span> -->
         <div class="fontNames">
-        <p [style]=" 'line-height:' + (50 + fontSize) +  'px !important; font-size:' + (30 + fontSize) + 'px !important' ">{{y.demo}}<!--{{x.demoText}}--></p>
+        <p class="fontX" [style]=" 'line-height:' + (50 + fontSize) +  'px !important; font-size:' + (30 + fontSize) + 'px !important' ">{{y.demo}}<!--{{x.demoText}}--></p>
         <span class="divide"></span>
         </div>
     </div>

@@ -1,5 +1,7 @@
 <header *ngIf="
 !resource.router.url.includes( '/referal' ) &&
+!resource.router.url.includes( '/who-we-are' ) &&
+!resource.router.url.includes( '/file-a-bug' ) &&
 
 !resource.router.url.includes( '/free-icon/' ) &&
 !resource.router.url.includes( '/edit-map/' ) &&
@@ -46,6 +48,8 @@ true
   
   <div class="content" [style]=" 'height: ' + (
     !resource.router.url.includes( '/referal' ) &&
+    !resource.router.url.includes( '/who-we-are' ) &&
+    !resource.router.url.includes( '/file-a-bug' ) &&
     
     !resource.router.url.includes( '/free-icon/' ) &&
     !resource.router.url.includes( '/edit-map/' ) &&
@@ -170,6 +174,8 @@ true
     <div class="nav">
       <div class="menu c_white" [style]=" 'top: ' + (
       !resource.router.url.includes( '/referal' ) &&
+      !resource.router.url.includes( '/who-we-are' ) &&
+      !resource.router.url.includes( '/file-a-bug' ) &&
 
       !resource.router.url.includes( '/free-icon/' ) &&
       !resource.router.url.includes( '/edit-map/' ) &&
@@ -185,6 +191,8 @@ true
 
         <button mat-icon-button *ngIf="
         !resource.router.url.includes( '/referal' ) &&
+        !resource.router.url.includes( '/who-we-are' ) &&
+        !resource.router.url.includes( '/file-a-bug' ) &&
         
         !resource.router.url.includes( '/free-icon/' ) &&
         !resource.router.url.includes( '/edit-map/' ) &&
@@ -200,6 +208,8 @@ true
 
         <button mat-icon-button *ngIf="
         resource.router.url.includes( '/referal' ) ||
+        resource.router.url.includes( '/who-we-are' ) ||
+        resource.router.url.includes( '/file-a-bug' ) ||
         
         resource.router.url.includes( '/free-icon/' ) ||
         resource.router.url.includes( '/edit-map/' ) ||
@@ -213,6 +223,8 @@ true
         false "
         [routerLink]=" '/' +
         ( resource.router.url.includes( '/referal') ? 'explore':'') +
+        ( resource.router.url.includes( '/who-we-are') ? 'explore':'') +
+        ( resource.router.url.includes( '/file-a-bug') ? 'explore':'') +
 
         ( resource.router.url.includes( '/free-icon/') ? 'icons':'') +
         ( resource.router.url.includes( '/edit-map/') ? 'maps':'') +
@@ -249,6 +261,8 @@ true
       <div class="spread"></div>
       <div class="types" [style]=" 'margin: ' + (
         !resource.router.url.includes( '/referal' ) &&
+        !resource.router.url.includes( '/who-we-are' ) &&
+        !resource.router.url.includes( '/file-a-bug' ) &&
         
         !resource.router.url.includes( '/free-icon/' ) &&
         !resource.router.url.includes( '/edit-map/' ) &&
@@ -290,6 +304,8 @@ true
   
         <ng-container *ngIf="
         !resource.router.url.includes( '/referal' ) &&
+        !resource.router.url.includes( '/who-we-are' ) &&
+        !resource.router.url.includes( '/file-a-bug' ) &&
         
         !resource.router.url.includes( '/free-icon/' ) &&
         !resource.router.url.includes( '/edit-map/' ) &&

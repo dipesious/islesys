@@ -25,7 +25,7 @@
           <div class="col col-25 col-sm-100">
             <div class="share-boxes">
               <img src="assets/referal/img3.png" alt="img3" border="0">
-              <p class="dFont">Get $10 for every Subscriber</p>
+              <p class="dFont">Get US$3 for every Subscriber</p>
             </div>
           </div>
 
@@ -53,24 +53,25 @@
             <div class="refer-form-content">
               <h2 class="textC">Join referal program</h2>
               <!-- <p>Talking about friends sexually helps to normalize it. You can start <a href="#">NOW!</a></p> -->
-              <form action="#" method="post">
+              <form (submit)="true">
 
-                <input type="text" name="NAME" placeholder="Your Name as per Bank">
+                <input class="textC" type="text" name="NAME" placeholder="Your Name as per Bank">
 
-                <select value="" placeholder="Select Country" >
+                <select class="textC" value="" placeholder="Select Country" >
                   <option value="">No Selection</option>
+                  <option value="EU">European Union</option>
                   <option value="IN">India</option>
                   <option value="US">United States</option>
                 </select>
 
-                <input type="text" name="AC" placeholder="Your Account Number">
-                <input type="text" name="IFSC" placeholder="Your Bank IFSC">
+                <input class="textC" type="text" name="AC" placeholder="Your Account Number">
+                <input class="textC" type="text" name="IFSC" placeholder="Your Bank IFSC">
                 <!-- <p>
                   <label class="container-checkbox">i have read and accept the T & C and privacy policy
                     <input type="checkbox">
                     <span class="checkmark"></span>
                   </label></p> -->
-                <button
+                <button [disabled]="apply.makingChanges"
                 [class.btn_active]="!apply.makingChanges" >Start Earning Today</button>
               </form>
             </div>
@@ -79,14 +80,38 @@
 
 
         <div class="row">
+          <div class="col col-20 col-sm-75 textC">
+            <h2>US$ 0.00</h2>
+            <p>Balance</p>
+          </div>
+          <div class="col col-20 col-sm-25 textC">
+            <h2>0</h2>
+            <p>Signs</p>
+          </div>
+          <div class="col col-20 col-sm-100 textC">
+            <h2>US$ 0.00</h2>
+            <p>Withdrawn</p>
+          </div>
+          <div class="col col-20 col-sm-75 textC">
+            <h2>0</h2>
+            <p>Users</p>
+          </div>
+          <div class="col col-20 col-sm-25 textC">
+            <h2>US$ 0.00</h2>
+            <p>Revenue</p>
+          </div>
+
           <div class="col col-100">
             <div class="referal-progress">
               <h2>YOUR REFERAL PROGRESS</h2>
               <table class="table table-hover" style="width: -webkit-fill-available;">
                 <tbody>
-                  <tr *ngFor="let x of [1,2,3,4,5,6,7,8]">
+                  <!-- <tr *ngFor="let x of [1,2,3,4,5,6,7,8]">
                     <td>Dipesh Bhoir Subscribed with your Code</td>
-                    <td><strong>USD 10.00</strong></td>
+                    <td><strong>US$ 3.00</strong></td>
+                  </tr> -->
+                  <tr>
+                    <td colspan="2">You have none</td>
                   </tr>
                 </tbody>
               </table>

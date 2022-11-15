@@ -138,4 +138,11 @@ export class DownloadFontComponent implements OnInit {
         return this.resource.fontType[this.resource.fontType.findIndex(x => x.name == info)].demo;
       }
 
+      getMyStyle(linkFont:any, aboutFont:any){
+        return `<style>
+        ${linkFont}
+        .fontNames .fontX{ font-family: ${aboutFont};}
+        </style>`
+      }
+
 }
