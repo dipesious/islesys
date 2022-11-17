@@ -1,6 +1,6 @@
 <section class="section1">
     <div class="heading textC">
-        <h2>Contact<span class="c_warn"> US </span></h2>
+        <h2>Contact <span class="c_warn dFont">TEAM</span></h2>
         <p>Your suggesions help us improve the platform consistently. We admire your relentless backing and thank you for everything.</p>
     </div>
 
@@ -33,8 +33,8 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <h4 class="d-inline-block">ADDRESS :
                             <br>
-                            <span>Islesys Pvt. Ltd. Thane 401101.<br>Maharashtra, IN.</span>
-                            <br><!-- 
+                            <!-- <span>Islesys Pvt. Ltd. Thane 401101.<br>Maharashtra, IN.</span>
+                            <br>
                             <span>Islesys Ltd. Amsterdam 1012.<br>Netherlands, EU.</span>
                             <br> -->
                             <span>Islesys LLC. Wilmington 19880.<br>Delaware, USA.</span>
@@ -62,7 +62,9 @@
                         <textarea class="form-control" rows="5" placeholder="Message" [disabled]="makingChanges" [class.error]="checkDescribe(formX.describe)"
                         [(ngModel)]="formX.describe" name="describe" ></textarea>
                     </div>
-                    <button class="btn b_warn dFont" type="submit" (click)="submitForm()" [disabled]="makingChanges">SEND NOW</button>
+                    <button class="btn" 
+                    [class.btn_active]=" formX.name && formX.email && formX.topic && formX.describe "
+                    type="submit" (click)="submitForm()" [disabled]="makingChanges">SEND NOW</button>
                 </form>
             </div>
 

@@ -48,13 +48,30 @@
             border-radius: 10px;
             outline: none;
         }
-        .btn{padding: 10px;
-            border-radius: 3px;
-            font-size: 15px;
-            color: #ffffff;
-            width: -webkit-fill-available;
-            border: 0px solid;
-            margin: 8px 8px 0 8px;}
+        .btn{
+            // padding: 10px;
+            // border-radius: 3px;
+            // font-size: 15px;
+            // color: #ffffff;
+            // width: -webkit-fill-available;
+            // border: 0px solid;
+            // margin: 8px 8px 0 8px;
+    width: -webkit-fill-available;
+    height: 49px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 10%;
+    transition: 0.5s;
+    font-size: 24px;
+        }
+        .btn_active{
+          background: linear-gradient(45deg, rgb(41 98 255 / 20%) 5%, #2962ff 0%);
+        }
         .error{background-color: rgba(255, 0, 0, 0.4);}
     }
 @media(max-width: 767px){

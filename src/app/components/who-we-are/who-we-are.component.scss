@@ -21,7 +21,7 @@
         flex: 50%;
     }
     img {
-        max-width: 80%;
+        max-width: 90%;
         margin: 0 auto;
     }
     .image {
@@ -34,9 +34,10 @@
         text-decoration: none;
     }
     .a-CTA {
-        border-bottom: 2px solid #a96700;
+        border-top: 2px solid #a96700;
         padding-bottom: 4px;
         letter-spacing: 1.5px;
+        text-transform: uppercase;
         font-size: 18px;
         color: #a96700;
     }
@@ -44,5 +45,37 @@
 @media screen and (max-width: 480px) {
     .reservation{
         flex-direction: column-reverse;
+    }
+}
+
+.section9{
+    .card{
+        margin: 0 12px 0 12px;
+        min-height: 30px;
+        display: inline-block;
+        width: -webkit-fill-available;
+        box-shadow: 0.3rem 0.3rem 0.5rem rgb(195 193 198 / 90%), -0.2rem -0.2rem 0.4rem #f0f2f5;
+        .ridge{
+            margin: 8px;
+            min-height: 30px;
+            box-shadow: inset 0.2rem 0.2rem 0.5rem rgba(195, 193, 198, 0.9), inset -0.2rem -0.2rem 0.5rem #fff, 0.3rem 0.3rem 0.5rem rgba(195, 193, 198, 0.9), -0.2rem -0.2rem 0.4rem #fff;
+            img{
+                width: -webkit-fill-available;
+                display: block;
+            }
+            .about{
+                line-height: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: sticky;
+                bottom: 0;
+                margin: -30px 0 0 0;
+                background: rgba(255, 255, 255, 0.4);
+                letter-spacing: 1.5px;
+                color: #000;
+            }
+        }
     }
 }
