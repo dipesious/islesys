@@ -64,7 +64,7 @@
           </div>
           <div class="subtotal">
             <label>Subtotal: </label>
-            <strong>$ {{ getCost() }}</strong>
+            <strong>$ {{ getCost() | number:'1.2-2'}}</strong>
           </div>
         </div>
       </div>
@@ -91,7 +91,7 @@
         </div>
         <div class="form_group">
           <input class="input" [(ngModel)]="codeCompany" name="VOTER_ID"
-          placeholder="Enter Your ID" />
+          placeholder="Enter Card ID" />
         </div>
 
         <div class="form_group">

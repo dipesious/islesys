@@ -10,14 +10,14 @@
         <li 
         [class.active]="resource.router.url.includes( '/user/manage' ) && x == activePayment" 
         *ngFor="let x of myPayments" routerLink="/user/manage">
-            <mat-icon>shopping_bag</mat-icon> <a (click)="activePayment = x;">{{x.companyNAME}}</a><span class="status b_accent">Expired</span></li>
+            <mat-icon>shopping_bag</mat-icon> <a (click)="activePayment = x;">{{x.companyNAME}}</a><span class="status b_accent" *ngIf="">Expired</span></li>
         <li><mat-icon>link</mat-icon> <a routerLink="/cart/upgrade-account">Get new Community pack</a></li>
 
         <li>Manage Companies</li>
         <li 
         [class.active]="resource.router.url.includes( '/user/manage' ) && x == activePayment" 
         *ngFor="let x of myPaymentsEnterprise" routerLink="/user/manage">
-            <mat-icon>store</mat-icon> <a (click)="activePayment = x;">{{x.companyNAME}}</a><span class="status b_accent">Failed</span></li>
+            <mat-icon>store</mat-icon> <a (click)="activePayment = x;">{{x.companyNAME}}</a><span class="status b_accent" *ngIf="false">Failed</span></li>
         <li><mat-icon>link</mat-icon> <a routerLink="/cart/apply-for-enterprise">Get new Enterprise pack</a></li>
 
         <li>Advertise with Us</li>

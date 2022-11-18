@@ -10,6 +10,7 @@ import { SeoService } from 'src/app/services/seo.service';
   styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent implements OnInit {
+  iGlobal = "USD";
 
   states = [
     {name:"Texas, USA", img:"usa.png", ers:30,ed:219,score:-1},
@@ -35,12 +36,12 @@ export class WelcomeComponent implements OnInit {
   // tesNow = this.testmo[0];
 
 
-  products = [
-    { cost:49.99, price: 79.99, off: 15, name:'Islesys T-Shirt', a:'', f:'', j:'' },
-    { cost:49.99, price: 79.99, off: 15, name:'Islesys Caps', a:'', f:'', j:'' },
-    { cost:49.99, price: 79.99, off: 15, name:'Islesys Hodey', a:'', f:'', j:'' },
-    { cost:49.99, price: 79.99, off: 15, name:'Islesys Army Bag', a:'', f:'', j:'' },
-  ]
+  // products = [
+  //   { cost:49.99, price: 79.99, off: 15, name:'Islesys T-Shirt', a:'', f:'', j:'' },
+  //   { cost:49.99, price: 79.99, off: 15, name:'Islesys Caps', a:'', f:'', j:'' },
+  //   { cost:49.99, price: 79.99, off: 15, name:'Islesys Hodey', a:'', f:'', j:'' },
+  //   { cost:49.99, price: 79.99, off: 15, name:'Islesys Army Bag', a:'', f:'', j:'' },
+  // ]
 
   imgLoaded:string[] = [];
 
@@ -58,6 +59,11 @@ export class WelcomeComponent implements OnInit {
     let xKeywords = "";
     this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
   }
+
+  // getCost(coin:string){
+  //   let x = "cost";
+  //   return this.resource.cartList[0]?[x] || coin;
+  // }
 
   // changeTestmo(doW:number){
   //   let x = this.testmo.indexOf(this.tesNow)

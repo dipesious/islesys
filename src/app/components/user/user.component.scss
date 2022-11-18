@@ -117,3 +117,17 @@
     }
 
 }
+
+
+
+
+@media (max-width: 720px) {
+    .nav{
+        width: 100vw;
+        height: 25vh;
+    }
+    .main-container{
+        width: 100vw;
+        min-height: 75vh;
+    }
+}

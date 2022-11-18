@@ -19,8 +19,8 @@ export class WhoWeAreComponent implements OnInit {
     {name:"shades", img:"/brand-shades.jpeg", link:""},
     {name:"aimtera", img:"/brand-aimtera.jpeg", link:""},
     {name:"frycold", img:"/brand-frycold.jpeg", link:""},
-    {name:"mapwale", img:"/brand-xxx.jpeg", link:""},
-    {name:"iconwho", img:"/brand-xxx.jpeg", link:""},
+    {name:"mapwale", img:"/brand-mapwale.jpeg", link:""},
+    {name:"iconwho", img:"/brand-iconwho.jpeg", link:""},
     // {name:"xxx", img:"/brand-xxx.jpeg", link:""},
   ]
 

@@ -12,7 +12,7 @@
           <img [class.loadShow]="imgLoaded.includes(x.name)" (load)="imgLoaded.push(x.name)" *ngIf="x.name == 'Patterns'" alt="Recommend One" src="assets/posters/poster_patterns.png" />
           <img [class.loadShow]="imgLoaded.includes(x.name)" (load)="imgLoaded.push(x.name)" *ngIf="x.name == 'Fonts'" alt="Recommend One" src="assets/posters/poster_fonts.png" />
           <img [class.loadShow]="imgLoaded.includes(x.name)" (load)="imgLoaded.push(x.name)" *ngIf="x.name == 'Shades'" alt="Recommend One" src="assets/posters/poster_shades.png" />
-          <h2 class="c_warn">{{x.name}} library</h2>
+          <h2 class="c_primary">{{x.name}} library</h2>
           <p class="c_black">{{x.about}}</p>
           </div>
       </a>
@@ -84,6 +84,13 @@
 <section class="sectionX">
   <div class="background">
       <div class="containerX">
+        <div style=" text-align: center;color: #fff;">
+          <button mat-button style="z-index: 100;padding: 0 0 0 4px;" (click)="iGlobal = 'USD' ">USD Global <mat-icon>{{iGlobal == 'USD' ? 'check_box':'check_box_outline_blank'}}</mat-icon></button>
+          <button mat-button style="z-index: 100;padding: 0 0 0 4px;" (click)="iGlobal = 'EUR' ">EUR <mat-icon>{{iGlobal == 'EUR' ? 'check_box':'check_box_outline_blank'}}</mat-icon></button>
+          <button mat-button style="z-index: 100;padding: 0 0 0 4px;" (click)="iGlobal = 'INR' ">INR <mat-icon>{{iGlobal == 'INR' ? 'check_box':'check_box_outline_blank'}}</mat-icon></button>
+          <button mat-button style="z-index: 100;padding: 0 0 0 4px;" (click)="iGlobal = 'RUB' ">RUB <mat-icon>{{iGlobal == 'RUB' ? 'check_box':'check_box_outline_blank'}}</mat-icon></button>
+        </div>
+
         <div class="panel pricing-table b_white">
           
           <div class="pricing-plan">
@@ -96,7 +103,7 @@
             </ul>
             <span class="pricing-price c_growth">Free</span>
             <ul class="pricing-features">
-            <li class="pricing-features-item">$0 forevah!</li>
+            <li class="pricing-features-item">{{iGlobal == 'USD' ? '$':''}}{{iGlobal == 'EUR' ? '€':''}}{{iGlobal == 'INR' ? '₹':''}}{{iGlobal == 'RUB' ? '₽':''}}0 forevah!</li>
             </ul>
             <a (click)=" this.goPack('') " mat-stroked-button color="warn" class="pricing-button nFont">{{!(auth.user$ | async) ? 'Sign up' : 'Continue'}}</a>
           </div>
@@ -109,9 +116,17 @@
               <li class="pricing-features-item">One Project License</li>
               <li class="pricing-features-item">Access to ထ Assets</li>
             </ul>
-            <span class="pricing-price c_growth"><sup>$</sup><u style="text-decoration: line-through 4px;">99</u> &nbsp; <sup>$</sup>79</span>
+            <span class="pricing-price c_growth"><sup
+              *ngIf=" iGlobal == 'USD' || iGlobal == 'EUR' ">{{iGlobal == 'USD' ? '$':''}}{{iGlobal == 'EUR' ? '€':''}}<!--{{iGlobal == 'INR' ? '₹':''}}{{iGlobal == 'RUB' ? '₽':''}}--></sup><u style="text-decoration: line-through 4px;" 
+              *ngIf=" iGlobal == 'USD' || iGlobal == 'EUR' ">{{iGlobal == 'USD' ? resource.cartList[0].priceUSD:''}}{{iGlobal == 'EUR' ? resource.cartList[0].priceEUR:''}}<!--{{iGlobal == 'INR' ? resource.cartList[0].priceINR:''}}{{iGlobal == 'RUB' ? resource.cartList[0].priceRUB:''}}-->
+              </u> &nbsp; <sup>{{iGlobal == 'USD' ? '$':''}}{{iGlobal == 'EUR' ? '€':''}}{{iGlobal == 'INR' ? '₹':''}}{{iGlobal == 'RUB' ? '₽':''}}</sup>{{iGlobal == 'USD' ? resource.cartList[0].costUSD:''}}{{iGlobal == 'EUR' ? resource.cartList[0].costEUR:''}}{{iGlobal == 'INR' ? resource.cartList[0].costINR:''}}{{iGlobal == 'RUB' ? resource.cartList[0].costRUB:''}}</span>
             <ul class="pricing-features">
-            <li class="pricing-features-item">$79 for the first year</li>
+            <li class="pricing-features-item">
+              {{iGlobal == 'USD' ? '$':''}}{{iGlobal == 'EUR' ? '€':''}}{{iGlobal == 'INR' ? '₹':''}}{{iGlobal == 'RUB' ? '₽':''}}
+              {{iGlobal == 'USD' ? resource.cartList[0].costUSD:''}}
+              {{iGlobal == 'EUR' ? resource.cartList[0].costEUR:''}}
+              {{iGlobal == 'INR' ? resource.cartList[0].costINR:''}}
+              {{iGlobal == 'RUB' ? resource.cartList[0].costRUB:''}} for the first year</li>
             </ul>
             <a (click)=" this.goPack('Upgrade') " mat-flat-button color="warn" class="pricing-button is-featured nFont">Upgrade</a>
           </div>
@@ -124,9 +139,17 @@
               <li class="pricing-features-item">Company License</li>
               <li class="pricing-features-item">Dedicated Support</li>
             </ul>
-            <span class="pricing-price c_growth"><sup>$</sup>499</span>
+            <span class="pricing-price c_growth"><sup>{{iGlobal == 'USD' ? '$':''}}{{iGlobal == 'EUR' ? '€':''}}{{iGlobal == 'INR' ? '₹':''}}{{iGlobal == 'RUB' ? '₽':''}}</sup>
+              {{iGlobal == 'USD' ? resource.cartList[2].costUSD:''}}
+              {{iGlobal == 'EUR' ? resource.cartList[2].costEUR:''}}
+              {{iGlobal == 'INR' ? resource.cartList[2].costINR:''}}
+              {{iGlobal == 'RUB' ? resource.cartList[2].costRUB:''}}</span>
             <ul class="pricing-features">
-            <li class="pricing-features-item">$499 per month</li>
+            <li class="pricing-features-item">{{iGlobal == 'USD' ? '$':''}}{{iGlobal == 'EUR' ? '€':''}}{{iGlobal == 'INR' ? '₹':''}}{{iGlobal == 'RUB' ? '₽':''}}
+              {{iGlobal == 'USD' ? resource.cartList[2].costUSD:''}}
+              {{iGlobal == 'EUR' ? resource.cartList[2].costEUR:''}}
+              {{iGlobal == 'INR' ? resource.cartList[2].costINR:''}}
+              {{iGlobal == 'RUB' ? resource.cartList[2].costRUB:''}} per month</li>
             </ul>
             <a (click)=" this.goPack('Apply') " mat-stroked-button color="warn" class="pricing-button nFont">Apply</a>
           </div>
@@ -167,52 +190,16 @@
   <div class="intrestingProjects">
     <h2>Some intresting projects</h2>
     <ul>
-      <li><a [routerLink]=" '/Periodic-Table-of-Elements' ">- Periodic Table</a></li>
       <li><a [href]=" 'https://mapwale.com' ">- mapWale[dot]com</a></li>
       <li><a [href]=" 'https://iconwho.com' ">- iconWho[dot]com</a></li>
-      <!-- <li><a [href]=" 'https://stellarium-web.org/' " target="_">- Stellarium</a></li>
-      <li><a [href]=" 'https://freerice.com/categories/english-vocabulary' " target="_">- Free Rice</a></li> -->
-      <!-- <li><a href="#">XXX</a></li> -->
+      <li><a [href]=" 'https://aimtera.com' ">- AimTera[dot]com</a></li>
+      <li><a [href]=" 'https://frycold.com' ">- FryCold[dot]com</a></li>
+      <li><a [routerLink]=" '/Periodic-Table-of-Elements' ">- Periodic Table</a></li>
     </ul>
   </div>
 </section>
 
 
-
-<section class="section-products" *ngIf="false">
-  <div class="container">
-    
-      <div class="row">
-          <div class="col-100">
-              <div class="header">
-                  <!-- <h2>Help us Sustain...</h2> -->
-                  <h3>Become our Brand Ambassador</h3>
-              </div>
-          </div>
-
-          <!-- Single Product -->
-          <div class="col-25 col-sm-100" *ngFor="let x of products; let i = index;">
-              <div [id]=" 'product-' + (i+1) " class="single-product">
-                  <div class="part-1" [style.backgroundImage]=" 'url(assets/products/product' + (i+1) + '.jpeg)' ">
-                <span class="discount">{{x.off}}% off</span>
-                      <ul>
-                          <li><a target="_" href="https://amazon.com"><img src="assets/shopping/amazon.png" /></a></li>
-                          <li><a target="_" href="https://flipkart.com"><img src="assets/shopping/flipkart.png" /></a></li>
-                          <li><a target="_" href="https://jiomart.com"><img src="assets/shopping/jiomart.png" /></a></li>
-                          <!-- <li><a href="#"><mat-icon>menu</mat-icon></a></li> -->
-                      </ul>
-                  </div>
-                  <div class="part-2">
-                      <h3 class="product-title">{{x.name}}</h3>
-                      <h4 class="product-old-price">${{x.price}}</h4>
-                      <h4 class="product-price">${{x.cost}}</h4>
-                  </div>
-              </div>
-          </div>
-          
-      </div>
-  </div>
-</section>
 
 
 
@@ -221,14 +208,20 @@
   <div class="container">
     <div class="row">
 
-  <div class="col col-50 col-sm-100">
+  <div class="col col-40 col-sm-100">
     <div class="cardX card1 c_white">
       <h2><mat-icon>tips_and_updates</mat-icon> Customize before downloading</h2>
       <p>Continuesly integrating customization methods for undertaking.</p>
     </div>
   </div>
 
-  <div class="col col-50 col-sm-100">
+  <div class="col col-20 col-sm-none">
+    <img style="    width: 70px;
+    display: block;
+    margin: 8px auto 0 auto;" src="assets/logoSquare.png" />
+  </div>
+
+  <div class="col col-40 col-sm-100">
     <div class="cardX card2 c_white">
       <h2><mat-icon>tips_and_updates</mat-icon> Choose every possible format</h2>
       <p>We provide diverse aligment to suit your needs such as file format.</p>
@@ -238,21 +231,21 @@
   <div class="col col-30 col-sm-100">
     <div class="cardX card3 c_white">
       <h2><mat-icon>tips_and_updates</mat-icon> Recognition</h2>
-      <p>Looking to reach more people so you could be our voice.</p>
+      <p>Looking to reach more people <br>so you could be our voice.</p>
     </div>
   </div>
 
   <div class="col col-40 col-sm-100">
     <div class="cardX card4 c_white">
       <h2><mat-icon>tips_and_updates</mat-icon> Communities Benifit</h2>
-      <p>We provide single licence with minimal charges to helps you save.</p>
+      <p>We provide single licence with <br>minimal charges to helps you save.</p>
     </div>
   </div>
 
   <div class="col col-30 col-sm-100">
     <div class="cardX card5 c_white">
       <h2><mat-icon>tips_and_updates</mat-icon> Simplicity</h2>
-      <p>We try to keep things simple so that even a child could understand.</p>
+      <p>We try to keep things simple so <br>that even a child could understand.</p>
     </div>
   </div>
 

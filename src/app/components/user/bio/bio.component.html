@@ -19,7 +19,7 @@ display: inline-block;" *ngIf="activeBio">
         <div class="input-field">
           <mat-icon><span class="phoneCC">{{chosenNation.cc}}</span></mat-icon>
           <input [disabled]="userSign.makingChanges" [ngModel]="getPhone(activeBio.iso, activeBio.phone)" type="phone" value="+91" name="phone" autocomplete="phone" placeholder="Phone Number" readonly required="yes">
-          <mat-icon [matMenuTriggerFor]="nat">unfold_more</mat-icon>
+          <!-- <mat-icon [matMenuTriggerFor]="nat">unfold_more</mat-icon> -->
         </div>
 
         <label class="check">
