@@ -77,6 +77,7 @@ import { DownloadDatasetComponent } from './components/app-os/list-datasets/down
 import { DownloadShadeComponent } from './components/app-os/list-shades/download-shade/download-shade.component';
 import { ReferComponent } from './components/user/refer/refer.component';
 import { FontDemoComponent } from './components/app-os/list-fonts/font-demo/font-demo.component';
+import { AdvertComponent } from './placeholders/advert/advert.component';
 
 //import { ScrollingModule } from '@angular/cdk/scrolling';
 
@@ -126,7 +127,8 @@ import { FontDemoComponent } from './components/app-os/list-fonts/font-demo/font
     DownloadDatasetComponent,
     DownloadShadeComponent,
     ReferComponent,
-    FontDemoComponent
+    FontDemoComponent,
+    AdvertComponent
   ],
   imports: [
     //ScrollingModule,

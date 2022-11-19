@@ -1,6 +1,6 @@
 <ng-container *ngIf="activePayment">
     <div class="word-section">
-        <p>Expires on {{activePayment.sin.toDate() | date}}<br>You can now access millions of assets<br>on any device at anytime!</p>
+        <p>Expires on {{ depends.addDays(activePayment.done?.toDate(), (activePayment.days||0))  | date}}<br>You can now access millions of assets<br>on any device at anytime!</p>
     </div>
     
     <div class="plan-section">
@@ -13,10 +13,14 @@
             <h2>{{activePayment.varient}}</h2>
             <p>${{ getPay( activePayment.varient ) }}<!--{{activePayment.coin}} {{activePayment.cost | number:'1.2-2'}}/year--></p>
         </div>
-        <div class="change">
+        <div class="change c_primary">
             <!-- <a href="#">Choose</a> -->
             <mat-icon>verified</mat-icon>
         </div>
+    </div>
+
+    <div style="margin: 16px 0;" class="textC">
+        <p *ngFor="let x of activePayment.lieList">{{x}}</p>
     </div>
     
     <div class="btn-section">
@@ -26,4 +30,5 @@
         <button class="btn-payment btn" *ngIf="activePayment.pack == 'enterprise'" 
         type="submit">Register an Enterprise Project</button>
     </div>
+
 </ng-container>

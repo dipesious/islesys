@@ -15,7 +15,7 @@ import { Auth, authState } from '@angular/fire/auth';
 })
 export class AuthService {
 
-  dbWALT = "walt";
+  dbWALT = "waltISLESYS";
 
   dbICONS = "icons";
   dbMAPS = "maps";
@@ -186,6 +186,17 @@ export class AuthService {
 
 
 
+  getAllICON(name:string){
+    const cityRef = collection(this.fs, this.dbICONS);
+    const qu = query(cityRef, 
+      // where("active", "==", true),
+      where("name", "==", name),
+      // orderBy("sin"), 
+      limit(50)
+    );
+    return collectionData(qu);
+  }
+
   // getAllICON(fill:string, tone:string){
   //   const cityRef = collection(this.fs, this.dbICONS);
   //   const qu = query(cityRef, 
@@ -323,8 +334,9 @@ export class AuthService {
 
   
   updateFieldWALT(id:string, fieldX:string, valueX:any){
+    const sTS = this.getServerTimestamp();
     const userRef = doc(this.fs, `${this.dbWALT}/${id}`);
-    return updateDoc(userRef, { [fieldX]:valueX })
+    return updateDoc(userRef, { [fieldX]:valueX, done: sTS })
   }
 
   getWALT(id:string){

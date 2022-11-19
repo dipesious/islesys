@@ -15,7 +15,7 @@ admin.initializeApp(enviroment.firebaseConfig);
 
 
 // This is your test secret API key.
-const stripe = require('stripe')(enviroment.STRIPE_Secret_key);
+// const stripe = require('stripe')(enviroment.STRIPE_Secret_key);
 
 
 const routePayments = require('./routes/routePayments');

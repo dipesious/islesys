@@ -1,5 +1,5 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { map, Observable, of, startWith, take } from 'rxjs';
@@ -427,6 +427,7 @@ export class ListMapsComponent implements OnInit {
     let xImage = "";
     let xKeywords = "maps, free download, Islesys, Dipesh Bhoir";
     this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
+
   }
 
   submitMap(){
@@ -447,6 +448,9 @@ export class ListMapsComponent implements OnInit {
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  execute(){}
+  execute(){
+
+  }
+
 
 }

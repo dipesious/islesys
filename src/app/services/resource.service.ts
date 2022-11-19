@@ -15,19 +15,19 @@ export class ResourceService {
     priceEUR:102, costEUR:82, 
     priceUSD:99, costUSD:79,
     priceRUB:5956, costRUB:4753,
-    during:"1 Year" },
-    {id:'price_1LuTPKENE7uabJh2rrXnRV5u', name:"Pledged Community", way:"33/year Prepaid", price:297, cost:99, 
+    during:"1 Year", days:365 },
+    {id:'price_1LuTPKENE7uabJh2rrXnRV5u', name:"Pledged Community", way:"33/year Prepaid for 3 Years", price:297, cost:99, 
     priceINR:24623, costINR:8204, 
     priceEUR:305, costEUR:102, 
     priceUSD:297, costUSD:99, 
     priceRUB:17867, costRUB:5956,
-    during:"3 Year" },
+    during:"3 Year", days:(365*3) },
     {id:'price_1LuTQrENE7uabJh2aYyTOtfT', name:"Prepaid Enterprise", way:"49/month Prepaid", price:49, cost:49, 
     priceINR:4003, costINR:4003, 
     priceEUR:48, costEUR:48, 
     priceUSD:49, costUSD:49, 
     priceRUB:2948, costRUB:2948,
-    during:"Monthly" },
+    during:"Monthly", days:30 },
   ]
   
   videoEducation = "assets/videos/education.mp4";
@@ -61,6 +61,7 @@ export class ResourceService {
     {count:1442, about:"Library of regional font scripts", icon:"font_download", name:"Fonts",path:"/fonts"},
     {count:268, about:"Time tested stable hex codes", icon:"format_color_fill", name:"Shades",path:"/shades"},
   ]
+  /*
   navCrowdfund = [
     {title:"Book",icon:"auto_stories", path:"/fundraisers/1" },
     {title:"Film",icon:"movie", path:"/fundraisers/2" },
@@ -110,7 +111,7 @@ export class ResourceService {
     {title:"Religion",icon:"circle", path:"/articles/religion" },
     {title:"Political",icon:"circle", path:"/articles/political" },
   ]
-
+*/
   nations = [
     {coin: "CAD",cc: "+1",iso: "CA",name: "Canada" },
     {coin: "USD",cc: "+1",iso: "US",name: "United States" },

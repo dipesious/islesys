@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { DependencyService } from 'src/app/services/dependency.service';
 import { ResourceService } from 'src/app/services/resource.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class UserComponent implements OnInit {
   loading = true;
 
   constructor(
+    public depends: DependencyService,
     public resource: ResourceService,
     private auth: AuthService
   ) { }
@@ -51,5 +53,6 @@ export class UserComponent implements OnInit {
     })
 
   }
+
 
 }

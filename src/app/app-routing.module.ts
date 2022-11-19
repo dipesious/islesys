@@ -42,6 +42,7 @@ const routes: Routes = [
     {path:'getHelp/:topic', component: FileBugComponent },
 
     {path:'icons', component: ListIconsComponent},
+    {path:'icons/:name', component: ListIconsComponent},
     {path:'maps', component: ListMapsComponent},
     {path:'fonts', component: ListFontsComponent},
     {path:'datasets', component: ListDatasetsComponent},

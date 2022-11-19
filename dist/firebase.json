@@ -21,6 +21,10 @@
     ],
     "rewrites": [
       {
+        "source": "/api/**",
+        "function": "server_global"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }

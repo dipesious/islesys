@@ -165,8 +165,11 @@ export class CartComponent implements OnInit {
           productID:this.cartPack.id,
           coin:mine.coin, iso:mine.iso, 
           phone:mine.phone, email:mine.email,
-          companyCARD:this.cardCompany, companyCODE:this.codeCompany, companyNAME:this.nameCompany,
+          lieList:[
+            this.nameCompany
+          ], companyCARD:this.cardCompany, companyCODE:this.codeCompany, companyNAME:this.nameCompany,
           cost, price, save,
+          days:this.cartPack.days, via:"islesys.com",
           pack:(
             ( this.resource.cartList[0] == this.cartPack ? "community":"") +
             ( this.resource.cartList[1] == this.cartPack ? "community":"") +
@@ -177,7 +180,7 @@ export class CartComponent implements OnInit {
             ( this.resource.cartList[2] == this.cartPack ? "monthly":"") +
             "" ), 
           payment: this.xPay,
-          status:0, sin:null
+          status:0, done:null, sin:null
         }
   
         this.auth.submitWALT(data).then(refWalt => {

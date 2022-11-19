@@ -16,6 +16,7 @@ export class DependencyService {
   //   console.log("send email")
   //   return this.httpClient.post(`${environment.server}/api/create-checkout-session/${ iso }`, body);
   // }
+  
 
   startStripeNew(iso:string, 
     id:string, by:string, 
@@ -26,12 +27,11 @@ export class DependencyService {
     ){
     const body = {
       id, by, 
-      description:"Community Pack",
+      description:"islesys Pack",
       name, phone, email,
       productID, payStripeCUST
       // CARD, MMYY, CVV
     }
-    console.log("send email")
     return this.httpClient.post(`${environment.server}/api/payments/create-stripe-payment/${ iso }`, body);
   }
 /*
@@ -103,8 +103,22 @@ omega	Ω	ω
       // status:0
     }
 
-    console.log("send email")
     return this.httpClient.post(`${environment.server}/api/payments/create-razorpay-payment/${ iso }`, bodyx);
+  }
+
+  addDays(date:any, days:any) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
+
+  isExpired(done:any, days:number){
+    if(!done){
+      return false;
+    }else{
+      var today = new Date();
+      return today > this.addDays(done, (days||0));
+    }
   }
 
 }

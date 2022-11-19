@@ -79,7 +79,23 @@
         display: inline-block;
         border-radius: 3px;border-radius: 8px;
         border-bottom: 2px solid #eeeeee; text-decoration: none;
-        .image{width: 80px;height: 80px;margin: 10px;
+        .back1{ 
+        background: #eeeeee;
+        width: -webkit-fill-available;
+        height: 2px;
+        transform: translate(0, -12px);
+        display: block;
+        margin: 0 25px;
+        }
+        .back2{
+        background: #eeeeee;
+        width: -webkit-fill-available;
+        height: 2px;
+        transform: translate(0, -18px);
+        display: block;
+        margin: 0 50px;
+        }
+        .image{width: 80px;height: 80px;margin: 10px; 
             display: inline-block;
             margin: 10px 10px 24px 10px;
             transition-duration: .3s;

@@ -1,5 +1,5 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
@@ -7,11 +7,9 @@ import { NavigationEnd, Router } from '@angular/router';
   templateUrl: './app-os.component.html',
   styleUrls: ['./app-os.component.scss']
 })
-export class AppOsComponent implements OnInit {
+export class AppOsComponent   {
 
 
   constructor() { }
-
-  ngOnInit(): void {}
 
 }

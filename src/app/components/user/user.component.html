@@ -1,6 +1,6 @@
 <div class="nav">
     <ul>
-        <a mat-button routerLink="/explore" style="margin: 16px auto 8px auto; display:inline-block; width: 100%;"><mat-icon>{{'arrow_back'}}</mat-icon> Back to Explore</a>
+        <a mat-button routerLink="/explore" style="margin: 16px auto 8px auto; display:inline-block; width: 100%;"><mat-icon>{{'arrow_back'}}</mat-icon> Back to islesys.com</a>
 
         <li>My Account</li>
         <li [class.active]="resource.router.url.includes( '/user/my-contact-info' )"><mat-icon>person_pin</mat-icon> <a routerLink="/user/my-contact-info">My Contact</a></li>
@@ -10,14 +10,14 @@
         <li 
         [class.active]="resource.router.url.includes( '/user/manage' ) && x == activePayment" 
         *ngFor="let x of myPayments" routerLink="/user/manage">
-            <mat-icon>shopping_bag</mat-icon> <a (click)="activePayment = x;">{{x.companyNAME}}</a><span class="status b_accent" *ngIf="">Expired</span></li>
+            <mat-icon>shopping_bag</mat-icon> <a (click)="activePayment = x;">{{x.sin.toDate() | date}}</a><span class="status b_accent" *ngIf="depends.isExpired(x.done?.toDate(), x.days)">Expired</span></li>
         <li><mat-icon>link</mat-icon> <a routerLink="/cart/upgrade-account">Get new Community pack</a></li>
 
         <li>Manage Companies</li>
         <li 
         [class.active]="resource.router.url.includes( '/user/manage' ) && x == activePayment" 
         *ngFor="let x of myPaymentsEnterprise" routerLink="/user/manage">
-            <mat-icon>store</mat-icon> <a (click)="activePayment = x;">{{x.companyNAME}}</a><span class="status b_accent" *ngIf="false">Failed</span></li>
+            <mat-icon>store</mat-icon> <a (click)="activePayment = x;">{{x.sin.toDate() | date}}</a><span class="status b_accent" *ngIf="depends.isExpired(x.done?.toDate(), x.days)">Need Action</span></li>
         <li><mat-icon>link</mat-icon> <a routerLink="/cart/apply-for-enterprise">Get new Enterprise pack</a></li>
 
         <li>Advertise with Us</li>
@@ -31,7 +31,7 @@
     <div class="containerX">
 
         <div class="top-part">
-            <img src="assets/logo.png" />
+            <img src="assets/logoSign.png" />
         </div>
 
         <div class="bottom-part">

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DependencyService } from 'src/app/services/dependency.service';
 import { ResourceService } from 'src/app/services/resource.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class RegistryComponent implements OnInit {
   @Input() activePayment!: any;
 
   constructor(
+    public depends: DependencyService,
     public resource: ResourceService
   ) { }
 

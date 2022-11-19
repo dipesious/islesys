@@ -14,7 +14,7 @@
         font-size: 18px;
         width: 100%;
         li{padding: 0; margin: 0 0 0 24px;
-            a{color: #000000; text-decoration: none;}
+            a{color: #000000; text-decoration: none; cursor: pointer;}
             .status{    margin: 0 0 0 8px;
                 padding: 0 8px;
                 color: #ffffff;
@@ -53,7 +53,7 @@
     }
     
     .top-part{
-        background: linear-gradient(45deg, #f5f7ff 20%, #ffffff 0);
+        background: linear-gradient(45deg, #ffffff 20%, #f5f7ff 0);
         // background: url('../images/illustration-hero.svg') no-repeat center;
         border-top-left-radius: 16px;
         border-top-right-radius: 16px;
@@ -86,48 +86,56 @@
 
 
 
-/* Media Queries */
+// /* Media Queries */
 
-@media (min-width: 1440px) {
-    .main-container{
-        background-image: none;
-    }
-}
+// @media (min-width: 1440px) {
+//     .main-container{
+//         background-image: none;
+//     }
+// }
 
-@media (max-height: 700px) {
-    .main-container{
-        padding: 35px 0;
-    }
-}
+// @media (max-height: 700px) {
+//     .main-container{
+//         padding: 35px 0;
+//     }
+// }
 
-@media (max-width: 500px) {
-    .main-container{
-        padding: 35px 8px;
-    }
+// @media (max-width: 500px) {
+//     .main-container{
+//         padding: 35px 8px;
+//     }
 
-}
+// }
 
-@media (max-width: 375px) {
-    .main-container{
-        // background-image: url('../images/pattern-background-mobile.svg');
-        padding: 25px 8px;
-        .containerX{
-            max-width: 350px !important;
-        }
-    }
+// @media (max-width: 375px) {
+//     .main-container{
+//         // background-image: url('../images/pattern-background-mobile.svg');
+//         padding: 25px 8px;
+//         .containerX{
+//             max-width: 350px !important;
+//         }
+//     }
 
-}
+// }
 
 
 
 
 @media (max-width: 720px) {
+        .main-container{
+            // background-image: url('../images/pattern-background-mobile.svg');
+            padding: 25px 8px;
+            .containerX{
+                max-width: 350px !important;
+            }
+        }
+        
     .nav{
         width: 100vw;
-        height: 25vh;
+        height: 20vh;
     }
     .main-container{
         width: 100vw;
-        min-height: 75vh;
+        min-height: 80vh;
     }
 }
