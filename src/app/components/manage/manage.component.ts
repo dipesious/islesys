@@ -163,10 +163,9 @@ export class ManageComponent {
     }
   } 
 
-  activeME(isActive:any, p:string){
+  activeME(p:string){
     return (
-    isActive ||
-
+    p == this.resource.router.url ||
     p == '/explore' && this.resource.router.url.includes('/icons') ||
     p == '/explore' && this.resource.router.url.includes('/maps') ||
     p == '/explore' && this.resource.router.url.includes('/datasets') ||

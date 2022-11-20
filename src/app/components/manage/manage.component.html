@@ -1,3 +1,25 @@
+
+
+<div class="content" [style]=" 'height: ' + (
+  !resource.router.url.includes( '/influencers' ) &&
+  !resource.router.url.includes( '/who-we-are' ) &&
+  !resource.router.url.includes( '/file-a-bug' ) &&
+  
+  !resource.router.url.includes( '/free-icon/' ) &&
+  !resource.router.url.includes( '/edit-map/' ) &&
+  !resource.router.url.includes( '/each-dataset/' ) &&
+  !resource.router.url.includes( '/view-palette/' ) &&
+  !resource.router.url.includes( '/view-gradient/' ) &&
+  !resource.router.url.includes( '/view-pattern/' ) &&
+  !resource.router.url.includes( '/opensource-font/' ) &&
+  !resource.router.url.includes( '/shades-of-color/' ) &&
+  !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
+  true ? 'calc(100vh - 0px)' : 'calc(100vh - 0px)')
+  + ';' "
+#mainContent  (scroll)="scrollHandler($event)">
+
+
+
 <header *ngIf="
 !resource.router.url.includes( '/influencers' ) &&
 !resource.router.url.includes( '/who-we-are' ) &&
@@ -14,43 +36,83 @@
 !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
 true
 ">
-    <div class="holdHeader">
-    <!--img src="" height="30px" /-->
-    <div class="branding">
-    <span class="logo"><a routerLink="/explore"><img src="assets/logo.png"></a></span>
-    <!-- <span class="slogan"><br>Small steps Long vision</span> -->
+  <div class="holdHeader">
+  <!--img src="" height="30px" /-->
+  <div class="branding">
+  <span class="logo"><a routerLink="/explore"><img src="assets/logo.png"></a></span>
+  </div>
+  <span class="divide"></span>
+  <a mat-icon-button color="primary" [matMenuTriggerFor]="langz"><mat-icon>translate</mat-icon></a>
+  <mat-menu #langz="matMenu" overlapTrigger="true">
+    <div style="max-height: 300px; overflow-y: auto;">
+    <button mat-menu-item *ngFor="let l of lang" [class.c_warn]=" resource.nowLang == l "><mat-icon>{{ resource.nowLang !== l ? 'check_box_outline_blank':'check_box'}}</mat-icon> <b>{{l}}</b></button>
     </div>
-    <span class="divide"></span>
-    <a mat-icon-button color="primary" [matMenuTriggerFor]="langz"><mat-icon>translate</mat-icon></a>
-    <mat-menu #langz="matMenu" overlapTrigger="true">
-      <div style="max-height: 300px; overflow-y: auto;">
-      <button mat-menu-item *ngFor="let l of lang" [class.c_warn]=" resource.nowLang == l "><mat-icon>{{ resource.nowLang !== l ? 'check_box_outline_blank':'check_box'}}</mat-icon> <b>{{l}}</b></button>
-      </div>
-    </mat-menu>
-    <!-- <a mat-stroked-button color="primary" style="border-radius: 16px;" href="https://paypal.me/islesys" target="_" >Contribute</a> -->
-    <a mat-icon-button color="primary" *ngIf="!(auth.user$ | async)" routerLink="/sign"><mat-icon>account_circle</mat-icon></a>
+  </mat-menu>
+  <!-- <a mat-stroked-button color="primary" style="border-radius: 16px;" href="https://paypal.me/islesys" target="_" >Contribute</a> -->
+  <a mat-icon-button color="primary" *ngIf="!(auth.user$ | async)" routerLink="/sign"><mat-icon>account_circle</mat-icon></a>
 
-    <ng-container *ngIf="auth.user$ | async as mine">
-    <a mat-icon-button color="primary" [matMenuTriggerFor]="userDO" ><mat-icon>person_pin</mat-icon></a>
-    <mat-menu #userDO="matMenu" overlapTrigger="true">
-      <div style="max-height: 300px; overflow-y: auto;">
-      <button mat-menu-item routerLink="/user/my-contact-info"><mat-icon>manage_accounts</mat-icon> <b>My Account</b></button>
-      <button mat-menu-item routerLink="/user/manage"><mat-icon>account_balance</mat-icon> <b>Manage Payments</b></button>
-      <button mat-menu-item><mat-icon>local_activity</mat-icon> <b>Advertsing Here</b></button>
-      <button mat-menu-item routerLink="/influencers"><mat-icon>manage_history</mat-icon> <b>Influencer Program</b></button>
-      <button mat-menu-item (click)="sign.signOut()"><mat-icon>logout</mat-icon> <b>Sign Out</b></button>
-      </div>
-    </mat-menu>
-    </ng-container>
-    <!-- <a mat-icon-button color="primary" *ngIf="!(auth.user$ | async)" routerLink="/sign"><mat-icon>logout</mat-icon></a> -->
+  <ng-container *ngIf="auth.user$ | async as mine">
+  <a mat-icon-button color="primary" [matMenuTriggerFor]="userDO" ><mat-icon>person_pin</mat-icon></a>
+  <mat-menu #userDO="matMenu" overlapTrigger="true">
+    <div style="max-height: 300px; overflow-y: auto;">
+    <button mat-menu-item routerLink="/user/my-contact-info"><mat-icon>manage_accounts</mat-icon> <b>My Account</b></button>
+    <button mat-menu-item routerLink="/user/manage"><mat-icon>account_balance</mat-icon> <b>Manage Payments</b></button>
+    <button mat-menu-item><mat-icon>local_activity</mat-icon> <b>Advertsing Here</b></button>
+    <button mat-menu-item routerLink="/influencers"><mat-icon>manage_history</mat-icon> <b>Influencer Program</b></button>
+    <button mat-menu-item (click)="sign.signOut()"><mat-icon>logout</mat-icon> <b>Sign Out</b></button>
     </div>
-  </header>
-  
-  <div class="content" [style]=" 'height: ' + (
+  </mat-menu>
+  </ng-container>
+  <!-- <a mat-icon-button color="primary" *ngIf="!(auth.user$ | async)" routerLink="/sign"><mat-icon>logout</mat-icon></a> -->
+  </div>
+</header>
+
+
+
+
+
+
+  <div class="upperMenu b_white"
+  [style]=" !menuShow ? 'height: 0;': 'min-height: auto;' " >
+<div class="container">
+  <div class="row">
+
+    <div class="col-100 textL">
+      <h2>insider projects</h2>
+    </div>
+
+    <div class="col-30 col-sm-100">
+      <div class="card card-1">
+        <h3>Aimtera platform</h3>
+        <p>GIG Ecosystem<br>2020-NOW</p>
+        <a mat-stroked-button color="warn" href="https://paypal.me/islesys" target="_">Contribute</a>
+      </div>
+    </div>
+    <div class="col-30 col-sm-100">
+      <div class="card card-2">
+        <h3>Frycold platform</h3>
+        <p>Operating System<br>2019-NOW</p>
+        <a mat-stroked-button color="warn" href="https://paypal.me/islesys" target="_">Contribute</a>
+      </div>
+    </div>
+    <div class="col-30 col-sm-100">
+      <div class="card card-3">
+        <h3>Tehzeeb Creative</h3>
+        <p>Content Publisher<br>2021-NOW</p>
+        <a mat-stroked-button color="warn" href="https://paypal.me/islesys" target="_">Contribute</a>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+
+  <div class="nav">
+
+    <div class="menu c_white" [style]=" 'top: ' + (
     !resource.router.url.includes( '/influencers' ) &&
     !resource.router.url.includes( '/who-we-are' ) &&
     !resource.router.url.includes( '/file-a-bug' ) &&
-    
+
     !resource.router.url.includes( '/free-icon/' ) &&
     !resource.router.url.includes( '/edit-map/' ) &&
     !resource.router.url.includes( '/each-dataset/' ) &&
@@ -60,123 +122,14 @@ true
     !resource.router.url.includes( '/opensource-font/' ) &&
     !resource.router.url.includes( '/shades-of-color/' ) &&
     !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
-    true ? '84vh' : '94vh')
-    + ';' "
-  #mainContent  (scroll)="scrollHandler($event)">
-  
-  
-  
-  <!--
-  <div *ngFor="let boat of page.dataO | async">
-      <h1>Built in {{ boat.id }}<br>{{ boat.name }}</h1>
-      <div style="width: 50%; height:800px; margin:8px auto; background:#ff0000; "></div>
-  </div>
-  
-    <p *ngIf="page.done | async">I ran out of boats!</p>
-  <button (click)="scrollHandler($event)">Load More</button>
-  -->
-  
-  
-  
-  
-  
-  
-  
-    <div class="upperMenu b_white"
-    [style]=" !menuShow ? 'height: 0;': 'min-height: auto;' " >
-  <div class="container">
-    <div class="row">
-  
-      <!-- <div class="col-25 col-sm-none"></div>
-      <div class="col-50 col-sm-100 textC" style="min-height: 40vh;">
-        
-        <div class="col-25">
-          <img style="width: 90%; max-width: 80px; margin:0 auto; " src="assets/book.png" />
-          <p>icons</p>
-        </div>
-        <div class="col-25">
-          <img style="width: 90%; max-width: 80px; margin:0 auto; " src="assets/book.png" />
-          <p>maps</p>
-        </div>
-        <div class="col-25">
-          <img style="width: 90%; max-width: 80px; margin:0 auto; " src="assets/book.png" />
-          <p>fonts</p>
-        </div>
-        <div class="col-25">
-          <img style="width: 90%; max-width: 80px; margin:0 auto; " src="assets/book.png" />
-          <p>datasets</p>
-        </div>
-        <div class="col-25">
-          <img style="width: 90%; max-width: 80px; margin:0 auto; " src="assets/book.png" />
-          <p>palettes</p>
-        </div>
-        <div class="col-25">
-          <img style="width: 90%; max-width: 80px; margin:0 auto; " src="assets/book.png" />
-          <p>gradients</p>
-        </div>
-        <div class="col-25">
-          <img style="width: 90%; max-width: 80px; margin:0 auto; " src="assets/book.png" />
-          <p>patterns</p>
-        </div>
-        <div class="col-25">
-          <img style="width: 90%; max-width: 80px; margin:0 auto; " src="assets/book.png" />
-          <p>shades</p>
-        </div>
-        <div class="col-25">
-          <img style="width: 90%; max-width: 80px; margin:0 auto; " src="assets/book.png" />
-          <p>crowdfund</p>
-        </div>
-        <div class="col-25">
-          <img style="width: 90%; max-width: 80px; margin:0 auto; " src="assets/book.png" />
-          <p>education</p>
-        </div>
-        <div class="col-25">
-          <img style="width: 90%; max-width: 80px; margin:0 auto; " src="assets/book.png" />
-          <p>business</p>
-        </div>
-        <div class="col-25">
-          <img style="width: 90%; max-width: 80px; margin:0 auto; " src="assets/book.png" />
-          <p>the Cave</p>
-        </div>
-  
-      </div>
-      <div class="col-25 col-sm-none"></div> -->
-  
-      <div class="col-100 textL">
-        <h2>insider projects</h2>
-      </div>
-  
-      <div class="col-30 col-sm-100">
-        <div class="card card-1">
-          <h3>AimTera platform</h3>
-          <p>GIG Ecosystem<br>2020-NOW</p>
-          <a mat-stroked-button color="warn" href="https://paypal.me/islesys" target="_">Contribute</a>
-        </div>
-      </div>
-      <div class="col-30 col-sm-100">
-        <div class="card card-2">
-          <h3>FryCold platform</h3>
-          <p>Operating System<br>2019-NOW</p>
-          <a mat-stroked-button color="warn" href="https://paypal.me/islesys" target="_">Contribute</a>
-        </div>
-      </div>
-      <div class="col-30 col-sm-100">
-        <div class="card card-3">
-          <h3>Tehzeeb Creative</h3>
-          <p>Content Publisher<br>2021-NOW</p>
-          <a mat-stroked-button color="warn" href="https://paypal.me/islesys" target="_">Contribute</a>
-        </div>
-      </div>
-    </div>
-  </div>
-    </div>
-  
-    <div class="nav">
-      <div class="menu c_white" [style]=" 'top: ' + (
+    true ? '10vh' : '0vh')
+    + ';' ">
+
+      <button mat-icon-button *ngIf="
       !resource.router.url.includes( '/influencers' ) &&
       !resource.router.url.includes( '/who-we-are' ) &&
       !resource.router.url.includes( '/file-a-bug' ) &&
-
+      
       !resource.router.url.includes( '/free-icon/' ) &&
       !resource.router.url.includes( '/edit-map/' ) &&
       !resource.router.url.includes( '/each-dataset/' ) &&
@@ -186,307 +139,212 @@ true
       !resource.router.url.includes( '/opensource-font/' ) &&
       !resource.router.url.includes( '/shades-of-color/' ) &&
       !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
-      true ? '10vh' : '0vh')
-      + ';' ">
+      true "
+      (click)="menuShow = !menuShow; clickS();"><mat-icon>star</mat-icon></button>
 
-        <button mat-icon-button *ngIf="
-        !resource.router.url.includes( '/influencers' ) &&
-        !resource.router.url.includes( '/who-we-are' ) &&
-        !resource.router.url.includes( '/file-a-bug' ) &&
-        
-        !resource.router.url.includes( '/free-icon/' ) &&
-        !resource.router.url.includes( '/edit-map/' ) &&
-        !resource.router.url.includes( '/each-dataset/' ) &&
-        !resource.router.url.includes( '/view-palette/' ) &&
-        !resource.router.url.includes( '/view-gradient/' ) &&
-        !resource.router.url.includes( '/view-pattern/' ) &&
-        !resource.router.url.includes( '/opensource-font/' ) &&
-        !resource.router.url.includes( '/shades-of-color/' ) &&
-        !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
-        true "
-        (click)="menuShow = !menuShow; clickS();"><mat-icon>star</mat-icon></button>
+      <button mat-icon-button *ngIf="
+      resource.router.url.includes( '/influencers' ) ||
+      resource.router.url.includes( '/who-we-are' ) ||
+      resource.router.url.includes( '/file-a-bug' ) ||
+      
+      resource.router.url.includes( '/free-icon/' ) ||
+      resource.router.url.includes( '/edit-map/' ) ||
+      resource.router.url.includes( '/each-dataset/' ) ||
+      resource.router.url.includes( '/view-palette/' ) ||
+      resource.router.url.includes( '/view-gradient/' ) ||
+      resource.router.url.includes( '/view-pattern/' ) ||
+      resource.router.url.includes( '/opensource-font/' ) ||
+      resource.router.url.includes( '/shades-of-color/' ) ||
+      resource.router.url.includes( '/Periodic-Table-of-Elements' ) ||
+      false "
+      [routerLink]=" '/' +
+      ( resource.router.url.includes( '/influencers') ? 'explore':'') +
+      ( resource.router.url.includes( '/who-we-are') ? 'explore':'') +
+      ( resource.router.url.includes( '/file-a-bug') ? 'explore':'') +
 
-        <button mat-icon-button *ngIf="
-        resource.router.url.includes( '/influencers' ) ||
-        resource.router.url.includes( '/who-we-are' ) ||
-        resource.router.url.includes( '/file-a-bug' ) ||
-        
-        resource.router.url.includes( '/free-icon/' ) ||
-        resource.router.url.includes( '/edit-map/' ) ||
-        resource.router.url.includes( '/each-dataset/' ) ||
-        resource.router.url.includes( '/view-palette/' ) ||
-        resource.router.url.includes( '/view-gradient/' ) ||
-        resource.router.url.includes( '/view-pattern/' ) ||
-        resource.router.url.includes( '/opensource-font/' ) ||
-        resource.router.url.includes( '/shades-of-color/' ) ||
-        resource.router.url.includes( '/Periodic-Table-of-Elements' ) ||
-        false "
-        [routerLink]=" '/' +
-        ( resource.router.url.includes( '/influencers') ? 'explore':'') +
-        ( resource.router.url.includes( '/who-we-are') ? 'explore':'') +
-        ( resource.router.url.includes( '/file-a-bug') ? 'explore':'') +
+      ( resource.router.url.includes( '/free-icon/') ? 'icons':'') +
+      ( resource.router.url.includes( '/edit-map/') ? 'maps':'') +
+      ( resource.router.url.includes( '/each-dataset/') ? 'datasets':'') +
+      ( resource.router.url.includes( '/view-palette/') ? 'palettes':'') +
+      ( resource.router.url.includes( '/view-gradient/') ? 'gradients':'') +
+      ( resource.router.url.includes( '/view-pattern/') ? 'patterns':'') +
+      ( resource.router.url.includes( '/opensource-font/') ? 'fonts':'') +
+      ( resource.router.url.includes( '/shades-of-color/') ? 'shades':'') +
+      ( resource.router.url.includes( '/Periodic-Table-of-Elements') ? 'explore':'') +
+      '' "><mat-icon>arrow_back</mat-icon></button>
 
-        ( resource.router.url.includes( '/free-icon/') ? 'icons':'') +
-        ( resource.router.url.includes( '/edit-map/') ? 'maps':'') +
-        ( resource.router.url.includes( '/each-dataset/') ? 'datasets':'') +
-        ( resource.router.url.includes( '/view-palette/') ? 'palettes':'') +
-        ( resource.router.url.includes( '/view-gradient/') ? 'gradients':'') +
-        ( resource.router.url.includes( '/view-pattern/') ? 'patterns':'') +
-        ( resource.router.url.includes( '/opensource-font/') ? 'fonts':'') +
-        ( resource.router.url.includes( '/shades-of-color/') ? 'shades':'') +
-        ( resource.router.url.includes( '/Periodic-Table-of-Elements') ? 'explore':'') +
-        '' "><mat-icon>arrow_back</mat-icon></button>
-
-      </div>
-      <div class="menus" ><!-- mat-tab-nav-bar  
-        [attr.mat-align-tabs]=" resource.getWidth > 767 ? 'end' : 'center' "
-          color="accent" backgroundColor="accent" 
-         mat-tab-link
-      -->
-        <nav class="b_growth">
-          <a *ngFor="let x of navLinks"
-          [style]=" 'padding: ' + ( resource.getWidth > 767 ? '0 24px;' : '0 16px;') " 
-          
-             [routerLink]="x.path" routerLinkActive #rla="routerLinkActive"
-             [class.active]=" activeME(rla.isActive, x.path) ">
-             <mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span>
-          </a>
-        </nav>
-      </div>
     </div>
-  
-  
-  <mat-sidenav-container>
-    <mat-sidenav mode="side" opened class="leftNav">
-      <div class="spread"></div>
-      <div class="types" [style]=" 'margin: ' + (
-        !resource.router.url.includes( '/influencers' ) &&
-        !resource.router.url.includes( '/who-we-are' ) &&
-        !resource.router.url.includes( '/file-a-bug' ) &&
-        
-        !resource.router.url.includes( '/free-icon/' ) &&
-        !resource.router.url.includes( '/edit-map/' ) &&
-        !resource.router.url.includes( '/each-dataset/' ) &&
-        !resource.router.url.includes( '/view-palette/' ) &&
-        !resource.router.url.includes( '/view-gradient/' ) &&
-        !resource.router.url.includes( '/view-pattern/' ) &&
-        !resource.router.url.includes( '/opensource-font/' ) &&
-        !resource.router.url.includes( '/shades-of-color/' ) &&
-        !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
-        true ? '52px 0 0 0' : '0px 0 0 0')
-        + ';' " >
-      <ul style=" overflow: hidden; overflow-y: auto;  max-height: 70vh; padding: 0 0 2vh 0;">
-  
-        <!-- <ng-container *ngIf="resource.router.url == '/explore' ">
-          <li><a mat-button class="dFont"><span class="title">&nbsp;How it Works&nbsp;</span><mat-icon>contact_support</mat-icon></a></li>
-        </ng-container> -->
-  
-        <!-- <ng-container *ngIf="resource.router.url == '/education' ">
-          <li><a mat-button class="dFont"><mat-icon>{{true ? 'currency_rupee':''}}</mat-icon><span class="title">&nbsp;Currency</span></a></li>
-          <li><a mat-button class="dFont"><mat-icon>{{true ? 'check_box_outline':'check_box_outline_blank'}}</mat-icon><span class="title">&nbsp;On Campus</span></a></li>
-          <li><a mat-button class="dFont"><mat-icon>{{false ? 'check_box_outline':'check_box_outline_blank'}}</mat-icon><span class="title">&nbsp;Tution Free</span></a></li>
-        </ng-container> -->
-  
-        <!-- <ng-container *ngIf="resource.router.url == '/business' ">
-          <li><a mat-button class="dFont"><mat-icon>{{true ? 'currency_rupee':''}}</mat-icon><span class="title">&nbsp;Currency</span></a></li>
-          <li><a mat-button class="dFont"><mat-icon>{{true ? 'check_box_outline':'check_box_outline_blank'}}</mat-icon><span class="title">&nbsp;Remote</span></a></li>
-          <li><a mat-button class="dFont"><mat-icon>{{false ? 'check_box_outline':'check_box_outline_blank'}}</mat-icon><span class="title">&nbsp;Tax Haven</span></a></li>
-        </ng-container> -->
-  
-        <!-- <ng-container *ngIf="
-        resource.router.url.includes( navLinks[0].path ) || 
-        resource.router.url.includes( 'fundraisers' ) ||
-        resource.router.url.includes( 'pledge' ) ||
-        false
-        ">
-          <li *ngFor="let x of resource.navCrowdfund"><a mat-button [matTooltip]=" x.title " matTooltipPosition="after" [routerLink]="x.path" routerLinkActive="active"><mat-icon>{{x.icon}}</mat-icon><span class="title">&nbsp;{{x.title}}</span></a></li>
-        </ng-container> -->
-  
-        <ng-container *ngIf="
-        !resource.router.url.includes( '/influencers' ) &&
-        !resource.router.url.includes( '/who-we-are' ) &&
-        !resource.router.url.includes( '/file-a-bug' ) &&
-        
-        !resource.router.url.includes( '/free-icon/' ) &&
-        !resource.router.url.includes( '/edit-map/' ) &&
-        !resource.router.url.includes( '/each-dataset/' ) &&
-        !resource.router.url.includes( '/view-palette/' ) &&
-        !resource.router.url.includes( '/view-gradient/' ) &&
-        !resource.router.url.includes( '/view-pattern/' ) &&
-        !resource.router.url.includes( '/opensource-font/' ) &&
-        !resource.router.url.includes( '/shades-of-color/' ) &&
-        !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
-        true
-        ">
-          <li *ngFor="let x of resource.navOpensource"><a mat-button [matTooltip]="x.name" matTooltipPosition="after" [routerLink]="x.path" routerLinkActive="active"><mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span></a></li>
-        </ng-container>
-        <!-- <ng-container *ngIf="resource.router.url.includes( navLinks[4].path ) || resource.router.url.includes( 'articles' ) ">
-          <li style="height: 38px;"
-          *ngFor="let x of resource.navTheCaveType"><a mat-button [matTooltip]=" x.title " matTooltipPosition="after" [routerLink]="x.path" routerLinkActive="active"><span class="title">&nbsp;{{x.title}}</span></a></li>
-        </ng-container> -->
-  
-        <ng-container *ngIf="resource.router.url.includes( '/edit-map/' )">
-          <li><a mat-button matTooltip="Move" matTooltipPosition="after" (click)="moveMapLR(1)" ><mat-icon>arrow_forward</mat-icon><span class="title">&nbsp;Move Right</span></a></li>
-          <li><a mat-button matTooltip="Move" matTooltipPosition="after" (click)="moveMapUD(-1)" ><mat-icon>arrow_upward</mat-icon><span class="title">&nbsp;Move Up</span></a></li>
-          <li><a mat-button matTooltip="Move" matTooltipPosition="after" (click)="moveMapUD(1)" ><mat-icon>arrow_downward</mat-icon><span class="title">&nbsp;Move Down</span></a></li>
-          <li><a mat-button matTooltip="Move" matTooltipPosition="after" (click)="moveMapLR(-1)" ><mat-icon>arrow_back</mat-icon><span class="title">&nbsp;Move Left</span></a></li>
-          <li><a mat-button matTooltip="+1 scale" matTooltipPosition="after" (click)="scaleMap(1)" ><mat-icon>zoom_in</mat-icon><span class="title">&nbsp;Zoom in</span></a></li>
-          <li><a mat-button matTooltip="-1 scale" matTooltipPosition="after" (click)="scaleMap(-1)" ><mat-icon>zoom_out</mat-icon><span class="title">&nbsp;Zoom out</span></a></li>
-          <li><a mat-button matTooltip="Reset" matTooltipPosition="after" (click)="this.resource.scaleMapX = 1; this.resource.moveMapLR = 0; this.resource.moveMapUD = 0;" ><mat-icon>zoom_out_map</mat-icon><span class="title">&nbsp;Reset</span></a></li>
-          <!-- <li><a mat-button matTooltip="Share" matTooltipPosition="after" ><mat-icon>share</mat-icon><span class="title">&nbsp;Share</span></a></li> -->
-        </ng-container>
-  
-        <ng-container *ngIf="resource.router.url.includes( '/free-icon/' )">
-          <li>
-            <a mat-button (click)="resource.modeBgFc = !resource.modeBgFc"><mat-icon>{{!resource.modeBgFc ? 'format_color_fill':'format_paint'}}</mat-icon><span class="title dFont">&nbsp;Invert Mode</span></a>
-          </li>
-          
-          <li *ngFor="let c of iconicColors"><a mat-button
-              (click)=" setIconColor(c.id) " 
-              [class]="c.id" [matTooltip]="c.name" matTooltipPosition="after" ><mat-icon
-              [class.c_black]=" resource.modeBgFc && resource.fgColor == c.id || !resource.modeBgFc && resource.bgColor == c.id " 
-              >{{resource.modeBgFc ? 'format_color_fill':'format_paint'}}</mat-icon><span class="title dFont">&nbsp;{{c.name}}</span></a></li>
 
-          <!--li><a mat-button
-              [class.c_primary]=" resource.bgColor == 'red' " 
-              (click)=" resource.bgColor !== 'red' ? resource.bgColor = 'red': resource.bgColor = '' " 
-              class="red" matTooltip="Red" matTooltipPosition="after" ><mat-icon>format_color_fill</mat-icon><span class="title dFont">&nbsp;Red</span></a></li>
-          <li><a mat-button
-              [class.c_primary]=" resource.bgColor == 'orange' " 
-              (click)=" resource.bgColor !== 'orange' ? resource.bgColor = 'orange': resource.bgColor = '' " 
-              class="orange" matTooltip="Orange" matTooltipPosition="after" ><mat-icon>format_color_fill</mat-icon><span class="title dFont">&nbsp;Orange</span></a></li>
-          <li><a mat-button
-              [class.c_primary]=" resource.bgColor == 'yellow' " 
-              (click)=" resource.bgColor !== 'yellow' ? resource.bgColor = 'yellow': resource.bgColor = '' " 
-              class="yellow" matTooltip="Yellow" matTooltipPosition="after" ><mat-icon>format_color_fill</mat-icon><span class="title dFont">&nbsp;Yellow</span></a></li>
-          <li><a mat-button
-              [class.c_primary]=" resource.bgColor == 'green' " 
-              (click)=" resource.bgColor !== 'green' ? resource.bgColor = 'green': resource.bgColor = '' " 
-              class="green" matTooltip="Green" matTooltipPosition="after" ><mat-icon>format_color_fill</mat-icon><span class="title dFont">&nbsp;Green</span></a></li>
-          <li><a mat-button
-              [class.c_primary]=" resource.bgColor == 'blue' " 
-              (click)=" resource.bgColor !== 'blue' ? resource.bgColor = 'blue': resource.bgColor = '' " 
-              class="blue" matTooltip="Blue" matTooltipPosition="after" ><mat-icon>format_color_fill</mat-icon><span class="title dFont">&nbsp;Blue</span></a></li>
-          <li><a mat-button
-              [class.c_primary]=" resource.bgColor == 'indigo' " 
-              (click)=" resource.bgColor !== 'indigo' ? resource.bgColor = 'indigo': resource.bgColor = '' " 
-              class="indigo" matTooltip="Indigo" matTooltipPosition="after" ><mat-icon>format_color_fill</mat-icon><span class="title dFont">&nbsp;Indigo</span></a></li>
-          <li><a mat-button
-              [class.c_primary]=" resource.bgColor == 'violet' " 
-              (click)=" resource.bgColor !== 'violet' ? resource.bgColor = 'violet': resource.bgColor = '' " 
-              class="violet" matTooltip="Violet" matTooltipPosition="after" ><mat-icon>format_color_fill</mat-icon><span class="title dFont">&nbsp;Violet</span></a></li-->
-        </ng-container>
-  
-      </ul>
-      </div>
-    </mat-sidenav>
-    <mat-sidenav-content class="centerNav">
-      <div class="navigator">
-        <router-outlet></router-outlet>
-  
-  
-        <div class="textC" *ngIf="
-        resource.router.url.includes( '/free-icon/' ) ||
-        resource.router.url.includes( '/edit-map/' ) ||
-        resource.router.url.includes( '/each-dataset/' ) ||
-        resource.router.url.includes( '/view-palette/' ) ||
-        resource.router.url.includes( '/view-gradient/' ) ||
-        resource.router.url.includes( '/view-pattern/' ) ||
-        resource.router.url.includes( '/opensource-font/' ) ||
-        resource.router.url.includes( '/shades-of-color/' ) ||
-        resource.router.url.includes( '/Periodic-Table-of-Elements' ) ||
-        false ">
-          <a routerLink="/explore"><img src="assets/logo.png"></a>
-        </div>
-        <div class="maintainFooter" [class.maintainFooterHide]="hideTop"></div>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
-  
+    <div class="menus" >
+
+      <nav class="b_growth">
+      <img class="b_growth" *ngIf="
+      resource.router.url.includes( '/influencers' ) ||
+      resource.router.url.includes( '/who-we-are' ) ||
+      resource.router.url.includes( '/file-a-bug' ) ||
+      
+      resource.router.url.includes( '/free-icon/' ) ||
+      resource.router.url.includes( '/edit-map/' ) ||
+      resource.router.url.includes( '/each-dataset/' ) ||
+      resource.router.url.includes( '/view-palette/' ) ||
+      resource.router.url.includes( '/view-gradient/' ) ||
+      resource.router.url.includes( '/view-pattern/' ) ||
+      resource.router.url.includes( '/opensource-font/' ) ||
+      resource.router.url.includes( '/shades-of-color/' ) ||
+      resource.router.url.includes( '/Periodic-Table-of-Elements' ) ||
+      false " src="assets/logoSquare.png" />
+
+        <a *ngFor="let x of navLinks"
+        [style]=" 'padding: ' + ( resource.getWidth > 767 ? '0 24px;' : '0 16px;') " 
+        
+           [routerLink]="x.path"
+           [class.active]=" activeME(x.path) ">
+           <mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span>
+        </a>
+      </nav>
+    </div>
   </div>
-  
-  
-  
-  <div  class="footer">
-    <div class="able textL">
-      <button mat-button (click)="hideTop = !hideTop" class="c_warn"><mat-icon>{{!hideTop ? 'expand_more':'expand_less'}}</mat-icon></button>
-      <span class="divide"></span>
-      <div class="socials">
-      <a href="https://frycold.com/islesys" target="_" class="c_white aimteraProfile" mat-button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M16.839 4l4.857 8.5-4.857 8.5h-9.678l-4.857-8.5 4.857-8.5h9.678zm1.161-2h-12l-6 10.5 6 10.5h12l6-10.5-6-10.5z" fill-rule="evenodd" clip-rule="evenodd"/>
-        <path d="m11.322 2.923c.126-.259.39-.423.678-.423.289 0 .552.164.678.423.974 1.998 2.65 5.44 2.65 5.44s3.811.524 6.022.829c.403.055.65.396.65.747 0 .19-.072.383-.231.536-1.61 1.538-4.382 4.191-4.382 4.191s.677 3.767 1.069 5.952c.083.462-.275.882-.742.882-.122 0-.244-.029-.355-.089-1.968-1.048-5.359-2.851-5.359-2.851s-3.391 1.803-5.359 2.851c-.111.06-.234.089-.356.089-.465 0-.825-.421-.741-.882.393-2.185 1.07-5.952 1.07-5.952s-2.773-2.653-4.382-4.191c-.16-.153-.232-.346-.232-.535 0-.352.249-.694.651-.748 2.211-.305 6.021-.829 6.021-.829s1.677-3.442 2.65-5.44z" fill-rule="nonzero"/>
-      </svg></a>
-      <!-- <a href="https://medium.com/@dipesious" target="_" class="c_white medium" mat-button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill-rule="evenodd" clip-rule="evenodd"><path d="M2.846 6.887c.03-.295-.083-.586-.303-.784l-2.24-2.7v-.403h6.958l5.378 11.795 4.728-11.795h6.633v.403l-1.916 1.837c-.165.126-.247.333-.213.538v13.498c-.034.204.048.411.213.537l1.871 1.837v.403h-9.412v-.403l1.939-1.882c.19-.19.19-.246.19-.537v-10.91l-5.389 13.688h-.728l-6.275-13.688v9.174c-.052.385.076.774.347 1.052l2.521 3.058v.404h-7.148v-.404l2.521-3.058c.27-.279.39-.67.325-1.052v-10.608z"/></svg></a> -->
-      <a href="https://instagram.com/dipesious" target="_" class="c_white instagram" mat-button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.231 0h-18.462c-1.529 0-2.769 1.24-2.769 2.769v18.46c0 1.531 1.24 2.771 2.769 2.771h18.463c1.529 0 2.768-1.24 2.768-2.771v-18.46c0-1.529-1.239-2.769-2.769-2.769zm-9.231 7.385c2.549 0 4.616 2.065 4.616 4.615 0 2.549-2.067 4.616-4.616 4.616s-4.615-2.068-4.615-4.616c0-2.55 2.066-4.615 4.615-4.615zm9 12.693c0 .509-.413.922-.924.922h-16.152c-.511 0-.924-.413-.924-.922v-10.078h1.897c-.088.315-.153.64-.2.971-.05.337-.081.679-.081 1.029 0 4.079 3.306 7.385 7.384 7.385s7.384-3.306 7.384-7.385c0-.35-.031-.692-.081-1.028-.047-.331-.112-.656-.2-.971h1.897v10.077zm0-13.98c0 .509-.413.923-.924.923h-2.174c-.511 0-.923-.414-.923-.923v-2.175c0-.51.412-.923.923-.923h2.174c.511 0 .924.413.924.923v2.175z" fill-rule="evenodd" clip-rule="evenodd"/></svg></a>
-      <a href="https://vk.com/dipesious" target="_" class="c_white vk" mat-button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M13.162 18.994c.609 0 .858-.406.851-.915-.031-1.917.714-2.949 2.059-1.604 1.488 1.488 1.796 2.519 3.603 2.519h3.2c.808 0 1.126-.26 1.126-.668 0-.863-1.421-2.386-2.625-3.504-1.686-1.565-1.765-1.602-.313-3.486 1.801-2.339 4.157-5.336 2.073-5.336h-3.981c-.772 0-.828.435-1.103 1.083-.995 2.347-2.886 5.387-3.604 4.922-.751-.485-.407-2.406-.35-5.261.015-.754.011-1.271-1.141-1.539-.629-.145-1.241-.205-1.809-.205-2.273 0-3.841.953-2.95 1.119 1.571.293 1.42 3.692 1.054 5.16-.638 2.556-3.036-2.024-4.035-4.305-.241-.548-.315-.974-1.175-.974h-3.255c-.492 0-.787.16-.787.516 0 .602 2.96 6.72 5.786 9.77 2.756 2.975 5.48 2.708 7.376 2.708z"/>
-      </svg></a>
-      <!-- <a href="#" target="_" class="c_white wechat" mat-button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M21.502 19.525c1.524-1.105 2.498-2.738 2.498-4.554 0-3.326-3.237-6.023-7.229-6.023s-7.229 2.697-7.229 6.023c0 3.327 3.237 6.024 7.229 6.024.825 0 1.621-.117 2.36-.33l.212-.032c.139 0 .265.043.384.111l1.583.914.139.045c.133 0 .241-.108.241-.241l-.039-.176-.326-1.215-.025-.154c0-.162.08-.305.202-.392zm-12.827-17.228c-4.791 0-8.675 3.236-8.675 7.229 0 2.178 1.168 4.139 2.997 5.464.147.104.243.276.243.471l-.03.184-.391 1.458-.047.211c0 .16.13.29.289.29l.168-.054 1.899-1.097c.142-.082.293-.133.46-.133l.255.038c.886.255 1.842.397 2.832.397l.476-.012c-.188-.564-.291-1.158-.291-1.771 0-3.641 3.542-6.593 7.911-6.593l.471.012c-.653-3.453-4.24-6.094-8.567-6.094zm5.686 11.711c-.532 0-.963-.432-.963-.964 0-.533.431-.964.963-.964.533 0 .964.431.964.964 0 .532-.431.964-.964.964zm4.82 0c-.533 0-.964-.432-.964-.964 0-.533.431-.964.964-.964.532 0 .963.431.963.964 0 .532-.431.964-.963.964zm-13.398-5.639c-.639 0-1.156-.518-1.156-1.156 0-.639.517-1.157 1.156-1.157.639 0 1.157.518 1.157 1.157 0 .638-.518 1.156-1.157 1.156zm5.783 0c-.639 0-1.156-.518-1.156-1.156 0-.639.517-1.157 1.156-1.157.639 0 1.157.518 1.157 1.157 0 .638-.518 1.156-1.157 1.156z"/>
-      </svg></a> -->
-      <a href="https://twitter.com/dipesious" target="_" class="c_white twitter" mat-button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
-      </div>
-      <!-- <span class="divide"></span> -->
-      <button mat-button (click)="clickS()" class="b_warn c_white" style="    
-      border-radius: 50% 0 0 50%;
-      margin: 0 0 -24px 0;
-      z-index: 1;"><mat-icon>arrow_upward</mat-icon></button>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened class="leftNav">
+    <div class="spread"></div>
+    <div class="types">
+    <ul>
+
+
+      <ng-container *ngIf="
+      !resource.router.url.includes( '/influencers' ) &&
+      !resource.router.url.includes( '/who-we-are' ) &&
+      !resource.router.url.includes( '/file-a-bug' ) &&
+      
+      !resource.router.url.includes( '/free-icon/' ) &&
+      !resource.router.url.includes( '/edit-map/' ) &&
+      !resource.router.url.includes( '/each-dataset/' ) &&
+      !resource.router.url.includes( '/view-palette/' ) &&
+      !resource.router.url.includes( '/view-gradient/' ) &&
+      !resource.router.url.includes( '/view-pattern/' ) &&
+      !resource.router.url.includes( '/opensource-font/' ) &&
+      !resource.router.url.includes( '/shades-of-color/' ) &&
+      !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
+      true
+      ">
+        <li *ngFor="let x of resource.navOpensource"><a mat-button [matTooltip]="x.name" matTooltipPosition="after" [routerLink]="x.path" routerLinkActive="active"><mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span></a></li>
+      </ng-container>
+
+      <ng-container *ngIf="resource.router.url.includes( '/edit-map/' )">
+        <li><a mat-button matTooltip="Move" matTooltipPosition="after" (click)="moveMapLR(1)" ><mat-icon>arrow_forward</mat-icon><span class="title">&nbsp;Move Right</span></a></li>
+        <li><a mat-button matTooltip="Move" matTooltipPosition="after" (click)="moveMapUD(-1)" ><mat-icon>arrow_upward</mat-icon><span class="title">&nbsp;Move Up</span></a></li>
+        <li><a mat-button matTooltip="Move" matTooltipPosition="after" (click)="moveMapUD(1)" ><mat-icon>arrow_downward</mat-icon><span class="title">&nbsp;Move Down</span></a></li>
+        <li><a mat-button matTooltip="Move" matTooltipPosition="after" (click)="moveMapLR(-1)" ><mat-icon>arrow_back</mat-icon><span class="title">&nbsp;Move Left</span></a></li>
+        <li><a mat-button matTooltip="+1 scale" matTooltipPosition="after" (click)="scaleMap(1)" ><mat-icon>zoom_in</mat-icon><span class="title">&nbsp;Zoom in</span></a></li>
+        <li><a mat-button matTooltip="-1 scale" matTooltipPosition="after" (click)="scaleMap(-1)" ><mat-icon>zoom_out</mat-icon><span class="title">&nbsp;Zoom out</span></a></li>
+        <li><a mat-button matTooltip="Reset" matTooltipPosition="after" (click)="this.resource.scaleMapX = 1; this.resource.moveMapLR = 0; this.resource.moveMapUD = 0;" ><mat-icon>zoom_out_map</mat-icon><span class="title">&nbsp;Reset</span></a></li>
+        <!-- <li><a mat-button matTooltip="Share" matTooltipPosition="after" ><mat-icon>share</mat-icon><span class="title">&nbsp;Share</span></a></li> -->
+      </ng-container>
+
+      <ng-container *ngIf="resource.router.url.includes( '/free-icon/' )">
+        <li>
+          <a mat-button (click)="resource.modeBgFc = !resource.modeBgFc"><mat-icon>{{!resource.modeBgFc ? 'format_color_fill':'format_paint'}}</mat-icon><span class="title dFont">&nbsp;Invert Mode</span></a>
+        </li>
+        
+        <li *ngFor="let c of iconicColors"><a mat-button
+            (click)=" setIconColor(c.id) " 
+            [class]="c.id" [matTooltip]="c.name" matTooltipPosition="after" ><mat-icon
+            [class.c_black]=" resource.modeBgFc && resource.fgColor == c.id || !resource.modeBgFc && resource.bgColor == c.id " 
+            >{{resource.modeBgFc ? 'format_color_fill':'format_paint'}}</mat-icon><span class="title dFont">&nbsp;{{c.name}}</span></a></li>
+
+      </ng-container>
+
+    </ul>
     </div>
-  <footer *ngIf="!hideTop">
-    <div class="f_container">
-        <div class="f_row">
-     
-            <div class="footer-col footer-links">
-                <h4>Islesys.com</h4>
-                <ul>
-                    <li><a routerLink="/who-we-are">Who We Are</a></li>
-                    <li><a target="_" href="https://merchant.razorpay.com/policy/KbRyW6Y0TpfEhJ/refund">Refunds Policy</a></li>
-                    <li><a target="_" href="https://merchant.razorpay.com/policy/KbRyW6Y0TpfEhJ/shipping">Shipping Policy</a></li>
-                    <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/PRIVACY-POLICY">Privacy Policy</a></li>
-                    <!-- <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Privacy Policy</a></li> -->
-                </ul>
-            </div>
-            <div class="footer-col footer-links">
-                <h4>Get Help</h4>
-                <ul>
+  </mat-sidenav>
+  <mat-sidenav-content class="centerNav">
+    <div class="navigator">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+</div>
+
+
+
+<div  class="footer">
+  <div class="able textL">
+    <button mat-button (click)="hideTop = !hideTop" class="leftArrow c_white"><mat-icon>{{!hideTop ? 'expand_more':'expand_less'}}</mat-icon></button>
+    <span class="divide"></span>
+    <div class="socials">
+    <a href="https://frycold.com/islesys" target="_" class="c_white aimteraProfile" mat-button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M16.839 4l4.857 8.5-4.857 8.5h-9.678l-4.857-8.5 4.857-8.5h9.678zm1.161-2h-12l-6 10.5 6 10.5h12l6-10.5-6-10.5z" fill-rule="evenodd" clip-rule="evenodd"/>
+      <path d="m11.322 2.923c.126-.259.39-.423.678-.423.289 0 .552.164.678.423.974 1.998 2.65 5.44 2.65 5.44s3.811.524 6.022.829c.403.055.65.396.65.747 0 .19-.072.383-.231.536-1.61 1.538-4.382 4.191-4.382 4.191s.677 3.767 1.069 5.952c.083.462-.275.882-.742.882-.122 0-.244-.029-.355-.089-1.968-1.048-5.359-2.851-5.359-2.851s-3.391 1.803-5.359 2.851c-.111.06-.234.089-.356.089-.465 0-.825-.421-.741-.882.393-2.185 1.07-5.952 1.07-5.952s-2.773-2.653-4.382-4.191c-.16-.153-.232-.346-.232-.535 0-.352.249-.694.651-.748 2.211-.305 6.021-.829 6.021-.829s1.677-3.442 2.65-5.44z" fill-rule="nonzero"/>
+    </svg></a>
+    <!-- <a href="https://medium.com/@dipesious" target="_" class="c_white medium" mat-button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill-rule="evenodd" clip-rule="evenodd"><path d="M2.846 6.887c.03-.295-.083-.586-.303-.784l-2.24-2.7v-.403h6.958l5.378 11.795 4.728-11.795h6.633v.403l-1.916 1.837c-.165.126-.247.333-.213.538v13.498c-.034.204.048.411.213.537l1.871 1.837v.403h-9.412v-.403l1.939-1.882c.19-.19.19-.246.19-.537v-10.91l-5.389 13.688h-.728l-6.275-13.688v9.174c-.052.385.076.774.347 1.052l2.521 3.058v.404h-7.148v-.404l2.521-3.058c.27-.279.39-.67.325-1.052v-10.608z"/></svg></a> -->
+    <a href="https://instagram.com/dipesious" target="_" class="c_white instagram" mat-button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.231 0h-18.462c-1.529 0-2.769 1.24-2.769 2.769v18.46c0 1.531 1.24 2.771 2.769 2.771h18.463c1.529 0 2.768-1.24 2.768-2.771v-18.46c0-1.529-1.239-2.769-2.769-2.769zm-9.231 7.385c2.549 0 4.616 2.065 4.616 4.615 0 2.549-2.067 4.616-4.616 4.616s-4.615-2.068-4.615-4.616c0-2.55 2.066-4.615 4.615-4.615zm9 12.693c0 .509-.413.922-.924.922h-16.152c-.511 0-.924-.413-.924-.922v-10.078h1.897c-.088.315-.153.64-.2.971-.05.337-.081.679-.081 1.029 0 4.079 3.306 7.385 7.384 7.385s7.384-3.306 7.384-7.385c0-.35-.031-.692-.081-1.028-.047-.331-.112-.656-.2-.971h1.897v10.077zm0-13.98c0 .509-.413.923-.924.923h-2.174c-.511 0-.923-.414-.923-.923v-2.175c0-.51.412-.923.923-.923h2.174c.511 0 .924.413.924.923v2.175z" fill-rule="evenodd" clip-rule="evenodd"/></svg></a>
+    <a href="https://vk.com/dipesious" target="_" class="c_white vk" mat-button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M13.162 18.994c.609 0 .858-.406.851-.915-.031-1.917.714-2.949 2.059-1.604 1.488 1.488 1.796 2.519 3.603 2.519h3.2c.808 0 1.126-.26 1.126-.668 0-.863-1.421-2.386-2.625-3.504-1.686-1.565-1.765-1.602-.313-3.486 1.801-2.339 4.157-5.336 2.073-5.336h-3.981c-.772 0-.828.435-1.103 1.083-.995 2.347-2.886 5.387-3.604 4.922-.751-.485-.407-2.406-.35-5.261.015-.754.011-1.271-1.141-1.539-.629-.145-1.241-.205-1.809-.205-2.273 0-3.841.953-2.95 1.119 1.571.293 1.42 3.692 1.054 5.16-.638 2.556-3.036-2.024-4.035-4.305-.241-.548-.315-.974-1.175-.974h-3.255c-.492 0-.787.16-.787.516 0 .602 2.96 6.72 5.786 9.77 2.756 2.975 5.48 2.708 7.376 2.708z"/>
+    </svg></a>
+    <!-- <a href="#" target="_" class="c_white wechat" mat-button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M21.502 19.525c1.524-1.105 2.498-2.738 2.498-4.554 0-3.326-3.237-6.023-7.229-6.023s-7.229 2.697-7.229 6.023c0 3.327 3.237 6.024 7.229 6.024.825 0 1.621-.117 2.36-.33l.212-.032c.139 0 .265.043.384.111l1.583.914.139.045c.133 0 .241-.108.241-.241l-.039-.176-.326-1.215-.025-.154c0-.162.08-.305.202-.392zm-12.827-17.228c-4.791 0-8.675 3.236-8.675 7.229 0 2.178 1.168 4.139 2.997 5.464.147.104.243.276.243.471l-.03.184-.391 1.458-.047.211c0 .16.13.29.289.29l.168-.054 1.899-1.097c.142-.082.293-.133.46-.133l.255.038c.886.255 1.842.397 2.832.397l.476-.012c-.188-.564-.291-1.158-.291-1.771 0-3.641 3.542-6.593 7.911-6.593l.471.012c-.653-3.453-4.24-6.094-8.567-6.094zm5.686 11.711c-.532 0-.963-.432-.963-.964 0-.533.431-.964.963-.964.533 0 .964.431.964.964 0 .532-.431.964-.964.964zm4.82 0c-.533 0-.964-.432-.964-.964 0-.533.431-.964.964-.964.532 0 .963.431.963.964 0 .532-.431.964-.963.964zm-13.398-5.639c-.639 0-1.156-.518-1.156-1.156 0-.639.517-1.157 1.156-1.157.639 0 1.157.518 1.157 1.157 0 .638-.518 1.156-1.157 1.156zm5.783 0c-.639 0-1.156-.518-1.156-1.156 0-.639.517-1.157 1.156-1.157.639 0 1.157.518 1.157 1.157 0 .638-.518 1.156-1.157 1.156z"/>
+    </svg></a> -->
+    <a href="https://twitter.com/dipesious" target="_" class="c_white twitter" mat-button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+    </div>
+    <!-- <span class="divide"></span> -->
+    <button mat-button (click)="clickS()" class="rightArrow b_warn c_white" ><mat-icon>arrow_upward</mat-icon></button>
+  </div>
+<footer *ngIf="!hideTop">
+  <div class="f_container">
+      <div class="f_row">
+   
+          <div class="footer-col footer-links">
+              <h4>Islesys.com</h4>
+              <ul>
                   <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings">Myriad Undertakings</a></li>
-                    <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/LICENSE">License</a></li>
-                    <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/TERMS-OF-SERVICE">Terms of Service</a></li>
-                    <li><a routerLink="/file-a-bug">File a Bug</a></li>
-                    <!-- <li><a href="#">Shipping</a></li>
-                    <li><a href="#">Returns</a></li>
-                    <li><a href="#">Order Status</a></li>
-                    <li><a href="#">Payment Options</a></li> -->
-                </ul>
-            </div>
-  
-            <div class="footer-col">
-              <div class="prefer c_white">
-                <a href="#" mat-button><mat-icon>height</mat-icon> US</a>
-                <a href="#" mat-button><mat-icon>height</mat-icon> ENG</a>
-                <a href="#" mat-button><mat-icon>height</mat-icon> USD</a>
-              </div>
+                  <li><a routerLink="/who-we-are">Who We Are</a></li>
+                  <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/PRIVACY-POLICY">Privacy Policy</a></li>
+                  <li><a routerLink="/file-a-bug">File a Bug</a></li>
+                  <!-- <li><a href="#">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Pricing</a></li>
+                  <li><a href="#">Privacy Policy</a></li> -->
+              </ul>
           </div>
-  
-            <div class="footer-col">
-                <h4>A Dipesh Bhoir Initiative</h4>
-                <ul>
-                    <!-- <li><a class="addr" href="#">Islesys Pvt. Ltd. Thane 401101.<br>Maharashtra, IN.</a></li>
-                    <li><a class="addr" href="#">Islesys Ltd. Amsterdam 1012.<br>Netherlands, EU.</a></li> -->
-                    <li><a class="addr" href="#">Islesys LLC. Wilmington 19880.<br>Delaware, USA.</a></li>
-                </ul>
+          <div class="footer-col footer-links">
+              <h4>Get Help</h4>
+              <ul>
+                  <li><a target="_" href="https://merchant.razorpay.com/policy/KbRyW6Y0TpfEhJ/refund">Refunds Policy</a></li>
+                  <li><a target="_" href="https://merchant.razorpay.com/policy/KbRyW6Y0TpfEhJ/shipping">Shipping Policy</a></li>
+                  <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/TERMS-OF-SERVICE">Terms of Service</a></li>
+                  <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/LICENSE">License</a></li>
+                  <!-- <li><a href="#">Shipping</a></li>
+                  <li><a href="#">Returns</a></li>
+                  <li><a href="#">Order Status</a></li>
+                  <li><a href="#">Payment Options</a></li> -->
+              </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>A Dipesh Bhoir Initiative</h4>
+
+            <div class="prefer c_white">
+              <a href="#" mat-button class="b_warn"><mat-icon>height</mat-icon> US</a>
+              <a href="#" mat-button class="b_warn"><mat-icon>height</mat-icon> ENG</a>
+              <a href="#" mat-button class="b_warn"><mat-icon>height</mat-icon> USD</a>
             </div>
-     
+            
         </div>
-    </div>
-  </footer>
-    <div class="rights b_white textL">
-      <p>&nbsp;© 2018-2022 All Rights Reserved</p>
-    </div>
+
+          <div class="footer-col">
+            <h4>© 2018-2022 All Rights Reserved</h4>
+              <ul>
+                  <!-- <li><a class="addr" href="#">Islesys Pvt. Ltd. Thane 401101.<br>Maharashtra, IN.</a></li>
+                  <li><a class="addr" href="#">Islesys Ltd. Amsterdam 1012.<br>Netherlands, EU.</a></li> -->
+                  <li><a class="addr" href="#">Islesys LLC. Wilmington 19880.<br>Delaware, USA.</a></li>
+              </ul>
+          </div>
+   
+      </div>
   </div>
-  
-  
+</footer>
+</div>
+
