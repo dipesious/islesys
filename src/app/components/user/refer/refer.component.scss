@@ -7,7 +7,7 @@
 	-ms-transition: all 0.5s ease 0s;
 	-o-transition: all 0.5s ease 0s;
 }
-.container{margin: 50px 0 0 0;}
+.container{margin: 0px 0 0 0;}
 address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul, dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object, a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span, strong, sub, sup, tt, var, legend, fieldset, p {
 	margin: 0;
 	padding: 0;
@@ -124,13 +124,13 @@ div, h1, h2, h3, h4, span, p, input, select, form, img, hr, img, a {
 
 .refer-form-content input::placeholder, .refer-form-content select::placeholder{color:#c5c5c5; font-size: 14px;}
 .row.refer-form-sec {height: 450px; overflow: hidden; margin-top: 55px; }
-.referal-progress table td:nth-child(2) {text-align: right; } 
-.referal-progress table td {border: 0px solid #cccc;border-top: 1px solid #cccc; padding: 15px 20px; } 
+.refer-progress table td:nth-child(2) {text-align: right; } 
+.refer-progress table td {border: 0px solid #cccc;border-top: 1px solid #cccc; padding: 15px 20px; } 
 .row.refer-form-sec .col:first-child {padding-right: 0; } 
 .row.refer-form-sec .col:last-child {padding-left: 0; }
-.referal-progress h2 {color: #2962ff; font-size: 22px; margin: 10px 0 15px; }
+.refer-progress h2 {color: #2962ff; font-size: 22px; margin: 10px 0 15px; }
 .share-boxes:after {content: ""; 
-	//background: url("assets/referal/circle.png") no-repeat 0 0; 
+	//background: url("assets/influencers/circle.png") no-repeat 0 0; 
 	position: absolute; left: 0; right: 0; bottom: -65px; margin: 0 auto; z-index: 99999; height: 60px; width: 20px; }
 @media only screen and (max-width: 1100px){
 .share-boxes img.dotted-line, .share-boxes img.dotted-line2 {
@@ -164,4 +164,17 @@ div, h1, h2, h3, h4, span, p, input, select, form, img, hr, img, a {
 .refer-form-content h2 {
     font-size: 22px;
 }
+}
+
+.pricing{
+    background-color: #e5e5f7; opacity: 1; 
+    background-image:  radial-gradient(#444cf7 1.1500000000000001px, transparent 1.1500000000000001px), radial-gradient(#444cf7 1.1500000000000001px, #fafafa 1.1500000000000001px); 
+    background-size: 46px 46px; background-position: 0 0,23px 23px;
+    table{
+        background: #ffffff;    
+        width: 100%;
+        max-width: 520px;
+        margin: 24px auto 24px auto; padding: 8px 16px 16px 16px;
+        line-height: 30px;
+    }
 }

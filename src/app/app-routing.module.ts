@@ -36,7 +36,7 @@ const routes: Routes = [
   {path:'', component: ManageComponent, children:[
     {path:'', redirectTo:'/explore', pathMatch:"full"},
     {path:'explore', component: WelcomeComponent},
-    {path:'referal', component: ReferComponent },
+    {path:'influencers', component: ReferComponent },
     {path:'who-we-are', component: WhoWeAreComponent},
     {path:'file-a-bug', component: FileBugComponent },
     {path:'getHelp/:topic', component: FileBugComponent },

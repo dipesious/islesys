@@ -269,18 +269,6 @@ export class CartComponent implements OnInit {
           console.log("dataVerify",dataVerify)
           this.payStatus(refWalt.id, 10, "Payment Success!", response);
 
-          /*
-          this.depends.verifyPayment("IND", dataVerify).pipe(take(1)).subscribe((getVerifyRes:any) => {
-             console.log("getPayRes", getVerifyRes)
-             if(!getVerifyRes || !getVerifyRes.success){
-              //this.payFailed("Payment Failed, Try again...");
-             }else{
-              // this.payComplete("razorpay", response, getVerifyRes.gwInfo, orderId,
-              // referalCODE,
-              // referalUID, referalCashback)
-             }
-          })
-          */
           //Check if success
           }
           if(error){

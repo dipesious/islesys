@@ -78,8 +78,6 @@ omega	Ω	ω
       to:"Islesys Team",
       //about:"payment to xxx",
       theme:"#512da8",
-      //referalCODE:"",
-      //referalCashback:""
       currency:currency,
     }
 
