@@ -57,8 +57,8 @@ true
     <div style="max-height: 300px; overflow-y: auto;">
     <button mat-menu-item routerLink="/user/my-contact-info"><mat-icon>manage_accounts</mat-icon> <b>My Account</b></button>
     <button mat-menu-item routerLink="/user/manage"><mat-icon>account_balance</mat-icon> <b>Manage Payments</b></button>
-    <button mat-menu-item><mat-icon>local_activity</mat-icon> <b>Advertsing Here</b></button>
-    <button mat-menu-item routerLink="/influencers"><mat-icon>manage_history</mat-icon> <b>Influencer Program</b></button>
+    <a mat-menu-item href="https://ads.islesys.com" target="_"><mat-icon>local_activity</mat-icon> <b>Advertsing Here</b></a>
+    <a mat-menu-item href="https://islesys.com/influencers" target="_"><mat-icon>manage_history</mat-icon> <b>Influencer Program</b></a>
     <button mat-menu-item (click)="sign.signOut()"><mat-icon>logout</mat-icon> <b>Sign Out</b></button>
     </div>
   </mat-menu>
@@ -197,7 +197,7 @@ true
         <a *ngFor="let x of navLinks"
         [style]=" 'padding: ' + ( resource.getWidth > 767 ? '0 24px;' : '0 16px;') " 
         
-           [routerLink]="x.path"
+           [href]="x.path" target="_"
            [class.active]=" activeME(x.path) ">
            <mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span>
         </a>
@@ -300,9 +300,9 @@ true
               <h4>Islesys.com</h4>
               <ul>
                   <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings">Myriad Undertakings</a></li>
-                  <li><a routerLink="/who-we-are">Who We Are</a></li>
+                  <li><a target="_" href="https://islesys.com/who-we-are">Who We Are</a></li>
                   <li><a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/PRIVACY-POLICY">Privacy Policy</a></li>
-                  <li><a routerLink="/file-a-bug">File a Bug</a></li>
+                  <li><a target="_" href="https://islesys.com/file-a-bug">File a Bug</a></li>
                   <!-- <li><a href="#">Home</a></li>
                   <li><a href="#">About</a></li>
                   <li><a href="#">Pricing</a></li>

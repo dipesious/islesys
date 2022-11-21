@@ -21,10 +21,11 @@ export class ManageComponent {
   navLinks = [
     //{icon:"satellite_alt", name:"Deepstate",path:"/explore"},
 
+
     {icon:"emoji_food_beverage", name:"Explore",path:"/explore"},
     // {icon:"emoji_food_beverage", name:"How it Works",path:"/how-it-works"},
-    {icon:"workspace_premium", name:"Who We Are",path:"/who-we-are"},
-    {icon:"rocket_launch", name:"File a Bug",path:"/file-a-bug"},
+    {icon:"workspace_premium", name:"Who We Are",path:"https://islesys.com/who-we-are"},
+    {icon:"rocket_launch", name:"File a Bug",path:"https://islesys.com/file-a-bug"},
 
     // {icon:"emoji_food_beverage", name:"Crowdfunding",path:"/ongoing-crowdfunds"},
     // {icon:"diversity_2", name:"Opensource",path:"/opensource-resources"},
