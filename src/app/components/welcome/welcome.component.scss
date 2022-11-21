@@ -74,6 +74,7 @@
   //height: 240px;
   width: -webkit-fill-available;
   .intrestingProjects{
+    max-width: 720px; margin: 0 auto;
     h2{padding: 0 8px; margin:4px 0; display: inline-block;width: -webkit-fill-available;}
     ul{
       list-style: none;display: inline-block;
