@@ -18,11 +18,13 @@ iconType = [
   {name:"Outline & Flat", fill:"Outline", tone:"Flat", code:1},
   {name:"Filled & Flat", fill:"Filled", tone:"Flat", code:2},
 
-  {name:"Outline & Duotone", fill:"Outline", tone:"Duotone", code:3},
+  // {name:"Outline & Duotone", fill:"Outline", tone:"Duotone", code:3},
   {name:"Filled & Duotone", fill:"Filled", tone:"Duotone", code:4},
+  {name:"Animated & Duotone", fill:"Animated", tone:"Duotone", code:7},
 
-  {name:"Outline & Vibrant", fill:"Outline", tone:"Vibrant", code:5},
+  // {name:"Outline & Vibrant", fill:"Outline", tone:"Vibrant", code:5},
   {name:"Filled & Vibrant", fill:"Filled", tone:"Vibrant", code:6},
+  {name:"Insignia & Vibrant", fill:"Insignia", tone:"Vibrant", code:8},
 ]
 
 icon:IconModel = {

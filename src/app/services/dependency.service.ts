@@ -67,7 +67,8 @@ omega	Ω	ω
     // productID:string,
     // payRazorCUST:string
     payment:number,
-    currency:string
+    currency:string,
+    repeat:boolean
     ){
     const obj = {
       orderId, by, 
@@ -79,6 +80,7 @@ omega	Ω	ω
       //about:"payment to xxx",
       theme:"#512da8",
       currency:currency,
+      repeat, repeatRazorpayID: "plan_Klek5J8iTSbVRl"
     }
 
     // const gwSIGN = response.razorpay_signature;
@@ -88,8 +90,6 @@ omega	Ω	ω
       type:"razorpay",
       gwID:obj.orderId,
       amount:obj.amount, currency:obj.currency,
-      // amount_paid:obj.amount_paid,
-      // amount_due:obj.amount_due,
       receipt:"receipt",
 
       name: obj.name,
@@ -98,6 +98,8 @@ omega	Ω	ω
         name, phone, email
       },
       theme: obj.theme,
+      repeat: false,//obj.repeat,
+      repeatRazorpayID: obj.repeatRazorpayID,
       // status:0
     }
 

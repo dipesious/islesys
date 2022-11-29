@@ -14,22 +14,22 @@ export class AddMapComponent implements OnInit {
 
   placeholderIcon = `><path d="M0 0h24v24h-24z"/>`
   
-  map:mapModel = {
-    id:"",
-    type:undefined, about:'', info:'',
-    by:'', contact:'', dial_code:'+91',
-    name:'',  data:'', 
-    active:false,
-    sin: null
-  }
   // map:mapModel = {
   //   id:"",
-  //   type: this.resource.mapList[6].code || undefined, about:'', info:'',
-  //   by:'Dipesh Bhoir', contact:'9892381514', dial_code:'+91',
-  //   name:'IN ',  data:'', 
-  //   active:true,
+  //   type:undefined, about:'', info:'',
+  //   by:'', contact:'', dial_code:'+91',
+  //   name:'',  data:'', 
+  //   active:false,
   //   sin: null
   // }
+  map:mapModel = {
+    id:"",
+    type: this.resource.mapList[6].code || undefined, about:'', info:'',
+    by:'Dipesh Bhoir', contact:'9892381514', dial_code:'+91',
+    name:'Mercator Pacific - World map',  data:'', 
+    active:true,
+    sin: null
+  }
   makingChanges = false;
   
     constructor(

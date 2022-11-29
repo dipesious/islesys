@@ -7,19 +7,25 @@
         </div>-->
 
         <div class="first">
-            <button mat-button ><mat-icon>expand_more</mat-icon>World</button>
-            <button mat-button ><mat-icon>expand_more</mat-icon>Europe</button>
-            <button mat-button ><mat-icon>expand_more</mat-icon>EastAsia</button>
-            <button mat-button ><mat-icon>expand_more</mat-icon>SouthAsia</button>
-            <button mat-button ><mat-icon>expand_more</mat-icon>WestAsia</button>
-            <button mat-button ><mat-icon>expand_more</mat-icon>Americas</button>
-            <button mat-button ><mat-icon>expand_more</mat-icon>Africa</button>
-            <button mat-button ><mat-icon>expand_more</mat-icon>Other</button>
+            <button mat-button  [matMenuTriggerFor]="mapDO" [matMenuTriggerData]="{list: getMaps('world') }"><mat-icon>expand_more</mat-icon>World</button>
+            <button mat-button  [matMenuTriggerFor]="mapDO" [matMenuTriggerData]="{list: getMaps('europe') }" ><mat-icon>expand_more</mat-icon>Europe</button>
+            <button mat-button  [matMenuTriggerFor]="mapDO" [matMenuTriggerData]="{list: getMaps('eastAsia') }" ><mat-icon>expand_more</mat-icon>EastAsia</button>
+            <button mat-button  [matMenuTriggerFor]="mapDO" [matMenuTriggerData]="{list: getMaps('southAsia') }" ><mat-icon>expand_more</mat-icon>SouthAsia</button>
+            <button mat-button  [matMenuTriggerFor]="mapDO" [matMenuTriggerData]="{list: getMaps('westAsia') }" ><mat-icon>expand_more</mat-icon>WestAsia</button>
+            <button mat-button  [matMenuTriggerFor]="mapDO" [matMenuTriggerData]="{list: getMaps('americas') }" ><mat-icon>expand_more</mat-icon>Americas</button>
+            <button mat-button  [matMenuTriggerFor]="mapDO" [matMenuTriggerData]="{list: getMaps('africa') }" ><mat-icon>expand_more</mat-icon>Africa</button>
+
+            <mat-menu #mapDO="matMenu" overlapTrigger="false">
+              <div style="max-height: 300px; overflow-y: auto;">
+            <ng-template matMenuContent let-list="list">
+              <a mat-menu-item *ngFor="let x of list" [routerLink]=" '/edit-map/' + x.id ">{{x.title}}</a>
+            </ng-template>
+              </div>
+            </mat-menu>
         </div>
 
     </div>
 </section>
-
 
 <section class="infomative">
     <video class="posterVideo finalPoster"
@@ -34,7 +40,7 @@
             <p>{{x.title}}</p>
         </div>
         </div>
-        <h2 class="knowTitle">The maps undertaking</h2>
+        <h2 class="knowTitle">1k+ Customizable Maps in collaboration with MAPWALE.COM</h2>
         <p class="knowinfo">We are building a diverse library of interactive maps<br>
             <i><mat-icon class="c_warn">done_outline</mat-icon>SVG</i>
             &nbsp;
@@ -87,9 +93,15 @@
     <div class="col col-100">
         <h2 class="title">Regions</h2>
         <ul class="b_white">
-            <ng-container *ngFor="let x of globalMaps">
+            <ng-container *ngFor="let x of resource.globalMaps">
             <li
-            *ngIf=" !searching.value || x.title.toLowerCase().includes(searching.value.toLowerCase())">
+            *ngIf=" 
+            !searching.value && resource.router.url.includes('/maps') || 
+            !searching.value && x.area?.includes('electoral') && resource.router.url.includes('/electoral-maps') || 
+            !searching.value && x.area?.includes('geography') && resource.router.url.includes('/geography-maps') || 
+            !searching.value && x.area?.includes('historical') && resource.router.url.includes('/historical-maps') || 
+            searching.value && x.title.toLowerCase().includes(searching.value.toLowerCase())
+            ">
                 <p>
                     <a class="c_warn" [routerLink]=" '/edit-map/' + x.id">{{x.title}}</a>
                     <span class="divide"></span>
@@ -103,9 +115,15 @@
     <div class="col col-100">
         <h2 class="title">Nations</h2>
         <ul class="b_white">
-            <ng-container *ngFor="let x of nationMaps">
+            <ng-container *ngFor="let x of resource.nationMaps">
             <li
-            *ngIf=" !searching.value || x.title.toLowerCase().includes(searching.value.toLowerCase())">
+            *ngIf=" 
+            !searching.value && resource.router.url.includes('/maps') || 
+            !searching.value && x.area?.includes('electoral') && resource.router.url.includes('/electoral-maps') || 
+            !searching.value && x.area?.includes('geography') && resource.router.url.includes('/geography-maps') || 
+            !searching.value && x.area?.includes('historical') && resource.router.url.includes('/historical-maps') || 
+            searching.value && x.title.toLowerCase().includes(searching.value.toLowerCase())
+            ">
                 <p>
                     <a class="c_warn" [routerLink]=" '/edit-map/' + x.id">{{x.title}}</a>
                     <span class="divide"></span>
@@ -119,9 +137,15 @@
     <div class="col col-100">
         <h2 class="title">United States</h2>
         <ul class="b_white">
-            <ng-container *ngFor="let x of usaStatesMaps">
+            <ng-container *ngFor="let x of resource.usaStatesMaps">
             <li
-            *ngIf=" !searching.value || x.title.toLowerCase().includes(searching.value.toLowerCase())">
+            *ngIf=" 
+            !searching.value && resource.router.url.includes('/maps') || 
+            !searching.value && x.area?.includes('electoral') && resource.router.url.includes('/electoral-maps') || 
+            !searching.value && x.area?.includes('geography') && resource.router.url.includes('/geography-maps') || 
+            !searching.value && x.area?.includes('historical') && resource.router.url.includes('/historical-maps') || 
+            searching.value && x.title.toLowerCase().includes(searching.value.toLowerCase())
+            ">
                 <p>
                     <a class="c_warn" [routerLink]=" '/edit-map/' + x.id">{{x.title}}</a>
                     <span class="divide"></span>
@@ -135,9 +159,15 @@
     <div class="col col-100">
         <h2 class="title">India</h2>
         <ul class="b_white">
-            <ng-container *ngFor="let x of indStatesMaps">
+            <ng-container *ngFor="let x of resource.indStatesMaps">
                 <li
-                *ngIf=" !searching.value || x.title.toLowerCase().includes(searching.value.toLowerCase())">
+                *ngIf=" 
+            !searching.value && resource.router.url.includes('/maps') || 
+            !searching.value && x.area?.includes('electoral') && resource.router.url.includes('/electoral-maps') || 
+            !searching.value && x.area?.includes('geography') && resource.router.url.includes('/geography-maps') || 
+            !searching.value && x.area?.includes('historical') && resource.router.url.includes('/historical-maps') || 
+            searching.value && x.title.toLowerCase().includes(searching.value.toLowerCase())
+            ">
                     <p>
                         <a class="c_warn" [routerLink]=" '/edit-map/' + x.id">{{x.title}}</a>
                         <span class="divide"></span>
@@ -164,9 +194,15 @@
     <div class="col col-100">
         <h2 class="title">Other Maps</h2>
         <ul class="b_white">
-            <ng-container *ngFor="let x of otherMaps">
+            <ng-container *ngFor="let x of resource.otherMaps">
             <li
-            *ngIf=" !searching.value || x.title.toLowerCase().includes(searching.value.toLowerCase())">
+            *ngIf=" 
+            !searching.value && resource.router.url.includes('/maps') || 
+            !searching.value && x.area?.includes('electoral') && resource.router.url.includes('/electoral-maps') || 
+            !searching.value && x.area?.includes('geography') && resource.router.url.includes('/geography-maps') || 
+            !searching.value && x.area?.includes('historical') && resource.router.url.includes('/historical-maps') || 
+            searching.value && x.title.toLowerCase().includes(searching.value.toLowerCase())
+            ">
                 <p>
                     <a class="c_warn" [routerLink]=" '/edit-map/' + x.id">{{x.title}}</a>
                     <span class="divide"></span>

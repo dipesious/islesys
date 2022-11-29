@@ -1,5 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AuthService } from 'src/app/services/auth.service';
+import { DependencyService } from 'src/app/services/dependency.service';
+import { ResourceService } from 'src/app/services/resource.service';
 
 @Component({
   selector: 'app-demand',
@@ -14,6 +17,9 @@ export class DemandComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<DemandComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    public auth:AuthService,
+    public depends: DependencyService,
+    public resource:ResourceService
   ) { 
     console.log(data)
 

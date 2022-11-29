@@ -53,41 +53,6 @@
 
 
 
-.sectionZ{  
-  background: linear-gradient(-45deg, #8bc34a 82%, rgba(139, 195, 74, 0.4) 0%); 
-  color: #ffffff;
-  height: 120px;
-  margin: 24px 8px 0 16px;
-  width: -webkit-fill-available;
-  .about{
-    display: flex;  justify-content: center;height: 120px;align-items:center;
-    .we{background: rgb(41 98 255 / 20%);
-      h2{padding: 0 8px; margin:4px 0; text-align: center;}
-      img{width: 22px; margin: 2px 4px;vertical-align: middle;}
-    }
-  }
-}
-
-.sectionY{
-  margin: 0 8px 24px 16px;
-  background: linear-gradient(45deg, #8bc34a 82%, rgba(139, 195, 74, 0.4) 0%);
-  //height: 240px;
-  width: -webkit-fill-available;
-  .intrestingProjects{
-    max-width: 720px; margin: 0 auto;
-    h2{padding: 0 8px; margin:4px 0; display: inline-block;width: -webkit-fill-available;}
-    ul{
-      list-style: none;display: inline-block;
-      padding: 0; margin: 0; width: -webkit-fill-available;
-      li{
-        padding: 0; margin: 0 0 16px 24px;
-        display: inline-block;
-        a{text-decoration: none; color: #ffffff;}
-      }
-    }
-  }
-}
-
 .section3{
   margin: 20px 8px 40px 8px;
   border-radius: 24px;
@@ -338,36 +303,5 @@
     */
   }
   
-
-
-  .section14{
-    .cardX{
-      margin:0 8px; padding:16px 16px 4px 16px;
-      border-radius: 16px 16px 0 16px;
-      h2{margin: 0;}
-    }
-  
-    .card1 {
-      background: radial-gradient(#1fe4f5, #3fbafe);
-    }
-  
-    .card2 {
-      background: radial-gradient(#fbc1cc, #fa99b2);
-    }
-  
-    .card3 {
-      background: radial-gradient(#76b2fe, #b69efe);
-    }
-  
-    .card4 {
-      background: radial-gradient(#60efbc, #58d5c9);
-    }
-  
-    .card5 {
-      background: radial-gradient(#f588d8, #c0a3e5);
-    }
-  
-  }
-
 
 

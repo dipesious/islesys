@@ -12,20 +12,20 @@ import { SeoService } from 'src/app/services/seo.service';
 export class WelcomeComponent implements OnInit {
   iGlobal = "USD";
 
-  states = [
-    {name:"Texas, USA", img:"usa.png", ers:30,ed:219,score:-1},
-    {name:"Hong Kong", img:"china.png", ers:18,ed:177,score:1},
-    {name:"Israel", img:"israel.png", ers:6.4,ed:158,score:1},
-    {name:"California, USA", img:"usa.png", ers:4.4,ed:129,score:1},
-    {name:"France, EU", img:"european.png", ers:3.7,ed:118,score:1},
-    {name:"Shenzhen, China", img:"china.png", ers:3.6,ed:111,score:-1},
-    {name:"Kansai, Japan", img:"japan.png", ers:3.1,ed:107,score:-1},
-    {name:"Germany, EU", img:"european.png", ers:2.8,ed:106,score:1},
-    {name:"England, UK", img:"uk.png", ers:2.4,ed:91.4,score:1},
-    {name:"Taiwan", img:"taiwan.png", ers:2.2,ed:90.7,score:-1},
-    {name:"Maharashtra, India", img:"india.png", ers:2.1,ed:89,score:1},
-    {name:"South Korea", img:"south-korea.png", ers:2.1,ed:89,score:1},
-  ];
+  // states = [
+  //   {name:"Texas, USA", img:"usa.png", ers:30,ed:219,score:-1},
+  //   {name:"Hong Kong", img:"china.png", ers:18,ed:177,score:1},
+  //   {name:"Israel", img:"israel.png", ers:6.4,ed:158,score:1},
+  //   {name:"California, USA", img:"usa.png", ers:4.4,ed:129,score:1},
+  //   {name:"France, EU", img:"european.png", ers:3.7,ed:118,score:1},
+  //   {name:"Shenzhen, China", img:"china.png", ers:3.6,ed:111,score:-1},
+  //   {name:"Kansai, Japan", img:"japan.png", ers:3.1,ed:107,score:-1},
+  //   {name:"Germany, EU", img:"european.png", ers:2.8,ed:106,score:1},
+  //   {name:"England, UK", img:"uk.png", ers:2.4,ed:91.4,score:1},
+  //   {name:"Taiwan", img:"taiwan.png", ers:2.2,ed:90.7,score:-1},
+  //   {name:"Maharashtra, India", img:"india.png", ers:2.1,ed:89,score:1},
+  //   {name:"South Korea", img:"south-korea.png", ers:2.1,ed:89,score:1},
+  // ];
 
   // testmo = [
   //   {name:"Katherine Langford", desig:"Designer", img:"assets/test_4.png", info:"Very simple to use, great automation and keeps me on track with all I need to do. I also like that it can be shared with others."},

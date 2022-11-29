@@ -9,6 +9,7 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppOsComponent   {
 
+  domainX = "https://islesys.com";
 
   constructor() { }
 

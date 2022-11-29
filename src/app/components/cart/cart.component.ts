@@ -31,11 +31,6 @@ export class CartComponent implements OnInit {
 
   xPay = {
     paymethod:"RAZORPAY",
-  //   // name:"", 
-    // card:"", cvv:"", MmYy:"",
-  //   // card:"4242 4242 4242 4242", MmYy:"12 / 34", cvv:"567",
-  //   vpa:"",
-  //   email:"",
   }
 
   constructor(
@@ -87,25 +82,6 @@ export class CartComponent implements OnInit {
     return this.cartPack.cost;
   }
 
-  // goGIRL(){
-  //   const data = {
-  //     id:"", name:"Dipesh", 
-  //     dial:"+91", phone:"9876543210", email:"email@domain.com",
-  //     cost:79, price:99, save:20, 
-  //     pack:"community", varient:"Startup Community", 
-  //     status:0, sin:null
-  //   }
-  //   this.auth.submitWALT(data).then(refWalt => {
-  //     this.depends.startStripe("IN", refWalt.id).pipe(take(1)).subscribe((ref:any) => {
-  //       console.log("MANHANDLE", ref)
-  //       if(!ref || !ref.success){
-  
-  //       }else{
-  //         window.open(ref.data, "_self");
-  //       }
-  //     })
-  //   })
-  // }
 
   setCart(x:any){
     if(!this.makingChanges){
@@ -113,11 +89,6 @@ export class CartComponent implements OnInit {
     }
   }
 
-  // setPAY(x:any){
-  //   if(!this.makingChanges){
-  //     this.xPay.paymethod = x;
-  //   }
-  // }
 
   submitPay(){
     this.makingChanges = true;
@@ -128,7 +99,7 @@ export class CartComponent implements OnInit {
       false
       ){
       this.makingChanges = false;
-      let mess = ( 
+     let mess =  ( 
         !this.nameCompany ? "Project or Company name is Required!":(
           !this.cardCompany ? "ID Card name is Required!":(
             !this.codeCompany ? "Card ID is Required!":
@@ -145,79 +116,51 @@ export class CartComponent implements OnInit {
         (mine.coin == "INR" ? this.cartPack.costINR : 0) + 
         (mine.coin == "EUR" ? this.cartPack.costEUR : 0) + 
         (mine.coin == "USD" ? this.cartPack.costUSD : 0) + 
-        ((mine.coin !== "INR" || mine.coin !== "EUR" || mine.coin !== "USD" || false) ? this.cartPack.costUSD : 0) + 
+        (mine.coin == "RUB" ? this.cartPack.costRUB : 0) + 
+        ((mine.coin !== "INR" || mine.coin !== "EUR" || mine.coin !== "USD" || mine.coin !== "RUB" || false) ? this.cartPack.costUSD : 0) + 
         0;
         let price = 0 + 
         (mine.coin == "INR" ? this.cartPack.priceINR : 0) + 
         (mine.coin == "EUR" ? this.cartPack.priceEUR : 0) + 
         (mine.coin == "USD" ? this.cartPack.priceUSD : 0) + 
-        ((mine.coin !== "INR" || mine.coin !== "EUR" || mine.coin !== "USD" || false) ? this.cartPack.priceUSD : 0) + 
+        (mine.coin == "RUB" ? this.cartPack.priceRUB : 0) + 
+        ((mine.coin !== "INR" || mine.coin !== "EUR" || mine.coin !== "USD" || mine.coin !== "RUB" || false) ? this.cartPack.priceUSD : 0) + 
         0;
         let save = 0 + 
         (mine.coin == "INR" ? (this.cartPack.priceINR - this.cartPack.costINR) : 0) + 
         (mine.coin == "EUR" ? (this.cartPack.priceEUR - this.cartPack.costEUR) : 0) + 
         (mine.coin == "USD" ? (this.cartPack.priceUSD - this.cartPack.costUSD) : 0) + 
-        ((mine.coin !== "INR" || mine.coin !== "EUR" || mine.coin !== "USD" || false) ? (this.cartPack.priceUSD - this.cartPack.costUSD) : 0) + 
+        (mine.coin == "RUB" ? (this.cartPack.priceRUB - this.cartPack.costRUB) : 0) + 
+        ((mine.coin !== "INR" || mine.coin !== "EUR" || mine.coin !== "USD" || mine.coin !== "RUB" || false) ? (this.cartPack.priceUSD - this.cartPack.costUSD) : 0) + 
         0;
 
         const data = {
-          id:"", name:mine.name, by: mine.uid, to:"Islesys",
+          id:"", name:mine.name, by: mine.uid, to:"ISLESYS.COM",
           productID:this.cartPack.id,
           coin:mine.coin, iso:mine.iso, 
           phone:mine.phone, email:mine.email,
           lieList:[
             this.nameCompany
           ], companyCARD:this.cardCompany, companyCODE:this.codeCompany, companyNAME:this.nameCompany,
-          cost, price, save,
-          days:this.cartPack.days, via:"islesys.com",
+          cost: cost, 
+          price, save,
+          days:this.cartPack.days, via:"islesys.com Web",
           pack:(
             ( this.resource.cartList[0] == this.cartPack ? "community":"") +
             ( this.resource.cartList[1] == this.cartPack ? "community":"") +
             ( this.resource.cartList[2] == this.cartPack ? "enterprise":"") +
             "" ), 
             varient:this.cartPack.name, recuring:("" + 
-            ( this.resource.cartList[1] == this.cartPack ? "yearly":"") + 
-            ( this.resource.cartList[2] == this.cartPack ? "monthly":"") +
+            ( this.resource.cartList[0] == this.cartPack ? "Annual":"") + 
+            ( this.resource.cartList[1] == this.cartPack ? "Triennial":"") + 
+            ( this.resource.cartList[2] == this.cartPack ? "Monthal":"") +
             "" ), 
           payment: this.xPay,
           status:0, done:null, sin:null
         }
   
         this.auth.submitWALT(data).then(refWalt => {
-  /*
-  if(this.xPay.paymethod == 'CARD'){
-    const payStripeCUST = mine.payStripeCUST || "";
-
-          this.depends.startStripeNew("IN", 
-          refWalt.id, data.by, 
-          data.name, data.phone, data.email,
-          data.productID,
-          payStripeCUST
-          // this.xPay.card, this.xPay.MmYy, this.xPay.cvv
-          ).pipe(take(1)).subscribe((ref:any) => {
-            // console.log("MANHANDLE", ref)
-            if(!ref || !ref.success || !ref.data || !ref.data.url ){
-              let mess = "There was a problem placing an order.";
-              this.snackBar.open(mess, "", {
-                horizontalPosition: "center", verticalPosition: "bottom", 
-                duration: 2000,
-                panelClass:"c_white" })
-            }else{
-
-              this.auth.updateFieldWALT(refWalt.id, "startDATA", ref.data).then(() => {
-                if(payStripeCUST !== ref.payStripeCUST){
-                  this.sign.updateFieldUSER(data.by, "payStripeCUST", payStripeCUST).then(() => {
-                    window.open(ref.data.url, "_self");
-                  })
-                }else{
-                  window.open(ref.data.url, "_self");
-                }
-              })
-
-            }
-          })
-  }
-  */
+  
   if(this.xPay.paymethod == 'UPI'){
   
   }
@@ -236,14 +179,17 @@ export class CartComponent implements OnInit {
           // payStripeCUST
           // this.xPay.card, this.xPay.MmYy, this.xPay.cvv
           data.cost,
-          data.coin
+          data.coin,
+          (data.recuring == "Monthal" ? true : false)
           ).pipe(take(1)).subscribe((getPayRes:any) => {
             console.log("getPayRes", getPayRes);
 
             // console.log("MANHANDLE", ref)
             if(!getPayRes || !getPayRes.success //|| !ref.data || !ref.data.url 
               ){
+              this.makingChanges = false;
               let mess = "There was a problem placing an order.";
+              this.payStatus(false, refWalt.id, -10, mess, {}, data.by, data.pack, data.days)
               this.snackBar.open(mess, "", {
                 horizontalPosition: "center", verticalPosition: "bottom", 
                 duration: 2000,
@@ -253,11 +199,21 @@ export class CartComponent implements OnInit {
         getPayRes.modal = {
           ondismiss: () => {
             console.log("ondismiss")
-            this.payStatus(refWalt.id, -10, "Payment Exited, Try again...", {});
+            // this.nameCompany = "";
+            // this.cardCompany = "";
+            // this.codeCompany = "";
+            this.makingChanges = false;
+            let mess = "Payment Exited, Try again...";
+            this.payStatus(false, refWalt.id, -10, mess, {}, data.by, data.pack, data.days)
+            this.snackBar.open(mess, "", {
+              horizontalPosition: "center", verticalPosition: "bottom", 
+              duration: 2000,
+              panelClass:"c_white" })
           },
         };
         getPayRes.handler = (response:any, error:any) => {
           console.log("hello bro: ")
+
           if (response) {
           console.log("response: ", response)
           const dataVerify = {
@@ -267,28 +223,19 @@ export class CartComponent implements OnInit {
             order_id: response.razorpay_order_id
           }
           console.log("dataVerify",dataVerify)
-          this.payStatus(refWalt.id, 10, "Payment Success!", response);
+          this.payStatus(true, refWalt.id, 10, "Payment Success!", response, data.by, data.pack, data.days);
 
           //Check if success
           }
+
           if(error){
             console.log("error: ", error)
-            this.payStatus(refWalt.id, -10, "Payment Failed, Try again...", error); // You need to store error
+            this.payStatus(false, refWalt.id, -10, "Payment Failed, Try again...", error, data.by, data.pack, data.days); // You need to store error
           }
+
         };
 
-/*
-              this.auth.updateFieldWALT(refWalt.id, "startDATA", ref.data).then(() => {
-                console.log("startDATA")
-                // if(payStripeCUST !== ref.payStripeCUST){
-                //   this.sign.updateFieldUSER(data.by, "payStripeCUST", payStripeCUST).then(() => {
-                //     window.open(ref.data.url, "_self");
-                //   })
-                // }else{
-                //   window.open(ref.data.url, "_self");
-                // }
-              })
-*/
+
         const rzp = new this.winRef.nativeWindow.Razorpay(getPayRes);
         rzp.open();
 
@@ -303,86 +250,17 @@ export class CartComponent implements OnInit {
     }
   }
 
-  payStatus(id:string, status:number, info:string, happen:any){
+  payStatus(state:boolean, id:string, status:number, info:string, happen:any, 
+    uid:string, type:string, days:number){
     const data = {
       info, happen
     }
-    this.auth.updateFieldWALT(id, "endDATA", data).then(() => {
+    this.auth.updateFieldWALT(state, id, "endDATA", data, status, uid, type, days).then(() => {
       console.log("startDATA")
+      this.resource.router.navigate(['/order-status/' + id])
     })
   }
 
-  // startPay(){
-  //   this.disableALL = true;
-  //   if(
-  //     this.xPay.paymethod == 'CARD' && (!this.xPay.card || !this.xPay.MmYy || !this.xPay.cvv) ||
-  //     this.xPay.paymethod == 'UPI' && (!this.xPay.vpa) ||
-  //     this.xPay.paymethod == 'PAYPAL' && (!this.xPay.email) ||
-  //     false
-  //   ){
-  //     this.disableALL = false;
-  //     let mess = "Enter proper payment details.";
-  //     this.snackBar.open(mess, "", {
-  //       horizontalPosition: "center", verticalPosition: "bottom", 
-  //       duration: 2000,
-  //       panelClass:"c_white" })
-  //   }else{
-      
-  //   }
-  // }
-
-/*
-    card_format(value:any) {
-      var v = value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
-      var matches = v.match(/\d{4,16}/g);
-      var match = (matches && matches[0]) || "";
-      var parts = [];
-      for (let i = 0, len = match.length; i < len; i += 4) {
-        parts.push(match.substring(i, i + 4));
-      }
-      if (parts.length) {
-        this.xPay.card = parts.join(" ");
-      } else {
-        this.xPay.card = value;
-      }
-    }
-
-    ex_format(value:any) {
-      var v = value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
-      var matches = v.match(/\d{2,4}/g);
-      var match = (matches && matches[0]) || "";
-      var parts = [];
-      for (let i = 0, len = match.length; i < len; i += 2) {
-        parts.push(match.substring(i, i + 2));
-      }
-      if (parts.length) {
-        this.xPay.MmYy = parts.join(" / ");
-      } else {
-        this.xPay.MmYy = value;
-      }
-    }
-*/
-
-/*
-
-document.getElementById("card_number").oninput = function () {
-  this.value = card_format(this.value);
-};
 
 
-document.getElementById("card_date").oninput = function () {
-  this.value = ex_format(this.value);
-};
-
-function checkDigit(event) {
-  var code = event.which ? event.which : event.keyCode;
-
-  if ((code < 48 || code > 57) && code > 31) {
-    return false;
-  }
-
-  return true;
-}
-
-*/
 }

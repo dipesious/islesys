@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
@@ -15,7 +15,7 @@ import { SeoService } from 'src/app/services/seo.service';
   templateUrl: './download-icon.component.html',
   styleUrls: ['./download-icon.component.scss']
 })
-export class DownloadIconComponent implements OnInit, AfterViewInit {
+export class DownloadIconComponent implements OnInit, AfterViewInit, OnDestroy {
 
   mySubscription;
 
@@ -68,7 +68,7 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
     let xDescription = "We are building a gargantuan library of compatible icons. The icons undertaking by Dipesh Bhoir with over 50k+ icons at your fingertips.";
     let xURL = "https://islesys.com/free-icon/" + ref.id;
     let xImage = "";
-    let xKeywords = "icons, free download, " + name + ", Islesys, Dipesh Bhoir";
+    let xKeywords = "icons, free download, " + name + ", icon who, Dipesh Bhoir";
 
         this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
         this.similar$ = this.auth.getSIMILAR(id, name, 25).pipe(take(1))
@@ -131,8 +131,8 @@ export class DownloadIconComponent implements OnInit, AfterViewInit {
       if(result?.type == 'Community'){
         this.router.navigate(['/cart/upgrade-account']);
       }
-      if(result?.type == 'Enterprise'){
-        this.router.navigate(['/cart/apply-for-enterprise']);
+      if(result?.type == 'Institution'){
+        this.router.navigate(['/cart/apply-for-institution']);
       }
       if(result?.type == 'getHelp'){
         this.router.navigate(['/getHelp/icons']);

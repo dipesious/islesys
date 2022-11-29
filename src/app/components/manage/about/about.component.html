@@ -1,0 +1,31 @@
+<div class="main">
+        
+    <header>
+
+        <div class="header-banner">
+            <h1 class="b_primary c_white" >DIPESH BHOIR Guidelines</h1>
+            <a class="dFont" *ngIf=" page == 'SHIPPING' " >Shipping Policy</a>
+            <a class="dFont" *ngIf=" page == 'REFUNDS' " >Refund Policy</a>
+            <a class="dFont" *ngIf=" page == 'TERMS' " >Terms of Service</a>
+            <a class="dFont" *ngIf=" page == 'PRIVACY' " >Privacy Policy</a>
+            <a class="dFont" *ngIf=" page == 'LICENSE' " >Licence</a>
+        </div>
+
+        <nav class="b_warn">
+            <img src="assets/logoSign.png">
+            <div class="site-title c_white">CODE OF<br>CONDUCT</div>
+        </nav>
+
+    </header>
+        
+    <section class="content">
+        <div class="article">
+            <p>{{data}}</p>
+        </div>
+            
+        <div class="aside b_white">
+            <img src="assets/logoSquare.png">
+        </div>
+    </section> 
+    
+</div>

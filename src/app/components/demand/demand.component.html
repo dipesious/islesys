@@ -15,13 +15,24 @@
         <h6>Every time you attribute, you make a developer happy</h6>
 
         <p>Select your favorite social network and share our icons with your contacts or friends, if you do not have social networks copy the link and paste it in the one you use. For more information read the <a href="#" target="_">download the license.</a></p>
-        <button mat-button (click)=" downloadNOW('Private') " class="b_primary"><!--span class="mobHide">{{CTA}} </span-->Personal Use</button>
-        <button mat-button (click)=" downloadNOW('Community') " class="b_growth">Community<span class="mobHide"> Upgrade</span></button>
-        <button mat-button (click)=" downloadNOW('Enterprise') " class="b_warn">Enterprise</button>
+
+        <button mat-button (click)=" downloadNOW('Private') " class="b_primary">Personal Use</button>
+        <button mat-button *ngIf="!(auth.user$ | async)" (click)=" downloadNOW('Community') " class="b_growth">Community<span class="mobHide"> Upgrade</span></button>
+        <button mat-button *ngIf="!(auth.user$ | async)" (click)=" downloadNOW('Enterprise') " class="b_warn">Enterprise</button>
+
+        <ng-container *ngIf="auth.user$ | async as mine">
+
+        <button mat-button *ngIf="!mine.islesysCommunity" (click)=" downloadNOW('Community') " class="b_growth">Community<span class="mobHide"> Upgrade</span></button>
+        <button mat-button *ngIf="mine.islesysCommunity && depends.addDays(mine.islesysCommunitySTART?.toDate(), (mine.islesysCommunityDAYS || 0)) " (click)=" downloadNOW('Private') " class="b_growth">Use Community Pack</button>
+
+        <button mat-button *ngIf="!mine.islesysEnterprise" (click)=" downloadNOW('Enterprise') " class="b_warn">Enterprise</button>
+        <button mat-button *ngIf="mine.islesysEnterprise && depends.addDays(mine.islesysEnterpriseSTART?.toDate(), (mine.islesysEnterpriseDAYS || 0)) " (click)=" downloadNOW('Private') " class="b_warn">Use Enterprise Pack</button>
+
+        </ng-container>
         <p><span class="pack">Private Recognition</span>: $0 FOREVAH!
-        <br><span class="pack">Startup Community</span>: $79 FOR FIRST YEAR THEN $99
-        <br><span class="pack">Prepaid Enterprise</span>: $499 PER MONTH
-        <br><span class="pack">Pledged Community</span>: <u style="text-decoration: line-through;">$249</u> Offer $99 FOR 3 YEARS</p>
+        <br><span class="pack">Startup Community</span>: ${{resource.cartList[0].cost}} FOR FIRST YEAR THEN ${{resource.cartList[0].price}}
+        <br><span class="pack">Pledged Community</span>: <u style="text-decoration: line-through;">${{resource.cartList[1].price}}</u> Offer ${{resource.cartList[1].cost}} FOR 3 YEARS
+        <br><span class="pack">Prepaid Enterprise</span>: ${{resource.cartList[2].cost}} PER MONTH</p>
 
     </div>
 

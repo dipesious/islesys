@@ -298,8 +298,8 @@ if(x){
       if(wat == 'Community'){
         this.router.navigate(['/cart/upgrade-account']);
       }
-      if(wat == 'Enterprise'){
-        this.router.navigate(['/cart/apply-for-enterprise']);
+      if(wat == 'Institution'){
+        this.router.navigate(['/cart/apply-for-institution']);
       }
       if(result?.type == 'getHelp'){
         this.router.navigate(['/getHelp/maps']);

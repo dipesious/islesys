@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Firestore, collectionData, collection, setDoc, doc, addDoc, limitToLast, orderBy, query, where, limit, updateDoc, docData, Timestamp, serverTimestamp } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, setDoc, doc, addDoc, limitToLast, orderBy, query, where, limit, updateDoc, docData, Timestamp, serverTimestamp, increment, FieldValue } from '@angular/fire/firestore';
 
 import { Observable, of, switchMap } from 'rxjs';
 
@@ -186,10 +186,12 @@ export class AuthService {
 
 
 
-  getAllICON(name:string){
+  getAllICON(name:string, fill:string, tone:string){
     const cityRef = collection(this.fs, this.dbICONS);
     const qu = query(cityRef, 
       // where("active", "==", true),
+      where("fill", "==", fill),
+      where("tone", "==", tone),
       where("name", "==", name),
       // orderBy("sin"), 
       limit(50)
@@ -333,10 +335,25 @@ export class AuthService {
   }
 
   
-  updateFieldWALT(id:string, fieldX:string, valueX:any){
+  updateFieldWALT(state:boolean, id:string, 
+    fieldX:string, valueX:any, status:number, 
+    uid:string, type:string, days:number){
     const sTS = this.getServerTimestamp();
-    const userRef = doc(this.fs, `${this.dbWALT}/${id}`);
-    return updateDoc(userRef, { [fieldX]:valueX, done: sTS })
+    const waltRef = doc(this.fs, `${this.dbWALT}/${id}`);
+    if(!state){
+      return updateDoc(waltRef, { [fieldX]:valueX, done: sTS, status:status })
+    }else{
+    const userRef = doc(this.fs, `${'users'}/${uid}`);
+    return updateDoc(waltRef, { [fieldX]:valueX, done: sTS, status:status }).then(() => {
+      if(type == 'community'){
+        return updateDoc(waltRef, { islesysCommunity:true,  islesysCommunitySTART:sTS, islesysCommunityDAYS: increment(days) })
+      }
+      if(type == 'enterprise'){
+        return updateDoc(userRef, { islesysEnterprise:true, islesysEnterpriseSTART:sTS, islesysEnterpriseDAYS: increment(days) })
+      }
+      return;
+    })
+    }
   }
 
   getWALT(id:string){

@@ -78,8 +78,10 @@
         </div> -->
     </div>
 
-    <app-advert></app-advert>
     
+    <app-advert></app-advert>
+
+
     <div class="code">
         <p><mat-slide-toggle [(ngModel)]="sideToggle" color="warn"><b class="sideToggle">{{!sideToggle?'Do you Agree to ':'i Agree to '}}</b></mat-slide-toggle>&nbsp;<a target="_" href="https://github.com/dipesious/Myriad-Undertakings/blob/main/LICENSE" class="c_warn">the License Agreement{{!sideToggle?'?':'.'}}</a></p>
         <textarea *ngIf="sideToggle" placeholder="icon" [value]="icon.data" readonly></textarea>
@@ -121,4 +123,3 @@
         </ul>
     </div> -->
 </section>
-

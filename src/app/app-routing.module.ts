@@ -30,6 +30,7 @@ import { DownloadDatasetComponent } from './components/app-os/list-datasets/down
 import { ListShadesComponent } from './components/app-os/list-shades/list-shades.component';
 import { DownloadShadeComponent } from './components/app-os/list-shades/download-shade/download-shade.component';
 import { ReferComponent } from './components/user/refer/refer.component';
+import { AboutComponent } from './components/manage/about/about.component';
 
 const routes: Routes = [
 
@@ -42,8 +43,25 @@ const routes: Routes = [
     {path:'getHelp/:topic', component: FileBugComponent },
 
     {path:'icons', component: ListIconsComponent},
+    {path:'outline-icons', component: ListIconsComponent},
+    {path:'filled-icons', component: ListIconsComponent},
+    {path:'duotone-icons', component: ListIconsComponent},
+    {path:'vibrant-icons', component: ListIconsComponent},
+    {path:'animated-icons', component: ListIconsComponent},
+    {path:'flags-and-seals', component: ListIconsComponent},
     {path:'icons/:name', component: ListIconsComponent},
+    {path:'outline-icons/:name', component: ListIconsComponent},
+    {path:'filled-icons/:name', component: ListIconsComponent},
+    {path:'duotone-icons/:name', component: ListIconsComponent},
+    {path:'vibrant-icons/:name', component: ListIconsComponent},
+    {path:'animated-icons/:name', component: ListIconsComponent},
+    {path:'flags-and-seals/:name', component: ListIconsComponent},
+
     {path:'maps', component: ListMapsComponent},
+    {path:'electoral-maps', component: ListMapsComponent},
+    {path:'geography-maps', component: ListMapsComponent},
+    {path:'historical-maps', component: ListMapsComponent},
+    
     {path:'fonts', component: ListFontsComponent},
     {path:'datasets', component: ListDatasetsComponent},
     {path:'palettes', component: ListPalettesComponent},
@@ -64,6 +82,8 @@ const routes: Routes = [
 
   ]},
 
+  {path:'about/:page', component: AboutComponent },
+  
   {path:'sign', component: SignComponent},
   {path:'sign/:go', component: SignComponent},
   {path:'cart/:pack', component: CartComponent},

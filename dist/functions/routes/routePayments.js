@@ -244,28 +244,79 @@ routePayments.post(`/create-stripe-payment/:countryCode`, async (req, res) => {
       const razorpayAMT = twoDecimalPlaces * 100;
       //const razorpayPAID = req.body.amount_paid * 100; const razorpayDUE = req.body.amount_due * 100;
 
+if(req.body.repeat){ 
+
       const options = {
+          plan_id: req.body.repeatRazorpayID,
+          total_count: 1,
+
+          // amount: razorpayAMT,
+          // currency: req.body.currency,
+          // receipt: req.body.receipt,
+
+          notes: {
+              description: 'descriptionX'
+          },
+          // payment_capture: 1 //optional
+      };
+      try {
+          const MyOrder = await razorpay.subscriptions.create(options);
+          //console.error("Mankind", MyOrder)
+
+          res.json({
+              ...MyOrder,
+              amount: razorpayAMT,
+              currency: req.body.currency,
+              //amount_paid:razorpayPAID, amount_due:razorpayDUE,
+              receipt: req.body.receipt,
+              order_id: MyOrder['id'],
+              key: key_id,
+
+              name: req.body.name || "Refr Tech", // To Name
+              description: req.body.description || "Payment to Refr",
+
+
+              prefill: {
+                  name: req.body.userData.name,
+                  contact: req.body.userData.phone ? req.body.userData.phone : null,
+                  email: req.body.userData.email ? req.body.userData.email : null
+              },
+              theme: { color: req.body.theme || "#000000" },
+              /*
+                      // notes: [{ useWallet: req.body.useWallet }],
+              */
+
+              success: true,
+              status: 200,
+              code: errors.ok,
+              //data:{}, info:"Hello action"
+          });
+
+
+      } catch (error) {
+          res.json({
+              success: false,
+              status: 200, //http
+              code: errors.Forbidden, //route
+              data: error,
+              info: "Unable to create order"
+          });
+      }
+
+      
+
+}else{
+
+      const options = {
+
           amount: razorpayAMT,
           currency: req.body.currency,
-          //amount_paid:razorpayPAID, amount_due:razorpayDUE,
           receipt: req.body.receipt,
 
           notes: {
               description: 'descriptionX'
           },
           payment_capture: 1 //optional
-              /*
-                      payment_capture: 0,
-                      
-                      payment: {
-                        capture : 'automatic',
-                        capture_options : {
-                          automatic_expiry_period : 12,
-                          manual_expiry_period : 7200,
-                          refund_speed : 'optimum'
-                        }  
-                      },
-              */
       };
       try {
           const MyOrder = await razorpay.orders.create(options);
@@ -310,6 +361,8 @@ routePayments.post(`/create-stripe-payment/:countryCode`, async (req, res) => {
               info: "Unable to create order"
           });
       }
+
+}
 
 
 

@@ -2,7 +2,7 @@ import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { map, Observable, of, startWith, take } from 'rxjs';
 import { AlgoIconService } from 'src/app/services/algorithm/algo-icon.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -16,7 +16,9 @@ import { AddIconComponent } from './add-icon/add-icon.component';
   templateUrl: './list-icons.component.html',
   styleUrls: ['./list-icons.component.scss']
 })
-export class ListIconsComponent implements OnInit {
+export class ListIconsComponent implements OnInit, OnDestroy {
+
+  mySubscription;
 
   iconList$:Observable<any[]> = of()
 
@@ -30,10 +32,12 @@ export class ListIconsComponent implements OnInit {
 
   goDark = false;
   
-  searching = new FormControl('');
-  options: string[] = [];
-  filteredOptions: Observable<string[]>;
+  // searching = new FormControl('');
+  // options: string[] = [];
+  // filteredOptions: Observable<string[]>;
 
+  currentTyp = "";
+  searchTerm = "";
 
   constructor(
     public auth:AuthService,
@@ -42,25 +46,19 @@ export class ListIconsComponent implements OnInit {
     public dialog: MatDialog,
     public seo: SeoService,
     private actRoute: ActivatedRoute,
+    private router: Router, 
     ) { 
-      let x:any = '';
-    this.filteredOptions = this.searching.valueChanges.pipe(
-      startWith(x),
-      map((value:string) => this._filter(!value ? '' : value )),
-    );
 
-    const z = this.actRoute.snapshot.params;
-    const name = z['name'];
-
-    if(!name){
-      if(!page.firstHit){
-        this.page.fillX = "";
-        this.page.toneX = "";
-        this.executeEmpty("Outline", "Flat")
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.mySubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+  // Trick the Router into believing it's last link wasn't previously loaded
+      this.router.navigated = false;
+      // this.process()
       }
-    }else{
-      this.executeList(name)
-    }
+    });  
+
+  
   }
 
   ngOnInit(): void {
@@ -71,7 +69,58 @@ export class ListIconsComponent implements OnInit {
     let xKeywords = "icons, free download, Islesys, Dipesh Bhoir";
     this.seo.setSEO(xTitle, xDescription, xURL, xImage, xKeywords)
 
+    this.process()
   }
+
+  ngOnDestroy(){
+    if (this.mySubscription) {
+     this.mySubscription.unsubscribe();
+    }
+  }
+
+  process(){
+
+    const z = this.actRoute.snapshot.params;
+    const name = z['name'];
+    console.log('Got',name)
+
+    // if(!name){
+      if(!this.page.firstHit){
+        this.currentTyp = (name || "");
+        this.page.fillX = "";
+        this.page.toneX = "";
+
+        if(this.resource.router.url.includes('/icons')){
+          this.execute((name || ""), "Outline", "Flat")
+        }
+
+        if(this.resource.router.url.includes('/outline-icons')){
+          this.execute((name || ""), "Outline", "Flat")
+        }
+
+        if(this.resource.router.url.includes('/filled-icons')){
+          this.execute((name || ""), "Filled", "Flat")
+        }
+
+        if(this.resource.router.url.includes('/duotone-icons')){
+          this.execute((name || ""), "Filled", "Duotone")
+        }
+
+        if(this.resource.router.url.includes('/vibrant-icons')){
+          this.execute((name || ""), "Filled", "Vibrant")
+        }
+
+        if(this.resource.router.url.includes('/animated-icons')){
+          this.execute((name || ""), "Animated", "Duotone")
+        }
+
+        if(this.resource.router.url.includes('/flags-and-seals')){
+          this.execute((name || ""), "Insignia", "Vibrant")
+        }
+
+      }
+  }
+
 
   submitIcon(){
     const dialogRef = this.dialog.open(AddIconComponent, {
@@ -85,14 +134,51 @@ export class ListIconsComponent implements OnInit {
     });
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+  // private _filter(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  // }
+
+
+  execute(name:string, fill:string, tone:string){
+    console.log("get ", name, fill, tone)
+    if(!name){
+      this.empty=1;
+      this.currentTyp = "";
+      // this.page.fillX = fill;
+      // this.page.toneX = tone;
+
+      if(
+        //this.page.firstHit && 
+        this.page.fillX == fill && this.page.toneX == tone
+        ){
+      }else{
+        this.page.fillX = fill;
+        this.page.toneX = tone;
+        this.page.init('icons', 'name', { reverse: false, prepend: false  })
+      }
+    }else{
+      this.empty=2;
+      this.currentTyp = name;
+      this.page.fillX = fill;
+      this.page.toneX = tone;
+  
+
+      this.auth.getAllICON(name, fill, tone)/*.pipe(take(1))*/.subscribe((values:any[]) => {
+        this.iconList$ = of(values)
+        // this.options = [];
+        // for (let i = 0; i < values.length; i++) {
+        //   const element = values[i];
+        //   this.options.push(element.name)
+        // }
+      })
+    }
   }
-
+/*
   executeEmpty(fill:string, tone:string){
     this.empty=1;
+    this.currentTyp = "";
 
     if(
       //this.page.firstHit && 
@@ -105,10 +191,14 @@ export class ListIconsComponent implements OnInit {
     }
   }
 
-  executeList(name:string){
+  executeList(name:string, fill:string, tone:string){
     this.empty=2;
 
-    this.auth.getAllICON(name)/*.pipe(take(1))*/.subscribe((values:any[]) => {
+      this.page.fillX = fill;
+      this.page.toneX = tone;
+      this.currentTyp = name;
+
+    this.auth.getAllICON(name)/ *.pipe(take(1))* /.subscribe((values:any[]) => {
       this.iconList$ = of(values)
       // this.options = [];
       // for (let i = 0; i < values.length; i++) {
@@ -117,6 +207,6 @@ export class ListIconsComponent implements OnInit {
       // }
     })
   }
-
+*/
 
 }

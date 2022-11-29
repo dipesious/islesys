@@ -18,6 +18,8 @@ import { ResourceService } from './../../services/resource.service';
 })
 export class ManageComponent {
 
+  domainX = "https://islesys.com";
+  
   navLinks = [
     //{icon:"satellite_alt", name:"Deepstate",path:"/explore"},
 
@@ -32,6 +34,23 @@ export class ManageComponent {
     // {icon:"business_center", name:"Business abroad",path:"/business"},
     // {icon:"self_improvement", name:"The Cave",path:"/cave"},
   ]
+
+  navICONS = [
+    {name:'1M+ Icons List', path:'/icons', icon:'shape_line'},
+    {name:'Outline', path:'/outline-icons', icon:'star_half'},
+    {name:'Filled', path:'/filled-icons', icon:'star'},
+    {name:'Duotone', path:'/duotone-icons', icon:'hotel_class'},
+    {name:'Vibrant', path:'/vibrant-icons', icon:'auto_awesome'},
+    {name:'Animated', path:'/animated-icons', icon:'insights'},
+    {name:'Flags & Seals', path:'/flags-and-seals', icon:'local_police'},
+  ];
+  navMAPS = [
+    {name:'1K+ Maps List', path:'/maps', icon:'map'},
+    {name:'List Electoral', path:'/electoral-maps', icon:'how_to_vote'},
+    {name:'List Geography', path:'/geography-maps', icon:'landscape'},
+    {name:'List Historical', path:'/historical-maps', icon:'history'},
+  ];
+
 
   hideTop = true;
   menuShow = false;

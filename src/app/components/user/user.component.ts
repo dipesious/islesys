@@ -36,6 +36,7 @@ export class UserComponent implements OnInit {
         let uid = mine.uid;
         this.activeBio = mine;
         this.auth.getMySuccessWALT(uid).pipe(take(1)).subscribe(pay => {
+          console.log(uid, pay)
           if(!pay || pay.length == 0){
             this.loading = false
           }else{
