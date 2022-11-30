@@ -30,6 +30,11 @@ module.exports = {
     // RAZOR_PAY_KEY_ID: "rzp_test_IJu8k9IvBRMQkf",
     // RAZOR_PAY_KEY_SECRET: "mt1hrrolhSs42LpW7wI6OTVt",
 
-    RAZOR_PAY_KEY_ID: "rzp_live_b1UdexxytuhZRY",
-    RAZOR_PAY_KEY_SECRET: "shJkkWgb9RxZwMsvIUtQMuwv",
+    // mainlandsea
+    // RAZOR_PAY_KEY_ID: "rzp_live_b1UdexxytuhZRY",
+    // RAZOR_PAY_KEY_SECRET: "shJkkWgb9RxZwMsvIUtQMuwv",
+
+    // salt
+    RAZOR_PAY_KEY_ID: "rzp_live_yPM4mCYM8w98pl",
+    RAZOR_PAY_KEY_SECRET: "Lz5bC09MgERAgtTonFYlpYjG",
 }

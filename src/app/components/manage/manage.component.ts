@@ -58,7 +58,14 @@ export class ManageComponent {
 
   @ViewChild("mainContent") private mainContentDiv!: ElementRef<HTMLElement>;
   lang = [
-    "Arabic",
+    { code:"ARA", name:"Arabic" },
+    { code:"ENG", name:"English" },
+    { code:"FRA", name:"French" },
+    { code:"DEU", name:"German" },
+    { code:"POR", name:"Portuguese" },
+    { code:"RUS", name:"Russian" },
+    { code:"SPA", name:"Spanish" },
+    /*
     "Bengali",
     "English",
     "French",
@@ -83,7 +90,14 @@ export class ManageComponent {
     "Vietnamese",
     "Wu Chinese",
     "Yue Chinese",
-  ]
+    */
+  ];
+  nati = [
+    "EU","IN","RU","UK","US",
+  ];
+  coin = [
+    "EUR","INR","RUB","USD",
+  ];
   
   iconicColors = [
     {name:"Red", id:"red"},

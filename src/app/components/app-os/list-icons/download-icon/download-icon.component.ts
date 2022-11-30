@@ -131,8 +131,8 @@ export class DownloadIconComponent implements OnInit, AfterViewInit, OnDestroy {
       if(result?.type == 'Community'){
         this.router.navigate(['/cart/upgrade-account']);
       }
-      if(result?.type == 'Institution'){
-        this.router.navigate(['/cart/apply-for-institution']);
+      if(result?.type == 'Enterprise'){
+        this.router.navigate(['/cart/apply-for-enterprise']);
       }
       if(result?.type == 'getHelp'){
         this.router.navigate(['/getHelp/icons']);

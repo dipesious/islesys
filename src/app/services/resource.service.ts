@@ -46,7 +46,9 @@ export class ResourceService {
   videoOpensourcePatterns = "assets/videos/video_patterns.mp4";
   videoOpensourceShades = "assets/videos/video_shades.mp4";
 
-  nowLang = "English"
+  xLang = "ENG"
+  xArea = "US"
+  xCoin = "USD"
   bgInvert = false; // icon
   modeBgFc = true; // icon
   bgColor = ""; // icon
@@ -705,20 +707,20 @@ export class ResourceService {
 
   globalMaps = [
     { title:"Mercator - World map" , id:"KCchYPIYgNMqfARGXgGB", area:["world"] },
-    { title:"Mercator - World map detailed" , id:"", area:["world"] },
+    { title:"Mercator - World map detailed" , id:"2UXXeYYQz6Vg9PLrQNdi", area:["world"] },
     { title:"Mercator Pacific - World map" , id:"JMIFHJ14U0Mtr93JTfOK", area:["world"] },
     { title:"Globe Pacific - World map" , id:"wZZYVnjusfPpcAneEfzL" },
     { title:"Africa", id:"lAGGD1HIzbcpS1aB5K8L", area:["africa"] },
-    { title:"Africa Detailed", id:"", area:["africa"] },
+    { title:"Africa Detailed", id:"z5z8j4nDFJpAGNjTlOQF", area:["africa"] },
     { title:"Caribbean", id:"DzxsjXB0W03vxIZU9Ix1", area:["americas"] },
     { title:"Europe", id:"yJY5PAJIpLee3uAjs2YQ", area:["europe"] },
-    { title:"Europe Detailed", id:"", area:["europe"] },
+    { title:"Europe Detailed", id:"VIeZyRTZ9DXk2U0soxey", area:["europe"] },
     { title:"Indo China", id:"5HdiIHDm81mdN6inP9FP" },
-    { title:"Asia Detailed", id:"", area:["world"] },
+    { title:"Asia Detailed", id:"5GEF7zp4qWAc9Bail9RY", area:["world", "eastAsia", "southAsia", "westAsia"] },
     { title:"Middle East", id:"retQIf6wx0QTWAq1SCJd" },
     { title:"North America", id:"ZKouFGUIXjl0JHJubzPH", area:["americas"] },
     { title:"South America", id:"ZCh3pFBe2iOLg7or7LJU", area:["americas"] },
-    { title:"Americas Detailed", id:"", area:["americas"] },
+    { title:"Americas Detailed", id:"Ddr1qwe7CYkdshiMmt9x", area:["americas"] },
   ]
   nationMaps = [
     {title:"Afghanistan", id:"EXrnidf7ArDEriwrAA4q", area:["southAsia"] },

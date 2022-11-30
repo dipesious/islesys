@@ -34,6 +34,7 @@ export class DownloadMapComponent implements OnInit {
 
   regionClass = "";
   regionName = "";
+  regionStroke = 1;
   regionColor = "#f44336";
   regions = [
     {color:"#f44336", name:"Region 1"},
@@ -229,13 +230,16 @@ if(x){
       const element = x[i];
       if( element.classList[0] == this.regionClass && element.getAttribute("stroke") ){
         if(!flip){
-          element.setAttribute("stroke-width", "3.7837499999999995")
+          let regionStroke = element.getAttribute("stroke-width");
+          element.setAttribute("stroke-width", this.regionStroke)
+          this.regionStroke = regionStroke;
           //element.setAttribute("stroke-opacity", "1")
           element.setAttribute("stroke", "#ffffff")
         }else{
-          const f = element.getAttribute("fill")
-
-          element.setAttribute("stroke-width", "1")
+          const f = element.getAttribute("fill");
+          let regionStroke = element.getAttribute("stroke-width");
+          element.setAttribute("stroke-width", this.regionStroke)
+          this.regionStroke = regionStroke;
           //element.setAttribute("stroke-opacity", "0")
           element.setAttribute("stroke", f)
         }
@@ -295,11 +299,11 @@ if(x){
         if(wat == 'WEBP'){ this.getWEBP(id, name, newData) }
 
       }
-      if(wat == 'Community'){
+      if(result?.type == 'Community'){
         this.router.navigate(['/cart/upgrade-account']);
       }
-      if(wat == 'Institution'){
-        this.router.navigate(['/cart/apply-for-institution']);
+      if(result?.type == 'Enterprise'){
+        this.router.navigate(['/cart/apply-for-enterprise']);
       }
       if(result?.type == 'getHelp'){
         this.router.navigate(['/getHelp/maps']);
