@@ -54,7 +54,6 @@
     // padding: 0;
     // margin: 0;
     box-sizing: border-box;
-    //font-family: "Poppins", sans-serif;
   }
   
   @keyframes forms {
@@ -183,7 +182,7 @@
         mat-icon{ margin: 0 8px 0 0;}
         img{height: -webkit-fill-available;
           //width: -webkit-fill-available;
-          transform: scale(1.2);
+          // transform: scale(1.2);
           object-fit: contain;}
       }
     }

@@ -67,9 +67,7 @@ import { PaymentsComponent } from './placeholders/payments/payments.component';
 import { CartComponent } from './components/cart/cart.component';
 import { PeriodicTableComponent } from './components/app-ov/periodic-table/periodic-table.component';
 import { UserComponent } from './components/user/user.component';
-import { ProfilesComponent } from './components/user/profiles/profiles.component';
 import { RegistryComponent } from './components/user/registry/registry.component';
-import { BioComponent } from './components/user/bio/bio.component';
 import { ListShadesComponent } from './components/app-os/list-shades/list-shades.component';
 import { ListDatasetsComponent } from './components/app-os/list-datasets/list-datasets.component';
 import { AddDatasetComponent } from './components/app-os/list-datasets/add-dataset/add-dataset.component';
@@ -119,9 +117,7 @@ import { AboutComponent } from './components/manage/about/about.component';
     CartComponent,
     PeriodicTableComponent,
     UserComponent,
-    ProfilesComponent,
     RegistryComponent,
-    BioComponent,
     ListShadesComponent,
     ListDatasetsComponent,
     AddDatasetComponent,

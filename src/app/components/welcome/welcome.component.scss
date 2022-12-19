@@ -107,8 +107,9 @@
 @media(max-width: 767px){
   .section3{
       margin: 40px 8px;
-      .stepName{ width: 20%;height: 108px;}
-      .step{ width: 80%;height: 108px;
+      h1{line-height: 50px; font-size: 28px; margin: 0 8px;}
+      .stepName{ width: 30%;height: 108px;}
+      .step{ width: 70%;height: 108px;
           .done{
               margin: -24px auto 0 0;
               transform: rotate(8deg);

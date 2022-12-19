@@ -52,7 +52,7 @@ export class SignComponent implements OnInit {
       }else{
         let pack = this.actRoute.snapshot.params['go'];
         if( !pack ){
-          this.resource.router.navigate(['/explore'])
+          this.resource.router.navigate([''])
         }
         if( pack == 'continue-upgrade' ){
           this.resource.router.navigate(['/cart/' + pack])
@@ -60,10 +60,10 @@ export class SignComponent implements OnInit {
         if( pack == 'upgrade-account' ){
           this.resource.router.navigate(['/cart/' + pack])
         }
-        if( pack == 'apply-for-enterprise' ){
+        if( pack == 'apply-for-institution' ){
           this.resource.router.navigate(['/cart/' + pack])
         }
-        // this.resource.router.navigate(['/explore'])
+        // this.resource.router.navigate([''])
       }
     })
   }
@@ -146,7 +146,7 @@ export class SignComponent implements OnInit {
                             this.sign.completeUserData(uid).then(() => {
                               this.sign.makingChanges = false;
                               this.snackMe("Welcome to islesys...");
-                              this.sign.router.navigate(['/explore'])
+                              this.sign.router.navigate([''])
                             })
                           }
 
@@ -239,7 +239,7 @@ export class SignComponent implements OnInit {
                   
         let pack = this.actRoute.snapshot.params['go'];
         if( !pack ){
-          this.resource.router.navigate(['/explore'])
+          this.resource.router.navigate([''])
         }
         if( pack == 'continue-upgrade' ){
           this.resource.router.navigate(['/cart/' + pack])
@@ -247,7 +247,7 @@ export class SignComponent implements OnInit {
         if( pack == 'upgrade-account' ){
           this.resource.router.navigate(['/cart/' + pack])
         }
-        if( pack == 'apply-for-enterprise' ){
+        if( pack == 'apply-for-institution' ){
           this.resource.router.navigate(['/cart/' + pack])
         }
 

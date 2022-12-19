@@ -32,7 +32,6 @@ export class AddFontComponent implements OnInit {
   //   demoText:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque quo magni assumenda nisi. Molestiae sapiente, perferendis tempore mollitia atque officiis libero dolorem, unde iure dignissimos, dolores officia magni natus repudiandae.', 
   //   demoCSS:`<style>
   //   @import url('https://fonts.googleapis.com/css2?family=Rubik+Marker+Hatch&display=swap');
-  //   .fontNames p{ font-family: 'Rubik Marker Hatch', cursive;}
   //   </style>`,
   //   by:'Dipesh Bhoir', dial_code:'+91', contact:'9892381514',
   //   name:'Rubik Marker Hatch', data:"",
@@ -61,7 +60,6 @@ export class AddFontComponent implements OnInit {
       this.font.info = x.name;
 // this.font.demoCSS = `<style>
 // ${this.font.link}
-// .fontNames p{ font-family: ${this.font.about};}
 // </style>`;
 
       console.log(this.font)

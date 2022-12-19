@@ -141,4 +141,6 @@
         <p>{{x.name}}<!--{{x.sin?.toDate()}}--></p>
     </a>
     </ng-container>
+
+    <app-loading *ngIf="!(iconList$ | async) "></app-loading>
 </section>

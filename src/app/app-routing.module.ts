@@ -24,7 +24,6 @@ import { PeriodicTableComponent } from './components/app-ov/periodic-table/perio
 import { AppOsComponent } from './components/app-os/app-os.component';
 import { UserComponent } from './components/user/user.component';
 import { RegistryComponent } from './components/user/registry/registry.component';
-import { ProfilesComponent } from './components/user/profiles/profiles.component';
 import { ListDatasetsComponent } from './components/app-os/list-datasets/list-datasets.component';
 import { DownloadDatasetComponent } from './components/app-os/list-datasets/download-dataset/download-dataset.component';
 import { ListShadesComponent } from './components/app-os/list-shades/list-shades.component';
@@ -33,6 +32,18 @@ import { ReferComponent } from './components/user/refer/refer.component';
 import { AboutComponent } from './components/manage/about/about.component';
 
 const routes: Routes = [
+
+  {path:'about/:page', component: AboutComponent },
+  
+  {path:'sign', component: SignComponent},
+  {path:'sign/:go', component: SignComponent},
+  {path:'cart/:pack', component: CartComponent},
+  {path:'order-status/:id', component: PaymentsComponent},
+
+  {path:'user', component: UserComponent, children:[
+    {path:'', redirectTo:'/manage', pathMatch:"full"},
+    {path:'manage', component: RegistryComponent},
+  ]},
 
   {path:'', component: ManageComponent, children:[
     {path:'', redirectTo:'/explore', pathMatch:"full"},
@@ -80,20 +91,6 @@ const routes: Routes = [
     {path:'opensource-font/:id', component: DownloadFontComponent},
     {path:'shades-of-color/:id', component: DownloadShadeComponent},
 
-  ]},
-
-  {path:'about/:page', component: AboutComponent },
-  
-  {path:'sign', component: SignComponent},
-  {path:'sign/:go', component: SignComponent},
-  {path:'cart/:pack', component: CartComponent},
-  {path:'order-status/:id', component: PaymentsComponent},
-
-  {path:'user', component: UserComponent, children:[
-    {path:'', redirectTo:'/my-contact-info', pathMatch:"full"},
-    {path:'my-contact-info', component: ProfilesComponent},
-    {path:'my-profiles', component: ProfilesComponent},
-    {path:'manage', component: RegistryComponent},
   ]},
 
   {path:'**', redirectTo:'/explore', pathMatch:"full"},

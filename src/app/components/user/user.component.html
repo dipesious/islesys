@@ -2,10 +2,6 @@
     <ul>
         <a mat-button routerLink="/explore" style="margin: 16px auto 8px auto; display:inline-block; width: 100%;"><mat-icon>{{'arrow_back'}}</mat-icon> Back to islesys.com</a>
 
-        <li>My Account</li>
-        <li [class.active]="resource.router.url.includes( '/user/my-contact-info' )"><mat-icon>person_pin</mat-icon> <a routerLink="/user/my-contact-info">My Contact</a></li>
-        <li [class.active]="resource.router.url.includes( '/user/my-profiles' )"><mat-icon>badge</mat-icon> <a routerLink="/user/my-profiles">My Profiles</a></li>
-
         <li>Manage Projects</li>
         <li 
         [class.active]="resource.router.url.includes( '/user/manage' ) && x == activePayment" 
@@ -47,8 +43,6 @@ padding: 0;">
 {{!loading && resource.router.url.includes( '/user/manage' ) && !activePayment ? 'You are on Private Pack!':''}}
 </p>
 
-            <app-bio *ngIf="resource.router.url.includes( '/user/my-contact-info' )" [activeBio]=" activeBio "></app-bio>
-            <app-profiles *ngIf="resource.router.url.includes( '/user/my-profiles' )" [activeProfiles]=" activeProfiles "></app-profiles>
             <app-registry *ngIf="resource.router.url.includes( '/user/manage' )" [activePayment]=" activePayment "></app-registry>
         </div>
     </div>

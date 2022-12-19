@@ -1,39 +1,24 @@
 
+      <mat-menu #userDO="matMenu" overlapTrigger="true">
+        <div style="max-height: 300px; overflow-y: auto;">
+        <a mat-menu-item href="https://frycold.com/my-identity"><mat-icon>manage_accounts</mat-icon> <b>My Account</b></a>
+        <button mat-menu-item routerLink="/user/manage"><mat-icon>account_balance</mat-icon> <b>Islesys Membership</b></button>
+        <a mat-menu-item href="https://ads.islesys.com" target="_"><mat-icon>local_activity</mat-icon> <b>Advertsing Here</b></a>
+        <a mat-menu-item href="https://islesys.com/influencers" target="_"><mat-icon>manage_history</mat-icon> <b>Influencer Program</b></a>
+        <button mat-menu-item (click)="sign.signOut()"><mat-icon>logout</mat-icon> <b>Sign Out</b></button>
+        </div>
+      </mat-menu>
 
-<div class="content" [style]=" 'height: ' + (
-  !resource.router.url.includes( '/influencers' ) &&
-  !resource.router.url.includes( '/who-we-are' ) &&
-  !resource.router.url.includes( '/file-a-bug' ) &&
-  
-  !resource.router.url.includes( '/free-icon/' ) &&
-  !resource.router.url.includes( '/edit-map/' ) &&
-  !resource.router.url.includes( '/each-dataset/' ) &&
-  !resource.router.url.includes( '/view-palette/' ) &&
-  !resource.router.url.includes( '/view-gradient/' ) &&
-  !resource.router.url.includes( '/view-pattern/' ) &&
-  !resource.router.url.includes( '/opensource-font/' ) &&
-  !resource.router.url.includes( '/shades-of-color/' ) &&
-  !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
-  true ? 'calc(100vh - 0px)' : 'calc(100vh - 0px)')
-  + ';' "
+
+<div class="content"
+[class.hideScroll]=" false " 
+
 #mainContent  (scroll)="scrollHandler($event)">
 
 
 
 <header *ngIf="
-!resource.router.url.includes( '/influencers' ) &&
-!resource.router.url.includes( '/who-we-are' ) &&
-!resource.router.url.includes( '/file-a-bug' ) &&
-
-!resource.router.url.includes( '/free-icon/' ) &&
-!resource.router.url.includes( '/edit-map/' ) &&
-!resource.router.url.includes( '/each-dataset/' ) &&
-!resource.router.url.includes( '/view-palette/' ) &&
-!resource.router.url.includes( '/view-gradient/' ) &&
-!resource.router.url.includes( '/view-pattern/' ) &&
-!resource.router.url.includes( '/opensource-font/' ) &&
-!resource.router.url.includes( '/shades-of-color/' ) &&
-!resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
+resource.router.url.includes( '/explore' ) &&
 true
 ">
   <div class="holdHeader">
@@ -43,22 +28,8 @@ true
   </div>
   <span class="divide"></span>
   <a mat-icon-button color="primary" [matMenuTriggerFor]="langz"><mat-icon>translate</mat-icon></a>
-  <!-- <a mat-stroked-button color="primary" style="border-radius: 16px;" href="https://paypal.me/islesys" target="_" >Contribute</a> -->
-  <a mat-icon-button color="primary" *ngIf="!(auth.user$ | async)" routerLink="/sign"><mat-icon>account_circle</mat-icon></a>
-
-  <ng-container *ngIf="auth.user$ | async as mine">
-  <a mat-icon-button color="primary" [matMenuTriggerFor]="userDO" ><mat-icon>person_pin</mat-icon></a>
-  <mat-menu #userDO="matMenu" overlapTrigger="true">
-    <div style="max-height: 300px; overflow-y: auto;">
-    <button mat-menu-item routerLink="/user/my-contact-info"><mat-icon>manage_accounts</mat-icon> <b>My Account</b></button>
-    <button mat-menu-item routerLink="/user/manage"><mat-icon>account_balance</mat-icon> <b>Manage Payments</b></button>
-    <a mat-menu-item href="https://ads.islesys.com" target="_"><mat-icon>local_activity</mat-icon> <b>Advertsing Here</b></a>
-    <a mat-menu-item href="https://islesys.com/influencers" target="_"><mat-icon>manage_history</mat-icon> <b>Influencer Program</b></a>
-    <button mat-menu-item (click)="sign.signOut()"><mat-icon>logout</mat-icon> <b>Sign Out</b></button>
-    </div>
-  </mat-menu>
-  </ng-container>
-  <!-- <a mat-icon-button color="primary" *ngIf="!(auth.user$ | async)" routerLink="/sign"><mat-icon>logout</mat-icon></a> -->
+  <a mat-icon-button *ngIf="(auth.user$ | async)" color="primary" (click)="menuShow = !menuShow; clickS();"><mat-icon>star</mat-icon></a>
+  <a mat-stroked-button *ngIf="!(auth.user$ | async)" class="dFont" routerLink="/sign">Sign</a>
   </div>
 </header>
 
@@ -125,7 +96,7 @@ true
     true ? '10vh' : '0vh')
     + ';' ">
 
-      <button mat-icon-button *ngIf="
+      <ng-container *ngIf="
       !resource.router.url.includes( '/influencers' ) &&
       !resource.router.url.includes( '/who-we-are' ) &&
       !resource.router.url.includes( '/file-a-bug' ) &&
@@ -139,8 +110,12 @@ true
       !resource.router.url.includes( '/opensource-font/' ) &&
       !resource.router.url.includes( '/shades-of-color/' ) &&
       !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
-      true "
-      (click)="menuShow = !menuShow; clickS();"><mat-icon>star</mat-icon></button>
+      true ">
+      <ng-container *ngIf="auth.user$ | async as mine">
+      <a mat-icon-button [matMenuTriggerFor]="userDO" ><mat-icon>person_pin</mat-icon></a>
+      </ng-container>
+      </ng-container>
+
 
       <button mat-icon-button *ngIf="
       resource.router.url.includes( '/influencers' ) ||
@@ -178,7 +153,7 @@ true
     <div class="menus" >
 
       <nav class="b_growth">
-        <div class="sqLogo b_white" [class.sqLogoANIM]="logoScroll">
+        <div class="sqLogo b_white" routerLink="/explore" [class.sqLogoANIM]="logoScroll || !resource.router.url.includes( '/explore' )">
           <img src="assets/logoSquare.png" />
         </div>
 
@@ -279,7 +254,9 @@ true
     </div>
   </mat-sidenav>
   <mat-sidenav-content class="centerNav">
-    <div class="navigator">
+    <div class="navigator" [style]=" 
+    resource.router.url.includes( '/explore' ) &&
+    true ? 'margin: 0 auto 48px auto;':'margin: 0 auto 0 auto;' ">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
@@ -290,7 +267,9 @@ true
 
 
 
-<div  class="footer">
+<div  class="footer" *ngIf=" 
+resource.router.url.includes( '/explore' ) &&
+true ">
   <div class="able textL">
     <button mat-button (click)="hideTop = !hideTop" class="leftArrow c_white"><mat-icon>{{!hideTop ? 'expand_more':'pin_end'}}</mat-icon></button>
     <span class="divide"></span>
@@ -355,11 +334,11 @@ true
                   <li><a class="addr" href="#">Islesys Ltd. Amsterdam 1012.<br>Netherlands, EU.</a></li> -->
                   <li><a class="addr" href="#">ISLESYS LLC. Wilmington 19880.<br>Delaware, USA.</a></li>
                   <li class="c_white">
-                    <mat-icon>apartment</mat-icon>Huston 
-                    <mat-icon>apartment</mat-icon>Amsterdam 
-                    <mat-icon>apartment</mat-icon>Mumbai
-                    <mat-icon>apartment</mat-icon>Singapore
-                    <mat-icon>apartment</mat-icon>Lausanne
+                    <span> &nbsp; <mat-icon>apartment</mat-icon>Huston</span>
+                    <span> &nbsp; <mat-icon>apartment</mat-icon>Amsterdam</span><br>
+                    <span> &nbsp; <mat-icon>apartment</mat-icon>Lausanne</span>
+                    <span> &nbsp; <mat-icon>apartment</mat-icon>Mumbai</span><br>
+                    <span> &nbsp; <mat-icon>apartment</mat-icon>Singapore</span>
                   </li>
               </ul>
           </div>
@@ -368,6 +347,8 @@ true
   </div>
 </footer>
 </div>
+
+
 
 
 <mat-menu #langz="matMenu" overlapTrigger="true">

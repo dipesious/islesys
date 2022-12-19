@@ -18,6 +18,8 @@ admin.initializeApp(enviroment.firebaseConfig);
 // const stripe = require('stripe')(enviroment.STRIPE_Secret_key);
 
 
+const routeVideos = require('./routes/routeVideos');
+const routeCodes = require('./routes/routeCodes');
 const routePayments = require('./routes/routePayments');
 const routeSES = require('./routes/routeSES');
 const routeSMS = require('./routes/routeSMS');
@@ -31,6 +33,8 @@ const routeSNS = require('./routes/routeSNS');
 // const YOUR_CLIENT = enviroment.production ? enviroment.YOUR_CLIENT_PROD : enviroment.YOUR_CLIENT;
 
 
+app.use('/api/videos', routeVideos);
+app.use('/api/codes', routeCodes);
 app.use('/api/payments', routePayments);
 app.use('/api/SES', routeSES);
 app.use('/api/SMS', routeSMS);
@@ -152,3 +156,336 @@ exports.server_global = functions
 // //   functions.logger.info("Hello logs!", {structuredData: true});
 //   response.send(app);
 // });
+
+
+  exports.createUsers = functions.firestore.document('users/{uid}').onCreate((change, context) => {
+
+        // Get an object with the current document value.
+        // If the document does not exist, it has been deleted.
+        const document = change.after.exists ? change.after.data() : null;
+  
+        // Get an object with the previous document value (for update or delete)
+        const oldDocument = change.before.data(); //WONT EXIST
+  
+        const uid = context?.params?.uid;
+        let user = document;
+  
+        // functions.logger.log("Mega: ", document, oldDocument, uid);
+        if(!user || user.iCodeSet){
+          return; 
+        }else{
+
+          const options = {
+            method: 'POST',
+            uri: `https://islesys.com/api/codes/sendCode/IN`,
+            // uri: `http://localhost:5001/refr-india/us-central1/ind_serve/api/codes/sendCode/IN`,
+            body: {
+                type: "xUser"
+            },
+            json: true
+        };
+  
+        return request(options).then(function(parsedBody) {
+            if( !parsedBody || !parsedBody.data || !parsedBody.data.code ){
+                return;
+            }else{
+                return parsedBody.data.code;
+            }
+        }).then(newCode => {
+            if(!newCode){
+                return;
+            }else{
+                return change.after.ref.update({ 
+                  search:getSearch("ABC"),
+
+                  iCodeSet: true, 
+                  iCode: newCode,
+                })
+            }
+        })
+        
+    }
+  });
+
+  function getSearch(x){
+    return [x];
+  }
+
+
+
+  exports.createWalt = functions.firestore.document('walt/{id}').onCreate((change, context) => {
+
+        // Get an object with the current document value.
+        // If the document does not exist, it has been deleted.
+        const document = change.after.exists ? change.after.data() : null;
+  
+        // Get an object with the previous document value (for update or delete)
+        const oldDocument = change.before.data(); //WONT EXIST
+  
+        const id = context?.params?.id;
+        let user = document;
+  
+        // functions.logger.log("Mega: ", document, oldDocument, uid);
+        if(!user || user.iCodeSet){
+          return; 
+        }else{
+
+          const options = {
+            method: 'POST',
+            uri: `https://islesys.com/api/codes/sendCode/IN`,
+            // uri: `http://localhost:5001/refr-india/us-central1/ind_serve/api/codes/sendCode/IN`,
+            body: {
+                type: "xBill"
+            },
+            json: true
+        };
+  
+        return request(options).then(function(parsedBody) {
+            if( !parsedBody || !parsedBody.data || !parsedBody.data.code ){
+                return;
+            }else{
+                return parsedBody.data.code;
+            }
+        }).then(newCode => {
+            if(!newCode){
+                return;
+            }else{
+                return change.after.ref.update({ 
+                    iCodeSet: true, 
+                    iCode: newCode 
+                })
+            }
+        })
+        
+    }
+  });
+  exports.createWaltICONWHO = functions.firestore.document('waltICONWHO/{id}').onCreate((change, context) => {
+
+        // Get an object with the current document value.
+        // If the document does not exist, it has been deleted.
+        const document = change.after.exists ? change.after.data() : null;
+  
+        // Get an object with the previous document value (for update or delete)
+        const oldDocument = change.before.data(); //WONT EXIST
+  
+        const id = context?.params?.id;
+        let user = document;
+  
+        // functions.logger.log("Mega: ", document, oldDocument, uid);
+        if(!user || user.iCodeSet){
+          return; 
+        }else{
+
+          const options = {
+            method: 'POST',
+            uri: `https://islesys.com/api/codes/sendCode/IN`,
+            // uri: `http://localhost:5001/refr-india/us-central1/ind_serve/api/codes/sendCode/IN`,
+            body: {
+                type: "xBill"
+            },
+            json: true
+        };
+  
+        return request(options).then(function(parsedBody) {
+            if( !parsedBody || !parsedBody.data || !parsedBody.data.code ){
+                return;
+            }else{
+                return parsedBody.data.code;
+            }
+        }).then(newCode => {
+            if(!newCode){
+                return;
+            }else{
+                return change.after.ref.update({ 
+                    iCodeSet: true, 
+                    iCode: newCode 
+                })
+            }
+        })
+        
+    }
+  });
+  exports.createWaltMAPWALE = functions.firestore.document('waltMAPWALE/{id}').onCreate((change, context) => {
+
+        // Get an object with the current document value.
+        // If the document does not exist, it has been deleted.
+        const document = change.after.exists ? change.after.data() : null;
+  
+        // Get an object with the previous document value (for update or delete)
+        const oldDocument = change.before.data(); //WONT EXIST
+  
+        const id = context?.params?.id;
+        let user = document;
+  
+        // functions.logger.log("Mega: ", document, oldDocument, uid);
+        if(!user || user.iCodeSet){
+          return; 
+        }else{
+
+          const options = {
+            method: 'POST',
+            uri: `https://islesys.com/api/codes/sendCode/IN`,
+            // uri: `http://localhost:5001/refr-india/us-central1/ind_serve/api/codes/sendCode/IN`,
+            body: {
+                type: "xBill"
+            },
+            json: true
+        };
+  
+        return request(options).then(function(parsedBody) {
+            if( !parsedBody || !parsedBody.data || !parsedBody.data.code ){
+                return;
+            }else{
+                return parsedBody.data.code;
+            }
+        }).then(newCode => {
+            if(!newCode){
+                return;
+            }else{
+                return change.after.ref.update({ 
+                    iCodeSet: true, 
+                    iCode: newCode 
+                })
+            }
+        })
+        
+    }
+  });
+  exports.createWaltISLESYS = functions.firestore.document('waltISLESYS/{id}').onCreate((change, context) => {
+
+        // Get an object with the current document value.
+        // If the document does not exist, it has been deleted.
+        const document = change.after.exists ? change.after.data() : null;
+  
+        // Get an object with the previous document value (for update or delete)
+        const oldDocument = change.before.data(); //WONT EXIST
+  
+        const id = context?.params?.id;
+        let user = document;
+  
+        // functions.logger.log("Mega: ", document, oldDocument, uid);
+        if(!user || user.iCodeSet){
+          return; 
+        }else{
+
+          const options = {
+            method: 'POST',
+            uri: `https://islesys.com/api/codes/sendCode/IN`,
+            // uri: `http://localhost:5001/refr-india/us-central1/ind_serve/api/codes/sendCode/IN`,
+            body: {
+                type: "xBill"
+            },
+            json: true
+        };
+  
+        return request(options).then(function(parsedBody) {
+            if( !parsedBody || !parsedBody.data || !parsedBody.data.code ){
+                return;
+            }else{
+                return parsedBody.data.code;
+            }
+        }).then(newCode => {
+            if(!newCode){
+                return;
+            }else{
+                return change.after.ref.update({ 
+                    iCodeSet: true, 
+                    iCode: newCode 
+                })
+            }
+        })
+        
+    }
+  });
+  exports.createWaltFRYCOLD = functions.firestore.document('waltFRYCOLD/{id}').onCreate((change, context) => {
+
+        // Get an object with the current document value.
+        // If the document does not exist, it has been deleted.
+        const document = change.after.exists ? change.after.data() : null;
+  
+        // Get an object with the previous document value (for update or delete)
+        const oldDocument = change.before.data(); //WONT EXIST
+  
+        const id = context?.params?.id;
+        let user = document;
+  
+        // functions.logger.log("Mega: ", document, oldDocument, uid);
+        if(!user || user.iCodeSet){
+          return; 
+        }else{
+
+          const options = {
+            method: 'POST',
+            uri: `https://islesys.com/api/codes/sendCode/IN`,
+            // uri: `http://localhost:5001/refr-india/us-central1/ind_serve/api/codes/sendCode/IN`,
+            body: {
+                type: "xBillFRYCOLD"
+            },
+            json: true
+        };
+  
+        return request(options).then(function(parsedBody) {
+            if( !parsedBody || !parsedBody.data || !parsedBody.data.code ){
+                return;
+            }else{
+                return parsedBody.data.code;
+            }
+        }).then(newCode => {
+            if(!newCode){
+                return;
+            }else{
+                return change.after.ref.update({ 
+                    iCodeSet: true, 
+                    iCode: newCode 
+                })
+            }
+        })
+        
+    }
+  });
+  exports.createWaltAIMTERA = functions.firestore.document('waltAIMTERA/{id}').onCreate((change, context) => {
+
+        // Get an object with the current document value.
+        // If the document does not exist, it has been deleted.
+        const document = change.after.exists ? change.after.data() : null;
+  
+        // Get an object with the previous document value (for update or delete)
+        const oldDocument = change.before.data(); //WONT EXIST
+  
+        const id = context?.params?.id;
+        let user = document;
+  
+        // functions.logger.log("Mega: ", document, oldDocument, uid);
+        if(!user || user.iCodeSet){
+          return; 
+        }else{
+
+          const options = {
+            method: 'POST',
+            uri: `https://islesys.com/api/codes/sendCode/IN`,
+            // uri: `http://localhost:5001/refr-india/us-central1/ind_serve/api/codes/sendCode/IN`,
+            body: {
+                type: "xBillAIMTERA"
+            },
+            json: true
+        };
+  
+        return request(options).then(function(parsedBody) {
+            if( !parsedBody || !parsedBody.data || !parsedBody.data.code ){
+                return;
+            }else{
+                return parsedBody.data.code;
+            }
+        }).then(newCode => {
+            if(!newCode){
+                return;
+            }else{
+                return change.after.ref.update({ 
+                    iCodeSet: true, 
+                    iCode: newCode 
+                })
+            }
+        })
+        
+    }
+  });
