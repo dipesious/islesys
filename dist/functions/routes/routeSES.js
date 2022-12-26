@@ -30,7 +30,10 @@ const transporter = nodemailer.createTransport({
 
 routeSES.post("/sendSES/:countryCode",(req, res) => { // Route for ...
     console.log(" I AM HIT")
-    if(!req.params.countryCode || !req.body.email || !req.body.mes){
+    if(!req.params.countryCode || 
+      !req.body.to ||
+      !req.body.sub || !req.body.txt
+      ){
         res.json({ 
             success:false, status:200, //http
             code:errors.Forbidden, //route
@@ -38,12 +41,13 @@ routeSES.post("/sendSES/:countryCode",(req, res) => { // Route for ...
         });
     }else{
         const mailOptions = {
-          from: 'no-reply@getrefr.in',
-          to: req.body.email,
-          subject: 'Sending Email using Node.js',
-          text: req.body.mes
+          from: req.body.by || 'no-reply@islesys.com',
+          to: req.body.to,
+          subject: req.body.sub,
+          text: req.body.txt
         };
-
+        res.json({success:true})
+/*
 transporter.sendMail(mailOptions, function(error, info){
   if (error) {
     console.log(error);        
@@ -61,7 +65,7 @@ transporter.sendMail(mailOptions, function(error, info){
     });
   }
 });
-
+*/
     }
 });
 

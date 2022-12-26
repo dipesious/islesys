@@ -7,12 +7,45 @@ const express = require('express');
 // const bodyParser = require('body-parser')
 const cors = require('cors');
 const enviroment = require("./env");
+
 const app = express();
 app.use(cors({ origin: true }));
+
+const server = express();
+server.use(cors({ origin: true }));
 
 // Your web app's Firebase configuration
 admin.initializeApp(enviroment.firebaseConfig);
 
+
+server.all('**', (req, res) => {
+  console.log('Hello Brother!', req.body)
+  const x = {
+      path:req.path || null,
+      // host:req.host || null,
+      hostURL: req.headers.host || null,
+      hostname: req.hostname || null,
+      // headers: req.headers || null,
+      // baseUrl: req.baseUrl || null,
+      originalUrl: req.originalUrl || null,
+      // body: req.body
+    }
+
+    return admin.firestore().collection('mails').add(x).then(() => {
+      // res.json({ 
+      //     success:true, status:200, //http
+      //     // code:errors.Forbidden, //route
+      //     data:null, info:"OK"
+      // });
+      res.json({success:true, status:200, info:x });
+    })
+})
+
+exports.mails = functions
+    .region('us-central1')
+    .runWith({})
+    .https
+    .onRequest(server);
 
 // This is your test secret API key.
 // const stripe = require('stripe')(enviroment.STRIPE_Secret_key);
@@ -39,6 +72,7 @@ app.use('/api/payments', routePayments);
 app.use('/api/SES', routeSES);
 app.use('/api/SMS', routeSMS);
 app.use('/api/SNS', routeSNS);
+
 
 
 app.get('/', (req, res) => {
