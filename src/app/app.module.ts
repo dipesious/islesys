@@ -77,6 +77,7 @@ import { ReferComponent } from './components/user/refer/refer.component';
 import { FontDemoComponent } from './components/app-os/list-fonts/font-demo/font-demo.component';
 import { AdvertComponent } from './placeholders/advert/advert.component';
 import { AboutComponent } from './components/manage/about/about.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
 
 //import { ScrollingModule } from '@angular/cdk/scrolling';
 
@@ -126,7 +127,8 @@ import { AboutComponent } from './components/manage/about/about.component';
     ReferComponent,
     FontDemoComponent,
     AdvertComponent,
-    AboutComponent
+    AboutComponent,
+    ProfileComponent
   ],
   imports: [
     //ScrollingModule,

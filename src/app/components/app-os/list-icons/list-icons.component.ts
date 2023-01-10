@@ -165,7 +165,9 @@ export class ListIconsComponent implements OnInit, OnDestroy {
       this.page.toneX = tone;
   
 
-      this.auth.getAllICON(name, fill, tone)/*.pipe(take(1))*/.subscribe((values:any[]) => {
+      this.auth.getAllICON(name //, fill, tone
+        ).pipe(take(1)).subscribe((values:any[]) => {
+        console.log("M", name, fill, tone, values)
         this.iconList$ = of(values)
         // this.options = [];
         // for (let i = 0; i < values.length; i++) {

@@ -50,7 +50,7 @@
                 <div class="card">
                 <div class="ridge">
                     <img [src]=" 'assets/products/' + x.img" [alt]="x.name"/>
-                    <div class="about dFont">{{x.name}}</div>
+                    <div class="about dFont">{{x.name}}<span class="flags" *ngIf="x.flags">{{x.flags}}</span></div>
                 </div>
                 </div>
             </div>

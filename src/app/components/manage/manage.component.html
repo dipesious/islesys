@@ -1,7 +1,7 @@
 
       <mat-menu #userDO="matMenu" overlapTrigger="true">
         <div style="max-height: 300px; overflow-y: auto;">
-        <a mat-menu-item href="https://frycold.com/my-identity"><mat-icon>manage_accounts</mat-icon> <b>My Account</b></a>
+        <button mat-menu-item routerLink="/user/profile"><mat-icon>manage_accounts</mat-icon> <b>My Account</b></button>
         <button mat-menu-item routerLink="/user/manage"><mat-icon>account_balance</mat-icon> <b>Islesys Membership</b></button>
         <a mat-menu-item href="https://ads.islesys.com" target="_"><mat-icon>local_activity</mat-icon> <b>Advertsing Here</b></a>
         <a mat-menu-item href="https://islesys.com/influencers" target="_"><mat-icon>manage_history</mat-icon> <b>Influencer Program</b></a>
@@ -159,10 +159,8 @@ true
 
 
         <a *ngFor="let x of navLinks"
-        [style]=" 'padding: ' + ( resource.getWidth > 767 ? '0 24px;' : '0 16px;') " 
-        
-           [routerLink]="x.path"
-           [class.active]=" activeME(x.path) ">
+        [style]=" 'padding: ' + ( resource.getWidth > 767 ? '0 24px;' : '0 16px;') "
+        [routerLink]="x.path" [class.active]=" activeME(x.path) ">
            <mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span>
         </a>
       </nav>
@@ -174,21 +172,6 @@ true
     <div class="spread"></div>
     <div class="types">
     <ul>
-<!--
-      !resource.router.url.includes( '/influencers' ) &&
-      !resource.router.url.includes( '/who-we-are' ) &&
-      !resource.router.url.includes( '/file-a-bug' ) &&
-      
-      !resource.router.url.includes( '/free-icon/' ) &&
-      !resource.router.url.includes( '/edit-map/' ) &&
-      !resource.router.url.includes( '/each-dataset/' ) &&
-      !resource.router.url.includes( '/view-palette/' ) &&
-      !resource.router.url.includes( '/view-gradient/' ) &&
-      !resource.router.url.includes( '/view-pattern/' ) &&
-      !resource.router.url.includes( '/opensource-font/' ) &&
-      !resource.router.url.includes( '/shades-of-color/' ) &&
-      !resource.router.url.includes( '/Periodic-Table-of-Elements' ) &&
--->
 
       <ng-container *ngIf="
       resource.router.url.includes( '/explore' ) ||
@@ -200,7 +183,8 @@ true
       resource.router.url.includes( '/shades' ) ||
       false
       ">
-        <li *ngFor="let x of resource.navOpensource"><a mat-button [matTooltip]="x.name" matTooltipPosition="after" [routerLink]="x.path" routerLinkActive="active"><mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span></a></li>
+        <li *ngFor="let x of resource.navOpensource"><a mat-button [matTooltip]="x.name" matTooltipPosition="after" 
+          [routerLink]="x.path" [class.active]=" x.path == resource.router.url " ><mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span></a></li>
       </ng-container>
       
       <ng-container *ngIf="
@@ -213,8 +197,10 @@ true
       resource.router.url.includes( '/flags-and-seals' ) ||
       false
       ">
-        <li *ngFor="let x of navICONS"><a mat-button [matTooltip]="x.name" matTooltipPosition="after" [routerLink]="x.path" routerLinkActive="active"><mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span></a></li>
+        <li *ngFor="let x of navICONS"><a mat-button [matTooltip]="x.name" matTooltipPosition="after" 
+          [routerLink]="x.path" [class.active]=" x.path == resource.router.url "><mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span></a></li>
       </ng-container>
+
       <ng-container *ngIf="
       resource.router.url.includes( '/maps' ) ||
       resource.router.url.includes( '/electoral-maps' ) ||
@@ -222,7 +208,8 @@ true
       resource.router.url.includes( '/historical-maps' ) ||
       false
       ">
-        <li *ngFor="let x of navMAPS"><a mat-button [matTooltip]="x.name" matTooltipPosition="after" [routerLink]="x.path" routerLinkActive="active"><mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span></a></li>
+        <li *ngFor="let x of navMAPS"><a mat-button [matTooltip]="x.name" matTooltipPosition="after" 
+          [routerLink]="x.path" [class.active]=" x.path == resource.router.url "><mat-icon>{{x.icon}}</mat-icon><span class="title dFont">&nbsp;{{x.name}}</span></a></li>
       </ng-container>
 
       
@@ -241,13 +228,11 @@ true
         <li>
           <a mat-button (click)="resource.modeBgFc = !resource.modeBgFc"><mat-icon>{{!resource.modeBgFc ? 'format_color_fill':'format_paint'}}</mat-icon><span class="title dFont">&nbsp;Invert Mode</span></a>
         </li>
-        
         <li *ngFor="let c of iconicColors"><a mat-button
             (click)=" setIconColor(c.id) " 
             [class]="c.id" [matTooltip]="c.name" matTooltipPosition="after" ><mat-icon
             [class.c_black]=" resource.modeBgFc && resource.fgColor == c.id || !resource.modeBgFc && resource.bgColor == c.id " 
             >{{resource.modeBgFc ? 'format_color_fill':'format_paint'}}</mat-icon><span class="title dFont">&nbsp;{{c.name}}</span></a></li>
-
       </ng-container>
 
     </ul>
@@ -334,11 +319,12 @@ true ">
                   <li><a class="addr" href="#">Islesys Ltd. Amsterdam 1012.<br>Netherlands, EU.</a></li> -->
                   <li><a class="addr" href="#">ISLESYS LLC. Wilmington 19880.<br>Delaware, USA.</a></li>
                   <li class="c_white">
-                    <span> &nbsp; <mat-icon>apartment</mat-icon>Huston</span>
+                    <span><mat-icon>navigation</mat-icon> Houston | Mumbai | Lausanne</span>
+                    <!-- <span> &nbsp; <mat-icon>apartment</mat-icon>Houston</span>
                     <span> &nbsp; <mat-icon>apartment</mat-icon>Amsterdam</span><br>
-                    <span> &nbsp; <mat-icon>apartment</mat-icon>Lausanne</span>
-                    <span> &nbsp; <mat-icon>apartment</mat-icon>Mumbai</span><br>
-                    <span> &nbsp; <mat-icon>apartment</mat-icon>Singapore</span>
+                    <span> &nbsp; <mat-icon>apartment</mat-icon>Mumbai</span>
+                    <span> &nbsp; <mat-icon>apartment</mat-icon>Lausanne</span><br>
+                    <span> &nbsp; <mat-icon>apartment</mat-icon>Singapore</span> -->
                   </li>
               </ul>
           </div>
@@ -353,7 +339,7 @@ true ">
 
 <mat-menu #langz="matMenu" overlapTrigger="true">
   <div style="max-height: 300px; overflow-y: auto;">
-  <button mat-menu-item *ngFor="let l of lang" [class.c_warn]=" resource.xLang == l.code " (click)=" resource.xLang = l.code "><mat-icon>{{ resource.xLang !== l.code ? 'check_box_outline_blank':'check_box'}}</mat-icon> <b>{{l.name}}</b></button>
+    <button mat-menu-item *ngFor="let l of lang" [class.c_warn]=" resource.xLang == l.code " (click)=" resource.xLang = l.code "><mat-icon [class.c_warn]=" resource.xLang == l.code ">{{ resource.xLang !== l.code ? 'check_box_outline_blank':'check_box'}}</mat-icon>{{l.name}}</button>
   </div>
 </mat-menu>
 

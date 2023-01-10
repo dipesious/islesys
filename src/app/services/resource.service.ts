@@ -9,25 +9,30 @@ import {Clipboard} from '@angular/cdk/clipboard';
 })
 export class ResourceService {
 
+  inr = 82.83;
+  eur = 0.94;
+  usd = 1.00; // defualt
+  rub = 75.00;
+
   cartList = [
-    {id:'price_1LuTMaENE7uabJh2F2h4YBiO', name:"Startup Community", way:"79 First Year then $99", price:99, cost:79,  
-    priceINR:8204, costINR:6549,  
-    priceEUR:102, costEUR:82, 
-    priceUSD:99, costUSD:79,
-    priceRUB:5956, costRUB:4753,
+    {id:'price_1LuTMaENE7uabJh2F2h4YBiO', name:"Startup Community", way:(29).toFixed(2)+" First Year then $49", price:49, cost:29,  
+    priceINR:((this.usd * this.inr)*49), costINR:((this.usd * this.inr)*29),  
+    priceEUR:((this.usd * this.eur)*49), costEUR:((this.usd * this.eur)*29), 
+    priceUSD:49, costUSD:29,
+    priceRUB:((this.usd * this.rub)*49), costRUB:((this.usd * this.rub)*29),
     during:"1 Year", days:365 },
-    {id:'price_1LuTPKENE7uabJh2rrXnRV5u', name:"Pledged Community", way:"33/year Pledged for 3 Years", price:297, cost:99, 
-    priceINR:24623, costINR:8204, 
-    priceEUR:305, costEUR:102, 
-    priceUSD:297, costUSD:99, 
-    priceRUB:17867, costRUB:5956,
+    {id:'price_1LuTPKENE7uabJh2rrXnRV5u', name:"Pledged Community", way:(79/3).toFixed(2)+"/year Pledged for 3 Years", price:(49*3), cost:79, 
+    priceINR:((this.usd * this.inr)*(49*3)), costINR:((this.usd * this.inr)*79), 
+    priceEUR:((this.usd * this.eur)*(49*3)), costEUR:((this.usd * this.eur)*79), 
+    priceUSD:(49*3), costUSD:79, 
+    priceRUB:((this.usd * this.rub)*(49*3)), costRUB:((this.usd * this.rub)*79),
     during:"3 Year", days:(365*3) },
-    {id:'price_1LuTQrENE7uabJh2aYyTOtfT', name:"Prepaid Enterprise", way:"49/month Prepaid Subscription", price:49, cost:49, 
-    priceINR:4003, costINR:4003, 
-    priceEUR:48, costEUR:48, 
-    priceUSD:49, costUSD:49, 
-    priceRUB:2948, costRUB:2948,
-    during:"Monthly", days:30 },
+    {id:'price_1LuTQrENE7uabJh2aYyTOtfT', name:"Prepaid Enterprise", way:(79/12).toFixed(2)+"/month Prepaid Subscription", price:79, cost:79, 
+    priceINR:((this.usd * this.inr)*79), costINR:((this.usd * this.inr)*79), 
+    priceEUR:((this.usd * this.eur)*79), costEUR:((this.usd * this.eur)*79), 
+    priceUSD:79, costUSD:79, 
+    priceRUB:((this.usd * this.rub)*79), costRUB:((this.usd * this.rub)*79),
+    during:"1 year", days:30 },
   ]
   
   videoEducation = "assets/videos/education.mp4";
@@ -395,13 +400,15 @@ export class ResourceService {
     "Link",
     "Magnet",
     "Location",
-    
     "Chart",
     "Sports",
     "Card",
     "Currency",
     "Food",
     "Brand",
+
+    "Flags",
+    "Seals",
   ];
   
   colorz = [
@@ -709,7 +716,11 @@ export class ResourceService {
     { title:"Mercator - World map" , id:"KCchYPIYgNMqfARGXgGB", area:["world"] },
     { title:"Mercator - World map detailed" , id:"2UXXeYYQz6Vg9PLrQNdi", area:["world"] },
     { title:"Mercator Pacific - World map" , id:"JMIFHJ14U0Mtr93JTfOK", area:["world"] },
-    { title:"Globe Pacific - World map" , id:"wZZYVnjusfPpcAneEfzL" },
+    { title:"Globe Pacific - World map" , id:"wZZYVnjusfPpcAneEfzL", area:["world"] },
+    { title:"World map (India)" , id:"", area:["world"] },
+    { title:"World map detailed (India)" , id:"", area:["world"] },
+    { title:"Mercator Pacific - World (India)" , id:"", area:["world"] },
+    { title:"Globe Pacific - World (India)" , id:"", area:["world"] },
     { title:"Africa", id:"lAGGD1HIzbcpS1aB5K8L", area:["africa"] },
     { title:"Africa Detailed", id:"z5z8j4nDFJpAGNjTlOQF", area:["africa"] },
     { title:"Caribbean", id:"DzxsjXB0W03vxIZU9Ix1", area:["americas"] },
@@ -859,7 +870,9 @@ export class ResourceService {
     {title:"North Korea", id:"Z0QyDlPCj9UNrPDTEChR", area:["eastAsia"] },
     {title:"Norway", id:"VbQvePlrdcjluE1Fpddg" },
     {title:"Oman", id:"Z3KQktXL68WH1ZsD9Sm5" },
-    {title:"Pakistan", id:"SgglB2nHgn1qSI7ESZ52", area:["southAsia"] },
+    {title:"Pakistan (PoJ&K+Ldk)", id:"SgglB2nHgn1qSI7ESZ52", area:["southAsia"] },
+    {title:"Pakistan (India)", id:"", area:["southAsia"] },
+    {title:"Palestine (Afghan)", id:"" },
     {title:"Palestine", id:"fr1yg6lNTZgxAqBAAnFO" },
     {title:"Panama", id:"yrl7qzffRvrxwktkqMLF" },
     {title:"Papua New Guinea", id:"tvn804FYRAtHpiZVlY4m" },

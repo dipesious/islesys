@@ -30,6 +30,7 @@ import { ListShadesComponent } from './components/app-os/list-shades/list-shades
 import { DownloadShadeComponent } from './components/app-os/list-shades/download-shade/download-shade.component';
 import { ReferComponent } from './components/user/refer/refer.component';
 import { AboutComponent } from './components/manage/about/about.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
 
 const routes: Routes = [
 
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path:'user', component: UserComponent, children:[
     {path:'', redirectTo:'/manage', pathMatch:"full"},
     {path:'manage', component: RegistryComponent},
+    {path:'profile', component: ProfileComponent},
   ]},
 
   {path:'', component: ManageComponent, children:[
@@ -61,12 +63,12 @@ const routes: Routes = [
     {path:'animated-icons', component: ListIconsComponent},
     {path:'flags-and-seals', component: ListIconsComponent},
     {path:'icons/:name', component: ListIconsComponent},
-    {path:'outline-icons/:name', component: ListIconsComponent},
-    {path:'filled-icons/:name', component: ListIconsComponent},
-    {path:'duotone-icons/:name', component: ListIconsComponent},
-    {path:'vibrant-icons/:name', component: ListIconsComponent},
-    {path:'animated-icons/:name', component: ListIconsComponent},
-    {path:'flags-and-seals/:name', component: ListIconsComponent},
+    // {path:'outline-icons/:name', component: ListIconsComponent},
+    // {path:'filled-icons/:name', component: ListIconsComponent},
+    // {path:'duotone-icons/:name', component: ListIconsComponent},
+    // {path:'vibrant-icons/:name', component: ListIconsComponent},
+    // {path:'animated-icons/:name', component: ListIconsComponent},
+    // {path:'flags-and-seals/:name', component: ListIconsComponent},
 
     {path:'maps', component: ListMapsComponent},
     {path:'electoral-maps', component: ListMapsComponent},

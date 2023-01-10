@@ -15,7 +15,7 @@ const razorpay = new Razorpay({
 // This is your test secret API key.
 const stripe = require('stripe')(enviroment.STRIPE_Secret_key);
 
-const YOUR_DOMAIN = enviroment.production ? enviroment.YOUR_DOMAIN_PROD : enviroment.YOUR_DOMAIN;
+// const YOUR_DOMAIN = enviroment.production ? enviroment.YOUR_DOMAIN_PROD : enviroment.YOUR_DOMAIN;
 const YOUR_CLIENT = enviroment.production ? enviroment.YOUR_CLIENT_PROD : enviroment.YOUR_CLIENT;
 
 const admin = require('firebase-admin');
@@ -74,7 +74,7 @@ routePayments.get('/failure-stripe/:id', (req, res) => {
   }
 })
 
-
+/*
 routePayments.post(`/create-stripe-payment/:countryCode`, async (req, res) => {
     if(!req.params.countryCode || 
       !req.body.id || !req.body.by || 
@@ -139,82 +139,14 @@ routePayments.post(`/create-stripe-payment/:countryCode`, async (req, res) => {
       });
     }
 
-      /*
-      let buildDATA = {
-        custID:"",
-      }
-      try{
-        const customer = await stripe.customers.create({
-          email:req.body.email,
-          name:req.body.name,
-          description:req.body.description,
-          // xxx:"xxx",
-        });
-        buildDATA.custID = customer.id;
-
-        if(!customer.id){
-            res.json({ 
-                success:false, status:200, //http
-                // code:errors.Forbidden, //route
-                data:null, info:"Unable to get Customer ID"
-            });
-        }else{
-          // const paymentIntent = await stripe.paymentIntents.create({
-          //   customer: customer.id,
-          //   setup_future_usage: 'off_session',
-          //   amount: 1099,
-          //   currency: 'usd',
-          //   automatic_payment_methods: {
-          //     enabled: true,
-          //   },
-          // });
-          // const paymentIntentRESIVE = await stripe.paymentIntents.retrieve(
-          //   paymentIntent.id
-          // );
-
-          // res.render('checkout', { client_secret: paymentIntent.client_secret });
-          res.json({ 
-              success:true, status:200, //http
-              // code:errors.Forbidden, //route
-              data:customer, info:"OK"
-          });
-        }
-          // res.json({ 
-          //     success:true, status:200, //http
-          //     // code:errors.Forbidden, //route
-          //     data:paymentIntent.client_secret, info:"Please post valid data"
-          // });
-
-    
-        // if(!paymentIntentCREATE.id){
-        //   res.json({ 
-        //       success:false, status:200, //http
-        //       // code:errors.Forbidden, //route
-        //       data:paymentIntentCREATE, info:"Please post valid data"
-        //   });
-        // }else{
-        //   res.json({ 
-        //       success:true, status:200, //http
-        //       // code:errors.Forbidden, //route
-        //       data:null, info:"Please post valid data"
-        //   });
-        // }
-      }catch(err){
-        res.json({ 
-            success:false, status:200, //http
-            // code:errors.Forbidden, //route
-            data:err, info:"Please post valid data"
-        });
-      }
-      */
     }
   });
+*/
 
 
 
 
-
-
+/*
 
   routePayments.post(`/create-razorpay-payment/:countryCode`, async (req, res) => {
     if( !req.params.countryCode || !req.body.type ||
@@ -272,8 +204,8 @@ if(req.body.repeat){
               order_id: MyOrder['id'],
               key: key_id,
 
-              name: req.body.name || "Refr Tech", // To Name
-              description: req.body.description || "Payment to Refr",
+              name: req.body.name || "Company", // To Name
+              description: req.body.description || "Payment to Company",
 
 
               prefill: {
@@ -282,9 +214,7 @@ if(req.body.repeat){
                   email: req.body.userData.email ? req.body.userData.email : null
               },
               theme: { color: req.body.theme || "#000000" },
-              /*
-                      // notes: [{ useWallet: req.body.useWallet }],
-              */
+
 
               success: true,
               status: 200,
@@ -331,8 +261,8 @@ if(req.body.repeat){
               order_id: MyOrder['id'],
               key: key_id,
 
-              name: req.body.name || "Refr Tech", // To Name
-              description: req.body.description || "Payment to Refr",
+              name: req.body.name || "Company", // To Name
+              description: req.body.description || "Payment to Company",
 
 
               prefill: {
@@ -341,9 +271,7 @@ if(req.body.repeat){
                   email: req.body.userData.email ? req.body.userData.email : null
               },
               theme: { color: req.body.theme || "#000000" },
-              /*
-                      // notes: [{ useWallet: req.body.useWallet }],
-              */
+
 
               success: true,
               status: 200,
@@ -369,7 +297,7 @@ if(req.body.repeat){
     }
   });
 
-
+*/
 
 
 

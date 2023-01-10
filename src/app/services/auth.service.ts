@@ -186,13 +186,15 @@ export class AuthService {
 
 
 
-  getAllICON(name:string, fill:string, tone:string){
+  getAllICON(name:string //, fill:string, tone:string
+    ){
     const cityRef = collection(this.fs, this.dbICONS);
     const qu = query(cityRef, 
       // where("active", "==", true),
-      where("fill", "==", fill),
-      where("tone", "==", tone),
-      where("name", "==", name),
+      // where("fill", "==", fill),
+      // where("tone", "==", tone),
+      // where("name", "==", name),
+      where("cat", "==", name),
       // orderBy("sin"), 
       limit(50)
     );

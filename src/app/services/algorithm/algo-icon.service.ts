@@ -121,7 +121,16 @@ if(cursor){
     //console.log("current ", current.length, this.query.prepend)
     const checkLink = this.resource.router.url;
     //console.log("checkLink", checkLink)
-    if (current.length && checkLink == '/icons') {
+    if (
+      current.length && checkLink == '/icons' ||
+      current.length && checkLink == '/outline-icons' ||
+      current.length && checkLink == '/filled-icons' ||
+      current.length && checkLink == '/duotone-icons' ||
+      current.length && checkLink == '/vibrant-icons' ||
+      current.length && checkLink == '/animated-icons' ||
+      current.length && checkLink == '/flags-and-seals' ||
+      false
+    ) {
       //console.log("current ", this.query.prepend, current[0], current[current.length - 1])
       return this.query.prepend ? current[0].docX : current[current.length - 1].docX
     }

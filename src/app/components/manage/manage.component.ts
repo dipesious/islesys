@@ -36,7 +36,7 @@ export class ManageComponent {
   ]
 
   navICONS = [
-    {name:'1M+ Icons List', path:'/icons', icon:'shape_line'},
+    // {name:'1M+ Icons List', path:'/icons', icon:'shape_line'},
     {name:'Outline', path:'/outline-icons', icon:'star_half'},
     {name:'Filled', path:'/filled-icons', icon:'star'},
     {name:'Duotone', path:'/duotone-icons', icon:'hotel_class'},

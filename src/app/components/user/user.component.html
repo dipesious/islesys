@@ -1,25 +1,27 @@
 <div class="nav">
     <ul>
-        <a mat-button routerLink="/explore" style="margin: 16px auto 8px auto; display:inline-block; width: 100%;"><mat-icon>{{'arrow_back'}}</mat-icon> Back to islesys.com</a>
-
-        <li>Manage Projects</li>
+        <span style="display: flex; align-items: center;">
+            <a mat-icon-button routerLink="/explore"><mat-icon>arrow_back</mat-icon></a> Explore &nbsp; <b>islesys[dot]com</b></span>
+        <!-- <li>Manage Projects</li> -->
         <li 
         [class.active]="resource.router.url.includes( '/user/manage' ) && x == activePayment" 
         *ngFor="let x of myPayments" routerLink="/user/manage">
             <mat-icon>shopping_bag</mat-icon> <a (click)="activePayment = x;">{{x.sin.toDate() | date}}</a><span class="status b_accent" *ngIf="depends.isExpired(x.done?.toDate(), x.days)">Expired</span></li>
-        <li><mat-icon>link</mat-icon> <a routerLink="/cart/upgrade-account">Get new Community pack</a></li>
+        <li><mat-icon>link</mat-icon> <a routerLink="/cart/upgrade-account">Get a Community pack</a></li>
 
-        <li>Manage Companies</li>
+        <!-- <li>Manage Companies</li> -->
         <li 
         [class.active]="resource.router.url.includes( '/user/manage' ) && x == activePayment" 
         *ngFor="let x of myPaymentsEnterprise" routerLink="/user/manage">
             <mat-icon>store</mat-icon> <a (click)="activePayment = x;">{{x.sin.toDate() | date}}</a><span class="status b_accent" *ngIf="depends.isExpired(x.done?.toDate(), x.days)">Need Action</span></li>
-        <li><mat-icon>link</mat-icon> <a routerLink="/cart/apply-for-enterprise">Get new Enterprise pack</a></li>
+        <li><mat-icon>link</mat-icon> <a routerLink="/cart/apply-for-enterprise">Get a Enterprise pack</a></li>
 
         <li>Advertise with Us</li>
-        <li><mat-icon>highlight</mat-icon> <a routerLink="">My Advertising</a></li>
-        <li><mat-icon>link</mat-icon> <a routerLink="/explore">Static Ads</a><span class="status b_growth">Coming Soon</span></li>
-        <li><mat-icon>link</mat-icon> <a routerLink="/explore">Dynamic Ads</a><span class="status b_growth">Coming Soon</span></li>
+        <!-- <li><mat-icon>highlight</mat-icon> <a routerLink="">My Advertising</a></li> -->
+        <li><mat-icon>link</mat-icon> <a routerLink="/explore">Static Ads</a></li>
+        <li><mat-icon>link</mat-icon> <a routerLink="/explore">Dynamic Ads</a></li>
+        <!-- <li><mat-icon>link</mat-icon> <a routerLink="/explore">Static Ads</a><span class="status b_growth">Coming Soon</span></li> -->
+        <!-- <li><mat-icon>link</mat-icon> <a routerLink="/explore">Dynamic Ads</a><span class="status b_growth">Coming Soon</span></li> -->
     </ul>
 </div>
 
@@ -27,7 +29,7 @@
     <div class="containerX">
 
         <div class="top-part">
-            <img src="assets/logoSign.png" />
+            <img src="assets/logo.png" />
         </div>
 
         <div class="bottom-part">
@@ -42,7 +44,7 @@ padding: 0;">
 {{!loading && resource.router.url.includes( '/user/my-profiles' ) && !activeProfiles ? 'You have no KYC docs!':''}}
 {{!loading && resource.router.url.includes( '/user/manage' ) && !activePayment ? 'You are on Private Pack!':''}}
 </p>
-
+            <app-profile *ngIf="resource.router.url.includes( '/user/profile' )" [mine]=" activeBio "></app-profile>
             <app-registry *ngIf="resource.router.url.includes( '/user/manage' )" [activePayment]=" activePayment "></app-registry>
         </div>
     </div>

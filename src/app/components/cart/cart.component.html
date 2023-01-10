@@ -38,7 +38,7 @@
             </div>
             <div class="td_item item_qty">
             <u *ngIf="x.price !== x.cost" style="text-decoration: line-through; width: 80px;">$ {{x.price}}</u> 
-            <label *ngIf="x.price !== x.cost">{{x.price - x.cost}} OFF</label>
+            <label *ngIf="x.price !== x.cost">{{(x.price - x.cost) | number:'1.0-0'}} OFF</label>
             <!-- <label *ngIf="x.price == x.cost">ထ Projects</label> -->
               <!-- <select>
                 <option value="1">Refundable</option>
@@ -49,7 +49,7 @@
               <label>{{x.during}}</label>
             </div>
             <div class="td_item item_price">
-              <label>$ {{x.cost}}</label>
+              <label>$ {{x.cost | number:'1.2-2'}}</label>
             </div>
             <div class="td_item item_remove">
                 <mat-icon class="c_warn">{{ x == cartPack ? 'check_box':'check_box_outline_blank'}}</mat-icon>

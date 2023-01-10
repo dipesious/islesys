@@ -19,8 +19,9 @@
         </div>
     </div>
 
-    <div style="margin: 16px 0;" class="textC">
-        <p *ngFor="let x of activePayment.lieList">{{x}}</p>
+    <div style="margin: 16px 0 16px 16px;" class="textL">
+        <p>Projects: <span *ngFor="let x of activePayment.lieList;let i=index;">{{x}}{{(i+1) == activePayment.lieList?.length ?'.':','}} </span>
+        <br>Licence# {{activePayment.id}}</p>
     </div>
     
     <div class="btn-section">

@@ -1,25 +1,48 @@
 module.exports = {
     production: true,
 
-    YOUR_DOMAIN: 'http://localhost:5001/islesys-79de1/us-central1/server_global',
+    // YOUR_DOMAIN: 'http://localhost:5001/islesys-79de1/us-central1/server_global',
     YOUR_CLIENT: 'http://localhost:4200',
 
-    YOUR_DOMAIN_PROD: 'http://islesys.com',
-    YOUR_CLIENT_PROD: 'http://islesys.com',
+    // YOUR_DOMAIN_PROD: 'https://islesys.com',
+    YOUR_CLIENT_PROD: 'https://islesys.com',
 
     firebaseConfig: {
-        projectId: "islesys-79de1",
-        appId: "1:433334040386:web:11d1885dae11772fe2badb",
-        storageBucket: "islesys-79de1.appspot.com",
-        locationId: 'asia-south1',
         apiKey: "AIzaSyCeQfd65tqgndPWGkanE5gvjC9W90qKBco",
         authDomain: "islesys-79de1.firebaseapp.com",
+        databaseURL: "https://islesys-79de1-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "islesys-79de1",
+        storageBucket: "islesys-79de1.appspot.com",
         messagingSenderId: "433334040386",
-        measurementId: "G-698TG3HDX8",
-        // databaseURL: "https://refr-india-default-rtdb.asia-southeast1.firebasedatabase.app",
-        // vapidKey: "BHvWoEqN0KY2YDZdfwX3_y5tRoUuALe9a9gJ9dOBLd56Lk7wFmMcLVk9Tylj7IBBoIGf62o76W5DWqlQJqxKBp4"
-        vapidKey: "BBHDvZU0XUTYbTOHXf9ZHGAccXxsfWVgfk0JLud_Dd7Gbiinz36bhejcBf_TgDqdSUoaR7FfXki4us8c9T2i4cY"
+        appId: "1:433334040386:web:faa7d922dc23d571e2badb",
+        measurementId: "G-D2PGQHCSJK",
+
+        locationId: 'asia-south1',
+        // apiKey: "AIzaSyCeQfd65tqgndPWGkanE5gvjC9W90qKBco",
+        // projectId: "islesys-79de1",
+
+        // authDomain: "islesys-79de1.firebaseapp.com",
+        // databaseURL: "https://islesys-79de1-default-rtdb.asia-southeast1.firebasedatabase.app",
+        // messagingSenderId: "433334040386",
+        // storageBucket: "islesys-79de1.appspot.com",
+        // appId: "1:433334040386:web:11d1885dae11772fe2badb",
+        // measurementId: "G-698TG3HDX8",
+        
+        // vapidKey: "BBHDvZU0XUTYbTOHXf9ZHGAccXxsfWVgfk0JLud_Dd7Gbiinz36bhejcBf_TgDqdSUoaR7FfXki4us8c9T2i4cY"
     },
+
+    
+    // firebaseFrycold: {
+    //     locationId: "",
+    //     apiKey: "AIzaSyCJyiPYzAACGtONiSoLrppGr1VoEuD3-no",
+    //     projectId: "frycold-c0486",
+
+    //     authDomain: "frycold-c0486.firebaseapp.com",
+    //     storageBucket: "frycold-c0486.appspot.com",
+    //     messagingSenderId: "266785957696",
+    //     appId: "1:266785957696:web:ff05b31a9b7fb3cfa9bca5",
+    //     measurementId: "G-CKKYYHS3SG"
+    // },
 
     // STRIPE_Publishable_key :'pk_test_51IJSwWENE7uabJh2Eqdq6aDs4rYefwE7sIoHUigj99tOW3Jn0z55dqEkqU31h3aplAMmRorqPTAtmXFURgnF4aLR00X7QWeeCP',
     // STRIPE_Secret_key :'sk_test_51IJSwWENE7uabJh2qbxlfM2If5MLKbI9wwhKFPOCGsTrkekeQFiKoKoslcRBy0dAgbzXYnGcWYdxbtMHvQ08aob100vc2l4BSj',

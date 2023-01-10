@@ -223,10 +223,10 @@
   //     color: #fff;
   //   }
     
-  //   .pricing-button.is-featured:hover,
-  //   .pricing-button.is-featured:active {
-  //     background-color: #269aff;
-  //   }
+    .pricing-button.is-featured:hover,
+    .pricing-button.is-featured:active {
+      transform: scale(1.1);
+    }
           }
           
           // .pricing-plan:last-child {

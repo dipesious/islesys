@@ -105,59 +105,69 @@
             <ul class="pricing-features">
               <li class="pricing-features-item">Easy Onboarding</li>
               <li class="pricing-features-item">Personal License</li>
-              <li class="pricing-features-item">Access to 9 Assets</li>
+              <li class="pricing-features-item">Join Referral Program</li>
+              <li class="pricing-features-item">DwnLd 10/device</li>
+              <li class="pricing-features-item">Borrower Access</li>
             </ul>
             <span class="pricing-price c_growth">Free</span>
             <ul class="pricing-features">
             <li class="pricing-features-item">{{iGlobal == 'USD' ? '$':''}}{{iGlobal == 'EUR' ? '€':''}}{{iGlobal == 'INR' ? '₹':''}}{{iGlobal == 'RUB' ? '₽':''}}0 forevah!</li>
             </ul>
-            <a (click)=" this.goPack('') " mat-stroked-button color="warn" class="pricing-button nFont">{{!(auth.user$ | async) ? 'Sign up' : 'Continue'}}</a>
+            <a (click)=" goPack('') " mat-stroked-button color="warn" class="pricing-button nFont">{{!(auth.user$ | async) ? 'Sign up' : 'Continue'}}</a>
           </div>
           
           <div class="pricing-plan">
             <img src="assets/plane.png" alt="" class="pricing-img">
             <h2 class="pricing-header c_primary">Community</h2>
             <ul class="pricing-features">
-              <li class="pricing-features-item">Everything in Private</li>
-              <li class="pricing-features-item">One Project License</li>
+              <li class="pricing-features-item">Built for individuals</li>
+              <li class="pricing-features-item">Project License</li>
+              <li class="pricing-features-item">2x Referral Rewards</li>
+              <li class="pricing-features-item">DwnLd 10k/month</li>
               <li class="pricing-features-item">Access to ထ Assets</li>
             </ul>
             <span class="pricing-price c_growth"><sup
-              *ngIf=" iGlobal == 'USD' || iGlobal == 'EUR' ">{{iGlobal == 'USD' ? '$':''}}{{iGlobal == 'EUR' ? '€':''}}<!--{{iGlobal == 'INR' ? '₹':''}}{{iGlobal == 'RUB' ? '₽':''}}--></sup><u style="text-decoration: line-through 4px;" 
-              *ngIf=" iGlobal == 'USD' || iGlobal == 'EUR' ">{{iGlobal == 'USD' ? resource.cartList[0].priceUSD:''}}{{iGlobal == 'EUR' ? resource.cartList[0].priceEUR:''}}<!--{{iGlobal == 'INR' ? resource.cartList[0].priceINR:''}}{{iGlobal == 'RUB' ? resource.cartList[0].priceRUB:''}}-->
-              </u> &nbsp; <sup>{{iGlobal == 'USD' ? '$':''}}{{iGlobal == 'EUR' ? '€':''}}{{iGlobal == 'INR' ? '₹':''}}{{iGlobal == 'RUB' ? '₽':''}}</sup>{{iGlobal == 'USD' ? resource.cartList[0].costUSD:''}}{{iGlobal == 'EUR' ? resource.cartList[0].costEUR:''}}{{iGlobal == 'INR' ? resource.cartList[0].costINR:''}}{{iGlobal == 'RUB' ? resource.cartList[0].costRUB:''}}</span>
+              *ngIf=" iGlobal == 'USD' ">{{iGlobal == 'USD' ? '$':''}}<!--{{iGlobal == 'EUR' ? '€':''}}{{iGlobal == 'INR' ? '₹':''}}{{iGlobal == 'RUB' ? '₽':''}}--></sup><u style="text-decoration: line-through 4px;" 
+              *ngIf=" iGlobal == 'USD' ">{{iGlobal == 'USD' ? resource.cartList[0].priceUSD:''}}<!--{{iGlobal == 'EUR' ? resource.cartList[0].priceEUR:''}}{{iGlobal == 'INR' ? resource.cartList[0].priceINR:''}}{{iGlobal == 'RUB' ? resource.cartList[0].priceRUB:''}}-->
+              </u> &nbsp; <sup>{{iGlobal == 'USD' ? '$':''}}{{iGlobal == 'EUR' ? '€':''}}{{iGlobal == 'INR' ? '₹':''}}{{iGlobal == 'RUB' ? '₽':''}}</sup>
+              {{iGlobal == 'USD' ? resource.cartList[0].costUSD :''}}
+              {{iGlobal == 'EUR' ? (resource.cartList[0].costEUR | number:'1.2-2'):''}}
+              {{iGlobal == 'INR' ? (resource.cartList[0].costINR | number:'1.2-2'):''}}
+              {{iGlobal == 'RUB' ? (resource.cartList[0].costRUB | number:'1.2-2'):''}}</span>
             <ul class="pricing-features">
             <li class="pricing-features-item">
               {{iGlobal == 'USD' ? '$':''}}{{iGlobal == 'EUR' ? '€':''}}{{iGlobal == 'INR' ? '₹':''}}{{iGlobal == 'RUB' ? '₽':''}}
-              {{iGlobal == 'USD' ? resource.cartList[0].costUSD:''}}
-              {{iGlobal == 'EUR' ? resource.cartList[0].costEUR:''}}
-              {{iGlobal == 'INR' ? resource.cartList[0].costINR:''}}
-              {{iGlobal == 'RUB' ? resource.cartList[0].costRUB:''}} for the first year</li>
+              {{iGlobal == 'USD' ? (resource.cartList[0].costUSD | number:'1.0-0'):''}}
+              {{iGlobal == 'EUR' ? (resource.cartList[0].costEUR | number:'1.0-0'):''}}
+              {{iGlobal == 'INR' ? (resource.cartList[0].costINR | number:'1.0-0'):''}}
+              {{iGlobal == 'RUB' ? (resource.cartList[0].costRUB | number:'1.0-0'):''}} for the first year</li>
             </ul>
-            <a (click)=" this.goPack('Upgrade') " mat-flat-button color="warn" class="pricing-button is-featured nFont">Upgrade</a>
+            <a (click)=" goPack('Upgrade') " mat-flat-button color="warn" class="pricing-button is-featured nFont">Upgrade</a>
           </div>
           
           <div class="pricing-plan">
             <img src="assets/space-ship.png" alt="" class="pricing-img">
             <h2 class="pricing-header c_primary">Enterprise</h2>
             <ul class="pricing-features">
-              <li class="pricing-features-item">Everything in Community</li>
+              <li class="pricing-features-item">Best for organizations</li>
               <li class="pricing-features-item">Company License</li>
+              <li class="pricing-features-item">1x Referral Rewards</li>
+              <li class="pricing-features-item">DwnLd 10k/day</li>
               <li class="pricing-features-item">Dedicated Support</li>
             </ul>
             <span class="pricing-price c_growth"><sup>{{iGlobal == 'USD' ? '$':''}}{{iGlobal == 'EUR' ? '€':''}}{{iGlobal == 'INR' ? '₹':''}}{{iGlobal == 'RUB' ? '₽':''}}</sup>
-              {{iGlobal == 'USD' ? resource.cartList[2].costUSD:''}}
-              {{iGlobal == 'EUR' ? resource.cartList[2].costEUR:''}}
-              {{iGlobal == 'INR' ? resource.cartList[2].costINR:''}}
-              {{iGlobal == 'RUB' ? resource.cartList[2].costRUB:''}}</span>
+              {{iGlobal == 'USD' ? (resource.cartList[2].costUSD | number:'1.2-2'):''}}
+              {{iGlobal == 'EUR' ? (resource.cartList[2].costEUR | number:'1.2-2'):''}}
+              {{iGlobal == 'INR' ? (resource.cartList[2].costINR | number:'1.2-2'):''}}
+              {{iGlobal == 'RUB' ? (resource.cartList[2].costRUB | number:'1.2-2'):''}}</span>
             <ul class="pricing-features">
             <li class="pricing-features-item">{{iGlobal == 'USD' ? '$':''}}{{iGlobal == 'EUR' ? '€':''}}{{iGlobal == 'INR' ? '₹':''}}{{iGlobal == 'RUB' ? '₽':''}}
-              {{iGlobal == 'USD' ? resource.cartList[2].costUSD:''}}
-              {{iGlobal == 'EUR' ? resource.cartList[2].costEUR:''}}
-              {{iGlobal == 'INR' ? resource.cartList[2].costINR:''}}
-              {{iGlobal == 'RUB' ? resource.cartList[2].costRUB:''}} per month</li>
+              {{iGlobal == 'USD' ? ((resource.cartList[2].costUSD/12) | number:'1.2-2'):''}}
+              {{iGlobal == 'EUR' ? ((resource.cartList[2].costEUR/12) | number:'1.0-0'):''}}
+              {{iGlobal == 'INR' ? ((resource.cartList[2].costINR/12) | number:'1.0-0'):''}}
+              {{iGlobal == 'RUB' ? ((resource.cartList[2].costRUB/12) | number:'1.0-0'):''}} per month</li>
             </ul>
-            <a (click)=" this.goPack('Apply') " mat-stroked-button color="warn" class="pricing-button nFont">Apply</a>
+            <a (click)=" goPack('Apply') " mat-stroked-button color="warn" class="pricing-button nFont">Apply</a>
           </div>
           
         </div>
@@ -179,7 +189,8 @@
     <p>Great for Developers</p>
     <p>Great for Designers</p>
     <p>Great for Content Creators</p>
-    <button mat-raised-button class="dFont">Sign with islesys</button>
+    <button mat-raised-button class="dFont">Start now</button>
+    <button mat-raised-button class="dFont">Join Referal program</button>
   </div>
   <div class="rightWing b_primary">
     <mat-icon>play_arrow</mat-icon>

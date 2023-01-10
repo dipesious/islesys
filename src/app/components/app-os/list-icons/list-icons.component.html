@@ -17,10 +17,6 @@
             <button mat-button *ngIf=" page.toneX == 'Vibrant' " (click)=" execute('', 'Insignia', 'Vibrant') "><mat-icon>{{ page.fillX == 'Insignia' ? 'radio_button_checked':'radio_button_unchecked'}}</mat-icon> Insignia</button>
         </div>
 
-        <!-- <div class="third">
-            <button mat-button color="primary" (click)="submitIcon()">Add New</button>
-        </div> -->
-
 
     </div>
 </section>
@@ -63,8 +59,9 @@
             (click)=" execute(c, 'Outline', page.toneX) "
             (click)=" execute(c, 'Filled', page.toneX) "
           -->
-            <button mat-menu-item [routerLink]=" '/outline-icons/' + c "  >{{c}} Outline</button>
-            <button mat-menu-item [routerLink]=" '/filled-icons/' + c "  >{{c}} Filled</button>
+            <button mat-menu-item [routerLink]=" '/icons/' + c "  >{{c}}</button>
+            <!-- <button mat-menu-item [routerLink]=" '/outline-icons/' + c "  >{{c}} Outline</button>
+            <button mat-menu-item [routerLink]=" '/filled-icons/' + c "  >{{c}} Filled</button> -->
           </ng-container>
           </div>
         </mat-menu>

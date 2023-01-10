@@ -39,7 +39,7 @@ if(!req.params.countryCode || !req.body.type){
                 x.update({
                     now: newCode,
                     count:admin.firestore.FieldValue.increment(+1),
-                    upd:admin.firestore.Timestamp(),
+                    // upd:admin.firestore.Timestamp(),
                 }).then(() => {
                     res.json({
                         success: true,
@@ -60,60 +60,6 @@ if(!req.params.countryCode || !req.body.type){
         //.set(quoteData).then(() => console.log('new Dialogue written to database')); 
 }
 })
-
-/*
-routeCodes.post("/sendCodes/:countryCode", (req, res) => { // Route for ...
-    if (!req.params.countryCode || !req.body.currentCode) {
-        res.json({
-            success: false,
-            status: 200, //http
-            code: errors.Forbidden, //route
-            data: null,
-            info: "Please post valid data"
-        });
-    } else {
-
-
-        if (req.body.currentCode.length !== 6) {
-            res.json({
-                success: false,
-                status: 200, //http
-                code: errors.BadRequest, //route
-                data: null,
-                info: "Please post valid code"
-            });
-        } else {
-            // +c1 & set c2 = A// +c2 & set c3 = A// +c3 & set c4 = A// +c4 & set c5 = A
-            const newCode = getCode(req.body.currentCode);
-            // Update Code to server here
-            // Update Code to server here
-
-            if (!newCode) {
-                res.json({
-                    success: false,
-                    status: 200, //http
-                    code: errors.Conflict, //route
-                    data: null,
-                    info: "Hex Limit for Code Reached!"
-                });
-            } else {
-                res.json({
-                    success: true,
-                    status: 200,
-                    code: errors.ok,
-                    data: {
-                        currentCode: req.body.currentCode,
-                        code: newCode,
-                        timestamp: Date.now()
-                    },
-                    info: "Hello action"
-                });
-            }
-
-        }
-    }
-});
-*/
 
 function getCode(nowCode) {
     const alfhaNumeric = [

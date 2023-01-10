@@ -1,0 +1,16 @@
+
+            <div class="cards b_white" *ngIf="mine">
+                <img class="pic" [class.imgLoading]="imgLoaded.includes(mine.display)" [src]=" 'assets/avatar.svg' " />
+                <img class="pic" [class.imgLoading]="!imgLoaded.includes(mine.display)" (load)="imgLoaded.push(mine.display)" [src]=" mine.display " />
+
+                <input type="text" [value]="mine.name" name="name" readonly />
+
+                <input [value]="mine.email" name="email" readonly />
+
+                <input [value]="mine.phone" name="phone" readonly />
+
+                <a mat-button (click)="signin('google')" class="b_white"><mat-icon><img src="assets/google.svg" /></mat-icon>Sync</a>
+                <a mat-button (click)="signin('microsoft')" class="b_white"><mat-icon><img src="assets/microsoft.svg" /></mat-icon>Sync</a>
+                <a mat-button (click)="signin('twitter')" class="b_white"><mat-icon><img src="assets/twitter.svg" /></mat-icon>Sync</a>
+                
+            </div>

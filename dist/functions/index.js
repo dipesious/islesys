@@ -1,7 +1,7 @@
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
 // const urlBuilder = require('build-url');
-// const request = require('request-promise');
+const request = require('request-promise');
 
 const express = require('express');
 // const bodyParser = require('body-parser')
@@ -11,41 +11,42 @@ const enviroment = require("./env");
 const app = express();
 app.use(cors({ origin: true }));
 
-const server = express();
-server.use(cors({ origin: true }));
+// const server = express();
+// server.use(cors({ origin: true }));
 
 // Your web app's Firebase configuration
 admin.initializeApp(enviroment.firebaseConfig);
+// adminFrycold.initializeApp(enviroment.firebaseFrycold);
 
 
-server.all('**', (req, res) => {
-  console.log('Hello Brother!', req.body)
-  const x = {
-      path:req.path || null,
-      // host:req.host || null,
-      hostURL: req.headers.host || null,
-      hostname: req.hostname || null,
-      // headers: req.headers || null,
-      // baseUrl: req.baseUrl || null,
-      originalUrl: req.originalUrl || null,
-      // body: req.body
-    }
+// server.all('**', (req, res) => {
+//   console.log('Hello Brother!', req.body)
+//   const x = {
+//       path:req.path || null,
+//       // host:req.host || null,
+//       hostURL: req.headers.host || null,
+//       hostname: req.hostname || null,
+//       // headers: req.headers || null,
+//       // baseUrl: req.baseUrl || null,
+//       originalUrl: req.originalUrl || null,
+//       // body: req.body
+//     }
 
-    return admin.firestore().collection('mails').add(x).then(() => {
-      // res.json({ 
-      //     success:true, status:200, //http
-      //     // code:errors.Forbidden, //route
-      //     data:null, info:"OK"
-      // });
-      res.json({success:true, status:200, info:x });
-    })
-})
+//     return admin.firestore().collection('mails').add(x).then(() => {
+//       // res.json({ 
+//       //     success:true, status:200, //http
+//       //     // code:errors.Forbidden, //route
+//       //     data:null, info:"OK"
+//       // });
+//       res.json({success:true, status:200, info:x });
+//     })
+// })
 
-exports.mails = functions
-    .region('us-central1')
-    .runWith({})
-    .https
-    .onRequest(server);
+// exports.mails = functions
+//     .region('us-central1')
+//     .runWith({})
+//     .https
+//     .onRequest(server);
 
 // This is your test secret API key.
 // const stripe = require('stripe')(enviroment.STRIPE_Secret_key);
@@ -63,7 +64,7 @@ const routeSNS = require('./routes/routeSNS');
 // app.use(express.static('public'));
 
 // const YOUR_DOMAIN = enviroment.production ? enviroment.YOUR_DOMAIN_PROD : enviroment.YOUR_DOMAIN;
-// const YOUR_CLIENT = enviroment.production ? enviroment.YOUR_CLIENT_PROD : enviroment.YOUR_CLIENT;
+const YOUR_CLIENT = enviroment.production ? enviroment.YOUR_CLIENT_PROD : enviroment.YOUR_CLIENT;
 
 
 app.use('/api/videos', routeVideos);
@@ -192,14 +193,15 @@ exports.server_global = functions
 // });
 
 
-  exports.createUsers = functions.firestore.document('users/{uid}').onCreate((change, context) => {
+  function getSearch(x){
+    return [x];
+  }
+
+  exports.createUsers = functions.firestore.document('users/{uid}').onCreate((snapshot, context) => {
 
         // Get an object with the current document value.
         // If the document does not exist, it has been deleted.
-        const document = change.after.exists ? change.after.data() : null;
-  
-        // Get an object with the previous document value (for update or delete)
-        const oldDocument = change.before.data(); //WONT EXIST
+        const document = snapshot.exists ? snapshot.data() : null;
   
         const uid = context?.params?.uid;
         let user = document;
@@ -211,8 +213,8 @@ exports.server_global = functions
 
           const options = {
             method: 'POST',
-            uri: `https://islesys.com/api/codes/sendCode/IN`,
-            // uri: `http://localhost:5001/refr-india/us-central1/ind_serve/api/codes/sendCode/IN`,
+            uri: `${YOUR_CLIENT}/api/codes/sendCode/IN`,
+            // uri: `http://localhost:5001/islesys-79de1/us-central1/ind_serve/api/codes/sendCode/IN`,
             body: {
                 type: "xUser"
             },
@@ -229,7 +231,7 @@ exports.server_global = functions
             if(!newCode){
                 return;
             }else{
-                return change.after.ref.update({ 
+                return snapshot.ref.update({ 
                   search:getSearch("ABC"),
 
                   iCodeSet: true, 
@@ -241,20 +243,12 @@ exports.server_global = functions
     }
   });
 
-  function getSearch(x){
-    return [x];
-  }
-
-
-
-  exports.createWalt = functions.firestore.document('walt/{id}').onCreate((change, context) => {
+/*
+  exports.createWalt = functions.firestore.document('walt/{id}').onCreate((snapshot, context) => {
 
         // Get an object with the current document value.
         // If the document does not exist, it has been deleted.
-        const document = change.after.exists ? change.after.data() : null;
-  
-        // Get an object with the previous document value (for update or delete)
-        const oldDocument = change.before.data(); //WONT EXIST
+        const document = snapshot.exists ? snapshot.data() : null;
   
         const id = context?.params?.id;
         let user = document;
@@ -266,8 +260,8 @@ exports.server_global = functions
 
           const options = {
             method: 'POST',
-            uri: `https://islesys.com/api/codes/sendCode/IN`,
-            // uri: `http://localhost:5001/refr-india/us-central1/ind_serve/api/codes/sendCode/IN`,
+            uri: `${YOUR_CLIENT}/api/codes/sendCode/IN`,
+            // uri: `http://localhost:5001/islesys-79de1/us-central1/ind_serve/api/codes/sendCode/IN`,
             body: {
                 type: "xBill"
             },
@@ -284,7 +278,7 @@ exports.server_global = functions
             if(!newCode){
                 return;
             }else{
-                return change.after.ref.update({ 
+                return snapshot.ref.update({ 
                     iCodeSet: true, 
                     iCode: newCode 
                 })
@@ -293,14 +287,12 @@ exports.server_global = functions
         
     }
   });
-  exports.createWaltICONWHO = functions.firestore.document('waltICONWHO/{id}').onCreate((change, context) => {
+  */
+  exports.createWaltICONWHO = functions.firestore.document('waltICONWHO/{id}').onCreate((snapshot, context) => {
 
         // Get an object with the current document value.
         // If the document does not exist, it has been deleted.
-        const document = change.after.exists ? change.after.data() : null;
-  
-        // Get an object with the previous document value (for update or delete)
-        const oldDocument = change.before.data(); //WONT EXIST
+        const document = snapshot.exists ? snapshot.data() : null;
   
         const id = context?.params?.id;
         let user = document;
@@ -312,8 +304,8 @@ exports.server_global = functions
 
           const options = {
             method: 'POST',
-            uri: `https://islesys.com/api/codes/sendCode/IN`,
-            // uri: `http://localhost:5001/refr-india/us-central1/ind_serve/api/codes/sendCode/IN`,
+            uri: `${YOUR_CLIENT}/api/codes/sendCode/IN`,
+            // uri: `http://localhost:5001/islesys-79de1/us-central1/ind_serve/api/codes/sendCode/IN`,
             body: {
                 type: "xBill"
             },
@@ -330,7 +322,7 @@ exports.server_global = functions
             if(!newCode){
                 return;
             }else{
-                return change.after.ref.update({ 
+                return snapshot.ref.update({ 
                     iCodeSet: true, 
                     iCode: newCode 
                 })
@@ -339,14 +331,11 @@ exports.server_global = functions
         
     }
   });
-  exports.createWaltMAPWALE = functions.firestore.document('waltMAPWALE/{id}').onCreate((change, context) => {
+  exports.createWaltMAPWALE = functions.firestore.document('waltMAPWALE/{id}').onCreate((snapshot, context) => {
 
         // Get an object with the current document value.
         // If the document does not exist, it has been deleted.
-        const document = change.after.exists ? change.after.data() : null;
-  
-        // Get an object with the previous document value (for update or delete)
-        const oldDocument = change.before.data(); //WONT EXIST
+        const document = snapshot.exists ? snapshot.data() : null;
   
         const id = context?.params?.id;
         let user = document;
@@ -358,8 +347,8 @@ exports.server_global = functions
 
           const options = {
             method: 'POST',
-            uri: `https://islesys.com/api/codes/sendCode/IN`,
-            // uri: `http://localhost:5001/refr-india/us-central1/ind_serve/api/codes/sendCode/IN`,
+            uri: `${YOUR_CLIENT}/api/codes/sendCode/IN`,
+            // uri: `http://localhost:5001/islesys-79de1/us-central1/ind_serve/api/codes/sendCode/IN`,
             body: {
                 type: "xBill"
             },
@@ -376,7 +365,7 @@ exports.server_global = functions
             if(!newCode){
                 return;
             }else{
-                return change.after.ref.update({ 
+                return snapshot.ref.update({ 
                     iCodeSet: true, 
                     iCode: newCode 
                 })
@@ -385,14 +374,11 @@ exports.server_global = functions
         
     }
   });
-  exports.createWaltISLESYS = functions.firestore.document('waltISLESYS/{id}').onCreate((change, context) => {
+  exports.createWaltISLESYS = functions.firestore.document('waltISLESYS/{id}').onCreate((snapshot, context) => {
 
         // Get an object with the current document value.
         // If the document does not exist, it has been deleted.
-        const document = change.after.exists ? change.after.data() : null;
-  
-        // Get an object with the previous document value (for update or delete)
-        const oldDocument = change.before.data(); //WONT EXIST
+        const document = snapshot.exists ? snapshot.data() : null;
   
         const id = context?.params?.id;
         let user = document;
@@ -404,8 +390,8 @@ exports.server_global = functions
 
           const options = {
             method: 'POST',
-            uri: `https://islesys.com/api/codes/sendCode/IN`,
-            // uri: `http://localhost:5001/refr-india/us-central1/ind_serve/api/codes/sendCode/IN`,
+            uri: `${YOUR_CLIENT}/api/codes/sendCode/IN`,
+            // uri: `http://localhost:5001/islesys-79de1/us-central1/ind_serve/api/codes/sendCode/IN`,
             body: {
                 type: "xBill"
             },
@@ -422,7 +408,7 @@ exports.server_global = functions
             if(!newCode){
                 return;
             }else{
-                return change.after.ref.update({ 
+                return snapshot.ref.update({ 
                     iCodeSet: true, 
                     iCode: newCode 
                 })
@@ -431,14 +417,12 @@ exports.server_global = functions
         
     }
   });
-  exports.createWaltFRYCOLD = functions.firestore.document('waltFRYCOLD/{id}').onCreate((change, context) => {
+  /*
+  exports.createWaltAIMTERA = functions.firestore.document('waltAIMTERA/{id}').onCreate((snapshot, context) => {
 
         // Get an object with the current document value.
         // If the document does not exist, it has been deleted.
-        const document = change.after.exists ? change.after.data() : null;
-  
-        // Get an object with the previous document value (for update or delete)
-        const oldDocument = change.before.data(); //WONT EXIST
+        const document = snapshot.exists ? snapshot.data() : null;
   
         const id = context?.params?.id;
         let user = document;
@@ -450,54 +434,8 @@ exports.server_global = functions
 
           const options = {
             method: 'POST',
-            uri: `https://islesys.com/api/codes/sendCode/IN`,
-            // uri: `http://localhost:5001/refr-india/us-central1/ind_serve/api/codes/sendCode/IN`,
-            body: {
-                type: "xBillFRYCOLD"
-            },
-            json: true
-        };
-  
-        return request(options).then(function(parsedBody) {
-            if( !parsedBody || !parsedBody.data || !parsedBody.data.code ){
-                return;
-            }else{
-                return parsedBody.data.code;
-            }
-        }).then(newCode => {
-            if(!newCode){
-                return;
-            }else{
-                return change.after.ref.update({ 
-                    iCodeSet: true, 
-                    iCode: newCode 
-                })
-            }
-        })
-        
-    }
-  });
-  exports.createWaltAIMTERA = functions.firestore.document('waltAIMTERA/{id}').onCreate((change, context) => {
-
-        // Get an object with the current document value.
-        // If the document does not exist, it has been deleted.
-        const document = change.after.exists ? change.after.data() : null;
-  
-        // Get an object with the previous document value (for update or delete)
-        const oldDocument = change.before.data(); //WONT EXIST
-  
-        const id = context?.params?.id;
-        let user = document;
-  
-        // functions.logger.log("Mega: ", document, oldDocument, uid);
-        if(!user || user.iCodeSet){
-          return; 
-        }else{
-
-          const options = {
-            method: 'POST',
-            uri: `https://islesys.com/api/codes/sendCode/IN`,
-            // uri: `http://localhost:5001/refr-india/us-central1/ind_serve/api/codes/sendCode/IN`,
+            uri: `${YOUR_CLIENT}/api/codes/sendCode/IN`,
+            // uri: `http://localhost:5001/islesys-79de1/us-central1/ind_serve/api/codes/sendCode/IN`,
             body: {
                 type: "xBillAIMTERA"
             },
@@ -514,7 +452,7 @@ exports.server_global = functions
             if(!newCode){
                 return;
             }else{
-                return change.after.ref.update({ 
+                return snapshot.ref.update({ 
                     iCodeSet: true, 
                     iCode: newCode 
                 })
@@ -523,3 +461,4 @@ exports.server_global = functions
         
     }
   });
+  */
